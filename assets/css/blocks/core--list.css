@@ -1,0 +1,60 @@
+/* Divided: no markers, a hairline between items. Used for contact details and short fact lists. */
+.wp-block-list.is-style-divided {
+	list-style: none;
+	padding-inline-start: 0;
+}
+.wp-block-list.is-style-divided > li {
+	padding-block: var(--wp--preset--spacing--s);
+	border-bottom: 0.0625rem solid var(--wp--preset--color--stroke);
+}
+.wp-block-list.is-style-divided > li:first-child {
+	border-top: 0.0625rem solid var(--wp--preset--color--stroke);
+}
+
+/*
+ * Checklist: a decorative check mark before each item instead of the bullet. The row variant lets short facts
+ * flow side by side and wrap, for trust strips. The mark is hidden from assistive technology.
+ */
+.wp-block-list:is(.is-style-checklist, .is-style-checklist-row) {
+	list-style: none;
+	padding-inline-start: 0;
+}
+.wp-block-list:is(.is-style-checklist, .is-style-checklist-row) > li {
+	position: relative;
+	padding-inline-start: 1.5em;
+}
+.wp-block-list.is-style-checklist > li + li {
+	margin-block-start: var(--wp--preset--spacing--xs);
+}
+.wp-block-list:is(.is-style-checklist, .is-style-checklist-row) > li::before {
+	content: "\2713";
+	content: "\2713" / "";
+	position: absolute;
+	inset-inline-start: 0;
+	color: var(--wp--preset--color--accent);
+	font-weight: 600;
+}
+/* Accent marks fall below 3:1 on ink and accent bands, so they take the band text color there. */
+:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) .wp-block-list > li::before {
+	color: inherit;
+}
+.wp-block-list.is-style-checklist-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--xs) var(--wp--preset--spacing--m);
+}
+
+/*
+ * Link columns in a footer navigation read as a register: no markers, dense rows, underline only on hover and focus.
+ * A list of links under a heading in a nav is not running text, so 1.4.1 asks no underline there.
+ */
+footer nav .wp-block-list:not(.is-style-divided, .is-style-checklist) {
+	display: grid;
+	gap: var(--wp--preset--spacing--xs);
+	list-style: none;
+	padding-inline-start: 0;
+	font-size: 0.9375rem;
+}
+footer nav .wp-block-list a:not(:hover, :focus-visible) {
+	text-decoration: none;
+}

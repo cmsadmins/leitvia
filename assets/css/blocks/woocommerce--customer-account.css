@@ -1,0 +1,9 @@
+/* Account link in the shop header: a 44 px target around the icon, like the mini cart button. */
+.wp-block-woocommerce-customer-account a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 2.75rem;
+	min-height: 2.75rem;
+	color: var(--wp--preset--color--ink);
+}

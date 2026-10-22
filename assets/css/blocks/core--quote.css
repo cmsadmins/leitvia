@@ -1,0 +1,10 @@
+/* Drop the browser's side indent so quotes line up with the text around them. */
+:where(.wp-block-quote) {
+	margin-inline: 0;
+}
+
+/* On a colored or inverse section or quote, the citation takes the text color so it keeps its contrast. */
+:where(.has-text-color, .is-style-inverse) .wp-block-quote cite,
+.wp-block-quote.has-text-color cite {
+	color: inherit;
+}

@@ -1,0 +1,38 @@
+{
+	"$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+	"version": 3,
+	"title": "Night Colors",
+	"slug": "night",
+	"description": "A dark palette in cool blue tones, for technology, music and evening event sites.",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "surface", "name": "Surface", "color": "#0d1420" },
+				{ "slug": "surface-alt", "name": "Surface alternate", "color": "#152033" },
+				{ "slug": "ink", "name": "Ink", "color": "#e8eef7" },
+				{ "slug": "ink-muted", "name": "Ink muted", "color": "#9aa8bd" },
+				{ "slug": "accent", "name": "Accent", "color": "#7fb2ff" },
+				{ "slug": "on-accent", "name": "On accent", "color": "#0b1a33" },
+				{ "slug": "stroke", "name": "Stroke", "color": "#263247" },
+				{ "slug": "focus", "name": "Focus", "color": "#ffd166" },
+				{ "slug": "success", "name": "Success", "color": "#7dcb8e" },
+				{ "slug": "warning", "name": "Warning", "color": "#f0b44c" },
+				{ "slug": "danger", "name": "Danger", "color": "#ff9b94" }
+			]
+		}
+	},
+	"styles": {
+		"blocks": {
+			"core/cover": {
+				"variations": {
+					"inverse": { "color": { "background": "var:preset|color|surface-alt", "text": "var:preset|color|ink" } }
+				}
+			},
+			"core/group": {
+				"variations": {
+					"inverse": { "color": { "background": "var:preset|color|surface-alt", "text": "var:preset|color|ink" } }
+				}
+			}
+		}
+	}
+}

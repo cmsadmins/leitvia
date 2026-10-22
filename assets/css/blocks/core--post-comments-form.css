@@ -1,0 +1,6 @@
+/* Same double focus ring as buttons and links (see core--button.css) instead of the browser default. */
+.wp-block-post-comments-form :is(input:not([type="submit"]), textarea):focus-visible {
+	outline: 2px solid var(--wp--preset--color--focus);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
+}

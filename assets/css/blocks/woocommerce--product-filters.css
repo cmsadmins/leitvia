@@ -1,0 +1,25 @@
+/* Shop focus ring, on the thumb for the price slider (WooCommerce forces outline: none on its inputs). The closed
+   mobile overlay sits off screen: hidden, so Tab skips it. */
+body .wp-block-woocommerce-product-filters :is(a, button, input, [tabindex]):focus-visible {
+	outline: 2px solid var(--wp--preset--color--focus);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
+}
+body .wc-block-product-filter-price-slider__range input[type="range"]:focus-visible::-webkit-slider-thumb {
+	outline: 2px solid var(--wp--preset--color--focus);
+	outline-offset: 2px;
+}
+body .wc-block-product-filter-price-slider__range input[type="range"]:focus-visible::-moz-range-thumb {
+	outline: 2px solid var(--wp--preset--color--focus);
+	outline-offset: 2px;
+}
+@media (width <= 782px) {
+	.wc-block-product-filters:not(.is-overlay-opened) .wc-block-product-filters__overlay-dialog {
+		visibility: hidden;
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	.wc-block-product-filters__overlay-dialog {
+		transition: none;
+	}
+}

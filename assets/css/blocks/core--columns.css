@@ -1,0 +1,6 @@
+/* Media right: the first column (usually the image) moves to the end from tablet width up. */
+@media (min-width: 48.875rem) {
+	.wp-block-columns.is-style-media-right {
+		flex-direction: row-reverse;
+	}
+}

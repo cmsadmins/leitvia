@@ -1,0 +1,31 @@
+/* Core tabs in the roles of the theme: a stroke under the tab list, the selected tab marked in accent. */
+.wp-block-tab-list {
+	gap: 0;
+	border-block-end: 1px solid var(--wp--preset--color--stroke);
+}
+.wp-block-tab-list button {
+	min-block-size: 2.75rem;
+	padding: var(--wp--preset--spacing--xs) var(--wp--preset--spacing--s);
+	color: var(--wp--preset--color--ink-muted);
+}
+.wp-block-tab-list button[aria-selected="true"] {
+	color: var(--wp--preset--color--ink);
+}
+.wp-block-tab-list button[aria-selected="true"]::before {
+	border-block-end: 0.1875rem solid var(--wp--preset--color--accent);
+}
+.wp-block-tab-list button:focus-visible,
+.wp-block-tab-panel:focus-visible {
+	outline: 0.125rem solid var(--wp--preset--color--focus);
+	outline-offset: 0.125rem;
+	/* Inner ring for the double focus indicator, see core--button.css. */
+	box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
+}
+.wp-block-tab-panel {
+	padding-block: var(--wp--preset--spacing--s);
+}
+/* Tab label above each panel, only rendered without scripting by Leitvia Studio. */
+.wp-block-tab-panel__label {
+	margin-block-start: 0;
+	font-weight: 700;
+}

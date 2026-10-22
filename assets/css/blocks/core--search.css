@@ -1,0 +1,19 @@
+/* Same double focus ring as buttons and links (see core--button.css) instead of the browser default. */
+.wp-block-search__input:focus-visible {
+	outline: 2px solid var(--wp--preset--color--focus);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
+}
+/*
+ * In a flex row (header-search) the form would keep the intrinsic width of its input and overflow at 320px.
+ * Without the minimum it shrinks to the row and the input takes what is left next to the button.
+ */
+.wp-block-search {
+	min-width: 0;
+}
+/* Field and button share one 48 px height and the small radius. */
+.wp-block-search__input {
+	min-height: 3rem;
+	border-radius: var(--wp--preset--border-radius--s);
+	font-family: var(--wp--preset--font-family--ui);
+}

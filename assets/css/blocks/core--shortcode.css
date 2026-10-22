@@ -1,0 +1,7 @@
+/* WooCommerce's account forms come in through the shortcode block. Its "Show password" toggle is 22 by 22 px, below
+   the 24 px minimum target (WCAG 2.5.8); at least 1.5rem in both directions. */
+.woocommerce form .show-password-input,
+.woocommerce-page form .show-password-input {
+	min-width: 1.5rem;
+	min-height: 1.5rem;
+}

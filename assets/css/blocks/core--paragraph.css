@@ -1,0 +1,63 @@
+:where(p) {
+	text-wrap: pretty;
+}
+
+/* Inline code in running text. The tint follows the text color, so it also reads on surface-alt, ink and accent sections. */
+:where(p) code {
+	padding: 0.1em 0.3em;
+	border-radius: var(--wp--preset--border-radius--s);
+	background-color: color-mix(in srgb, currentcolor 8%, transparent);
+	font-family: var(--wp--preset--font-family--mono);
+	font-size: 0.875em;
+}
+
+/*
+ * One small-text voice for badge, eyebrow and the column heads of footers: the ui font in caps, hierarchy through
+ * color and space instead of weight. 12 px only for these caps labels, never for running text or links.
+ */
+:is(.is-style-badge, .is-style-eyebrow) {
+	font-family: var(--wp--preset--font-family--ui);
+	font-size: 0.75rem;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+
+.is-style-eyebrow {
+	color: var(--wp--preset--color--accent);
+}
+
+/* Accent text falls below 4.5:1 on ink and accent sections, so the eyebrow takes the section text color there. */
+:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) .is-style-eyebrow {
+	color: inherit;
+}
+
+/*
+ * Badge: the paragraph keeps its full width, so constrained layouts still line it up with the text column.
+ * A single fit-content grid track shrinks to the label and the square tint is painted behind it by ::before,
+ * absolutely positioned against that grid area so it stays out of auto placement.
+ * Scoped to p, because post terms use the same style name with one pill per term, see core--post-terms.css.
+ */
+p.is-style-badge {
+	display: grid;
+	grid-template-columns: fit-content(100%);
+	position: relative;
+	isolation: isolate;
+	padding: 0.25em 0.8em;
+	color: var(--wp--preset--color--ink);
+}
+p.is-style-badge::before {
+	content: "";
+	position: absolute;
+	grid-area: 1 / 1 / 2 / 2;
+	z-index: -1;
+	inset: -0.25em -0.8em;
+	background-color: var(--wp--preset--color--surface-alt);
+}
+p.is-style-badge.has-text-align-center {
+	justify-content: center;
+}
+p.is-style-badge.has-text-align-right {
+	justify-content: end;
+}

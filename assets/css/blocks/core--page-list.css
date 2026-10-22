@@ -1,0 +1,15 @@
+/* Documentation menu: a quiet page tree without bullets, child pages indented. */
+.page-template-page-docs .wp-block-page-list {
+	list-style: none;
+	padding-inline-start: 0;
+}
+.page-template-page-docs .wp-block-page-list .wp-block-navigation__submenu-container {
+	list-style: none;
+	padding-inline-start: var(--wp--preset--spacing--s);
+}
+.page-template-page-docs .wp-block-page-list li {
+	margin-block: var(--wp--preset--spacing--xxs);
+}
+.page-template-page-docs .wp-block-page-list .current-menu-item > a {
+	font-weight: 700;
+}

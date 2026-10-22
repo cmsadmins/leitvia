@@ -1,0 +1,41 @@
+/* Replace the browser triangle with a plus or minus sign at the end of the summary. */
+.wp-block-details > summary {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: var(--wp--preset--spacing--s);
+	cursor: pointer;
+	list-style: none;
+}
+.wp-block-details > summary::-webkit-details-marker {
+	display: none;
+}
+.wp-block-details > summary::after {
+	content: "+" / "";
+	flex-shrink: 0;
+	color: var(--wp--preset--color--accent);
+}
+.wp-block-details[open] > summary::after {
+	content: "\2212" / "";
+}
+.wp-block-details > summary:focus-visible {
+	outline: 0.125rem solid var(--wp--preset--color--focus);
+	outline-offset: 0.125rem;
+	/* Inner ring for the double focus indicator, see core--button.css. */
+	box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
+}
+
+/*
+ * Documentation template: the menu is a closed disclosure on small screens and stays open beside the content from
+ * tablet width on, where the columns sit side by side. Browsers without ::details-content keep the disclosure.
+ */
+@supports selector(::details-content) {
+	@media (min-width: 782px) {
+		.page-template-page-docs .wp-block-column > .wp-block-details > summary {
+			display: none;
+		}
+		.page-template-page-docs .wp-block-column > .wp-block-details::details-content {
+			content-visibility: visible;
+		}
+	}
+}

@@ -1,0 +1,18 @@
+/*
+ * Breadcrumbs above the h1 of the templates. The separator takes a role color at full strength instead of the
+ * faded current color of core. Long titles wrap inside their item, so the trail never scrolls sideways at 320 px.
+ */
+.wp-block-breadcrumbs {
+	margin-block-end: var(--wp--preset--spacing--s);
+	color: var(--wp--preset--color--ink-muted);
+	font-family: var(--wp--preset--font-family--ui);
+	font-size: var(--wp--preset--font-size--meta);
+}
+.wp-block-breadcrumbs li {
+	min-inline-size: 0;
+	overflow-wrap: anywhere;
+}
+.wp-block-breadcrumbs li:not(:last-child)::after {
+	color: var(--wp--preset--color--ink-muted);
+	opacity: 1;
+}

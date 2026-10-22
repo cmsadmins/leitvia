@@ -1,0 +1,2992 @@
+{
+	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
+	"contractVersion": "1.10.0",
+	"theme": "leitvia",
+	"rules": [
+		"Use only role presets. Never hex, px, custom CSS or !important.",
+		"Every text/background pair must pass WCAG 2.2 AA. Use roles from 'pairs'.",
+		"Compose pages from patterns first. Build new sections only if no pattern fits.",
+		"One h1 per page. Patterns start at h2 unless area is hero.",
+		"Images need meaningful alt text, or empty alt plus metadata.leitviaDecorative: true on the block if they only decorate.",
+		"Text over an image sits on an overlay or in a box with a role pair from 'pairs', never straight on the image.",
+		"Follow compositionRules before publishing.",
+		"Never convey meaning by color alone; badges, labels and icons carry text.",
+		"Keep one left edge and one text width on every page type; see layout."
+	],
+	"layout": {
+		"$comment": "Width and left edge of every page. theme.json sets the root padding to max(spacing m, (100vw - wideSize) / 2), so the padding of the page is the wide edge; templates lay out main and the post content as constrained with justifyContent left. The Leitvia monorepo checks the templates statically (lint rule template-left-edge) and measures the edge on every template.",
+		"contentSize": "37rem",
+		"wideSize": "80rem",
+		"rules": [
+			"Every page type has the same left edge, the wide edge, and the same text width, contentSize (60 to 75 characters a line). Only page-easy-language narrows the text to 34rem, on the same edge.",
+			"The page head (breadcrumbs, title, excerpt, byline, meta) starts on the same edge as the content, never centered above left-aligned text.",
+			"wide and full only on purpose: wide for media, card and product grids, tables and a sidebar beside the content (page-docs, archive-product); full for colour bands and edge-to-edge images. Inside a band, wide content keeps the wide edge.",
+			"Centered text only inside a band whose whole content is centered, such as hero-centered or cta-newsletter, never for the running text of a page.",
+			"Set width through layout settings (constrained, justifyContent left, align wide or full), never through a custom max-width or margin on a block. A band that narrows its text with contentSize keeps justifyContent left."
+		]
+	},
+	"roles": {
+		"color": [
+			{
+				"slug": "surface",
+				"purpose": "Page background and default section background."
+			},
+			{
+				"slug": "surface-alt",
+				"purpose": "Tinted background for alternating sections, cards and bands."
+			},
+			{
+				"slug": "ink",
+				"purpose": "Body text, headings and primary buttons; also the background of dark bands, with surface as text color."
+			},
+			{
+				"slug": "ink-muted",
+				"purpose": "Secondary text: lead paragraphs, captions, meta lines, dates."
+			},
+			{
+				"slug": "accent",
+				"purpose": "Links, eyebrows, hover states and at most one accent band per page. Primary buttons are ink; they take accent only on ink and inverse bands."
+			},
+			{
+				"slug": "on-accent",
+				"purpose": "Text and icons on accent backgrounds only."
+			},
+			{
+				"slug": "stroke",
+				"purpose": "Rules, borders and dividers; also eyebrow text on ink bands."
+			},
+			{
+				"slug": "focus",
+				"purpose": "Keyboard focus outline. Never use for decoration."
+			},
+			{
+				"slug": "success",
+				"purpose": "Text and icons for positive status messages (Success group style)."
+			},
+			{
+				"slug": "warning",
+				"purpose": "Text and icons for cautionary status messages (Warning group style)."
+			},
+			{
+				"slug": "danger",
+				"purpose": "Text and icons for errors and destructive actions."
+			}
+		],
+		"fontSize": [
+			{
+				"slug": "meta",
+				"purpose": "Captions, dates, meta lines and footnotes, usually in the ui font. Eyebrows and badges use their block styles instead."
+			},
+			{
+				"slug": "body",
+				"purpose": "Running text, the default size."
+			},
+			{
+				"slug": "lead",
+				"purpose": "Intro paragraphs below a heading, h4 and large list items."
+			},
+			{
+				"slug": "heading-s",
+				"purpose": "h3 and card titles."
+			},
+			{
+				"slug": "heading-m",
+				"purpose": "h2 and large quotes."
+			},
+			{
+				"slug": "heading-l",
+				"purpose": "h1 in templates and section headings in patterns."
+			},
+			{
+				"slug": "display",
+				"purpose": "Hero headlines and large key figures; once per screen."
+			}
+		],
+		"fontFamily": [
+			{
+				"slug": "body",
+				"purpose": "Running text, lead paragraphs and quotes."
+			},
+			{
+				"slug": "heading",
+				"purpose": "Headings, the site title and large figures."
+			},
+			{
+				"slug": "mono",
+				"purpose": "Code, terminal output and technical values."
+			},
+			{
+				"slug": "ui",
+				"purpose": "Buttons, navigation, eyebrows, badges, meta lines, form fields and shop controls; a sober sans. Token sets without it use body.",
+				"fallback": "body"
+			}
+		],
+		"spacing": [
+			{
+				"slug": "xxs",
+				"purpose": "Hairline gaps inside dense lists and meta rows."
+			},
+			{
+				"slug": "xs",
+				"purpose": "Gap between label and value, button padding top and bottom."
+			},
+			{
+				"slug": "s",
+				"purpose": "Gap inside cards and between tightly related blocks."
+			},
+			{
+				"slug": "m",
+				"purpose": "Default block gap and side padding of the page."
+			},
+			{
+				"slug": "l",
+				"purpose": "Gap between groups inside a section and card padding."
+			},
+			{
+				"slug": "xl",
+				"purpose": "Default top and bottom padding of a section."
+			},
+			{
+				"slug": "xxl",
+				"purpose": "Airy sections and wide column gaps; hero padding."
+			},
+			{
+				"slug": "xxxl",
+				"purpose": "Rare dramatic pauses, at most once per page."
+			}
+		],
+		"radius": [
+			{
+				"slug": "none",
+				"purpose": "Default for sections, cards, content boxes and badges."
+			},
+			{
+				"slug": "s",
+				"purpose": "Buttons, form fields and small controls."
+			},
+			{
+				"slug": "m",
+				"purpose": "Image corners inside cards, rarely."
+			},
+			{
+				"slug": "l",
+				"purpose": "Large media frames; use sparingly."
+			},
+			{
+				"slug": "pill",
+				"purpose": "Round portraits, avatars and switches only; never buttons or badges."
+			}
+		],
+		"shadow": [
+			{
+				"slug": "subtle",
+				"purpose": "Lift a card off a tinted background without drawing attention."
+			},
+			{
+				"slug": "raised",
+				"purpose": "Overlays and elements that float above content, such as menus."
+			}
+		]
+	},
+	"pairs": [
+		{
+			"fg": "ink",
+			"bg": "surface",
+			"min": 4.5
+		},
+		{
+			"fg": "ink",
+			"bg": "surface-alt",
+			"min": 4.5
+		},
+		{
+			"fg": "ink-muted",
+			"bg": "surface",
+			"min": 4.5
+		},
+		{
+			"fg": "ink-muted",
+			"bg": "surface-alt",
+			"min": 4.5
+		},
+		{
+			"fg": "accent",
+			"bg": "surface",
+			"min": 4.5
+		},
+		{
+			"fg": "accent",
+			"bg": "surface-alt",
+			"min": 4.5
+		},
+		{
+			"fg": "on-accent",
+			"bg": "accent",
+			"min": 4.5
+		},
+		{
+			"fg": "focus",
+			"bg": "surface",
+			"min": 3
+		},
+		{
+			"fg": "focus",
+			"bg": "surface-alt",
+			"min": 3
+		},
+		{
+			"fg": "focus",
+			"bg": "accent",
+			"min": 3,
+			"ring": "surface"
+		},
+		{
+			"fg": "focus",
+			"bg": "ink",
+			"min": 3,
+			"ring": "surface"
+		},
+		{
+			"fg": "stroke",
+			"bg": "ink",
+			"min": 4.5
+		},
+		{
+			"fg": "stroke",
+			"bg": "surface",
+			"min": 1.3
+		},
+		{
+			"fg": "success",
+			"bg": "surface",
+			"min": 4.5
+		},
+		{
+			"fg": "warning",
+			"bg": "surface",
+			"min": 4.5
+		},
+		{
+			"fg": "danger",
+			"bg": "surface",
+			"min": 4.5
+		}
+	],
+	"inversePairs": [
+		{
+			"fg": "inverse-text",
+			"bg": "inverse-background",
+			"min": 4.5
+		},
+		{
+			"fg": "focus",
+			"bg": "inverse-background",
+			"min": 3,
+			"ring": "surface"
+		}
+	],
+	"templateParts": [
+		{
+			"name": "header",
+			"area": "header",
+			"purpose": "Site header with logo, title and main navigation; default pattern header-default."
+		},
+		{
+			"name": "footer",
+			"area": "footer",
+			"purpose": "Site footer with links, legal navigation and copyright; default pattern footer-columns."
+		},
+		{
+			"name": "sidebar",
+			"area": "uncategorized",
+			"purpose": "Optional sidebar with about text, categories and latest posts."
+		},
+		{
+			"name": "header-shop",
+			"area": "header",
+			"purpose": "Header of the shop templates: the default header plus product search, customer account and mini cart; default pattern header-shop.",
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"name": "checkout-header",
+			"area": "header",
+			"purpose": "Distraction-free header of the checkout: logo and title, the words Secure checkout and a link back to the cart, no navigation. Replaces the WooCommerce part of the same name.",
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"name": "checkout-footer",
+			"area": "footer",
+			"purpose": "Quiet footer of the checkout: a note on secure payment and the legal links, no navigation that leads away from the order.",
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"name": "navigation-overlay",
+			"area": "navigation-overlay",
+			"purpose": "Mobile menu of every header pattern: close button and the navigation as a vertical list on the page background. Opens from the menu button on small screens, and on header-minimal at every width."
+		}
+	],
+	"templates": [
+		{
+			"slug": "index",
+			"purpose": "Fallback for every view without a more specific template."
+		},
+		{
+			"slug": "home",
+			"purpose": "Posts index with blog heading, featured sticky post and paginated list."
+		},
+		{
+			"slug": "single",
+			"purpose": "Single post as an article with breadcrumbs above the one h1, byline, publish and update dates and a 16:9 featured image; Google News ready."
+		},
+		{
+			"slug": "page",
+			"purpose": "Standard page with breadcrumbs, title, featured image and content in reading width."
+		},
+		{
+			"slug": "page-landing",
+			"purpose": "Custom template without title: full-width content composed from patterns, the hero provides the h1."
+		},
+		{
+			"slug": "page-docs",
+			"purpose": "Custom template for documentation with a collapsible page tree and search beside the content, breadcrumbs above the title."
+		},
+		{
+			"slug": "page-easy-language",
+			"purpose": "Custom template for a page in easy language: narrower reading width, lead font size, line height 1.6, left aligned, no hyphenation, more space between paragraphs."
+		},
+		{
+			"slug": "archive",
+			"purpose": "Category, tag and date archives with breadcrumbs, title, description and post list."
+		},
+		{
+			"slug": "author",
+			"purpose": "Author profile with bio and their posts."
+		},
+		{
+			"slug": "search",
+			"purpose": "Search results with the search form and a no-results message."
+		},
+		{
+			"slug": "404",
+			"purpose": "Not found page with explanation, search and link home."
+		},
+		{
+			"slug": "archive-product",
+			"purpose": "WooCommerce shop page, also used for product categories, tags, attributes and brands: breadcrumbs, title, term description, filters beside the product grid with result count, sorting and pagination.",
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "product-search-results",
+			"purpose": "WooCommerce product search results with the product search form, result count, sorting and the product grid.",
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "single-product",
+			"purpose": "WooCommerce product with breadcrumbs, gallery, the product name as the one h1, rating, price, short description, add to cart and meta, then the WooCommerce product tabs (description, additional information, reviews) and related products.",
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "page-cart",
+			"purpose": "Page set as the WooCommerce cart: title, store notices and the page content, which holds the cart block.",
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "page-checkout",
+			"purpose": "Page set as the WooCommerce checkout, with the distraction-free checkout header: title, store notices and the page content, which holds the checkout block.",
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "order-confirmation",
+			"purpose": "WooCommerce order confirmation: breadcrumbs, the order status as the one h1, summary, totals, downloads, addresses and additional information.",
+			"requires": [
+				"woocommerce"
+			]
+		}
+	],
+	"blocks": {
+		"styles": "Theme block styles are listed in blockStyles with purpose and allowed context. Pick a block style before adding a class, a color or custom CSS; set it as is-style-<name> in className.",
+		"search": "Every Search block is a search landmark named after its label. Give each search on a page its own label (theme patterns: Site search, Search products, Search documentation, Search this site); two searches with the same name cannot be told apart by screen reader users.",
+		"bindings": "The copyright line of the footer patterns binds its content to the source leitvia/site-meta (key copyright) and always shows the current year. Keep the binding; a typed year goes stale.",
+		"catalog": "Leitvia Studio, when active, publishes every block of Studio and its add-ons with attribute schema and usage rules at GET /wp-json/leitvia-studio/v1/blocks (users who can edit posts). Without Studio only core blocks and the theme block styles are available."
+	},
+	"blockStyles": [
+		{
+			"block": "core/button",
+			"name": "outline",
+			"purpose": "Secondary action next to a primary button; transparent with a border in the current text color.",
+			"context": "Inside a Buttons block, after one button in the default style; never as the only or the main call to action."
+		},
+		{
+			"block": "core/code",
+			"name": "terminal",
+			"purpose": "Command line snippets on a dark panel; scrolls sideways as a focusable region.",
+			"context": "Shell commands and console output in documentation or articles; not for source code in other languages."
+		},
+		{
+			"block": "core/columns",
+			"name": "media-right",
+			"purpose": "Swaps media and text on wide screens to alternate sides down a page.",
+			"context": "Columns of one image and one text column, alternating down a page with plain columns."
+		},
+		{
+			"block": "core/cover",
+			"name": "inverse",
+			"purpose": "Cover whose overlay stays dark in every palette: ink in light palettes, surface-alt in dark ones; leave the overlay color unset.",
+			"context": "Hero or call to action covers that must stay dark in every palette; with or without an image."
+		},
+		{
+			"block": "core/group",
+			"name": "inverse",
+			"purpose": "Band that stays dark in every palette: ink with surface text in light palettes, surface-alt with ink text in dark ones. Use instead of an ink background; pairs in inversePairs.",
+			"context": "Full-width section bands for calls to action or proof; at most one or two per page, never nested."
+		},
+		{
+			"block": "core/group",
+			"name": "note",
+			"purpose": "Neutral hint box on a tinted background, without a left accent line.",
+			"context": "Inside the content, for a short neutral hint of one to three sentences."
+		},
+		{
+			"block": "core/group",
+			"name": "success",
+			"purpose": "Positive status message using the success role.",
+			"context": "Inside the content, for a confirmation or a positive status; start with a word that names the status."
+		},
+		{
+			"block": "core/group",
+			"name": "warning",
+			"purpose": "Cautionary message using the warning role.",
+			"context": "Inside the content, for a caution before an action; start with a word that names the risk."
+		},
+		{
+			"block": "core/list",
+			"name": "checklist",
+			"purpose": "Feature or benefit list with decorative check marks.",
+			"context": "Feature and benefit lists in sections and plans, three to eight items."
+		},
+		{
+			"block": "core/list",
+			"name": "checklist-row",
+			"purpose": "Short facts in one wrapping row with check marks, for trust strips.",
+			"context": "Below a hero or call to action, for two to four short facts."
+		},
+		{
+			"block": "core/list",
+			"name": "divided",
+			"purpose": "List with fine rules between items, for contact details and link lists.",
+			"context": "Contact details, opening hours and link lists in sidebars and footers."
+		},
+		{
+			"block": "core/paragraph",
+			"name": "badge",
+			"purpose": "Small square label in caps on a tint, such as a plan highlight or a status.",
+			"context": "Once per group of cards at most, one to three words; never together with an eyebrow in the same card."
+		},
+		{
+			"block": "core/paragraph",
+			"name": "eyebrow",
+			"purpose": "Short uppercase label above a heading.",
+			"context": "Directly above a section heading, two to four words."
+		},
+		{
+			"block": "core/post-terms",
+			"name": "badge",
+			"purpose": "Category or tag links shown as pill labels.",
+			"context": "In post teasers and single post headers."
+		},
+		{
+			"block": "core/table",
+			"name": "comparison",
+			"purpose": "Comparison or price tables with a strong header row; scrolls sideways as a named region.",
+			"context": "Tables that compare plans or options; keep the caption and a header row."
+		}
+	],
+	"compositionRules": {
+		"$comment": "Sections are patterns in page order; patterns with role frame are ignored. Pattern width: full for full-bleed layouts, covers and full-aligned columns; reading when nothing is wide-aligned and the content size is at most 48rem; wide otherwise.",
+		"noAdjacentRepeat": [
+			"layout",
+			"tone"
+		],
+		"breakWithin": 3,
+		"breakWhen": {
+			"tone": [
+				"image",
+				"accent",
+				"ink"
+			],
+			"layout": [
+				"full-bleed"
+			],
+			"patterns": [
+				"leitvia/content-quote"
+			]
+		},
+		"accentMinGap": 2,
+		"maxDensityRun": 2,
+		"heroFirstOnly": true,
+		"maxSections": 12,
+		"scoring": {
+			"$comment": "A page starts at 100 and loses these points per finding, down to 0. heroTemplate: a hero on a template that shows the title; maxSections: more sections than maxSections; unknownPattern: a section that is no listed pattern.",
+			"heroFirstOnly": 20,
+			"heroTemplate": 20,
+			"noAdjacentRepeat": 10,
+			"breakWithin": 10,
+			"accentMinGap": 10,
+			"maxDensityRun": 5,
+			"maxSections": 10,
+			"unknownPattern": 25
+		},
+		"narrative": [
+			"hook",
+			"context",
+			"proof",
+			"detail",
+			"offer",
+			"close"
+		],
+		"sectionSpacing": "Vary section padding on purpose using spacing presets l, xl and xxl; never random values. Patterns already follow sectionPadding, so a page built from them has a rhythm without changes.",
+		"sectionPadding": {
+			"$comment": "Top and bottom padding of the outermost block of every pattern except frames, by composition density. overrides names patterns that deliberately differ.",
+			"airy": "xxl",
+			"regular": "xl",
+			"dense": "l",
+			"overrides": {
+				"leitvia/proof-trust-strip": "m"
+			}
+		}
+	},
+	"pageFrames": [
+		{
+			"type": "home",
+			"purpose": "Introduce the site and route visitors to its main paths.",
+			"template": "page-landing",
+			"slots": [
+				{
+					"name": "intro",
+					"roles": [
+						"hook"
+					]
+				},
+				{
+					"name": "content",
+					"roles": [
+						"context",
+						"proof",
+						"detail"
+					]
+				},
+				{
+					"name": "actions",
+					"roles": [
+						"offer",
+						"close"
+					]
+				}
+			]
+		},
+		{
+			"type": "service",
+			"purpose": "Explain one service, prove it works and ask for contact.",
+			"template": "page-landing",
+			"slots": [
+				{
+					"name": "intro",
+					"roles": [
+						"hook"
+					]
+				},
+				{
+					"name": "content",
+					"roles": [
+						"context",
+						"detail"
+					]
+				},
+				{
+					"name": "context",
+					"roles": [
+						"proof"
+					]
+				},
+				{
+					"name": "actions",
+					"roles": [
+						"offer",
+						"close"
+					]
+				}
+			]
+		},
+		{
+			"type": "article",
+			"purpose": "A post or long read; the single template provides title and byline.",
+			"template": "single",
+			"slots": [
+				{
+					"name": "intro",
+					"roles": [],
+					"note": "Provided by the template: post title, byline and featured image."
+				},
+				{
+					"name": "toc",
+					"roles": [],
+					"note": "Optional core list of anchor links to the h2 sections for long reads."
+				},
+				{
+					"name": "content",
+					"roles": [
+						"detail",
+						"proof"
+					],
+					"note": "Mostly core blocks in reading width; patterns only for quotes, figures or steps."
+				},
+				{
+					"name": "actions",
+					"roles": [
+						"close"
+					]
+				}
+			]
+		},
+		{
+			"type": "about",
+			"purpose": "Tell who is behind the site and why to trust them.",
+			"template": "page-landing",
+			"slots": [
+				{
+					"name": "intro",
+					"roles": [
+						"hook"
+					]
+				},
+				{
+					"name": "content",
+					"roles": [
+						"context"
+					]
+				},
+				{
+					"name": "context",
+					"roles": [
+						"proof"
+					]
+				},
+				{
+					"name": "actions",
+					"roles": [
+						"close"
+					]
+				}
+			]
+		},
+		{
+			"type": "contact",
+			"purpose": "Make getting in touch easy and answer doubts before.",
+			"template": "page",
+			"slots": [
+				{
+					"name": "intro",
+					"roles": [],
+					"note": "Provided by the page template title; keep a short lead paragraph."
+				},
+				{
+					"name": "actions",
+					"roles": [
+						"close"
+					]
+				},
+				{
+					"name": "context",
+					"roles": [
+						"detail",
+						"proof"
+					]
+				}
+			]
+		}
+	],
+	"examples": [
+		{
+			"name": "home",
+			"frame": "home",
+			"sections": [
+				"leitvia/hero-split-image",
+				"leitvia/proof-logos",
+				"leitvia/teaser-services",
+				"leitvia/proof-testimonial",
+				"leitvia/content-text-media",
+				"leitvia/content-stats",
+				"leitvia/teaser-posts-list",
+				"leitvia/cta-banner"
+			]
+		},
+		{
+			"name": "service",
+			"frame": "service",
+			"sections": [
+				"leitvia/hero-centered",
+				"leitvia/proof-trust-strip",
+				"leitvia/content-text-media",
+				"leitvia/content-steps",
+				"leitvia/content-quote",
+				"leitvia/offer-pricing-3",
+				"leitvia/content-faq",
+				"leitvia/cta-contact"
+			]
+		}
+	],
+	"patterns": [
+		{
+			"slug": "leitvia/content-asymmetric",
+			"title": "Asymmetric feature",
+			"description": "Two thirds of text with a large heading next to a portrait image that sits lower than the text, with a caption. Use to tell one idea at length with a picture that keeps the page from feeling boxed in.",
+			"area": "content",
+			"useWhen": "Explaining one idea at length with a picture, where an even split would feel too static.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "asymmetric",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "3/4",
+					"displayWidth": "30rem",
+					"recommendedSize": "960x1280",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The text is shorter than about 400 characters; the image then towers over it. Use content-text-media instead.",
+				"a11y": "The image sits lower only through a top margin; reading and focus order stay text first. Alt text describes the picture, the caption adds context and does not repeat it.",
+				"contentLength": {
+					"heading": [
+						40,
+						80
+					],
+					"text": [
+						300,
+						700
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-break-image",
+			"title": "Full-width image break",
+			"description": "Edge-to-edge image under a dark overlay with one short statement and a supporting line. Use as a pause between text-heavy sections; it counts as a break in the composition rules.",
+			"area": "content",
+			"useWhen": "A pause after three or more text sections, or before a change of topic on long pages.",
+			"composition": {
+				"tone": "image",
+				"density": "airy",
+				"layout": "full-bleed",
+				"weight": "heavy",
+				"role": "context",
+				"width": "full"
+			},
+			"images": [
+				{
+					"aspectRatio": "3/2",
+					"displayWidth": "100vw",
+					"recommendedSize": "2400x1600",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The page opens with a cover hero or already has another image break within two sections.",
+				"a11y": "The image is decorative (empty alt); the statement carries the meaning. The Inverse overlay keeps text contrast in every palette; leave the overlay color unset.",
+				"contentLength": {
+					"heading": [
+						30,
+						80
+					],
+					"text": [
+						40,
+						120
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-changelog",
+			"title": "Changelog",
+			"description": "Heading and intro above three releases as expandable sections, each titled with version and date and listing its changes, the latest one open. Use on product, download or documentation pages.",
+			"area": "content",
+			"useWhen": "Product, download or documentation pages that show what changed in recent releases.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "list",
+				"weight": "medium",
+				"role": "detail",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "More than a handful of releases; link to a full changelog page instead of stacking dozens of sections.",
+				"a11y": "Each release is a native details element, keyboard and screen reader operable; the summary text must name version and date.",
+				"contentLength": {
+					"heading": [
+						20,
+						50
+					],
+					"text": [
+						80,
+						160
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-compare-two",
+			"title": "Compare two options",
+			"description": "Two cards side by side, each with a label, heading, check list and footnote, the right one on an ink background and marked as recommended. Use to explain two modes or editions of a product.",
+			"area": "content",
+			"useWhen": "Explaining two modes, editions or approaches side by side, with one recommended.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "medium",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "More than two options (use offer-pricing-3) or options that are not comparable item by item.",
+				"a11y": "The recommendation is a text badge, not color alone; keep check list items short so they read well as a list.",
+				"contentLength": {
+					"heading": [
+						30,
+						60
+					],
+					"text": [
+						80,
+						120
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-faq",
+			"title": "Frequently asked questions",
+			"description": "Heading and short intro next to five expandable questions with answers, the first one open. Use to answer common questions before people get in touch.",
+			"area": "content",
+			"useWhen": "Answering recurring questions on service, product or contact pages before people get in touch.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "asymmetric",
+				"weight": "medium",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "There are fewer than three real questions, or answers need tables, images or long instructions.",
+				"a11y": "Questions are native details summaries; write each as a full question so it makes sense out of context.",
+				"contentLength": {
+					"heading": [
+						20,
+						50
+					],
+					"text": [
+						90,
+						200
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-feature-catalog",
+			"title": "Feature catalog",
+			"description": "A legend of plan badges above two feature groups, each with a large count, a short intro and a grid of items marked with the plan that includes them. Use on product pages to show the full scope of an offer.",
+			"area": "content",
+			"useWhen": "Product pages that must show the full scope of an offer, grouped and marked by plan.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "asymmetric",
+				"weight": "heavy",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The offer has no plans or fewer than eight features; use content-feature-grid.",
+				"a11y": "Plan badges are text, so the plan stays readable without color; keep the legend above the groups.",
+				"contentLength": {
+					"heading": [
+						40,
+						80
+					],
+					"text": [
+						50,
+						110
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-feature-grid",
+			"title": "Feature grid",
+			"description": "Heading and lead text above six tiles, each with a short title and description. Use to list services, features or principles at a glance.",
+			"area": "content",
+			"useWhen": "Listing six services, features or principles at a glance after an introduction.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Items need images or links of their own (use teaser-cards-3), or there are fewer than four items.",
+				"a11y": "Tile titles are h3 under the section h2; keep the order of tiles meaningful because screen readers read row by row.",
+				"contentLength": {
+					"heading": [
+						40,
+						80
+					],
+					"text": [
+						80,
+						120
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-media-pair",
+			"title": "Offset image pair",
+			"description": "Heading and short introduction above two images of different size, the smaller one set lower, each with a caption. Use to show two sides of a project, a before and after or a detail next to the whole.",
+			"area": "content",
+			"useWhen": "Showing two sides of one thing: the whole and a detail, before and after, or two views of a project.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "airy",
+				"layout": "asymmetric",
+				"weight": "medium",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "3/2",
+					"displayWidth": "46rem",
+					"recommendedSize": "1600x1067",
+					"count": 1,
+					"source": "inline"
+				},
+				{
+					"aspectRatio": "4/5",
+					"displayWidth": "30rem",
+					"recommendedSize": "960x1200",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The two images do not belong together, or a gallery of more than two pictures is needed.",
+				"a11y": "Both images have alt text and a caption; the caption adds context, it does not repeat the alt text. The offset is a top margin, so the order stays the same for every reader.",
+				"contentLength": {
+					"heading": [
+						30,
+						70
+					],
+					"text": [
+						80,
+						200
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-overlap",
+			"title": "Text card over image",
+			"description": "A tinted text card with heading, paragraph and link whose lower edge overlaps a wide image below it. Use to give one message visual depth without placing text on the picture.",
+			"area": "content",
+			"useWhen": "A single message that deserves visual depth, such as an approach or a promise, on pages that are otherwise flat.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "overlap",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "16/9",
+					"displayWidth": "80rem",
+					"recommendedSize": "2560x1440",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The page already has an image break or a cover nearby; two large images in a row lose their weight.",
+				"a11y": "The card overlaps the image only with its bottom padding, never with text, also at 320 px and with larger text spacing. The card comes first in the DOM, so text is read before the image.",
+				"contentLength": {
+					"heading": [
+						25,
+						60
+					],
+					"text": [
+						150,
+						300
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-price-list",
+			"title": "Price list",
+			"description": "Heading and short explanation above a comparison table of quantities, total prices and unit prices, with a caption and a dated source note. Use when prices depend on volume, for example per site or per seat.",
+			"area": "content",
+			"useWhen": "Prices that depend on volume, such as per site, per seat or per unit.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "list",
+				"weight": "medium",
+				"role": "offer",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Plans differ by features rather than by quantity; use offer-pricing-3.",
+				"a11y": "The table has a caption and header row; it scrolls sideways as a focusable named region on small screens, so keep the caption.",
+				"contentLength": {
+					"heading": [
+						30,
+						60
+					],
+					"text": [
+						100,
+						160
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-quote",
+			"title": "Large quote",
+			"description": "A single large quotation with its source on a tinted background. Use to let a client, reader or author speak in their own words.",
+			"area": "content",
+			"useWhen": "A single strong voice that breaks up a run of informative sections.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "airy",
+				"layout": "centered",
+				"weight": "medium",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The quote is generic praise without a real, named source.",
+				"a11y": "Uses a native blockquote with cite; name the person and their role in the cite.",
+				"contentLength": {
+					"heading": null,
+					"text": [
+						100,
+						220
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-statement",
+			"title": "Statement",
+			"description": "One sentence in display size across the full content width on the accent color, with a short explanation and a link below it. Use once per page to state a principle or a promise; it counts as a break in the composition rules.",
+			"area": "content",
+			"useWhen": "One principle or promise the page stands for, set large as a break between sections.",
+			"composition": {
+				"tone": "accent",
+				"density": "airy",
+				"layout": "asymmetric",
+				"weight": "heavy",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Another accent section is less than three sections away, or the sentence is longer than about 90 characters.",
+				"a11y": "The statement is a real h2, sized with the display preset, not a paragraph styled as a heading. Text on accent uses on-accent only; the link stays underlined.",
+				"contentLength": {
+					"heading": [
+						40,
+						90
+					],
+					"text": [
+						80,
+						160
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-stats",
+			"title": "Key figures",
+			"description": "Heading and a short intro above four large figures with labels, four across on wide screens and two by two on narrower ones, never three and one. Use to back up a claim with numbers, for example on an about or company page.",
+			"area": "content",
+			"useWhen": "Backing up a claim with four figures, for example on about, company or service pages.",
+			"composition": {
+				"tone": "surface",
+				"density": "airy",
+				"layout": "grid",
+				"weight": "heavy",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The figures cannot be sourced or need explanation longer than a short label.",
+				"a11y": "Each figure and its label are plain text in reading order; write units into the label, not as an icon.",
+				"contentLength": {
+					"heading": [
+						20,
+						50
+					],
+					"text": [
+						10,
+						70
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-steps",
+			"title": "Process steps",
+			"description": "Heading above four numbered steps, each with a title and a short description, four across on wide screens and two by two on narrower ones, never three and one. Use to explain a process, an onboarding path or how a service works.",
+			"area": "content",
+			"useWhen": "Explaining a process, onboarding path or how a service works in four steps.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The steps are not sequential, or there are more than six; use an ordered list in the content instead.",
+				"a11y": "Step numbers are visible text before each h3; keep them so the order survives without the visual grid.",
+				"contentLength": {
+					"heading": [
+						25,
+						50
+					],
+					"text": [
+						90,
+						130
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-text-media",
+			"title": "Text and media",
+			"description": "Square image next to a heading, two short paragraphs and a link. Use to explain one idea with a picture; switch the block style to Media right to swap the sides.",
+			"area": "content",
+			"useWhen": "Explaining one idea with a picture; switch to Media right to alternate sides on long pages.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "1/1",
+					"displayWidth": "40rem",
+					"recommendedSize": "1280x1280",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "It would sit directly next to another split section on surface; alternate with Media right or another tone first.",
+				"a11y": "Alt text describes what the image shows for this idea, or stays empty if it is decorative.",
+				"contentLength": {
+					"heading": [
+						30,
+						70
+					],
+					"text": [
+						150,
+						300
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-two-columns",
+			"title": "Two text columns",
+			"description": "Full-width heading above two columns of running text. Use for an introduction or statement that is too long for a single narrow column.",
+			"area": "content",
+			"useWhen": "An introduction or statement too long for one narrow column, typically on about pages.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "light",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The text is short enough for one reading column, or it is a step by step sequence.",
+				"a11y": "Columns stack in source order on small screens, so the first column must read first.",
+				"contentLength": {
+					"heading": [
+						40,
+						90
+					],
+					"text": [
+						300,
+						450
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/cta-banner",
+			"title": "Call to action banner",
+			"description": "Full-width accent band with a large heading, a short note and one outline button. Use once near the end of a page to ask for the main action.",
+			"area": "cta",
+			"useWhen": "Once near the end of a page to ask for the main action.",
+			"composition": {
+				"tone": "accent",
+				"density": "airy",
+				"layout": "asymmetric",
+				"weight": "heavy",
+				"role": "close",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "An accent section sits within two sections, or the page already ends with another call to action.",
+				"a11y": "Text and outline button use on-accent on accent; the button label must say where it leads.",
+				"contentLength": {
+					"heading": [
+						30,
+						60
+					],
+					"text": [
+						80,
+						140
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/cta-contact",
+			"title": "Contact details",
+			"description": "Tinted band with a heading and short invitation next to a large, divided list with email, phone and studio address. Use on contact or about pages, or as the closing section of a service page.",
+			"area": "cta",
+			"useWhen": "Closing a service, about or contact page with direct contact details.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "asymmetric",
+				"weight": "medium",
+				"role": "close",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The site wants a form only; use a form plugin block in a plain section instead.",
+				"a11y": "Email and phone are real mailto and tel links; keep the visible text equal to the address or number.",
+				"contentLength": {
+					"heading": [
+						25,
+						60
+					],
+					"text": [
+						80,
+						140
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/cta-newsletter",
+			"title": "Newsletter invitation",
+			"description": "Framed letter card on a tinted band with an italic heading, a short promise and a subscribe button; connect a newsletter or form plugin in place of the note. Use at the end of articles or on a blog index.",
+			"area": "cta",
+			"useWhen": "End of articles or on a blog index to invite subscriptions.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "airy",
+				"layout": "centered",
+				"weight": "light",
+				"role": "close",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "No newsletter or form plugin is connected; the button would lead nowhere.",
+				"a11y": "Replace the note with a form that has visible labels; the button text must name the action.",
+				"contentLength": {
+					"heading": [
+						25,
+						60
+					],
+					"text": [
+						80,
+						160
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/cta-split",
+			"title": "Call to action with image",
+			"description": "Dark section with an image that bleeds to the left edge of the screen and a call to action set low beside it. Use to point to a case study, product or campaign with a strong picture.",
+			"area": "cta",
+			"useWhen": "Pointing to a case study, product or campaign with a strong picture near the end of a page.",
+			"composition": {
+				"tone": "ink",
+				"density": "regular",
+				"layout": "full-bleed",
+				"weight": "heavy",
+				"role": "close",
+				"width": "full"
+			},
+			"images": [
+				{
+					"aspectRatio": "4/3",
+					"displayWidth": "58vw",
+					"recommendedSize": "1600x1200",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The previous or next section is also on ink, or no meaningful image exists.",
+				"a11y": "Text uses surface on ink; the image needs alt text if it shows the case study, empty alt if decorative.",
+				"contentLength": {
+					"heading": [
+						25,
+						50
+					],
+					"text": [
+						90,
+						140
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/footer-columns",
+			"title": "Footer with columns",
+			"description": "Quiet footer below a fine rule with the site title and tagline next to three columns of links under small caps heads, closed by a copyright line and legal links. Use as the standard footer on most sites.",
+			"area": "footer",
+			"useWhen": "The standard footer for most sites.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The site has only a few pages; use footer-minimal.",
+				"a11y": "Link columns have headings so they can be found by heading navigation.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/footer-mega",
+			"title": "Footer mega",
+			"description": "Large dark footer with a brand block of short pitch, trust facts and contact details, four link columns (four across or two by two, never three and one), legal navigation, social links, an empty Language switcher group for a WPML or Polylang switcher block and a back to top link. Use on product and company sites with many pages.",
+			"area": "footer",
+			"useWhen": "Product and company sites with many pages, legal links and social profiles.",
+			"composition": {
+				"tone": "ink",
+				"density": "dense",
+				"layout": "grid",
+				"weight": "heavy",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Small sites; the footer would be larger than the content.",
+				"a11y": "Social links show visible labels; the back to top link targets the main landmark.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/footer-minimal",
+			"title": "Footer minimal",
+			"description": "A single quiet line below a fine rule with the site title and copyright on the left and a short navigation on the right. Use on blogs, portfolios and small sites.",
+			"area": "footer",
+			"useWhen": "Blogs, portfolios and small sites.",
+			"composition": {
+				"tone": "surface",
+				"density": "airy",
+				"layout": "split",
+				"weight": "light",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Sites that need legal links, contact details or many pages in the footer.",
+				"a11y": "The short navigation is labelled so it differs from the main navigation.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/footer-newsletter",
+			"title": "Footer with newsletter",
+			"description": "Accent footer that opens with a newsletter row of heading, short promise and subscribe button, then closes with the site title, copyright and a short navigation. Use on blogs and publications that live from subscribers.",
+			"area": "footer",
+			"useWhen": "Blogs and publications that live from subscribers.",
+			"composition": {
+				"tone": "accent",
+				"density": "regular",
+				"layout": "split",
+				"weight": "medium",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Pages that already end with an accent call to action, or no newsletter exists.",
+				"a11y": "Text uses on-accent on accent; the subscribe button must lead to a working form.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/header-centered",
+			"title": "Header centered",
+			"description": "Large centered site title like a magazine masthead, a fine dividing line and the main navigation centered below. Use for publications, journals and personal sites.",
+			"area": "header",
+			"useWhen": "Publications, journals and personal sites with a masthead feel.",
+			"composition": {
+				"tone": "surface",
+				"density": "airy",
+				"layout": "centered",
+				"weight": "medium",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Sites with many top level menu items; a centered row wraps badly.",
+				"a11y": "Navigation is a labelled core navigation with a menu button on small screens.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/header-default",
+			"title": "Header default",
+			"description": "Site logo and title on the left, main navigation on the right and a fine line below; collapses into a menu button on small screens. Use as the standard header on most sites.",
+			"area": "header",
+			"useWhen": "The standard header for most sites.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "light",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Landing pages where the content should own the first screen; use header-minimal.",
+				"a11y": "Navigation collapses into a labelled menu button; submenus open on click.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/header-minimal",
+			"title": "Header minimal",
+			"description": "Site title on the left and a menu button on the right that always opens the navigation as a full-screen overlay. Use on landing pages where the content should own the first screen.",
+			"area": "header",
+			"useWhen": "Landing pages where the content should own the first screen.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "light",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Sites where visitors need to scan the main navigation right away.",
+				"a11y": "The menu always opens as an overlay; core shows its submenus always expanded and Escape may need a second press after a submenu toggle.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/header-search",
+			"title": "Header with search",
+			"description": "Site logo and title on the left, main navigation and a search field with a labelled button on the right and a fine line below; on small screens the search moves to its own row. Use on sites with many pages, so visitors can search as well as browse.",
+			"area": "header",
+			"useWhen": "Sites with many pages or posts, where visitors look for content as often as they browse; gives a second way to every page (WCAG 2.4.5).",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "light",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Small sites with a handful of pages; use header-default.",
+				"a11y": "Labelled navigation with a menu button on small screens and a search landmark with a labelled field and a text button.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/header-shop",
+			"title": "Header for shops",
+			"description": "Site logo and title on the left, main navigation, a product search, the customer account link and the mini cart on the right and a fine line below; on small screens the search moves to its own row. Use as the header of WooCommerce shop pages.",
+			"area": "header",
+			"useWhen": "Header of WooCommerce shops, where visitors search products and reach their cart and account from every page; the shop templates use it through the part header-shop.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "light",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Sites without WooCommerce; the inserter hides it there. Use header-search instead.",
+				"a11y": "Labelled navigation with a menu button on small screens, a labelled product search, an account link with an accessible name and the WooCommerce mini cart, whose drawer opens and closes by keyboard.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "leitvia/hero-centered",
+			"title": "Hero centered",
+			"description": "Centered page intro with eyebrow, large heading, lead text and two buttons. Use at the top of landing pages.",
+			"area": "hero",
+			"useWhen": "Top of a landing or campaign page with one clear message and up to two actions.",
+			"composition": {
+				"tone": "surface",
+				"density": "airy",
+				"layout": "centered",
+				"weight": "heavy",
+				"role": "hook",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The message needs a picture to land, or the page already opens with a title from the template (use page-landing).",
+				"a11y": "Holds the only h1 of the page; keep the eyebrow short because it is read before the heading.",
+				"contentLength": {
+					"heading": [
+						25,
+						60
+					],
+					"text": [
+						60,
+						160
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hero-cover-image",
+			"title": "Hero cover image",
+			"description": "Full-width background image with a dark overlay, heading, lead text and a button. Use for strong visual openings on campaign or travel pages.",
+			"area": "hero",
+			"useWhen": "Campaign, event or travel pages where one strong photo sets the mood.",
+			"composition": {
+				"tone": "image",
+				"density": "airy",
+				"layout": "full-bleed",
+				"weight": "heavy",
+				"role": "hook",
+				"width": "full"
+			},
+			"images": [
+				{
+					"aspectRatio": "3/2",
+					"displayWidth": "100vw",
+					"recommendedSize": "2400x1600",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "No high quality photo exists, or the photo is busy where the text sits; text on images loses contrast fast.",
+				"a11y": "Holds the only h1; the ink overlay keeps text contrast, so never lower the overlay or the image becomes unreadable; give the cover image empty alt unless it carries information.",
+				"contentLength": {
+					"heading": [
+						25,
+						60
+					],
+					"text": [
+						60,
+						140
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hero-editorial",
+			"title": "Hero editorial",
+			"description": "Magazine-style article opening with category and date, a wide headline, a lead paragraph and a byline. Use at the top of long reads and features.",
+			"area": "hero",
+			"useWhen": "Top of a long read, feature or case study that should open like a magazine article.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "asymmetric",
+				"weight": "heavy",
+				"role": "hook",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Sales or landing pages that need buttons above the fold.",
+				"a11y": "Holds the only h1; category and date are plain text, so keep them in the order a reader would say them.",
+				"contentLength": {
+					"heading": [
+						40,
+						90
+					],
+					"text": [
+						120,
+						220
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hero-split-image",
+			"title": "Hero split with image",
+			"description": "Two-column page intro with heading, lead text and buttons next to a tall image. Use when a picture should carry the first impression.",
+			"area": "hero",
+			"useWhen": "Home or service pages where a portrait or product photo should carry the first impression next to the message.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "heavy",
+				"role": "hook",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "4/5",
+					"displayWidth": "36rem",
+					"recommendedSize": "1200x1500",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The next section is also split on surface, or no meaningful image exists.",
+				"a11y": "Holds the only h1; the image needs alt text when it shows what the page offers, empty alt when it is mood only.",
+				"contentLength": {
+					"heading": [
+						25,
+						60
+					],
+					"text": [
+						80,
+						160
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/page-accessibility-statement",
+			"title": "Accessibility statement",
+			"description": "Template for an accessibility statement with the details BITV 2.0 and the European Accessibility Act ask for: scope, compliance status, content that is not accessible, how the statement was prepared, feedback contact and enforcement procedure. Replace every text in square brackets before publishing.",
+			"area": "page",
+			"useWhen": "Starting content for the accessibility statement page that BITV 2.0 and the European Accessibility Act require; offered when a new page is created.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never publish with the square bracket placeholders left in; the statement must describe the real site.",
+				"a11y": "Starts at h2 below the page title; the feedback contact is required by law and must stay reachable.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-404",
+			"title": "Page not found",
+			"description": "Content of the 404 template with heading, explanation, search form and a link to the homepage.",
+			"area": "page",
+			"useWhen": "Inserted by the 404 template.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-author-no-results",
+			"title": "Author without posts",
+			"description": "Message on an author page when the author has not published any posts yet.",
+			"area": "page",
+			"useWhen": "Inserted by the author template when the author has no posts.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-blog-heading",
+			"title": "Blog heading",
+			"description": "Page heading with a short lead for the posts index.",
+			"area": "page",
+			"useWhen": "Inserted by the home template above the posts index.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-checkout-footer",
+			"title": "Checkout footer",
+			"description": "Footer of the checkout without navigation: a quiet note on secure payment and the legal links, nothing that leads away from the order.",
+			"area": "page",
+			"useWhen": "Inserted by the template part checkout-footer on the checkout.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-checkout-header",
+			"title": "Checkout header",
+			"description": "Header of the checkout without navigation: site logo and title, the words Secure checkout and a link back to the cart.",
+			"area": "page",
+			"useWhen": "Inserted by the template part checkout-header on the checkout.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "leitvia/hidden-page-docs-sidebar",
+			"title": "Documentation sidebar",
+			"description": "Collapsible documentation menu with a labelled search field and the page tree. Opens beside the content from tablet width on.",
+			"area": "page",
+			"useWhen": "Inserted by the page-docs template as its side navigation.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-no-results",
+			"title": "No results",
+			"description": "Message shown when a query or search returns no posts.",
+			"area": "page",
+			"useWhen": "Inserted by query loops in templates when nothing is found.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-order-details",
+			"title": "Order details",
+			"description": "Order confirmation details: order totals, downloads, billing and shipping address and additional information, each under its own heading.",
+			"area": "page",
+			"useWhen": "Inserted by the order confirmation template.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "leitvia/hidden-page-post-byline",
+			"title": "Post byline",
+			"description": "Byline for single posts with linked author, labelled publish and update dates and reading time.",
+			"area": "page",
+			"useWhen": "Inserted by the single template below the post title.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-product-details",
+			"title": "Product details",
+			"description": "Below the product summary: the WooCommerce product tabs (description, additional information, reviews and tabs added by plugins), then related products.",
+			"area": "page",
+			"useWhen": "Inserted by the single product template below the product summary.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "leitvia/hidden-page-shop-filters",
+			"title": "Shop filters",
+			"description": "WooCommerce product filters for the shop and its archives: active filters with a clear button, price, category and availability.",
+			"area": "page",
+			"useWhen": "Inserted by the shop template beside the product grid.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "leitvia/hidden-page-sidebar",
+			"title": "Sidebar",
+			"description": "Sidebar content with a short about text, the category list and the latest posts.",
+			"area": "page",
+			"useWhen": "Inserted by the sidebar template part.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/offer-pricing-3",
+			"title": "Pricing, three plans",
+			"description": "Three static plan cards with price, billing period, check list and button, the middle plan framed in the accent color and marked as most popular, with a VAT note above and a note on terms below. Use on pricing and product pages.",
+			"area": "offer",
+			"useWhen": "Pricing and product pages with exactly three plans that differ by features.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "dense",
+				"layout": "grid",
+				"weight": "heavy",
+				"role": "offer",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Prices depend on volume (use content-price-list) or there are not exactly three plans.",
+				"a11y": "Most popular is marked by a text badge and a frame, never by color alone; button labels name the plan.",
+				"contentLength": {
+					"heading": [
+						30,
+						60
+					],
+					"text": [
+						60,
+						100
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/proof-logos",
+			"title": "Client logos",
+			"description": "A small label next to a row of five client logos on a tinted band. Use as a quiet pause between larger sections, for example right after the hero.",
+			"area": "proof",
+			"useWhen": "A quiet pause right after the hero or between larger sections, when real client logos exist.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "airy",
+				"layout": "list",
+				"weight": "light",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "With invented clients; replace the demo logos with real ones first.",
+				"a11y": "Each logo is an Icon block that takes the text color and carries the company name as its label; the label is a heading so the band can be found.",
+				"contentLength": {
+					"heading": [
+						10,
+						30
+					],
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/proof-team",
+			"title": "Team",
+			"description": "Heading and intro above four people with portrait, name and role in a staggered row, four across on wide screens and two by two on narrower ones, never three and one. Use on about or company pages to introduce the people behind the work.",
+			"area": "proof",
+			"useWhen": "About and company pages introducing the people behind the work.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "1/1",
+					"displayWidth": "18rem",
+					"recommendedSize": "600x600",
+					"count": 4,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "There are no real portraits; placeholder faces hurt trust more than no team section.",
+				"a11y": "Names are h3 next to the portrait, so portraits keep empty alt; never put names only in images.",
+				"contentLength": {
+					"heading": [
+						30,
+						60
+					],
+					"text": [
+						100,
+						180
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/proof-testimonial",
+			"title": "Testimonial",
+			"description": "One large client quote with name, role and a round portrait on a dark band that stays dark in every palette. Use once per page to let a single strong voice break up lighter sections.",
+			"area": "proof",
+			"useWhen": "Once per page to let one strong client voice break up lighter sections.",
+			"composition": {
+				"tone": "ink",
+				"density": "airy",
+				"layout": "asymmetric",
+				"weight": "heavy",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "1/1",
+					"displayWidth": "4rem",
+					"recommendedSize": "200x200",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "An accent section sits within two sections, or several voices should appear (use proof-testimonials-grid).",
+				"a11y": "Quote and cite use on-accent on accent; the round portrait keeps empty alt because the name follows as text.",
+				"contentLength": {
+					"heading": null,
+					"text": [
+						100,
+						180
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/proof-testimonials-grid",
+			"title": "Testimonials grid",
+			"description": "Heading with one large and two shorter client quotes on a dark background. Use on landing or service pages to show several voices at once.",
+			"area": "proof",
+			"useWhen": "Landing or service pages that should show several client voices at once.",
+			"composition": {
+				"tone": "ink",
+				"density": "regular",
+				"layout": "asymmetric",
+				"weight": "heavy",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Only one real quote exists, or an ink section is adjacent.",
+				"a11y": "Each voice is a blockquote with cite; eyebrow text uses stroke on ink, which passes 4.5:1.",
+				"contentLength": {
+					"heading": [
+						25,
+						50
+					],
+					"text": [
+						80,
+						180
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/proof-trust-strip",
+			"title": "Trust strip",
+			"description": "A slim ink band with four to five short facts in a row, each with a decorative check mark. Use right below a hero or above pricing to answer common doubts at a glance.",
+			"area": "proof",
+			"useWhen": "Right below a hero or above pricing to answer common doubts with short facts.",
+			"composition": {
+				"tone": "ink",
+				"density": "dense",
+				"layout": "list",
+				"weight": "light",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Facts are longer than a few words, or another ink section is adjacent.",
+				"a11y": "Check marks are decorative CSS; the facts are a real list, so keep each item a complete short statement.",
+				"contentLength": {
+					"heading": null,
+					"text": [
+						15,
+						40
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/teaser-cards-3",
+			"title": "Three cards",
+			"description": "Heading above three cards, each with image, label, title, short text and a link. Use to point to case studies, projects or key pages.",
+			"area": "teaser",
+			"useWhen": "Pointing to three case studies, projects or key pages with an image each.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "4/3",
+					"displayWidth": "25rem",
+					"recommendedSize": "800x600",
+					"count": 3,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The targets are blog posts (use a teaser-posts pattern) or there are no images.",
+				"a11y": "Card titles are h3; the link text must name its target, not read more.",
+				"contentLength": {
+					"heading": [
+						30,
+						60
+					],
+					"text": [
+						80,
+						120
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/teaser-editorial-grid",
+			"title": "Editorial grid",
+			"description": "Magazine front with the latest post large on two thirds of the width, with image, category, title and excerpt, and the next four posts as a text column beside it. Use on a home or journal page when one story should lead.",
+			"area": "teaser",
+			"useWhen": "Home or journal pages where the latest story should lead and four more follow beside it.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "heavy",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "3/2",
+					"displayWidth": "52rem",
+					"recommendedSize": "1600x1067",
+					"count": 1,
+					"source": "featured-image"
+				}
+			],
+			"docs": {
+				"avoidWhen": "Sites with fewer than five posts; the side column then looks unfinished. Use teaser-posts-grid instead.",
+				"a11y": "All post titles are h3 links under the section h2. The second query skips the first post, so no story appears twice.",
+				"contentLength": {
+					"heading": [
+						10,
+						40
+					],
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/teaser-featured-post",
+			"title": "Featured post",
+			"description": "The sticky post as a wide band with image, category, title, excerpt and a link to the article. Use above a post list; it renders nothing while no post is sticky.",
+			"area": "teaser",
+			"useWhen": "Above a post list on a blog index or home page to highlight the sticky post.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "split",
+				"weight": "heavy",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "3/2",
+					"displayWidth": "46rem",
+					"recommendedSize": "1500x1000",
+					"count": 1,
+					"source": "featured-image"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The site never uses sticky posts; the section then renders nothing.",
+				"a11y": "The post title is the link, an h2 under the page h1; the featured image alt comes from the media library.",
+				"contentLength": {
+					"heading": [
+						40,
+						90
+					],
+					"text": [
+						120,
+						200
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/teaser-posts-badge",
+			"title": "Posts with category badges",
+			"description": "The three latest posts in a grid, each with its category as a badge on the featured image, a linked title, the date and the reading time. Use on product or landing pages to point to recent articles.",
+			"area": "teaser",
+			"useWhen": "Product or landing pages that point to three recent articles.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "4/3",
+					"displayWidth": "25rem",
+					"recommendedSize": "800x600",
+					"count": 3,
+					"source": "featured-image"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The blog has fewer than three posts or posts lack featured images.",
+				"a11y": "Category badges sit on the image but are text links with their own contrast; titles are h3 links.",
+				"contentLength": {
+					"heading": [
+						15,
+						40
+					],
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/teaser-posts-grid",
+			"title": "Posts grid",
+			"description": "Heading above the six latest posts in three columns, each with image, category, title, short excerpt and date. Use on a home or landing page to point readers to recent writing.",
+			"area": "teaser",
+			"useWhen": "Home or landing pages that point readers to recent writing with images.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "3/2",
+					"displayWidth": "25rem",
+					"recommendedSize": "900x600",
+					"count": 6,
+					"source": "featured-image"
+				}
+			],
+			"docs": {
+				"avoidWhen": "Posts have no featured images, or a grid on surface is adjacent.",
+				"a11y": "Titles are h3 links under the section h2; dates are time elements.",
+				"contentLength": {
+					"heading": [
+						10,
+						40
+					],
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/teaser-posts-list",
+			"title": "Posts list",
+			"description": "Heading above the five latest posts as a ruled list with the date on the left and title and excerpt on the right. Use where text matters more than images, such as a journal or news section.",
+			"area": "teaser",
+			"useWhen": "Journal or news sections where text matters more than images.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "list",
+				"weight": "light",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The posts depend on their images to be understood.",
+				"a11y": "Titles are h3 links; the date column comes first in source order, so it is read before the title.",
+				"contentLength": {
+					"heading": [
+						10,
+						40
+					],
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/teaser-services",
+			"title": "Services",
+			"description": "Heading and lead text above four numbered services, each with a short description and a link to its page, four across on wide screens and two by two on narrower ones, never three and one. Use on a home or company page to show what you offer.",
+			"area": "teaser",
+			"useWhen": "Home or company pages that show four services with links to their pages.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "There is no page per service to link to; use content-feature-grid instead.",
+				"a11y": "Service names are h3; link texts name the service, so they make sense in a links list.",
+				"contentLength": {
+					"heading": [
+						25,
+						60
+					],
+					"text": [
+						80,
+						140
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/shop-product-hero",
+			"title": "Shop hero with product",
+			"description": "Two-column shop intro: eyebrow, heading, lead text and two buttons on the left, the newest product of the shop on the right with its image, name, price and add to cart button. Use as the first section of a shop home page.",
+			"area": "hero",
+			"useWhen": "First section of a shop home page on page-landing, when the newest product should stand next to the shop promise.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "heavy",
+				"role": "hook",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Pages whose template already shows a title, or a shop without products yet; use hero-split-image for a fixed picture.",
+				"a11y": "Holds the only h1; the product name below is an h2 and the product image takes its alt text from the media library, so products need alt texts there.",
+				"contentLength": {
+					"heading": [
+						25,
+						60
+					],
+					"text": [
+						80,
+						160
+					]
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "leitvia/shop-usp-bar",
+			"title": "Shop benefits bar",
+			"description": "A slim ink band with three short shop promises side by side: shipping, returns and payment, each a small heading with one line of detail; payment methods are named as text, never as logos. Use right below a shop hero or above a product grid.",
+			"area": "proof",
+			"useWhen": "Right below a shop hero or above a product grid, to answer shipping, returns and payment at a glance.",
+			"composition": {
+				"tone": "ink",
+				"density": "dense",
+				"layout": "grid",
+				"weight": "light",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Another ink section is adjacent, or the promises are not true for every order; never add logos of payment providers.",
+				"a11y": "Each promise is an h3 with one line of text; payment methods are plain text, so screen readers read them without image alt texts.",
+				"contentLength": {
+					"heading": [
+						15,
+						40
+					],
+					"text": [
+						30,
+						80
+					]
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "leitvia/shop-category-tiles",
+			"title": "Shop category tiles",
+			"description": "Heading above one tile per product category of the shop, three across on wide screens, each with the linked category name and its description. The tiles follow the categories of the shop on their own. Use on a shop home page to lead visitors into the range.",
+			"area": "teaser",
+			"useWhen": "Shop home pages that lead into the range by category; the tiles list the product categories that hold products.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The shop has only one category, or a category page (its subcategories belong into the archive itself).",
+				"a11y": "Category names are linked h3; write a category description in the shop, else the tile shows the name only.",
+				"contentLength": {
+					"heading": [
+						15,
+						40
+					],
+					"text": [
+						40,
+						140
+					]
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "leitvia/shop-new-arrivals",
+			"title": "New arrivals",
+			"description": "Heading, a short line and a link to the full range above the four newest products in a grid, each with image, name, price and add to cart button; four across on wide screens. Use on a shop home page or above the footer of a category page.",
+			"area": "teaser",
+			"useWhen": "Shop home pages and the end of category pages, to show the four newest products.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "dense",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "offer",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The shop adds products rarely, or bestsellers on surface-alt sit right next to it.",
+				"a11y": "Product names are linked h3 under the h2; product images take their alt text from the media library; the add to cart button names the product for screen readers.",
+				"contentLength": {
+					"heading": [
+						15,
+						40
+					],
+					"text": [
+						40,
+						100
+					]
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "leitvia/shop-bestsellers",
+			"title": "Bestsellers",
+			"description": "Heading, a short line and a link to the shop above the four products that sell best, in a grid with image, name, price and add to cart button. Use on a shop home page to show what other customers choose.",
+			"area": "teaser",
+			"useWhen": "Shop home pages, to show the four products that sell best as social proof.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "offer",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "A new shop without sales yet (it then lists products in no useful order), or next to another grid on surface.",
+				"a11y": "Product names are linked h3 under the h2; product images take their alt text from the media library; the add to cart button names the product for screen readers.",
+				"contentLength": {
+					"heading": [
+						15,
+						40
+					],
+					"text": [
+						40,
+						100
+					]
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "leitvia/shop-trust-badges",
+			"title": "Shop trust badges",
+			"description": "Heading above four trust facts with a fine line on top, four across on wide screens: secure checkout, the payment methods as plain text, where orders ship from and how fast support answers. No logos of payment providers or seal issuers. Use on shop pages near the product grid or before the footer.",
+			"area": "proof",
+			"useWhen": "Shop pages near the product grid or before the footer, to answer doubts about checkout, payment, shipping and support.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "light",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The facts are not true for the shop, or the page already has a usp bar with the same promises; never add seals or logos of other brands.",
+				"a11y": "Each fact is an h3 with one line of text; no images, so nothing depends on alt text.",
+				"contentLength": {
+					"heading": [
+						15,
+						40
+					],
+					"text": [
+						40,
+						100
+					]
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce"
+			]
+		},
+		{
+			"slug": "leitvia/shop-legal-info",
+			"title": "Legal price information",
+			"description": "The price information German law asks for next to a product price: tax note (incl. VAT), shipping note with a link to the shipping costs, unit price and delivery time, from the blocks of Germanized. Available only while Germanized is active. Use below the price in a product template or a product grid.",
+			"area": "page",
+			"useWhen": "Below the price in the single product template (it is placed there already) or in a product grid, while Germanized is active.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Shops without Germanized; the pattern is then not registered and the product template shows nothing in its place. With German Market use its own blocks.",
+				"a11y": "Plain text lines in the muted role that keep the meta contrast; the shipping note links to the shipping costs page with a descriptive link text from Germanized.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce",
+				"woocommerce-germanized"
+			]
+		}
+	],
+	"studioPatterns": [
+		{
+			"slug": "leitvia-studio/content-bento-features",
+			"title": "Bento features",
+			"description": "Heading with a short introduction beside it and six feature tiles of different sizes in a bento grid. Use to show the strengths of a product or service at a glance.",
+			"area": "content",
+			"useWhen": "Product or service pages that list five to seven strengths of different weight at a glance.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Strengths of equal weight; use content-feature-grid instead. Needs Leitvia Studio for the bento block.",
+				"a11y": "Tiles follow the DOM order on every screen size, without dense packing, so reading and focus order match. Each tile has an h3 under the section h2.",
+				"contentLength": {
+					"heading": [
+						30,
+						70
+					],
+					"text": [
+						40,
+						160
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/content-story-highlight",
+			"title": "Story with highlight",
+			"description": "Heading with highlighted words beside three paragraphs that rise into view while scrolling, with one key sentence underlined. Use to make an argument where a few words must stand out.",
+			"area": "content",
+			"useWhen": "An argument or story where a few words must stand out, typically in the context step of a landing page.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "airy",
+				"layout": "asymmetric",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "More than two highlights would compete; keep it to one in the heading and one in the text. Needs Leitvia Studio for the reveal block and the highlight format.",
+				"a11y": "Highlights add weight, never meaning: the sentence reads the same without them. The reveal animation runs only without reduced motion; without support the text is simply visible.",
+				"contentLength": {
+					"heading": [
+						30,
+						70
+					],
+					"text": [
+						300,
+						600
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/offer-pricing-plans",
+			"title": "Pricing plans with comparison",
+			"description": "Heading and introduction above three plans with a switch between monthly and yearly prices, the middle plan recommended, and a collapsible table that compares all plans. Use on a pricing page or as the offer section of a landing page.",
+			"area": "offer",
+			"useWhen": "The offer step of a landing or pricing page with two to four plans and a monthly and yearly price.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "dense",
+				"layout": "grid",
+				"weight": "heavy",
+				"role": "offer",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "There is only one price, or prices are on request; use cta-contact instead. Needs Leitvia Studio for the pricing and comparison table blocks.",
+				"a11y": "The price switch is a native radio group that works without JavaScript; the recommended plan says so in words. The comparison table keeps its caption and becomes a focusable scroll region on small screens.",
+				"contentLength": {
+					"heading": [
+						20,
+						50
+					],
+					"text": [
+						60,
+						160
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/content-features-catalog",
+			"title": "Feature catalog with filter",
+			"description": "Introduction beside a list of six features, each with the plan that includes it, and a filter by plan that works without JavaScript. Use on a product or pricing page to answer what each plan contains.",
+			"area": "content",
+			"useWhen": "Product or pricing pages that answer which plan includes which feature, after the plans have been introduced.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "asymmetric",
+				"weight": "medium",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Fewer than four features or a single plan; the filter then has nothing to do. Needs Leitvia Studio for the feature group block.",
+				"a11y": "The filter is a group of native checkboxes with a legend; a status message announces how many features are shown. Every feature names its plan in words, not by color.",
+				"contentLength": {
+					"heading": [
+						15,
+						40
+					],
+					"text": [
+						30,
+						80
+					]
+				},
+				"replacedBy": null
+			}
+		}
+	],
+	"variations": [
+		{
+			"slug": "warm-editorial-dark",
+			"title": "Warm Editorial Dark",
+			"scheme": "dark",
+			"kind": "full"
+		},
+		{
+			"slug": "swiss-editorial-light",
+			"title": "Swiss Editorial Light",
+			"scheme": "light",
+			"kind": "full"
+		},
+		{
+			"slug": "swiss-editorial-dark",
+			"title": "Swiss Editorial Dark",
+			"scheme": "dark",
+			"kind": "full"
+		},
+		{
+			"slug": "corporate-light",
+			"title": "Corporate Light",
+			"scheme": "light",
+			"kind": "full"
+		},
+		{
+			"slug": "corporate-dark",
+			"title": "Corporate Dark",
+			"scheme": "dark",
+			"kind": "full"
+		},
+		{
+			"slug": "clay",
+			"title": "Clay Colors",
+			"scheme": "light",
+			"kind": "colors"
+		},
+		{
+			"slug": "sage",
+			"title": "Sage Colors",
+			"scheme": "light",
+			"kind": "colors"
+		},
+		{
+			"slug": "night",
+			"title": "Night Colors",
+			"scheme": "dark",
+			"kind": "colors"
+		},
+		{
+			"slug": "swiss",
+			"title": "Swiss Typography",
+			"scheme": null,
+			"kind": "typography"
+		},
+		{
+			"slug": "corporate",
+			"title": "Corporate Typography",
+			"scheme": null,
+			"kind": "typography"
+		}
+	]
+}

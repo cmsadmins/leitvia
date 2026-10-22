@@ -1,0 +1,10 @@
+/* Image viewer: focus ring; no zoom transition with reduced motion. */
+.wc-block-product-gallery-large-image__container:focus-visible {
+	outline: 2px solid var(--wp--preset--color--focus);
+	outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+	.wc-block-woocommerce-product-gallery-large-image__image {
+		transition: none;
+	}
+}

@@ -1,0 +1,16 @@
+/* Prices in the ui font with tabular figures. The struck regular price stays readable in ink-muted (4.5:1 in every
+   palette), also in the upsells from WooCommerce's classic loop (its half-transparent one has 3.4:1). */
+body .wc-block-components-product-price,
+html body .woocommerce ul.products li.product .price {
+	font-family: var(--wp--preset--font-family--ui);
+	font-variant-numeric: tabular-nums lining-nums;
+}
+body .wc-block-components-product-price del,
+html body .woocommerce ul.products li.product .price del {
+	color: var(--wp--preset--color--ink-muted);
+	opacity: 1;
+	text-decoration-thickness: 1px;
+}
+body .wc-block-components-product-price ins {
+	text-decoration: none;
+}

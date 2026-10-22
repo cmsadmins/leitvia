@@ -1,0 +1,10 @@
+/* Sorting in the ui font and the field look instead of the system select. */
+body .woocommerce-ordering select {
+	min-height: 2.75rem;
+	padding: 0 0.75rem;
+	border: 1px solid var(--wp--preset--color--ink-muted);
+	border-radius: var(--wp--preset--border-radius--s);
+	background-color: var(--wp--preset--color--surface);
+	color: var(--wp--preset--color--ink);
+	font: 0.9375rem var(--wp--preset--font-family--ui);
+}

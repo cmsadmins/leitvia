@@ -1,0 +1,55 @@
+/*
+ * Double focus ring: the outline in focus plus an inner ring in surface that fills the offset gap.
+ * No single focus color reaches 3:1 on surface, accent and ink at once; on accent and ink sections
+ * the surface ring carries the contrast (checked by REQUIRED_PAIRS in scripts/lib/contrast.mjs).
+ */
+.wp-element-button:focus-visible,
+.wp-block-button__link:focus-visible {
+	outline: 2px solid var(--wp--preset--color--focus);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
+}
+/* Quiet state changes: color only, never size or shadow. */
+@media (prefers-reduced-motion: no-preference) {
+	.wp-element-button,
+	.wp-block-button__link {
+		transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+	}
+}
+/* theme.json style variations have no pseudo states, so the outline hover lives here. */
+.wp-block-button.is-style-outline > .wp-block-button__link:hover {
+	background-color: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--surface);
+}
+/*
+ * On ink and accent bands the default hover (ink fill) would match the band, so buttons turn to surface instead.
+ * Buttons with their own text color keep the default hover, because preset text color classes cannot be overridden.
+ */
+:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) .wp-block-button__link:not(.has-text-color):hover {
+	border-color: var(--wp--preset--color--surface);
+	background-color: var(--wp--preset--color--surface);
+	color: var(--wp--preset--color--ink);
+}
+/*
+ * The fill button is ink, which would vanish on an ink band and on the inverse style, so there it takes the accent
+ * (on-accent on accent is a checked pair) and turns to surface on hover through the rule above.
+ */
+:is(.has-background.has-ink-background-color, .is-style-inverse) .wp-block-button:not(.is-style-outline) > .wp-block-button__link:not(.has-text-color, .has-background) {
+	border-color: var(--wp--preset--color--accent);
+	background-color: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--on-accent);
+}
+/*
+ * A fill button in the accent color would vanish on an accent band, so there it fills with surface
+ * and inverts to ink on hover and focus.
+ */
+.has-background.has-accent-background-color .wp-block-button:not(.is-style-outline) > .wp-block-button__link:not(.has-text-color, .has-background) {
+	border-color: var(--wp--preset--color--surface);
+	background-color: var(--wp--preset--color--surface);
+	color: var(--wp--preset--color--ink);
+}
+.has-background.has-accent-background-color .wp-block-button:not(.is-style-outline) > .wp-block-button__link:not(.has-text-color, .has-background):is(:hover, :focus-visible) {
+	border-color: var(--wp--preset--color--ink);
+	background-color: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--surface);
+}

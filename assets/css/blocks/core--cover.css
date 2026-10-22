@@ -1,0 +1,8 @@
+/*
+ * Inverse covers have no overlay color class, because a preset class would fix the overlay to one role in every
+ * palette. The overlay takes the band color of the inverse style instead (ink in light palettes, surface-alt in
+ * dark ones); core would paint it black.
+ */
+.wp-block-cover.is-style-inverse > .wp-block-cover__background:not([class*="-background-color"]) {
+	background-color: inherit;
+}

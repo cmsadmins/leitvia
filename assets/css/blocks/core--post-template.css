@@ -1,0 +1,10 @@
+/* Cards answer hover with a fine underline on the title, never by scaling the image. */
+.wp-block-post-template .wp-block-post-title a {
+	text-decoration: none;
+}
+.wp-block-post-template .wp-block-post:hover .wp-block-post-title a,
+.wp-block-post-template .wp-block-post-title a:focus-visible {
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.2em;
+}

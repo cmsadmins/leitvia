@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+	"version": 3,
+	"title": "Warm Editorial Dark",
+	"slug": "warm-editorial-dark",
+	"description": "Serif headlines on deep umber with a soft jade accent, for magazines, journals and long reads that should stay calm after dark.",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "surface", "name": "Surface", "color": "#171512" },
+				{ "slug": "surface-alt", "name": "Surface alternate", "color": "#221f1a" },
+				{ "slug": "ink", "name": "Ink", "color": "#f2ede4" },
+				{ "slug": "ink-muted", "name": "Ink muted", "color": "#b8b0a2" },
+				{ "slug": "accent", "name": "Accent", "color": "#8cc5b3" },
+				{ "slug": "on-accent", "name": "On accent", "color": "#10241e" },
+				{ "slug": "stroke", "name": "Stroke", "color": "#3a352d" },
+				{ "slug": "focus", "name": "Focus", "color": "#f2c46d" },
+				{ "slug": "success", "name": "Success", "color": "#7dcb8e" },
+				{ "slug": "warning", "name": "Warning", "color": "#e8b04a" },
+				{ "slug": "danger", "name": "Danger", "color": "#f08a8f" }
+			]
+		}
+	},
+	"styles": {
+		"blocks": {
+			"core/cover": {
+				"variations": {
+					"inverse": { "color": { "background": "var:preset|color|surface-alt", "text": "var:preset|color|ink" } }
+				}
+			},
+			"core/group": {
+				"variations": {
+					"inverse": { "color": { "background": "var:preset|color|surface-alt", "text": "var:preset|color|ink" } }
+				}
+			}
+		},
+		"elements": {
+			"heading": {
+				"typography": { "fontWeight": "400", "letterSpacing": "-0.01em" }
+			}
+		}
+	}
+}

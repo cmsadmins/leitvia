@@ -1,0 +1,12 @@
+/*
+ * Titles fill the line and only avoid a lone last word. Balanced wrapping halved two-line titles in the journal
+ * list and on posts, so they broke at half the column width.
+ */
+.wp-block-post-title {
+	text-wrap: pretty;
+}
+.wp-block-post-title a:hover {
+	text-decoration: underline;
+	text-decoration-thickness: 0.0625rem;
+	text-underline-offset: 0.12em;
+}

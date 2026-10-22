@@ -1,0 +1,28 @@
+.wp-block-post-terms a {
+	text-decoration: none;
+}
+.wp-block-post-terms a:hover {
+	text-decoration: underline;
+}
+
+/* Badge: one pill per term, same label type as the paragraph badge. */
+.wp-block-post-terms.is-style-badge {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--xxs);
+	font-family: var(--wp--preset--font-family--body);
+	font-size: var(--wp--preset--font-size--meta);
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	line-height: 1.4;
+	text-transform: uppercase;
+}
+.wp-block-post-terms.is-style-badge a {
+	padding: 0.25em 0.8em;
+	border-radius: var(--wp--preset--border-radius--pill);
+	background-color: var(--wp--preset--color--surface-alt);
+	color: var(--wp--preset--color--ink);
+}
+.wp-block-post-terms.is-style-badge .wp-block-post-terms__separator {
+	display: none;
+}

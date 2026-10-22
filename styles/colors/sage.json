@@ -1,0 +1,38 @@
+{
+	"$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+	"version": 3,
+	"title": "Sage Colors",
+	"slug": "sage",
+	"description": "Muted sage green on a warm paper ground, for gardening, health, food and sustainability sites.",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "surface", "name": "Surface", "color": "#f5f3ec" },
+				{ "slug": "surface-alt", "name": "Surface alternate", "color": "#e9e6db" },
+				{ "slug": "ink", "name": "Ink", "color": "#1c1f1a" },
+				{ "slug": "ink-muted", "name": "Ink muted", "color": "#535a4f" },
+				{ "slug": "accent", "name": "Accent", "color": "#4a6b50" },
+				{ "slug": "on-accent", "name": "On accent", "color": "#ffffff" },
+				{ "slug": "stroke", "name": "Stroke", "color": "#cbc8b9" },
+				{ "slug": "focus", "name": "Focus", "color": "#1d4ed8" },
+				{ "slug": "success", "name": "Success", "color": "#2e6b3a" },
+				{ "slug": "warning", "name": "Warning", "color": "#7a4f00" },
+				{ "slug": "danger", "name": "Danger", "color": "#a3242b" }
+			]
+		}
+	},
+	"styles": {
+		"blocks": {
+			"core/cover": {
+				"variations": {
+					"inverse": { "color": { "background": "var:preset|color|ink", "text": "var:preset|color|surface" } }
+				}
+			},
+			"core/group": {
+				"variations": {
+					"inverse": { "color": { "background": "var:preset|color|ink", "text": "var:preset|color|surface" } }
+				}
+			}
+		}
+	}
+}

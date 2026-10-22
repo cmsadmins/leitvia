@@ -1,0 +1,12 @@
+.wp-block-heading {
+	text-wrap: balance;
+	font-variant-numeric: lining-nums proportional-nums;
+}
+/* Large headings take the display cut of fonts with an optical size axis (Newsreader); others ignore it. */
+:is(h1, h2, .has-heading-m-font-size, .has-heading-l-font-size, .has-display-font-size) {
+	font-variation-settings: "opsz" 72;
+}
+.has-display-font-size:is(h1, h2, h3, p) {
+	line-height: 1.04;
+	letter-spacing: -0.02em;
+}

@@ -1,0 +1,62 @@
+/*
+ * Comparison: hairlines between rows, meta caps in the head, tabular figures. Columns after the first align to the
+ * end so figures line up. Rows cannot carry classes, so the highlighted row is the table footer (core "Footer section").
+ * Columns size to their content even with fixed layout on, so words never break mid-word. Tables wider than the
+ * screen scroll inside the figure, which functions.php makes a focusable region so arrow keys scroll it.
+ */
+.wp-block-table.is-style-comparison {
+	overflow-x: auto;
+}
+.wp-block-table.is-style-comparison table {
+	table-layout: auto;
+	border-collapse: collapse;
+	font-variant-numeric: tabular-nums lining-nums;
+}
+.wp-block-table.is-style-comparison :is(thead, tbody, tfoot) {
+	border: 0;
+}
+.wp-block-table.is-style-comparison :is(th, td) {
+	padding: var(--wp--preset--spacing--xs) var(--wp--preset--spacing--s);
+	border: 0;
+	border-bottom: 0.0625rem solid var(--wp--preset--color--stroke);
+	vertical-align: baseline;
+	word-break: normal;
+}
+/* Low specificity, so the column alignment set in the editor still wins. */
+:where(.wp-block-table.is-style-comparison) :is(th, td) {
+	text-align: start;
+}
+:where(.wp-block-table.is-style-comparison) :is(th, td):not(:first-child) {
+	text-align: end;
+}
+/* Keep figures and their units on one line. */
+.wp-block-table.is-style-comparison tbody td:not(:first-child) {
+	white-space: nowrap;
+}
+.wp-block-table.is-style-comparison :is(th, td):first-child {
+	min-width: 6em;
+	padding-inline-start: 0;
+}
+.wp-block-table.is-style-comparison :is(th, td):last-child {
+	padding-inline-end: 0;
+}
+.wp-block-table.is-style-comparison thead th {
+	border-bottom-color: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--ink-muted);
+	font-family: var(--wp--preset--font-family--ui);
+	font-size: 0.75rem;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+.wp-block-table.is-style-comparison tfoot :is(th, td) {
+	border-top: 0.0625rem solid var(--wp--preset--color--ink);
+	border-bottom: 0;
+	font-weight: 600;
+}
+.wp-block-table:focus-visible {
+	outline: 0.125rem solid var(--wp--preset--color--focus);
+	outline-offset: 0.125rem;
+	/* Inner ring for the double focus indicator, see core--button.css. */
+	box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
+}

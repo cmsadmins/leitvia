@@ -1,0 +1,54 @@
+/* Classic add to cart form: quantity, variation selects and button share 48 px, the ui font and the field
+   look (ink-muted frame, 4.5:1 in every palette). Disabled stays readable instead of half opacity. WooCommerce: 0,3,1. */
+body .wp-block-add-to-cart-form {
+	& form.cart:not(.variations_form),
+	& .woocommerce-variation-add-to-cart {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--wp--preset--spacing--xs);
+	}
+	& :is(.quantity .qty, .variations select) {
+		box-sizing: border-box;
+		min-height: 3rem;
+		padding: 0 0.75rem;
+		border: 1px solid var(--wp--preset--color--ink-muted);
+		border-radius: var(--wp--preset--border-radius--s);
+		background-color: var(--wp--preset--color--surface);
+		color: var(--wp--preset--color--ink);
+		font: inherit;
+	}
+	& .quantity .qty {
+		width: 4.5rem;
+		margin: 0;
+	}
+	& .variations :is(th, td) {
+		padding-block: var(--wp--preset--spacing--xxs);
+		text-align: start;
+	}
+	& .reset_variations {
+		margin-inline-start: var(--wp--preset--spacing--s);
+		color: var(--wp--preset--color--ink);
+	}
+	& .single_add_to_cart_button.button {
+		min-height: 3rem;
+		padding: 0.875rem 1.5rem;
+		border: 1px solid var(--wp--preset--color--ink);
+		border-radius: var(--wp--preset--border-radius--s);
+		background-color: var(--wp--preset--color--ink);
+		color: var(--wp--preset--color--surface);
+		font-size: 0.9375rem;
+		font-weight: 500;
+		line-height: 1.2;
+	}
+	& .single_add_to_cart_button.button:not(.disabled):hover {
+		border-color: var(--wp--preset--color--accent);
+		background-color: var(--wp--preset--color--accent);
+		color: var(--wp--preset--color--on-accent);
+	}
+	& .single_add_to_cart_button.button.disabled {
+		border-color: var(--wp--preset--color--stroke);
+		background-color: var(--wp--preset--color--surface-alt);
+		color: var(--wp--preset--color--ink-muted);
+		opacity: 1;
+	}
+}

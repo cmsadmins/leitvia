@@ -1,0 +1,59 @@
+/* The closed drawer stays in the page, hidden only from assistive technology; hidden for everyone, Tab skips it
+   (WCAG 2.4.3, 4.1.2). Open: surface and ink, two full-width buttons. */
+.wc-block-mini-cart__drawer[aria-hidden="true"] {
+	visibility: hidden;
+}
+body .wc-block-mini-cart__drawer.wc-block-components-drawer {
+	background-color: var(--wp--preset--color--surface);
+	color: var(--wp--preset--color--ink);
+	font-variant-numeric: tabular-nums lining-nums;
+	& .wc-block-components-quantity-selector {
+		border-color: var(--wp--preset--color--ink-muted);
+	}
+	& .wc-block-components-quantity-selector__button:enabled {
+		opacity: 1;
+	}
+	& .wc-block-components-product-name {
+		color: var(--wp--preset--color--ink);
+		text-decoration: none;
+	}
+	& .wc-block-components-product-price__regular {
+		color: var(--wp--preset--color--ink-muted);
+		opacity: 1;
+	}
+	& .wc-block-mini-cart__footer-actions {
+		flex-direction: column-reverse;
+		gap: var(--wp--preset--spacing--xs);
+	}
+	& .wc-block-mini-cart__footer-actions .wp-element-button {
+		min-height: 3rem;
+		margin: 0;
+		padding: 0.875rem 1.5rem;
+		border-radius: var(--wp--preset--border-radius--s);
+	}
+	& :is(a, button, input, select, textarea, [tabindex]):focus-visible {
+		outline: 2px solid var(--wp--preset--color--focus);
+		outline-offset: 2px;
+		box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
+	}
+}
+/* Header button: a 44 px target, the count in ink. */
+.wc-block-mini-cart__button {
+	min-width: 2.75rem;
+	min-height: 2.75rem;
+	justify-content: center;
+	&:focus-visible {
+		outline: 2px solid var(--wp--preset--color--focus);
+		outline-offset: 2px;
+		box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
+	}
+}
+body .wc-block-mini-cart__button .wc-block-mini-cart__badge {
+	background-color: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--surface);
+}
+
+/* Germanized notes: grey 4.19:1, ink-muted 4.5:1 */
+body :is(.wc-block-components-product-details [class*="__gzd-"] .wc-block-components-product-details__value, .wc-gzd-unit-price, .wc-gzd-small-business-info, .wc-gzd-block-mini-cart-notices__notice) {
+	color: var(--wp--preset--color--ink-muted);
+}

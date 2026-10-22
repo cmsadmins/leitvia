@@ -1,0 +1,24 @@
+/*
+ * Landing pages: full-width sections that follow each other touch, so colour bands meet without a strip of page background.
+ * Every other block keeps the normal block gap. A full-width last section also meets the footer.
+ */
+.page-template-page-landing .wp-block-post-content > .alignfull + .alignfull {
+	margin-block-start: 0;
+}
+.page-template-page-landing main:has(> .wp-block-post-content > .alignfull:last-child) + footer {
+	margin-block-start: 0;
+}
+
+/*
+ * Pages in easy language (template page-easy-language): the template sets the lead font size, the narrower reading
+ * width and the larger gap between blocks. Text stays left aligned, whatever alignment a block sets, and words are
+ * never hyphenated, so every word is read whole.
+ */
+.wp-block-post-content.is-easy-language {
+	line-height: 1.6;
+	text-align: start;
+	hyphens: manual;
+}
+.wp-block-post-content.is-easy-language :is(.has-text-align-center, .has-text-align-right, .has-text-align-justify) {
+	text-align: start;
+}

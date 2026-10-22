@@ -1,0 +1,38 @@
+{
+	"$schema": "https://schemas.wp.org/wp/7.1/theme.json",
+	"version": 3,
+	"title": "Clay Colors",
+	"slug": "clay",
+	"description": "A brick red accent on warm off-white, for craft, architecture, food and culture sites.",
+	"settings": {
+		"color": {
+			"palette": [
+				{ "slug": "surface", "name": "Surface", "color": "#faf6f1" },
+				{ "slug": "surface-alt", "name": "Surface alternate", "color": "#f1e8df" },
+				{ "slug": "ink", "name": "Ink", "color": "#221a16" },
+				{ "slug": "ink-muted", "name": "Ink muted", "color": "#5e5149" },
+				{ "slug": "accent", "name": "Accent", "color": "#a3432b" },
+				{ "slug": "on-accent", "name": "On accent", "color": "#ffffff" },
+				{ "slug": "stroke", "name": "Stroke", "color": "#dbcbbd" },
+				{ "slug": "focus", "name": "Focus", "color": "#1d4ed8" },
+				{ "slug": "success", "name": "Success", "color": "#2e6b3a" },
+				{ "slug": "warning", "name": "Warning", "color": "#7a4f00" },
+				{ "slug": "danger", "name": "Danger", "color": "#a3242b" }
+			]
+		}
+	},
+	"styles": {
+		"blocks": {
+			"core/cover": {
+				"variations": {
+					"inverse": { "color": { "background": "var:preset|color|ink", "text": "var:preset|color|surface" } }
+				}
+			},
+			"core/group": {
+				"variations": {
+					"inverse": { "color": { "background": "var:preset|color|ink", "text": "var:preset|color|surface" } }
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,40 @@
+/*
+ * Ink, accent and inverse bands: accent links reach only about 1.7 to 3.4:1 on ink and accent, so text links take
+ * the band text color and stay underlined inside running text. The inverse style is ink in light palettes and
+ * surface-alt in dark ones, so the band text color is the one choice that passes in both. Navigation, divided lists
+ * and social links are link-only contexts: no underline at rest, underline on hover and focus. Focus uses the double
+ * ring from core--button.css. theme.json gives every link the inner ring as well, but with zero specificity; block
+ * CSS such as social links overrides that, so the rule below stays for the bands.
+ */
+:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) a:where(:not(.wp-element-button)),
+:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) a:where(:not(.wp-element-button)):hover {
+	color: inherit;
+	text-decoration: underline;
+}
+:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) :is(.wp-block-navigation, .is-style-divided, .wp-block-social-links) a:where(:not(.wp-element-button)):not(:hover, :focus-visible) {
+	text-decoration: none;
+}
+:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) a:where(:not(.wp-element-button)):focus-visible {
+	outline: 2px solid var(--wp--preset--color--focus);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
+}
+
+/*
+ * Notices: a light tint of the role color over surface and a full hairline frame in the role color. Text stays ink.
+ * Note uses ink-muted, so it never reads as an error box in palettes with a red accent.
+ */
+.wp-block-group:is(.is-style-note, .is-style-success, .is-style-warning) {
+	--leitvia-notice: var(--wp--preset--color--ink-muted);
+	padding: var(--wp--preset--spacing--m);
+	border: 0.0625rem solid var(--leitvia-notice);
+	border-radius: var(--wp--preset--border-radius--s);
+	background-color: color-mix(in srgb, var(--leitvia-notice) 10%, var(--wp--preset--color--surface));
+	color: var(--wp--preset--color--ink);
+}
+.wp-block-group.is-style-success {
+	--leitvia-notice: var(--wp--preset--color--success);
+}
+.wp-block-group.is-style-warning {
+	--leitvia-notice: var(--wp--preset--color--warning);
+}

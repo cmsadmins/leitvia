@@ -1,0 +1,29 @@
+/* Shop notices in the notice look of core--group.css: role tint, hairline frame, ink text, icon on the role color.
+   Every shop template has it. */
+.wc-block-components-notice-banner.wc-block-components-notice-banner {
+	--leitvia-notice: var(--wp--preset--color--ink-muted);
+	border: 1px solid var(--leitvia-notice);
+	border-radius: var(--wp--preset--border-radius--s);
+	background-color: color-mix(in srgb, var(--leitvia-notice) 10%, var(--wp--preset--color--surface));
+	box-shadow: none;
+	color: var(--wp--preset--color--ink);
+}
+.wc-block-components-notice-banner.wc-block-components-notice-banner.is-error {
+	--leitvia-notice: var(--wp--preset--color--danger);
+}
+.wc-block-components-notice-banner.wc-block-components-notice-banner.is-success {
+	--leitvia-notice: var(--wp--preset--color--success);
+}
+.wc-block-components-notice-banner.wc-block-components-notice-banner.is-warning {
+	--leitvia-notice: var(--wp--preset--color--warning);
+}
+.wc-block-components-notice-banner.wc-block-components-notice-banner > svg {
+	background-color: var(--leitvia-notice);
+	fill: var(--wp--preset--color--surface);
+}
+/* Double focus ring of core--button.css on every shop control; 0,4,1 beats WooCommerce's 0,4,0. */
+body :is(.wc-block-components-notice-banner.wc-block-components-notice-banner, .wc-block-checkout, .wc-block-cart, .wp-block-add-to-cart-form, .wp-block-woocommerce-product-details, .woocommerce-ordering, .wp-block-woocommerce-customer-account) :is(a, button, input, select, textarea, [tabindex]):focus-visible {
+	outline: 2px solid var(--wp--preset--color--focus);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
+}

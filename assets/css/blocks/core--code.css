@@ -1,0 +1,22 @@
+/*
+ * Terminal: command line look on ink. Long lines scroll instead of wrapping, so commands stay copyable as written.
+ * functions.php makes the pre focusable, so arrow keys scroll it in every browser.
+ */
+.wp-block-code.is-style-terminal {
+	overflow-x: auto;
+	padding: var(--wp--preset--spacing--m);
+	border: 0;
+	border-radius: var(--wp--preset--border-radius--s);
+	background-color: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--surface);
+}
+.wp-block-code.is-style-terminal > code {
+	white-space: pre;
+	overflow-wrap: normal;
+}
+.wp-block-code.is-style-terminal:focus-visible {
+	outline: 0.125rem solid var(--wp--preset--color--focus);
+	outline-offset: 0.125rem;
+	/* Inner ring for the double focus indicator, see core--button.css. */
+	box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
+}
