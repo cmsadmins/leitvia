@@ -371,9 +371,16 @@ function preload_fonts(): void {
 			continue;
 		}
 		foreach ( $families[ $m[1] ]['fontFace'] ?? array() as $face ) {
-			$src = (array) ( $face['src'] ?? array() );
-			if ( 'normal' === ( $face['fontStyle'] ?? 'normal' ) && str_starts_with( $face['unicodeRange'] ?? 'U+0000', 'U+0000' ) && str_starts_with( (string) reset( $src ), 'file:./' ) ) {
-				$urls[] = get_theme_file_uri( substr( (string) reset( $src ), 7 ) );
+			$src   = (array) ( $face['src'] ?? array() );
+			$first = (string) reset( $src );
+			if ( 'normal' !== ( $face['fontStyle'] ?? 'normal' ) || ! str_starts_with( $face['unicodeRange'] ?? 'U+0000', 'U+0000' ) ) {
+				continue;
+			}
+			if ( str_starts_with( $first, 'file:./' ) ) {
+				$urls[] = get_theme_file_uri( substr( $first, 7 ) );
+			} elseif ( str_starts_with( $first, content_url( '/' ) ) ) {
+				// Fonts a plugin adds to a token set, served from this site.
+				$urls[] = $first;
 			}
 		}
 	}

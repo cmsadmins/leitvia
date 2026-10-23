@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -54,6 +54,9 @@ Leitvia itself makes no external requests and sets no cookies. Fonts, images and
 WooCommerce loads nothing from other hosts on the front end of a new shop, but its feature "Order attribution" is on by default and sets cookies (sbjs_*) on every page view, before a visitor does anything. Switch it off under WooCommerce, Settings, Advanced, Features unless your consent solution covers it; the cart cookies then only appear once a visitor adds a product to the cart. Usage tracking and marketplace suggestions in the admin can be switched off under WooCommerce, Settings, Advanced as well. The recipe "Shop" of the plugin Leitvia Studio switches all of these off. Product reviews show avatars through WordPress; without a plugin for local profile pictures they come from Gravatar while "Show Avatars" under Settings, Discussion is on.
 
 == Changelog ==
+
+= 1.0.1 =
+* Fonts that a plugin adds to a token set are preloaded like the fonts of the theme.
 
 = 1.0.0 =
 * First public release.
