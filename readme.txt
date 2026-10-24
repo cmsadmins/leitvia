@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -53,7 +53,26 @@ Leitvia itself makes no external requests and sets no cookies. Fonts, images and
 
 WooCommerce loads nothing from other hosts on the front end of a new shop, but its feature "Order attribution" is on by default and sets cookies (sbjs_*) on every page view, before a visitor does anything. Switch it off under WooCommerce, Settings, Advanced, Features unless your consent solution covers it; the cart cookies then only appear once a visitor adds a product to the cart. Usage tracking and marketplace suggestions in the admin can be switched off under WooCommerce, Settings, Advanced as well. The recipe "Shop" of the plugin Leitvia Studio switches all of these off. Product reviews show avatars through WordPress; without a plugin for local profile pictures they come from Gravatar while "Show Avatars" under Settings, Discussion is on.
 
+== Support ==
+
+Leitvia is developed and maintained by CMS ADMINS, https://cms-admins.de. Ask questions in the support forum of the theme on WordPress.org or write to support@cms-admins.de. Report accessibility barriers to the same address; we answer within five working days.
+
+== Legal ==
+
+Leitvia is a product of CMS ADMINS, a brand of MSRV Hosting und Service GbR, Parkstraße 19, 80339 München, Germany, represented by Patrick Schlesinger and Peter Laschtowitz. Contact: support@cms-admins.de.
+
+Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It is provided as is, without any warranty, to the extent permitted by applicable law; see sections 11 and 12 of the GPL. You are responsible for checking that your site meets the legal requirements that apply to it, such as accessibility, privacy and imprint duties; Leitvia helps with these but does not replace that check.
+
+* Imprint: https://leitvia.com/legal-notice/ (German original: https://leitvia.com/de/impressum/)
+* Privacy policy: https://leitvia.com/privacy-policy/
+* Terms for the paid Leitvia Pro plans and the account on leitvia.com (they do not apply to this free software): https://leitvia.com/terms/
+
 == Changelog ==
+
+= 1.0.2 =
+* accessibility.txt describes how the theme is tested for accessibility, its screen reader text class and where to report problems, as WordPress.org asks of themes with the tag accessibility-ready.
+* The screenshot shows the current look with Newsreader headings.
+* Copyright notices for Newsreader and IBM Plex Mono under Resources.
 
 = 1.0.1 =
 * Fonts that a plugin adds to a token set are preloaded like the fonts of the theme.
@@ -96,10 +115,10 @@ Resources used by the theme are listed here.
 
 Bundled locally (latin and latin-ext subsets, WOFF2), all licensed under the SIL Open Font License 1.1. The license text sits next to each font in assets/fonts/. Files were obtained from Google Fonts (https://fonts.google.com), source repository https://github.com/google/fonts.
 
-* Newsreader (with the optical size axis), SIL OFL 1.1, https://github.com/productiontype/Newsreader
+* Newsreader (with the optical size axis), Copyright 2020 The Newsreader Project Authors, SIL OFL 1.1, https://github.com/productiontype/Newsreader
 * Inter Tight (upright and italic, weight axis), Copyright 2022 The Inter Project Authors, SIL OFL 1.1, https://github.com/google/fonts/tree/main/ofl/intertight
 * IBM Plex Sans (upright and italic, weight axis), Copyright 2017 IBM Corp., SIL OFL 1.1, https://github.com/IBM/plex
-* IBM Plex Mono, SIL OFL 1.1, https://github.com/IBM/plex
+* IBM Plex Mono, Copyright 2017 IBM Corp., SIL OFL 1.1, https://github.com/IBM/plex
 
 = Images and logos =
 

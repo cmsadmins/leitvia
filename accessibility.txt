@@ -1,0 +1,42 @@
+=== Accessibility Statement ===
+
+Leitvia is built to meet WCAG 2.2 level AA and the web requirements of BITV 2.0 / EN 301 549. Accessibility rules are part of the design tokens and of every template and pattern, and every change to the theme runs through automated accessibility tests before it is released.
+
+== Quick Information ==
+
+Accessibility audit completed: No
+Tested to standard and conformance level: WCAG 2.2 AA (self-assessment, external audit planned)
+
+== Testing Tools and Methodology ==
+
+Every color pair of the design contract reaches 4.5:1 for text and 3:1 for controls, icons and form fields in every style variation and color preset, and the focus ring reaches 3:1 on every background.
+
+Automated tests run on every change, on every template and pattern, in every style variation and at three screen widths:
+
+* axe-core with the WCAG 2.2 AA rules.
+* A BITV 2.0 suite with keyboard runs (skip link, menus, mobile menu dialog, focus order), focus contrast, reflow at 320 CSS pixels, text spacing, zoom to 200 % and form labels.
+* The shop templates with WooCommerce, including cart and checkout, run through the same tests.
+
+Test steps that need a person, such as alternative texts and screen reader output, are reviewed by hand and documented in the BITV 2.0 test report. An external test by an accredited body is planned.
+
+== Screen Reader Text Class ==
+
+.screen-reader-text
+
+Leitvia uses the class of WordPress core. The block library stylesheet of WordPress, which loads on every page of a block theme, hides it visually and shows it on focus.
+
+== Accessibility Features ==
+
+* Submenus open on click, Enter or Space, never on hover alone, and close with Escape. The mobile menu is a modal dialog that keeps focus inside until it is closed.
+* A double focus ring (outline plus an inner ring) that stays visible in Windows high contrast mode.
+* Animations stop when the operating system asks for reduced motion.
+* The pattern "Accessibility statement" gives site owners a template with the details BITV 2.0 and the European Accessibility Act require.
+* The page template "Page in easy language" sets pages in easy language (Leichte Sprache) in a narrower column with larger text and line height 1.6.
+
+== Accessibility Help Contact ==
+
+[Accessibility at leitvia.com](https://leitvia.com/accessibility/), email support@cms-admins.de
+
+== Where to Report Issues ==
+
+https://wordpress.org/support/theme/leitvia/ or [GitHub issues](https://github.com/cmsadmins/leitvia/issues)
