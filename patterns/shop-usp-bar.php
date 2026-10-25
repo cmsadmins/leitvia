@@ -17,8 +17,8 @@
 	<div class="wp-block-group alignwide">
 		<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xxs"}}} -->
 		<div class="wp-block-group">
-			<!-- wp:heading {"level":3,"fontSize":"body"} -->
-			<h3 class="wp-block-heading has-body-font-size"><?php esc_html_e( 'Free shipping from 50 euros', 'leitvia' ); ?></h3>
+			<!-- wp:heading {"fontSize":"body"} -->
+			<h2 class="wp-block-heading has-body-font-size"><?php esc_html_e( 'Free shipping from 50 euros', 'leitvia' ); ?></h2>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"fontSize":"meta"} -->
 			<p class="has-meta-font-size"><?php esc_html_e( 'Delivered within Germany in two to four working days.', 'leitvia' ); ?></p>
@@ -27,8 +27,8 @@
 		<!-- /wp:group -->
 		<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xxs"}}} -->
 		<div class="wp-block-group">
-			<!-- wp:heading {"level":3,"fontSize":"body"} -->
-			<h3 class="wp-block-heading has-body-font-size"><?php esc_html_e( '30 days to return', 'leitvia' ); ?></h3>
+			<!-- wp:heading {"fontSize":"body"} -->
+			<h2 class="wp-block-heading has-body-font-size"><?php esc_html_e( '30 days to return', 'leitvia' ); ?></h2>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"fontSize":"meta"} -->
 			<p class="has-meta-font-size"><?php esc_html_e( 'Send it back unused and get your money back, return label included.', 'leitvia' ); ?></p>
@@ -37,8 +37,8 @@
 		<!-- /wp:group -->
 		<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xxs"}}} -->
 		<div class="wp-block-group">
-			<!-- wp:heading {"level":3,"fontSize":"body"} -->
-			<h3 class="wp-block-heading has-body-font-size"><?php esc_html_e( 'Pay the way you like', 'leitvia' ); ?></h3>
+			<!-- wp:heading {"fontSize":"body"} -->
+			<h2 class="wp-block-heading has-body-font-size"><?php esc_html_e( 'Pay the way you like', 'leitvia' ); ?></h2>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"fontSize":"meta"} -->
 			<p class="has-meta-font-size"><?php esc_html_e( 'Invoice, SEPA direct debit, credit card or PayPal.', 'leitvia' ); ?></p>

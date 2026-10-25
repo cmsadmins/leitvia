@@ -1,14 +1,33 @@
-/* Divided: no markers, a hairline between items. Used for contact details and short fact lists. */
-.wp-block-list.is-style-divided {
+/* Divided: no markers, hairlines between items. Download: one file per item, link first, decorative file mark. */
+.wp-block-list:is(.is-style-divided, .is-style-download) {
 	list-style: none;
 	padding-inline-start: 0;
 }
-.wp-block-list.is-style-divided > li {
+.wp-block-list:is(.is-style-divided, .is-style-download) > li {
 	padding-block: var(--wp--preset--spacing--s);
 	border-bottom: 0.0625rem solid var(--wp--preset--color--stroke);
 }
-.wp-block-list.is-style-divided > li:first-child {
+.wp-block-list:is(.is-style-divided, .is-style-download) > li:first-child {
 	border-top: 0.0625rem solid var(--wp--preset--color--stroke);
+}
+.wp-block-list.is-style-download > li {
+	position: relative;
+	padding-inline-start: 2em;
+}
+.wp-block-list.is-style-download > li::before {
+	content: "" / "";
+	position: absolute;
+	inset-block-start: calc(var(--wp--preset--spacing--s) + 0.1em);
+	inset-inline-start: 0;
+	width: 1.25em;
+	height: 1.25em;
+	background: var(--wp--preset--color--accent);
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.75' stroke-linejoin='round'%3E%3Cpath d='M14 3H6v18h12V7zm0 0v4h4M12 10v7m-3-3 3 3 3-3'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.wp-block-list.is-style-download > li > a:first-child {
+	display: block;
+	width: fit-content;
+	font-weight: 600;
 }
 
 /*
@@ -37,6 +56,9 @@
 /* Accent marks fall below 3:1 on ink and accent bands, so they take the band text color there. */
 :is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) .wp-block-list > li::before {
 	color: inherit;
+}
+:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) .is-style-download > li::before {
+	background: currentcolor;
 }
 .wp-block-list.is-style-checklist-row {
 	display: flex;

@@ -84,6 +84,7 @@ function register_block_style_variations(): void {
 			'divided'       => __( 'Divided', 'leitvia' ),
 			'checklist'     => __( 'Checklist', 'leitvia' ),
 			'checklist-row' => __( 'Checklist row', 'leitvia' ),
+			'download'      => __( 'Download', 'leitvia' ),
 		),
 		'core/post-terms' => array(
 			'badge' => __( 'Badge', 'leitvia' ),
@@ -152,6 +153,58 @@ add_action( 'init', __NAMESPACE__ . '\register_site_meta_binding' );
 function site_meta_value( array $args ): ?string {
 	return 'copyright' === ( $args['key'] ?? '' ) ? '© ' . wp_date( 'Y' ) : null;
 }
+
+/**
+ * Block bindings source leitvia/term-image: the url of an image block inside a term template becomes the image of the
+ * term (term meta thumbnail_id, as WooCommerce stores the image of a product category). Without an image the block
+ * keeps no src and core drops it, so the tile shows name and description only.
+ */
+function register_term_image_binding(): void {
+	register_block_bindings_source(
+		'leitvia/term-image',
+		array(
+			'label'              => __( 'Term image', 'leitvia' ),
+			'get_value_callback' => __NAMESPACE__ . '\term_image_value',
+			'uses_context'       => array( 'termId' ),
+		)
+	);
+}
+add_action( 'init', __NAMESPACE__ . '\register_term_image_binding' );
+
+/**
+ * URL of the term image in the size of the block, null without a term or an image.
+ *
+ * @param array     $args      Binding arguments, unused.
+ * @param \WP_Block $block     Image block.
+ * @param string    $attribute Bound attribute.
+ */
+function term_image_value( array $args, \WP_Block $block, string $attribute ): ?string {
+	$image = 'url' === $attribute ? (int) get_term_meta( (int) ( $block->context['termId'] ?? 0 ), 'thumbnail_id', true ) : 0;
+	$url   = $image ? wp_get_attachment_image_url( $image, (string) ( $block->attributes['sizeSlug'] ?? 'large' ) ) : false;
+	return $url ? $url : null;
+}
+
+/**
+ * Width and height for an image bound to leitvia/term-image, from the attachment in the size of the block (CLS).
+ *
+ * @param string    $html     Block HTML.
+ * @param array     $block    Parsed block.
+ * @param \WP_Block $instance Block instance with the term context.
+ */
+function term_image_size( string $html, array $block, \WP_Block $instance ): string {
+	if ( 'leitvia/term-image' !== ( $block['attrs']['metadata']['bindings']['url']['source'] ?? '' ) ) {
+		return $html;
+	}
+	$image = (int) get_term_meta( (int) ( $instance->context['termId'] ?? 0 ), 'thumbnail_id', true );
+	$size  = $image ? wp_get_attachment_image_src( $image, (string) ( $block['attrs']['sizeSlug'] ?? 'large' ) ) : false;
+	$tags  = new \WP_HTML_Tag_Processor( $html );
+	if ( $size && $tags->next_tag( 'img' ) && null === $tags->get_attribute( 'width' ) ) {
+		$tags->set_attribute( 'width', (string) $size[1] );
+		$tags->set_attribute( 'height', (string) $size[2] );
+	}
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block_core/image', __NAMESPACE__ . '\term_image_size', 10, 3 );
 
 /**
  * Returns the text of the first figcaption in a block's HTML, or an empty string.
@@ -246,6 +299,40 @@ function search_landmark_name( string $html, array $block ): string {
 	return $tags->get_updated_html();
 }
 add_filter( 'render_block_core/search', __NAMESPACE__ . '\search_landmark_name', 10, 2 );
+
+/**
+ * Namespace of the related posts query below a single post, see patterns/hidden-page-related-posts.php.
+ */
+const RELATED_POSTS = 'leitvia/related-posts';
+
+/**
+ * The related posts query takes the categories of the current post; core leaves the post itself out (excludeCurrent).
+ * Without categories it lists the latest other posts.
+ *
+ * @param array $block Parsed block.
+ */
+function related_posts_query( array $block ): array {
+	if ( 'core/query' !== $block['blockName'] || RELATED_POSTS !== ( $block['attrs']['namespace'] ?? '' ) || ! is_array( $block['attrs']['query'] ?? null ) ) {
+		return $block;
+	}
+	$categories = array_map( 'intval', wp_get_post_categories( (int) get_the_ID() ) );
+	if ( $categories ) {
+		$block['attrs']['query']['taxQuery'] = array( 'category' => $categories );
+	}
+	return $block;
+}
+add_filter( 'render_block_data', __NAMESPACE__ . '\related_posts_query' );
+
+/**
+ * Drops the related posts with their heading while there is no other post to show.
+ *
+ * @param string $html  Block HTML.
+ * @param array  $block Parsed block.
+ */
+function hide_empty_related_posts( string $html, array $block ): string {
+	return RELATED_POSTS === ( $block['attrs']['namespace'] ?? '' ) && ! str_contains( $html, 'wp-block-post-template' ) ? '' : $html;
+}
+add_filter( 'render_block_core/query', __NAMESPACE__ . '\hide_empty_related_posts', 10, 2 );
 
 /**
  * The documentation sidebar marks its page list with this class, see patterns/hidden-page-docs-sidebar.php.
@@ -447,3 +534,14 @@ function register_shop_patterns(): void {
 	}
 }
 add_action( 'init', __NAMESPACE__ . '\register_shop_patterns', 20 );
+
+/**
+ * "Clear" next to the options of a variable product resets the form: an action, so a button instead of WooCommerce's
+ * link to "#" (WCAG 4.1.2, a link would announce a page change and Space would not press it). WooCommerce finds it by
+ * the class reset_variations; woocommerce--add-to-cart-form.css draws it as a text link. Replaces the markup of the
+ * filter woocommerce_reset_variations_link.
+ */
+function reset_variations_button(): string {
+	return '<button type="button" class="reset_variations" aria-label="' . esc_attr__( 'Clear options', 'leitvia' ) . '">' . esc_html__( 'Clear', 'leitvia' ) . '</button>';
+}
+add_filter( 'woocommerce_reset_variations_link', __NAMESPACE__ . '\reset_variations_button' );

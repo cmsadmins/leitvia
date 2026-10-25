@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.10.0",
+	"contractVersion": "1.12.0",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -338,11 +338,11 @@
 		},
 		{
 			"slug": "home",
-			"purpose": "Posts index with blog heading, featured sticky post and paginated list."
+			"purpose": "Posts index with blog heading (title and excerpt of the posts page when one is set), featured sticky post and paginated list with a continue reading link per post."
 		},
 		{
 			"slug": "single",
-			"purpose": "Single post as an article with breadcrumbs above the one h1, byline, publish and update dates and a 16:9 featured image; Google News ready."
+			"purpose": "Single post as an article with breadcrumbs above the one h1, byline, publish and update dates and a 16:9 featured image; Google News ready. Below the post: author box, previous and next post, up to three related posts from the same categories and comments while they are open or exist."
 		},
 		{
 			"slug": "page",
@@ -422,7 +422,7 @@
 	"blocks": {
 		"styles": "Theme block styles are listed in blockStyles with purpose and allowed context. Pick a block style before adding a class, a color or custom CSS; set it as is-style-<name> in className.",
 		"search": "Every Search block is a search landmark named after its label. Give each search on a page its own label (theme patterns: Site search, Search products, Search documentation, Search this site); two searches with the same name cannot be told apart by screen reader users.",
-		"bindings": "The copyright line of the footer patterns binds its content to the source leitvia/site-meta (key copyright) and always shows the current year. Keep the binding; a typed year goes stale.",
+		"bindings": "The copyright line of the footer patterns binds its content to the source leitvia/site-meta (key copyright) and always shows the current year. Keep the binding; a typed year goes stale. The image of a tile in leitvia/shop-category-tiles binds its url to leitvia/term-image, the image of the term; set the image on the category, not in the markup.",
 		"catalog": "Leitvia Studio, when active, publishes every block of Studio and its add-ons with attribute schema and usage rules at GET /wp-json/leitvia-studio/v1/blocks (users who can edit posts). Without Studio only core blocks and the theme block styles are available."
 	},
 	"blockStyles": [
@@ -491,6 +491,12 @@
 			"name": "divided",
 			"purpose": "List with fine rules between items, for contact details and link lists.",
 			"context": "Contact details, opening hours and link lists in sidebars and footers."
+		},
+		{
+			"block": "core/list",
+			"name": "download",
+			"purpose": "List of files to download: no bullets, a decorative file mark before each item, hairlines between items; the link of each item stands on its own line in bold.",
+			"context": "Lists where each item is one link to a file, named with format and size, followed by one sentence about the file; the pattern content-downloads uses it."
 		},
 		{
 			"block": "core/paragraph",
@@ -887,6 +893,37 @@
 					"text": [
 						80,
 						120
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-downloads",
+			"title": "Downloads",
+			"description": "Heading and short intro above a list of files to download, one per row with a decorative file mark: the link names the file, its format and its size, a sentence below says what is inside. Use on product, service, press or documentation pages that offer documents.",
+			"area": "content",
+			"useWhen": "Documents visitors take away, such as product sheets, price lists, terms or a press kit, uploaded to the media library.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "dense",
+				"layout": "list",
+				"weight": "light",
+				"role": "detail",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "A single file inside running text; link it in the paragraph, or use a File block without its download button and with the file name, format and size as its text.",
+				"a11y": "A semantic list; each item has one text link that names the file, its format and its size, for example \"Price list 2026 (PDF, 180 KB)\", followed by one sentence on the content. The file mark is decorative CSS and never the only link. Take format and size from leitvia/list-media (mime, filesize); keep the link text unique on the page.",
+				"contentLength": {
+					"heading": [
+						20,
+						50
+					],
+					"text": [
+						60,
+						140
 					]
 				},
 				"replacedBy": null
@@ -1575,6 +1612,31 @@
 			}
 		},
 		{
+			"slug": "leitvia/header-masthead",
+			"title": "Header masthead",
+			"description": "Newspaper masthead with a large centered site logo and the tagline below it, then the main navigation and the search between a heavy and a fine rule. Use for news sites and daily publications with a wide logo.",
+			"area": "header",
+			"useWhen": "News sites and daily publications whose wide logo should stand above the navigation like a masthead.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "centered",
+				"weight": "heavy",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Square or narrow logos and sites with many top level menu items; use header-default or header-search.",
+				"a11y": "The site logo links home with the site name as its text alternative; the search has a label and the navigation is a labelled core navigation with a menu button on small screens.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/header-minimal",
 			"title": "Header minimal",
 			"description": "Site title on the left and a menu button on the right that always opens the navigation as a full-screen overlay. Use on landing pages where the content should own the first screen.",
@@ -1754,6 +1816,37 @@
 			}
 		},
 		{
+			"slug": "leitvia/hero-search",
+			"title": "Hero with search",
+			"description": "Page intro that leads with search: a large heading, a wide search field with a visible label, a short lead and up to three buttons to the pages most people open first. Use at the top of documentation, help centers and knowledge bases.",
+			"area": "hero",
+			"useWhen": "Home page of documentation, a help center or a knowledge base, where most visitors arrive with a question.",
+			"composition": {
+				"tone": "surface",
+				"density": "airy",
+				"layout": "asymmetric",
+				"weight": "heavy",
+				"role": "hook",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Sites with few pages, where search finds little; or a header that already holds the only search field visitors need.",
+				"a11y": "Holds the only h1. The search field keeps its visible label, so a second search in the header stays distinguishable; the buttons name their target pages.",
+				"contentLength": {
+					"heading": [
+						25,
+						60
+					],
+					"text": [
+						80,
+						180
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/hero-split-image",
 			"title": "Hero split with image",
 			"description": "Two-column page intro with heading, lead text and buttons next to a tall image. Use when a picture should carry the first impression.",
@@ -1870,7 +1963,7 @@
 		{
 			"slug": "leitvia/hidden-page-blog-heading",
 			"title": "Blog heading",
-			"description": "Page heading with a short lead for the posts index.",
+			"description": "Page heading with a short lead for the posts index. With a posts page set in the reading settings, its title and excerpt replace the default texts.",
 			"area": "page",
 			"useWhen": "Inserted by the home template above the posts index.",
 			"composition": {
@@ -2024,6 +2117,31 @@
 			]
 		},
 		{
+			"slug": "leitvia/hidden-page-post-author",
+			"title": "About the author",
+			"description": "Author box below a single post: a heading, the linked name of the author and the biographical info of the profile. No avatar, so no request goes to Gravatar.",
+			"area": "page",
+			"useWhen": "Inserted by the single template below the post.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "An aside landmark named About the author with an h2; no avatar, so nothing is requested from Gravatar. The biography comes from the user profile and stays empty when the profile has none.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/hidden-page-post-byline",
 			"title": "Post byline",
 			"description": "Byline for single posts with linked author, labelled publish and update dates and reading time.",
@@ -2041,6 +2159,31 @@
 			"docs": {
 				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
 				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-post-navigation",
+			"title": "Post navigation",
+			"description": "Links to the previous and the next post below a single post, each named with its direction and the post title.",
+			"area": "page",
+			"useWhen": "Inserted by the single template below the post.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "A nav landmark named More articles; each link names its direction and the post title, for example Previous article: <title>. Missing neighbours render nothing.",
 				"contentLength": {
 					"heading": null,
 					"text": null
@@ -2075,6 +2218,56 @@
 			"requires": [
 				"woocommerce"
 			]
+		},
+		{
+			"slug": "leitvia/hidden-page-read-more",
+			"title": "Continue reading link",
+			"description": "Link to the full post below its excerpt in the post lists of the blog, archive, author and search templates. Core adds the post title for screen readers.",
+			"area": "page",
+			"useWhen": "Inserted by the blog, archive, author and search templates below each excerpt.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "The visible text Continue reading is completed by the post title for screen readers by core, so every link has a unique name.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-related-posts",
+			"title": "Related posts",
+			"description": "Up to three other posts from the categories of the current post below a single post, each with linked title and date. Renders nothing when there are none.",
+			"area": "page",
+			"useWhen": "Inserted by the single template below the post.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "An h2 above up to three h3 title links with dates as time elements; the whole section is left out when no other post matches.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
 		},
 		{
 			"slug": "leitvia/hidden-page-shop-filters",
@@ -2437,6 +2630,52 @@
 			}
 		},
 		{
+			"slug": "leitvia/teaser-front-page",
+			"title": "Front page",
+			"description": "Newspaper front page in three columns under a page heading: the sticky lead story wide with image, desk, headline, excerpt, author and date, beside it four headlines in brief and three more stories with small images. Use as the top of the home page of a news site that marks its lead story as sticky.",
+			"area": "teaser",
+			"useWhen": "The first section of the home page of a news site or daily publication with one sticky lead story and at least seven more posts.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "asymmetric",
+				"weight": "heavy",
+				"role": "hook",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "3/2",
+					"displayWidth": "44rem",
+					"recommendedSize": "1600x1067",
+					"count": 1,
+					"source": "featured-image"
+				},
+				{
+					"aspectRatio": "16/9",
+					"displayWidth": "17rem",
+					"recommendedSize": "800x450",
+					"count": 1,
+					"source": "featured-image"
+				}
+			],
+			"docs": {
+				"avoidWhen": "Sites without a sticky post, the lead column then stays empty; magazines that want one story only, use teaser-featured-post.",
+				"a11y": "The page heading is the h1 of the home page, so the page needs no other h1. The lead headline is an h2, the two side columns have an h2 each with h3 headlines. The lead comes first in the reading order; the queries skip sticky posts and each other, so no story appears twice.",
+				"contentLength": {
+					"heading": [
+						20,
+						60
+					],
+					"text": [
+						60,
+						200
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/teaser-posts-badge",
 			"title": "Posts with category badges",
 			"description": "The three latest posts in a grid, each with its category as a badge on the featured image, a linked title, the date and the reading time. Use on product or landing pages to point to recent articles.",
@@ -2618,7 +2857,7 @@
 			"images": [],
 			"docs": {
 				"avoidWhen": "Another ink section is adjacent, or the promises are not true for every order; never add logos of payment providers.",
-				"a11y": "Each promise is an h3 with one line of text; payment methods are plain text, so screen readers read them without image alt texts.",
+				"a11y": "Each promise is an h2 with one line of text, so the band fits right below the h1 of a hero and after any other section; payment methods are plain text, so screen readers read them without image alt texts.",
 				"contentLength": {
 					"heading": [
 						15,
@@ -2638,7 +2877,7 @@
 		{
 			"slug": "leitvia/shop-category-tiles",
 			"title": "Shop category tiles",
-			"description": "Heading above one tile per product category of the shop, three across on wide screens, each with the linked category name and its description. The tiles follow the categories of the shop on their own. Use on a shop home page to lead visitors into the range.",
+			"description": "Heading above one tile per product category of the shop, three across on wide screens, each with the image of the category when it has one, the linked category name and its description. The tiles follow the categories of the shop on their own. Use on a shop home page to lead visitors into the range.",
 			"area": "teaser",
 			"useWhen": "Shop home pages that lead into the range by category; the tiles list the product categories that hold products.",
 			"composition": {
@@ -2649,10 +2888,18 @@
 				"role": "context",
 				"width": "wide"
 			},
-			"images": [],
+			"images": [
+				{
+					"aspectRatio": "4/3",
+					"displayWidth": "24rem",
+					"recommendedSize": "768x576",
+					"count": 1,
+					"source": "inline"
+				}
+			],
 			"docs": {
 				"avoidWhen": "The shop has only one category, or a category page (its subcategories belong into the archive itself).",
-				"a11y": "Category names are linked h3; write a category description in the shop, else the tile shows the name only.",
+				"a11y": "Category names are linked h3; write a category description in the shop, else the tile shows the name only. The image is the category image (leitvia/update-product-category with image), bound through leitvia/term-image and decorative next to the linked name; without one the tile has no image.",
 				"contentLength": {
 					"heading": [
 						15,
@@ -2834,6 +3081,45 @@
 			}
 		},
 		{
+			"slug": "leitvia-studio/content-spotlight",
+			"title": "Annotated image",
+			"description": "Heading with a short introduction beside it on a tinted band and a wide image with numbered points that each open a note. Use to explain the parts of a product, a room, a building or a page.",
+			"area": "content",
+			"useWhen": "A picture that needs explaining part by part, such as a product, a floor plan, a facade or a screenshot of a page, typically in the context step of a landing page.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "asymmetric",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "3/2",
+					"displayWidth": "80rem",
+					"recommendedSize": "2400x1600",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The picture explains itself or needs more than six points; then use a list or the feature grid. Needs Leitvia Studio for the spotlight block.",
+				"a11y": "Each point is a disclosure with a visible number and a name that screen readers announce; on narrow screens the notes follow the image as a list in the same order. The image keeps a meaningful alt text, the notes add detail and never the only description.",
+				"contentLength": {
+					"heading": [
+						30,
+						70
+					],
+					"text": [
+						60,
+						200
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia-studio/content-story-highlight",
 			"title": "Story with highlight",
 			"description": "Heading with highlighted words beside three paragraphs that rise into view while scrolling, with one key sentence underlined. Use to make an argument where a few words must stand out.",
@@ -2860,6 +3146,93 @@
 						300,
 						600
 					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/content-timeline",
+			"title": "Timeline with introduction",
+			"description": "Heading, short introduction and a link on the left, five dated entries of a timeline on the right. Use to tell how a project, a decision or a story developed over time.",
+			"area": "content",
+			"useWhen": "Background to a news story, the history of a project or an organization, any sequence of dated steps that a reader should follow in order.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "asymmetric",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Steps without dates; use content-steps instead. More than seven entries make the band longer than the screen. Needs Leitvia Studio for the timeline block.",
+				"a11y": "The timeline is an ordered list; every entry has a time element with a machine readable date and an h3 under the section h2. Line and dots are decoration.",
+				"contentLength": {
+					"heading": [
+						20,
+						60
+					],
+					"text": [
+						40,
+						140
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/content-entry-facts",
+			"title": "Entry facts",
+			"description": "The facts of one entry as a ruled list of label and value, such as date, price and free places, each value bound to a field of the content model. Use in the content of an entry page below the introduction.",
+			"area": "content",
+			"useWhen": "Entry page of a post type of the content model, such as a course or an event. Copy the markup into the content of the entry with leitvia/create-content: one row per field, the label as text, the value bound to leitvia/meta with the field key (suffix adds a unit or currency such as \" €\"). It renders as a description list.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "list",
+				"weight": "light",
+				"role": "detail",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Pages without an entry of the content model as context; the bound values stay empty there. Prices of products, which the shop shows.",
+				"a11y": "Renders as a description list: each label a term, each value its description, in reading order. Keep exactly two paragraphs per row, the label first.",
+				"contentLength": {
+					"heading": null,
+					"text": [
+						1,
+						40
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/teaser-type-entries",
+			"title": "Entries of a type",
+			"description": "Heading above the latest entries of one post type as a ruled list, each with its linked title and excerpt. Use as the overview of courses, events or other entries of the content model, with their fields in each row.",
+			"area": "teaser",
+			"useWhen": "Overview page of a post type of the content model, such as courses or events. Build it with leitvia/create-content from this markup: set query.postType to the type and add a paragraph per field bound to leitvia/meta.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "list",
+				"weight": "light",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Blog posts; use teaser-posts-list or teaser-posts-grid. Unchanged through compose-page it lists blog posts, not the entries of a type.",
+				"a11y": "Titles are h3 links under the section h2; field values follow their title in reading order. A value that is unclear on its own, such as a bare number, sits in a row with a label such as Free places.",
+				"contentLength": {
+					"heading": [
+						10,
+						40
+					],
+					"text": null
 				},
 				"replacedBy": null
 			}
@@ -2921,6 +3294,45 @@
 					"text": [
 						30,
 						80
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/content-spotlight-scene",
+			"title": "Scene with points",
+			"description": "Heading and short introduction above a wide picture with four numbered points; each point opens a name, one line and a link. Use to show the products in a room, on a table or on a person, or the parts of a product in their place.",
+			"area": "content",
+			"useWhen": "A shop or product page where one photo shows several products or parts that each deserve a name and a link.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "overlap",
+				"weight": "heavy",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "intrinsic",
+					"displayWidth": "80rem",
+					"recommendedSize": "2560x1707",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "Pictures without distinct objects, or more than six points; use an image with a caption or a product grid. Needs Leitvia Studio for the spotlight block.",
+				"a11y": "Every point is a disclosure with its name as the accessible name; the number is hidden from assistive technology. Below 782 px the points follow the picture as a list in the same order, so nothing depends on the picture.",
+				"contentLength": {
+					"heading": [
+						30,
+						70
+					],
+					"text": [
+						60,
+						140
 					]
 				},
 				"replacedBy": null

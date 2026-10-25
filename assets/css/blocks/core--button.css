@@ -53,3 +53,8 @@
 	background-color: var(--wp--preset--color--ink);
 	color: var(--wp--preset--color--surface);
 }
+/* Core breaks labels anywhere; wrap between words, break only a word wider than the button. */
+.wp-block-button__link {
+	word-break: normal;
+	overflow-wrap: break-word;
+}

@@ -27,7 +27,13 @@ body .wp-block-add-to-cart-form {
 	}
 	& .reset_variations {
 		margin-inline-start: var(--wp--preset--spacing--s);
+		padding: 0;
+		border: 0;
+		background: none;
 		color: var(--wp--preset--color--ink);
+		font: inherit;
+		text-decoration: underline;
+		cursor: pointer;
 	}
 	& .single_add_to_cart_button.button {
 		min-height: 3rem;

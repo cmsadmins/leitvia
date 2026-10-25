@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -13,6 +13,10 @@ An AI-first block theme built on semantic design tokens.
 == Description ==
 
 Leitvia is an AI-first block theme built on semantic design tokens. Every pattern uses roles instead of values, so style variations, AI agents and editors can change the whole design without breaking layout or accessibility. Warm editorial by default, flexible from personal blogs to large corporate sites and online shops built with WooCommerce.
+
+= Leitvia Studio and Leitvia Pro =
+
+The theme works on its own. The free plugin Leitvia Studio (Plugins, Add New, search for "Leitvia Studio") adds a Pattern Lab with previews in every style variation, token sets for your brand, site recipes that set up a blog, company site, publication, documentation or shop in one step, a content model, and a gateway through which AI agents such as Claude Code build pages from the patterns of this theme. The paid add-on Leitvia Pro adds the blocks Slider, Scroll story, Before and after and Entry list and eight industry kits: https://leitvia.com/pricing/
 
 == Accessibility ==
 
@@ -68,6 +72,14 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Terms for the paid Leitvia Pro plans and the account on leitvia.com (they do not apply to this free software): https://leitvia.com/terms/
 
 == Changelog ==
+
+= 1.1.0 =
+* The theme description and the readme name the free plugin Leitvia Studio and what it adds.
+* New patterns: Downloads (content-downloads) in the new list style Download, one text link per file with format and size; Masthead (header-masthead) for a newspaper; Hero with search (hero-search) for documentation and help centers; Front page (teaser-front-page) with the sticky lead story and headlines in brief.
+* Blog: lists of posts get a continue reading link that names the post for screen readers, the blog heading takes title and excerpt of the posts page, and single posts get an author box without avatar, a post navigation that says previous or next article and up to three related posts from the same categories.
+* Shop category tiles show the image of the category through the new binding source leitvia/term-image, with width and height set on render; a category without an image keeps name and description.
+* Clear on a variable product is a button instead of a link to "#", so screen readers announce an action and Space presses it.
+* Button labels wrap between words, the headings of the shop USP bar are level 2.
 
 = 1.0.2 =
 * accessibility.txt describes how the theme is tested for accessibility, its screen reader text class and where to report problems, as WordPress.org asks of themes with the tag accessibility-ready.

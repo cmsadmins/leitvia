@@ -89,11 +89,12 @@ Pages should read like a designed magazine, not like stacked slices of equal wei
 | `content-break-image` | image, full-bleed, airy | Edge-to-edge image break with one short statement |
 | `content-statement` | accent, asymmetric, airy | One sentence in `display` size on the accent color |
 | `teaser-editorial-grid` | surface, grid, regular | Lead story on two thirds, four more posts beside it |
+| `teaser-front-page` | surface, asymmetric, dense | Newspaper front: the sticky lead wide, headlines in brief and three more stories beside it |
 | `content-media-pair` | surface-alt, asymmetric, airy | Two images of different size, offset, with captions |
 
 Offsets and overlaps come only from spacing presets (a top margin of `xxl`, or a negative top margin of `xl` written as `calc(var(--wp--preset--spacing--xl) * -1)`), never from fixed values. Keep the DOM order the reading order: the text comes first, the image follows.
 
-Leitvia Studio adds patterns with its own blocks (bento grid, reveal, highlight format, pricing, comparison table, feature group). The contract lists them under `studioPatterns` with the same metadata; their slugs start with `leitvia-studio/`. Use them only when Leitvia Studio is active. The theme's own patterns never contain Studio blocks, so the theme stays complete without the plugin. Starting patterns of Studio for a template part area are not listed: `leitvia-studio/header-announcement` puts the announcement bar as a band over the full width above `leitvia/header-default`; pick it for the header in the Site Editor.
+Leitvia Studio adds patterns with its own blocks (bento grid, reveal, highlight format, pricing, comparison table, feature group). The contract lists them under `studioPatterns` with the same metadata; their slugs start with `leitvia-studio/`. Use them only when Leitvia Studio is active. The theme's own patterns never contain Studio blocks, so the theme stays complete without the plugin. Starting patterns of Studio for a template part area are not listed: `leitvia-studio/header-announcement` puts the announcement bar as a band over the full width above `leitvia/header-default`; pick it for the header in the Site Editor. For a news site, `leitvia/header-masthead` sets a wide logo centered above the navigation like the masthead of a daily, and `leitvia-studio/content-timeline` tells the background of a story as dated entries.
 
 Shop patterns (`leitvia/shop-*`, inserter category Shop) carry `requires: [ "woocommerce" ]` and exist only while WooCommerce runs: product hero, benefits bar, category tiles, new arrivals, bestsellers and trust badges. A shop home page on `page-landing` reads well as `leitvia/shop-product-hero` > `leitvia/shop-usp-bar` > `leitvia/shop-category-tiles` > `leitvia/shop-new-arrivals` > `leitvia/shop-bestsellers` > `leitvia/proof-trust-strip`. `leitvia/shop-legal-info` (tax and shipping note, unit price, delivery time) also needs Germanized; the single product template already shows it below the price. Name payment methods as text, never as logos of other brands.
 
@@ -137,10 +138,12 @@ The `pageFrames` section names the slots of each page type (`intro`, `toc`, `act
 | --- | --- | --- |
 | Home | `page-landing` | Hero (split image or centered), `proof-logos` or `proof-trust-strip`, `teaser-services`, a proof pattern, `teaser-posts-grid` or `teaser-posts-list`, `cta-banner` |
 | Service | `page-landing` | `hero-centered` or `hero-split-image`, `content-text-media`, `content-steps`, `content-feature-grid`, `proof-testimonials-grid` or `content-quote`, `offer-pricing-3` or `content-price-list`, `content-faq`, `cta-contact` |
-| Product | `page-landing` | `content-feature-catalog`, `content-compare-two`, `offer-pricing-3`, `content-changelog`, `teaser-posts-badge` |
+| Product | `page-landing` | `content-feature-catalog`, `content-compare-two`, `offer-pricing-3`, `content-changelog`, `content-downloads`, `teaser-posts-badge` |
+| Blog | `home`, `archive`, `author`, `single` | No patterns of your own: the templates carry the overview with continue reading links and pagination, category and author archives with their descriptions, and the post page with author box, previous and next post and related posts. A posts page set in the reading settings gives the overview its h1 |
 | Article | `single` | Core blocks in reading width; `content-quote`, `content-stats` or `content-steps` inside long reads; `cta-newsletter` at the end |
 | About | `page-landing` | `hero-editorial`, `content-two-columns`, `content-stats`, `proof-team`, `content-quote`, `cta-contact` |
 | Contact | `page` | `cta-contact`, `content-faq`, a form plugin block in a plain section |
+| Documentation home | `page-landing` | `hero-search`, `content-feature-grid` or `content-steps`, `content-changelog`, `content-downloads`, `content-faq`, `cta-contact` |
 
 Before using a pattern read its `useWhen` and `docs.avoidWhen`. Respect `docs.contentLength` (characters of the main heading and of each supporting text) so layouts do not break. `images` lists every image slot with aspect ratio, display width and the pixel size to deliver.
 
@@ -172,6 +175,7 @@ Leitvia targets WCAG 2.2 AA and BITV 2.0. Agents must keep it that way:
 - Client logos are Icon blocks from the `leitvia` icon collection and take the text color. Give each one the company name as its label.
 - Every Search block is a search landmark named after its label. Give each search on a page its own label: the theme uses Site search (header), Search products (shop header), Search documentation (documentation sidebar) and Search this site (404). Searches in templates keep the default name Search.
 - On sites with more than a few pages use `header-search`, so every page can be found by search as well as by navigation (WCAG 2.4.5).
+- Files to download sit in a list, one text link per file that names the file, its format and its size ("Price list 2026 (PDF, 180 KB)"), as in `content-downloads` with the Download list style. Never an icon as the only link; the file mark of the style is decorative.
 - Tables keep their caption; wide tables and terminal code become focusable scroll regions automatically.
 - Pages in easy language (Leichte Sprache) are normal pages on the template `page-easy-language`; the template sets size, width and spacing. Write them by the rules of easy language: short sentences, one thought per sentence, common words, explain every unavoidable term, active voice, no abbreviations, numbers as digits. Headings and lists help more than long paragraphs. Leitvia Studio links the page and its original (setting in the page sidebar, block "Easy language switch").
 - Respect reduced motion. The few theme transitions (color only, 150 ms) switch off under `prefers-reduced-motion`; patterns add no animation of their own, cards never scale on hover.

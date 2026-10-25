@@ -3,7 +3,7 @@
  * Title: Shop category tiles
  * Slug: leitvia/shop-category-tiles
  * Categories: leitvia-shop
- * Description: Heading above one tile per product category of the shop, three across on wide screens, each with the linked category name and its description. The tiles follow the categories of the shop on their own. Use on a shop home page to lead visitors into the range.
+ * Description: Heading above one tile per product category of the shop, three across on wide screens, each with the image of the category when it has one, the linked category name and its description. The tiles follow the categories of the shop on their own. Use on a shop home page to lead visitors into the range.
  * Keywords: shop, categories, product categories, tiles, range, woocommerce
  * Viewport Width: 1400
  *
@@ -21,6 +21,9 @@
 		<!-- wp:term-template {"style":{"spacing":{"blockGap":"var:preset|spacing|m"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"14rem"}} -->
 			<!-- wp:group {"style":{"border":{"radius":"var:preset|border-radius|s"},"spacing":{"padding":{"top":"var:preset|spacing|m","right":"var:preset|spacing|m","bottom":"var:preset|spacing|m","left":"var:preset|spacing|m"},"blockGap":"var:preset|spacing|xs"}},"backgroundColor":"surface-alt"} -->
 			<div class="wp-block-group has-surface-alt-background-color has-background" style="border-radius:var(--wp--preset--border-radius--s);padding-top:var(--wp--preset--spacing--m);padding-right:var(--wp--preset--spacing--m);padding-bottom:var(--wp--preset--spacing--m);padding-left:var(--wp--preset--spacing--m)">
+				<!-- wp:image {"aspectRatio":"4/3","scale":"cover","sizeSlug":"medium_large","linkDestination":"none","metadata":{"bindings":{"url":{"source":"leitvia/term-image"}},"leitviaDecorative":true}} -->
+				<figure class="wp-block-image size-medium_large"><img alt="" style="aspect-ratio:4/3;object-fit:cover"/></figure>
+				<!-- /wp:image -->
 				<!-- wp:term-name {"level":3,"isLink":true,"fontSize":"heading-s"} /-->
 				<!-- wp:term-description {"textColor":"ink-muted","fontSize":"meta"} /-->
 			</div>
