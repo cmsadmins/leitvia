@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -40,7 +40,7 @@ Leitvia supports WooCommerce with block templates, template parts, patterns and 
 
 * Templates for the shop page, product categories, tags, attributes and brands (these use the shop template), product search results, single products, cart, checkout and order confirmation. The My account page is created by WooCommerce; the theme styles its login, registration and account forms.
 * Template parts "Shop header" with product search, customer account and mini cart, and for the checkout a header with logo and a link back to the cart and a minimal footer, without the main navigation.
-* Shop patterns in the category "Shop": shop hero with product, category tiles, new arrivals, bestsellers, a benefits bar, trust badges and "Legal price information". The last one shows the tax note, shipping costs, unit price and delivery time from the blocks of Germanized, is offered only while Germanized is active and is already part of the single product template.
+* Shop patterns in the category "Shop": shop hero with product, category tiles, new arrivals, bestsellers, a benefits bar, trust badges and "Legal price information". The last one shows the tax note, shipping costs, unit price and delivery time from the blocks of Germanized, is offered only while Germanized is active and is already part of the single product template. "Legal guarantee notice" shows the EU notice on the legal guarantee from Germanized below the add to cart form, as a disclosure with a text summary, the label and a link to europa.eu; the theme renders the notice this way in cart and checkout as well.
 * Styles for prices, sale badge, ratings, product tabs, cart, checkout, notices and mini cart come from the same design tokens as the rest of the theme, in every style variation. They load only on pages that use the blocks.
 * Plugins that hook into the classic WooCommerce templates keep working: the templates are built like the block templates of WooCommerce, so the classic product, shop and account hooks fire, and the product page uses the classic product tabs and add to cart form.
 * Cart and checkout work with the keyboard, keep the double focus ring, reach WCAG 2.2 AA contrast for prices, fields and error messages and reflow at 320 CSS pixels.
@@ -72,6 +72,12 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Terms for the paid Leitvia Pro plans and the account on leitvia.com (they do not apply to this free software): https://leitvia.com/terms/
 
 == Changelog ==
+
+= 1.2.0 =
+* The EU notice on the legal guarantee of Germanized is a disclosure with a text summary, the label at 20rem and a text link to europa.eu, in every variant and place: product block, cart, checkout, the shortcode and the footer. No popover, no link to "#".
+* New pattern Legal guarantee notice (shop-legal-guarantee), placed in the single product template below the add to cart form. It registers only with Germanized and shows only while the notice is switched on there.
+* The footer location of Germanized sits inside the footer landmark, through the new action leitvia_footer_end that other plugins can use as well.
+* Theme contract 1.13.0.
 
 = 1.1.0 =
 * The theme description and the readme name the free plugin Leitvia Studio and what it adds.

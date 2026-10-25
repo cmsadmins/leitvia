@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.12.0",
+	"contractVersion": "1.13.0",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -3034,8 +3034,37 @@
 			},
 			"images": [],
 			"docs": {
-				"avoidWhen": "Shops without Germanized; the pattern is then not registered and the product template shows nothing in its place. With German Market use its own blocks.",
+				"avoidWhen": "Shops without Germanized; the pattern is then not registered and the product template shows nothing in its place. German Market prints its own price details after the price by itself.",
 				"a11y": "Plain text lines in the muted role that keep the meta contrast; the shipping note links to the shipping costs page with a descriptive link text from Germanized.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			},
+			"requires": [
+				"woocommerce",
+				"woocommerce-germanized"
+			]
+		},
+		{
+			"slug": "leitvia/shop-legal-guarantee",
+			"title": "Legal guarantee notice",
+			"description": "The EU notice on the legal guarantee from Germanized, as a disclosure with a text summary, the official label and a link to europa.eu. Shows only while the notice is switched on in Germanized and the product is not virtual. Available only while Germanized is active. Use in the single product template below the add to cart form.",
+			"area": "page",
+			"useWhen": "In the single product template below the add to cart form (it is placed there already), while Germanized is active and its notice on the legal guarantee is switched on.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Product grids, where one disclosure per product is noise, and shops without Germanized; the pattern is then not registered and the product template shows nothing in its place.",
+				"a11y": "A native disclosure (details and summary) with a text summary, operable by keyboard without script; the label image carries Germanized's alt text, and a text link leads to the full notice on europa.eu. The theme renders every variant of Germanized this way, also in cart, checkout and the shortcode.",
 				"contentLength": {
 					"heading": null,
 					"text": null

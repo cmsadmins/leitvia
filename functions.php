@@ -545,3 +545,80 @@ function reset_variations_button(): string {
 	return '<button type="button" class="reset_variations" aria-label="' . esc_attr__( 'Clear options', 'leitvia' ) . '">' . esc_html__( 'Clear', 'leitvia' ) . '</button>';
 }
 add_filter( 'woocommerce_reset_variations_link', __NAMESPACE__ . '\reset_variations_button' );
+
+/**
+ * The EU notice on the legal guarantee from Germanized as a disclosure from core blocks. Germanized opens it in a popover
+ * from a link to the image file, closes it with a link to "#" inside a tooltip, and its full variant is a poster of
+ * 1,654 px. Here a details block with a text summary holds the official label (the image of Germanized, served from the
+ * site) at 20rem and a text link to the notice on europa.eu: keyboard and screen readers get a native disclosure, no
+ * script, no link without a target. The full variant starts open. The note Germanized adds in a mixed cart stays as text,
+ * before the disclosure or, in the link variant, as part of its summary. Germanized prints this filter's result in the
+ * product block, the cart and checkout blocks, the shortcode [gzd_legal_guarantee] and its global locations; without
+ * Germanized the filter never runs. Styles come from core/details and core/image, the theme CSS stays as it is.
+ *
+ * @param string $html    Markup from Germanized.
+ * @param string $variant full, preview or link.
+ * @param string $lang    Language of the label, empty for the language of the request.
+ */
+function legal_guarantee_notice( $html, $variant = '', $lang = '' ): string {
+	if ( ! function_exists( 'wc_gzd_get_legal_guarantee_image_url' ) || ! function_exists( 'wc_gzd_get_legal_guarantee_url' ) ) {
+		return (string) $html;
+	}
+	$html    = (string) $html;
+	$summary = __( 'Your legal guarantee rights', 'leitvia' );
+	$note    = preg_match( '#class="wc-gzd-legal-guarantee-mixed-cart-notice">(.*?)</p>#s', $html, $match ) ? wp_strip_all_tags( $match[1] ) : '';
+	if ( 'link' === $variant && preg_match( '#class="wc-gzd-popover-trigger"[^>]*>(.*?)</a>#s', $html, $match ) && '' !== trim( wp_strip_all_tags( $match[1] ) ) ) {
+		$summary = trim( wp_strip_all_tags( $match[1] ) );
+	}
+	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Germanized's filter, so a shop's own alt text applies here too.
+	$alt   = apply_filters( 'woocommerce_gzd_legal_guarantee_alt_text', __( 'Your legal guarantee rights: Minimum two-year legal guarantee protection for goods sold in the European Union.', 'leitvia' ), $variant, $lang, '' );
+	$open  = 'full' === $variant;
+	$block = sprintf(
+		'<!-- wp:details {"showContent":%1$s} --><details class="wp-block-details"%2$s><summary>%3$s</summary>'
+		. '<!-- wp:image {"width":"20rem","sizeSlug":"full"} --><figure class="wp-block-image size-full is-resized"><img src="%4$s" alt="%5$s" width="1654" height="2339" loading="lazy" decoding="async" style="width:20rem"/></figure><!-- /wp:image -->'
+		. '<!-- wp:paragraph --><p><a href="%6$s">%7$s</a></p><!-- /wp:paragraph --></details><!-- /wp:details -->',
+		$open ? 'true' : 'false',
+		$open ? ' open' : '',
+		esc_html( $summary ),
+		esc_url( wc_gzd_get_legal_guarantee_image_url( $lang ) ),
+		esc_attr( (string) $alt ),
+		esc_url( wc_gzd_get_legal_guarantee_url( $lang ) ),
+		esc_html__( 'The legal guarantee in the EU, explained on europa.eu', 'leitvia' )
+	);
+	$note  = ( '' !== $note && 'link' !== $variant ) ? '<p class="wc-gzd-legal-guarantee-mixed-cart-notice">' . esc_html( $note ) . '</p>' : '';
+	return '<div class="wc-gzd-legal-guarantee-label leitvia-legal-guarantee">' . $note . do_blocks( $block ) . '</div>';
+}
+add_filter( 'woocommerce_gzd_legal_guarantee_html', __NAMESPACE__ . '\legal_guarantee_notice', 10, 3 );
+
+/**
+ * Germanized prints its global notice for the location "footer" on wp_footer, after the footer of a block theme and so
+ * outside every landmark. Its hook goes to leitvia_footer_end instead, which footer_end() fires inside the footer.
+ *
+ * @param array  $hook     Hook name and priority.
+ * @param string $location Location of the notice.
+ */
+function legal_guarantee_footer_hook( $hook, $location = '' ): array {
+	return 'footer' === $location ? array(
+		'hook'     => 'leitvia_footer_end',
+		'priority' => 10,
+	) : (array) $hook;
+}
+add_filter( 'woocommerce_gzd_legal_guarantee_location_hook', __NAMESPACE__ . '\legal_guarantee_footer_hook', 10, 2 );
+
+/**
+ * Fires leitvia_footer_end at the end of every footer template part (tagName footer), inside the contentinfo landmark,
+ * so plugins can add legal notes there. Nothing changes while no callback is hooked.
+ *
+ * @param string $html  Block HTML.
+ * @param array  $block Parsed block.
+ */
+function footer_end( string $html, array $block ): string {
+	$end = strrpos( $html, '</footer>' );
+	if ( false === $end || 'footer' !== ( $block['attrs']['tagName'] ?? '' ) || ! has_action( 'leitvia_footer_end' ) ) {
+		return $html;
+	}
+	ob_start();
+	do_action( 'leitvia_footer_end' );
+	return substr_replace( $html, (string) ob_get_clean(), $end, 0 );
+}
+add_filter( 'render_block_core/template-part', __NAMESPACE__ . '\footer_end', 10, 2 );
