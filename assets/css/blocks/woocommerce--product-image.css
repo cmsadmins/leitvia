@@ -1,4 +1,4 @@
-/* A tint where a product has no image. Sale badge: a small square label at the top left, also in the classic loop
+/* A tint where a product has no image. Sale badge: a small square label at the top start, also in the classic loop
    (WooCommerce's olive circle has 3.4:1). */
 .wc-block-components-product-image {
 	background-color: var(--wp--preset--color--surface-alt);
@@ -6,7 +6,8 @@
 body :is(.wc-block-components-product-image, .wc-block-product-gallery-large-image) .wc-block-components-product-sale-badge,
 html body .woocommerce ul.products li.product .onsale {
 	position: absolute;
-	inset: 0.75rem auto auto 0.75rem;
+	inset-block: 0.75rem auto;
+	inset-inline: 0.75rem auto;
 	z-index: 1;
 	min-width: 0;
 	min-height: 0;

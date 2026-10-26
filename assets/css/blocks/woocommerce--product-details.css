@@ -39,7 +39,8 @@ html body .wp-block-woocommerce-product-details.wp-block-woocommerce-product-det
 		color: var(--wp--preset--color--ink);
 	}
 	& .woocommerce-product-attributes :is(th, td) {
-		padding: var(--wp--preset--spacing--xs) var(--wp--preset--spacing--s) var(--wp--preset--spacing--xs) 0;
+		padding-block: var(--wp--preset--spacing--xs);
+		padding-inline: 0 var(--wp--preset--spacing--s);
 		border: 0;
 		border-bottom: 1px solid var(--wp--preset--color--stroke);
 		background: none;
