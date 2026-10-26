@@ -1,13 +1,10 @@
-/* Same double focus ring as buttons and links (see core--button.css) instead of the browser default. */
+/* Focus ring as in core--button.css. */
 .wp-block-search__input:focus-visible {
 	outline: 2px solid var(--wp--preset--color--focus);
 	outline-offset: 2px;
 	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
 }
-/*
- * In a flex row (header-search) the form would keep the intrinsic width of its input and overflow at 320px.
- * Without the minimum it shrinks to the row and the input takes what is left next to the button.
- */
+/* Lets the form shrink in a flex row (header-search) instead of overflowing at 320px. */
 .wp-block-search {
 	min-width: 0;
 }
@@ -16,4 +13,8 @@
 	min-height: 3rem;
 	border-radius: var(--wp--preset--border-radius--s);
 	font-family: var(--wp--preset--font-family--ui);
+}
+/* A search in the content (hero-search) replaces the header search. */
+body:has(main .wp-block-post-content .wp-block-search) header .wp-block-search {
+	display: none;
 }

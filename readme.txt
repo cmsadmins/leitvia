@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -72,6 +72,9 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Terms for the paid Leitvia Pro plans and the account on leitvia.com (they do not apply to this free software): https://leitvia.com/terms/
 
 == Changelog ==
+
+= 1.2.1 =
+* A search placed in the page content, such as the pattern Hero with search, replaces the search of the header on that page, so the front page of a help center shows one search field instead of two.
 
 = 1.2.0 =
 * The EU notice on the legal guarantee of Germanized is a disclosure with a text summary, the label at 20rem and a text link to europa.eu, in every variant and place: product block, cart, checkout, the shortcode and the footer. No popover, no link to "#".
