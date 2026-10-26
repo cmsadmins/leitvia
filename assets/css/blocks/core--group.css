@@ -37,6 +37,11 @@
 	--leitvia-notice: var(--wp--preset--color--warning);
 }
 
+/* Logos in an inverse band take its text color, in light and dark palettes alike. */
+.is-style-inverse .wp-block-social-links.is-style-logos-only .wp-social-link {
+	color: inherit;
+}
+
 /* Header split: navigation, logo and button in three columns, the logo in the middle. */
 .wp-block-group.is-style-header-split {
 	display: grid;

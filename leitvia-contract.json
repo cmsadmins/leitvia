@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.1",
+	"contractVersion": "1.13.2",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -453,7 +453,7 @@
 		{
 			"block": "core/group",
 			"name": "inverse",
-			"purpose": "Band that stays dark in every palette: ink with surface text in light palettes, surface-alt with ink text in dark ones. Use instead of an ink background; pairs in inversePairs.",
+			"purpose": "Band that stays dark in every palette: ink with surface text in light palettes, surface-alt with ink text and a hairline in stroke in dark ones, so the band stands apart from the page. Use instead of an ink background; pairs in inversePairs.",
 			"context": "Full-width section bands for calls to action or proof; at most one or two per page, never nested."
 		},
 		{

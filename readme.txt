@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -72,6 +72,10 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Terms for the paid Leitvia Pro plans and the account on leitvia.com (they do not apply to this free software): https://leitvia.com/terms/
 
 == Changelog ==
+
+= 1.2.5 =
+* Inverse in dark style variations: the band keeps its dark surface and gets a hairline in the stroke color, so it stands apart from the page. Design contract 1.13.2.
+* Footer mega and the second card of Compare two use the Inverse style instead of a fixed ink surface, so they stay dark in dark style variations; the social logos of the footer take the text color of the band.
 
 = 1.2.4 =
 * Hero with card over image: the card reaches into the image again and fills the row on wide screens; in 1.2.3 a core rule for columns with a fixed width kept it at its own width beside the image.

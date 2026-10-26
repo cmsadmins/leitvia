@@ -25,12 +25,12 @@
 		"blocks": {
 			"core/cover": {
 				"variations": {
-					"inverse": { "color": { "background": "var:preset|color|surface-alt", "text": "var:preset|color|ink" } }
+					"inverse": { "color": { "background": "var:preset|color|surface-alt", "text": "var:preset|color|ink" }, "border": { "color": "var:preset|color|stroke", "style": "solid", "width": "1px" } }
 				}
 			},
 			"core/group": {
 				"variations": {
-					"inverse": { "color": { "background": "var:preset|color|surface-alt", "text": "var:preset|color|ink" } }
+					"inverse": { "color": { "background": "var:preset|color|surface-alt", "text": "var:preset|color|ink" }, "border": { "color": "var:preset|color|stroke", "style": "solid", "width": "1px" } }
 				}
 			}
 		}
