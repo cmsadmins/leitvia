@@ -6,17 +6,17 @@
 }
 
 /* Overlap (hero-overlap): the card column reaches into the image, stacked it rises over its lower edge. */
-.wp-block-columns.is-style-overlap > :last-child {
+.wp-block-columns.is-style-overlap > .wp-block-column:last-child {
 	position: relative;
 	z-index: 1;
 }
 @media (max-width: 48.8125rem) {
-	.wp-block-columns.is-style-overlap > :last-child {
+	.wp-block-columns.is-style-overlap > .wp-block-column:last-child {
 		margin: calc(var(--wp--preset--spacing--xl) * -1) var(--wp--preset--spacing--s) 0;
 	}
 }
 @media (min-width: 48.875rem) {
-	.wp-block-columns.is-style-overlap > :last-child {
+	.wp-block-columns.is-style-overlap > .wp-block-column:last-child {
 		flex-grow: 1;
 		margin-inline-start: calc(var(--wp--preset--spacing--xxl) * -1.5);
 	}
