@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.0",
+	"contractVersion": "1.13.1",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -521,6 +521,24 @@
 			"name": "comparison",
 			"purpose": "Comparison or price tables with a strong header row; scrolls sideways as a named region.",
 			"context": "Tables that compare plans or options; keep the caption and a header row."
+		},
+		{
+			"block": "core/columns",
+			"name": "overlap",
+			"purpose": "The last column, a card, reaches into the column before it, an image; stacked on phones it rises over the lower edge of the image.",
+			"context": "Two columns of one image and one text card, as in hero-overlap; never with more than two columns."
+		},
+		{
+			"block": "core/group",
+			"name": "header-split",
+			"purpose": "Three columns of navigation, logo and action, with the logo exactly in the middle.",
+			"context": "The row of a header template part with navigation, site logo group and buttons, as in header-split; not for content."
+		},
+		{
+			"block": "core/buttons",
+			"name": "header-action",
+			"purpose": "The button beside the navigation of a header; hidden below 1024 px, where logo, menu items and button no longer fit in one row.",
+			"context": "Buttons in a header template part only; the target page must also be in the navigation."
 		}
 	],
 	"compositionRules": {
@@ -1715,6 +1733,81 @@
 			]
 		},
 		{
+			"slug": "leitvia/header-cta",
+			"title": "Header with button",
+			"description": "Site logo and title on the left, the main navigation and one button for the main action on the right, such as booking or getting in touch, with a fine line below. Below 1024 px the button gives way to the navigation. Use when one action matters on every page.",
+			"area": "header",
+			"useWhen": "Sites with one action that matters on every page, such as booking, a quote or getting in touch.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "light",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "More than six top level menu items, or no single main action; use header-default.",
+				"a11y": "Labelled navigation with a menu button on small screens; the button link names its target and is hidden below 1024 px, so the same page must be in the navigation.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/header-utility",
+			"title": "Header with service bar",
+			"description": "A slim dark bar above the header with opening hours on the left and a phone number and one more link on the right, then site logo and title, the main navigation and one button for the main action. Below 1024 px the button gives way to the navigation. Use for practices, trades and services that people call before they visit.",
+			"area": "header",
+			"useWhen": "Practices, trades, offices and services that people call or visit: opening hours and phone number on every page.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "medium",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Online only businesses, or when the bar would repeat the same facts as the header; use header-cta.",
+				"a11y": "The bar is part of the banner landmark; its phone link uses tel: with the number in the link text. Labelled navigation with a menu button on small screens; the button is hidden below 1024 px, so its page must be in the navigation.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/header-split",
+			"title": "Header with centered logo",
+			"description": "The main navigation on the left, site logo and title exactly in the middle and one button on the right, with a fine line below. On phones the menu button sits on the left and the logo stays in the middle. Use for restaurants, studios, firms and brands whose logo should lead.",
+			"area": "header",
+			"useWhen": "Restaurants, studios, firms and brands with a strong logo and four or five menu items.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "centered",
+				"weight": "light",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "More than five top level menu items; the left column wraps. Long site titles without a logo.",
+				"a11y": "Labelled navigation with a menu button on small screens, where it sits on the left; the button is hidden below 1024 px, so its page must be in the navigation.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/hero-centered",
 			"title": "Hero centered",
 			"description": "Centered page intro with eyebrow, large heading, lead text and two buttons. Use at the top of landing pages.",
@@ -1880,6 +1973,84 @@
 					"text": [
 						80,
 						160
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hero-overlap",
+			"title": "Hero with card over image",
+			"description": "A large image on the left and a text card on the right that reaches into the image, with eyebrow, heading, lead text and two buttons; on phones the card overlaps the lower edge of the image. Use when a photo should lead but the text must stay on a calm background.",
+			"area": "hero",
+			"useWhen": "Home and service pages where a photo should lead but the message must stay on a calm background, never on the picture.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "overlap",
+				"weight": "heavy",
+				"role": "hook",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "4/3",
+					"displayWidth": "52rem",
+					"recommendedSize": "1600x1200",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The next section is also split or overlapping, or no meaningful photo exists.",
+				"a11y": "Holds the only h1, in the card, so text never sits on the image; the image needs alt text when it shows what the page offers.",
+				"contentLength": {
+					"heading": [
+						25,
+						60
+					],
+					"text": [
+						60,
+						140
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hero-teaser-trio",
+			"title": "Hero with three teasers",
+			"description": "Page intro as three large picture teasers: heading and lead text in one row above three tall images, each with a number, a linked title and one sentence below. Use on home pages that lead straight into three services, stories or offers instead of one big message.",
+			"area": "hero",
+			"useWhen": "Home pages that lead straight into three services, stories or offers of equal weight.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "heavy",
+				"role": "hook",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "3/4",
+					"displayWidth": "25rem",
+					"recommendedSize": "900x1200",
+					"count": 3,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "Only one offer, or teasers without strong photos; follow it with a list or text section, not with another grid.",
+				"a11y": "Holds the only h1; teaser titles are h2 links that name their target. Each image needs alt text unless the title says everything it shows.",
+				"contentLength": {
+					"heading": [
+						20,
+						50
+					],
+					"text": [
+						80,
+						140
 					]
 				},
 				"replacedBy": null

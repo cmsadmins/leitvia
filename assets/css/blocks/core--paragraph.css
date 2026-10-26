@@ -11,10 +11,7 @@
 	font-size: 0.875em;
 }
 
-/*
- * One small-text voice for badge, eyebrow and the column heads of footers: the ui font in caps, hierarchy through
- * color and space instead of weight. 12 px only for these caps labels, never for running text or links.
- */
+/* Badge, eyebrow and footer column heads: ui font in caps, hierarchy by color and space; 12 px only here. */
 :is(.is-style-badge, .is-style-eyebrow) {
 	font-family: var(--wp--preset--font-family--ui);
 	font-size: 0.75rem;
@@ -34,10 +31,8 @@
 }
 
 /*
- * Badge: the paragraph keeps its full width, so constrained layouts still line it up with the text column.
- * A single fit-content grid track shrinks to the label and the square tint is painted behind it by ::before,
- * absolutely positioned against that grid area so it stays out of auto placement.
- * Scoped to p, because post terms use the same style name with one pill per term, see core--post-terms.css.
+ * Badge: the paragraph keeps its width (aligned in constrained layouts); a fit-content grid track shrinks to the
+ * label, ::before paints the tint behind it. Only p: post terms reuse the name (core--post-terms.css).
  */
 p.is-style-badge {
 	display: grid;

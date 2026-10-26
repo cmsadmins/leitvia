@@ -61,15 +61,22 @@ function register_block_style_variations(): void {
 	);
 
 	$styles = array(
+		'core/columns'    => array(
+			'overlap' => __( 'Overlap', 'leitvia' ),
+		),
+		'core/buttons'    => array(
+			'header-action' => __( 'Header action', 'leitvia' ),
+		),
 		'core/paragraph'  => array(
 			'badge'   => __( 'Badge', 'leitvia' ),
 			'eyebrow' => __( 'Eyebrow', 'leitvia' ),
 		),
 		'core/group'      => array(
-			'note'    => __( 'Note', 'leitvia' ),
-			'success' => __( 'Success', 'leitvia' ),
-			'warning' => __( 'Warning', 'leitvia' ),
-			'inverse' => __( 'Inverse', 'leitvia' ),
+			'note'         => __( 'Note', 'leitvia' ),
+			'success'      => __( 'Success', 'leitvia' ),
+			'warning'      => __( 'Warning', 'leitvia' ),
+			'inverse'      => __( 'Inverse', 'leitvia' ),
+			'header-split' => __( 'Header split', 'leitvia' ),
 		),
 		'core/cover'      => array(
 			'inverse' => __( 'Inverse', 'leitvia' ),

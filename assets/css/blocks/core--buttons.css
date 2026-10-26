@@ -1,0 +1,6 @@
+/* Header action: below 1024 px the header button gives way, its page is in the navigation. */
+@media (max-width: 63.9375rem) {
+	.wp-block-buttons.is-style-header-action {
+		display: none;
+	}
+}

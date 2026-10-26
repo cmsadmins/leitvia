@@ -22,10 +22,7 @@
 	text-underline-offset: 0.4em;
 }
 
-/*
- * Submenu panel on desktop: a card below its toggle. `:not(.is-menu-open *)` leaves the overlay to core,
- * which lays submenus out inline. Sizes apply only while open, so a closed panel adds no scroll overflow.
- */
+/* Desktop submenu: a card below its toggle; the overlay stays core's. Sized only while open (no overflow). */
 .wp-block-navigation .has-child > .wp-block-navigation__submenu-container:not(.is-menu-open *) {
 	margin-top: var(--wp--preset--spacing--xs);
 	border: 1px solid var(--wp--preset--color--stroke);
@@ -81,10 +78,8 @@
 }
 
 /*
- * Overlay menu: a centred column in the middle of the screen, whatever the desktop alignment.
- * The close button sits at the top right of that column, so it stays next to the menu instead of
- * in the far corner (short pointer path, WCAG 2.5.8 spirit). Auto margins centre the column
- * vertically but let a long menu scroll from its top, unlike justify-content: center.
+ * Overlay: a centred column, the close button at its top right next to the menu (short pointer path, WCAG 2.5.8).
+ * Auto margins centre it but let a long menu scroll from its top, unlike justify-content: center.
  */
 .wp-block-navigation__responsive-container.is-menu-open {
 	display: flex;
@@ -117,10 +112,8 @@
 	font-size: var(--wp--preset--font-size--heading-m);
 }
 /*
- * Submenus in the overlay: centred groups in a smaller size below their parent.
- * Core keeps every submenu open in the overlay and its toggle at aria-expanded="true", so the toggle does nothing;
- * it stays visible because it carries the parent label. Leitvia Studio makes the groups collapsible for long or
- * nested navigations (data-leitvia-collapsible). See docs/accessibility/known-limitations.md.
+ * Overlay submenus: smaller centred groups. Core keeps them open (toggle inert but visible, it carries the label);
+ * Studio makes them collapsible (data-leitvia-collapsible). See docs/accessibility/known-limitations.md.
  */
 .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item {
 	font-size: var(--wp--preset--font-size--heading-s);

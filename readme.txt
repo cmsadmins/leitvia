@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -72,6 +72,11 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Terms for the paid Leitvia Pro plans and the account on leitvia.com (they do not apply to this free software): https://leitvia.com/terms/
 
 == Changelog ==
+
+= 1.2.3 =
+* New header patterns: Header with button (header-cta) with the main navigation and one button for the main action, Header with service bar (header-utility) with opening hours and phone number in a slim bar above, and Header with centered logo (header-split) with the navigation on the left and the logo exactly in the middle.
+* New hero patterns: Hero with card over image (hero-overlap), a large photo with the text card reaching into it, and Hero with three teasers (hero-teaser-trio), three tall picture teasers as the entry of a home page.
+* New block styles: Overlap for Columns, Header split for Group and Header action for Buttons, which hides the header button below 1024 px. Design contract 1.13.1.
 
 = 1.2.2 =
 * Right-to-left: the sale badge on product images sits at the inline start and the product attribute table pads at the inline end, so both mirror in right-to-left languages.

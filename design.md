@@ -91,6 +91,8 @@ Pages should read like a designed magazine, not like stacked slices of equal wei
 | `teaser-editorial-grid` | surface, grid, regular | Lead story on two thirds, four more posts beside it |
 | `teaser-front-page` | surface, asymmetric, dense | Newspaper front: the sticky lead wide, headlines in brief and three more stories beside it |
 | `content-media-pair` | surface-alt, asymmetric, airy | Two images of different size, offset, with captions |
+| `hero-overlap` | surface, overlap, regular | Opening photo on two thirds, the card with the h1 reaching into it from the right |
+| `hero-teaser-trio` | surface, grid, regular | Opening with three tall picture teasers instead of one message |
 
 Offsets and overlaps come only from spacing presets (a top margin of `xxl`, or a negative top margin of `xl` written as `calc(var(--wp--preset--spacing--xl) * -1)`), never from fixed values. Keep the DOM order the reading order: the text comes first, the image follows.
 
@@ -136,7 +138,7 @@ The `pageFrames` section names the slots of each page type (`intro`, `toc`, `act
 
 | Page type | Template | Typical patterns |
 | --- | --- | --- |
-| Home | `page-landing` | Hero (split image or centered), `proof-logos` or `proof-trust-strip`, `teaser-services`, a proof pattern, `teaser-posts-grid` or `teaser-posts-list`, `cta-banner` |
+| Home | `page-landing` | Hero (split image, centered, overlap or three teasers), `proof-logos` or `proof-trust-strip`, `teaser-services`, a proof pattern, `teaser-posts-grid` or `teaser-posts-list`, `cta-banner` |
 | Service | `page-landing` | `hero-centered` or `hero-split-image`, `content-text-media`, `content-steps`, `content-feature-grid`, `proof-testimonials-grid` or `content-quote`, `offer-pricing-3` or `content-price-list`, `content-faq`, `cta-contact` |
 | Product | `page-landing` | `content-feature-catalog`, `content-compare-two`, `offer-pricing-3`, `content-changelog`, `content-downloads`, `teaser-posts-badge` |
 | Blog | `home`, `archive`, `author`, `single` | No patterns of your own: the templates carry the overview with continue reading links and pagination, category and author archives with their descriptions, and the post page with author box, previous and next post and related posts. A posts page set in the reading settings gives the overview its h1 |
@@ -182,6 +184,8 @@ Leitvia targets WCAG 2.2 AA and BITV 2.0. Agents must keep it that way:
 - Buttons are 48 px high, the place order button 52 px, shop icons have 44 px targets. Caps labels at 12 px only for eyebrows and badges, never for running text or links. Footer link lists in a navigation drop the underline at rest; running text keeps it.
 
 ## Template parts
+
+Pick the header by what visitors need first: `header-default` for most sites, `header-cta` when one action such as booking matters on every page, `header-utility` when opening hours and a phone number belong on every page, `header-split` when the logo should lead in the middle, `header-centered` or `header-masthead` for publications. The button of `header-cta`, `header-utility` and `header-split` (block style Header action) is hidden below 1024 px, so its target must also be in the navigation.
 
 Every header pattern opens the template part `navigation-overlay` as its mobile menu: a close button and the navigation as a vertical list on the `surface` background. Edit it in the Site Editor like header and footer. Its navigation shows the site's menu by default; when the header navigation is set to a specific menu, set the same menu in the overlay. The copyright line of every footer pattern is bound to the source `leitvia/site-meta` (key `copyright`) and always shows the current year, also after the footer is saved in the Site Editor. Keep the binding instead of typing a year.
 
