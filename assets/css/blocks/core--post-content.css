@@ -22,3 +22,15 @@
 .wp-block-post-content.is-easy-language :is(.has-text-align-center, .has-text-align-right, .has-text-align-justify) {
 	text-align: start;
 }
+
+/*
+ * Documentation pages (template page-docs): the content sits in a column next to the navigation, where full-width
+ * sections cannot reach the viewport edge. Their root padding would push their content in from the title edge, so
+ * they drop it; sections with a colour band keep a small inset so text does not touch the band.
+ */
+.page-template-page-docs .wp-block-post-content > .alignfull {
+	padding-inline: 0;
+}
+.page-template-page-docs .wp-block-post-content > .alignfull:is(.has-background, .is-style-inverse) {
+	padding-inline: var(--wp--preset--spacing--m);
+}
