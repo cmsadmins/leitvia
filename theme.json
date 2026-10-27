@@ -32,7 +32,7 @@
 			"textShadow": false,
 			"defaultTextShadowPresets": false,
 			"fontSizes": [
-				{ "slug": "meta", "name": "Meta", "size": "0.8125rem", "fluid": false },
+				{ "slug": "meta", "name": "Meta", "size": "0.875rem", "fluid": false },
 				{ "slug": "body", "name": "Body", "size": "1.125rem", "fluid": { "min": "1.0625rem", "max": "1.1875rem" } },
 				{ "slug": "lead", "name": "Lead", "size": "1.3125rem", "fluid": { "min": "1.1875rem", "max": "1.375rem" } },
 				{ "slug": "heading-s", "name": "Heading small", "size": "1.5625rem", "fluid": { "min": "1.375rem", "max": "1.75rem" } },

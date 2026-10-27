@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.7
+Stable tag: 1.2.8
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -71,6 +71,9 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.8 =
+* Readable type on phones: small meta text is 14 px instead of 13 px, and headings no longer force the finest optical size of a variable font, whose hairlines break up on small screens.
 
 = 1.2.7 =
 * Documentation pages: full-width sections in the content column line up with the page title instead of sitting indented by the page padding.
