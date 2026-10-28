@@ -4,6 +4,10 @@
  */
 .wp-block-post-title {
 	text-wrap: pretty;
+	overflow-wrap: break-word;
+}
+:lang(de) .wp-block-post-title {
+	hyphens: auto;
 }
 .wp-block-post-title a:hover {
 	text-decoration: underline;

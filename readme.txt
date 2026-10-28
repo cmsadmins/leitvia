@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.9
+Stable tag: 1.2.10
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -71,6 +71,9 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.10 =
+* Long words no longer push a page sideways on phones: headings and post titles wrap a word that is longer than the line, and German headings hyphenate (WCAG 1.4.10 Reflow). Pages in easy language keep words whole.
 
 = 1.2.9 =
 * New pattern Video with transcript: a video with poster and caption, followed by a folded transcript with the text of every scene.

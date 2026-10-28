@@ -1,6 +1,11 @@
 .wp-block-heading {
 	text-wrap: balance;
 	font-variant-numeric: lining-nums proportional-nums;
+	overflow-wrap: break-word;
+}
+/* Long German compounds (Auftragsverarbeitungsvertrag) would scroll sideways at 320 px (WCAG 1.4.10); German headings hyphenate. */
+:lang(de) .wp-block-heading {
+	hyphens: auto;
 }
 /* No fixed "opsz": optical size follows the rendered size, a display cut on a phone headline draws hairlines below a pixel (tests/unit/typography.test.mjs). */
 .has-display-font-size:is(h1, h2, h3, p) {

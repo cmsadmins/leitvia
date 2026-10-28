@@ -19,6 +19,9 @@
 	text-align: start;
 	hyphens: manual;
 }
+.wp-block-post-content.is-easy-language .wp-block-heading {
+	hyphens: manual;
+}
 .wp-block-post-content.is-easy-language :is(.has-text-align-center, .has-text-align-right, .has-text-align-justify) {
 	text-align: start;
 }
