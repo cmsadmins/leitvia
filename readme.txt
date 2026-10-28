@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.8
+Stable tag: 1.2.9
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -16,7 +16,7 @@ Leitvia is an AI-first block theme built on semantic design tokens. Every patter
 
 = Leitvia Studio and Leitvia Pro =
 
-The theme works on its own. The free plugin Leitvia Studio (Plugins, Add New, search for "Leitvia Studio") adds a Pattern Lab with previews in every style variation, token sets for your brand, site recipes that set up a blog, company site, publication, documentation or shop in one step, a content model, and a gateway through which AI agents such as Claude Code build pages from the patterns of this theme. The paid add-on Leitvia Pro adds the blocks Slider, Scroll story, Before and after and Entry list and eight industry kits: https://leitvia.com/pricing/
+The theme works on its own. The free plugin Leitvia Studio (Plugins, Add New, search for "Leitvia Studio") adds a Pattern Lab with previews in every style variation, token sets for your brand, site recipes that set up a blog, company site, publication, documentation or shop in one step, a content model, and a gateway through which AI agents such as Claude Code build pages from the patterns of this theme. The paid add-on Leitvia Pro adds ten blocks, among them Slider, Scroll story, Before and after and Entry list, and eight industry kits: https://leitvia.com/pricing/
 
 == Accessibility ==
 
@@ -71,6 +71,10 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.9 =
+* New pattern Video with transcript: a video with poster and caption, followed by a folded transcript with the text of every scene.
+* Videos: while a control of a video has focus, the video shows the focus ring of the theme. The browser draws the controls itself, out of reach for theme CSS.
 
 = 1.2.8 =
 * Readable type on phones: small meta text is 14 px instead of 13 px, and headings no longer force the finest optical size of a variable font, whose hairlines break up on small screens.

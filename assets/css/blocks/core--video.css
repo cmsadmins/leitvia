@@ -1,0 +1,9 @@
+/*
+ * The controls of a video are tab stops in the browser's own shadow DOM, out of reach for theme CSS. The video itself
+ * shows the double focus ring of core--button.css while any of them has focus.
+ */
+.wp-block-video:focus-within video {
+	outline: 2px solid var(--wp--preset--color--focus);
+	outline-offset: 2px;
+	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
+}

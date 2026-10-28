@@ -1348,6 +1348,37 @@
 			}
 		},
 		{
+			"slug": "leitvia/content-video",
+			"title": "Video with transcript",
+			"description": "Heading and short introduction above a video with a poster image and a caption, followed by a folded transcript with the text of every scene. Use to explain a process in a short video that stays accessible without sound.",
+			"area": "content",
+			"useWhen": "Showing a process or a product step by step in a short video, with the same content as text for everyone who cannot or does not want to watch.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "medium",
+				"role": "detail",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The video has spoken words; then it needs captions in a text track as well, not only a transcript. Never let it play on its own.",
+				"a11y": "The video has controls and no autoplay. The transcript in a native details element holds everything the video shows, so nothing depends on watching it. The poster is the image of the video, the caption says what it shows.",
+				"contentLength": {
+					"heading": [
+						20,
+						70
+					],
+					"text": [
+						80,
+						200
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/cta-banner",
 			"title": "Call to action banner",
 			"description": "Full-width accent band with a large heading, a short note and one outline button. Use once near the end of a page to ask for the main action.",
