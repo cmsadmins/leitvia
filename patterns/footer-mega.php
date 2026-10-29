@@ -3,7 +3,7 @@
  * Title: Footer mega
  * Slug: leitvia/footer-mega
  * Categories: footer
- * Description: Large dark footer with a brand block of short pitch, trust facts and contact details, four link columns (four across or two by two, never three and one), legal navigation, social links, an empty Language switcher group for a WPML or Polylang switcher block and a back to top link. Use on product and company sites with many pages.
+ * Description: Large dark footer with a brand block of short pitch, trust facts and contact details, four link columns (four across or two by two, never three and one), legal navigation, social links, an empty Language switcher group for the language switcher block of a translation plugin and a back to top link. Use on product and company sites with many pages.
  * Keywords: footer, mega footer, sitemap, contact, legal, social
  * Block Types: core/template-part/footer
  * Viewport Width: 1400

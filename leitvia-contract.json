@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.2",
+	"contractVersion": "1.13.3",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -1538,7 +1538,7 @@
 		{
 			"slug": "leitvia/footer-mega",
 			"title": "Footer mega",
-			"description": "Large dark footer with a brand block of short pitch, trust facts and contact details, four link columns (four across or two by two, never three and one), legal navigation, social links, an empty Language switcher group for a WPML or Polylang switcher block and a back to top link. Use on product and company sites with many pages.",
+			"description": "Large dark footer with a brand block of short pitch, trust facts and contact details, four link columns (four across or two by two, never three and one), legal navigation, social links, an empty Language switcher group for the language switcher block of a translation plugin and a back to top link. Use on product and company sites with many pages.",
 			"area": "footer",
 			"useWhen": "Product and company sites with many pages, legal links and social profiles.",
 			"composition": {

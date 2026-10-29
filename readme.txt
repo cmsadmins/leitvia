@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.10
+Stable tag: 1.2.11
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -13,10 +13,6 @@ An AI-first block theme built on semantic design tokens.
 == Description ==
 
 Leitvia is an AI-first block theme built on semantic design tokens. Every pattern uses roles instead of values, so style variations, AI agents and editors can change the whole design without breaking layout or accessibility. Warm editorial by default, flexible from personal blogs to large corporate sites and online shops built with WooCommerce.
-
-= Leitvia Studio and Leitvia Pro =
-
-The theme works on its own. The free plugin Leitvia Studio (Plugins, Add New, search for "Leitvia Studio") adds a Pattern Lab with previews in every style variation, token sets for your brand, site recipes that set up a blog, company site, publication, documentation or shop in one step, a content model, and a gateway through which AI agents such as Claude Code build pages from the patterns of this theme. The paid add-on Leitvia Pro adds ten blocks, among them Slider, Scroll story, Before and after and Entry list, and eight industry kits: https://leitvia.com/pricing/
 
 == Accessibility ==
 
@@ -30,7 +26,7 @@ Leitvia is built to meet WCAG 2.2 level AA and the web requirements of BITV 2.0 
 * Content reflows at 320 CSS pixels, text can be enlarged to 200 % and text spacing can be increased without loss. Animations stop when the operating system asks for reduced motion.
 * Form fields in search and comments have visible labels, required fields are marked and personal data fields declare their purpose (autocomplete).
 * A pattern "Accessibility statement" gives site owners a template with the details BITV 2.0 and the European Accessibility Act require.
-* The page template "Page in easy language" sets pages in easy language (Leichte Sprache) in a narrower column with larger text, line height 1.6, left aligned and without hyphenation. Leitvia Studio links such a page and its original with a language switch.
+* The page template "Page in easy language" sets pages in easy language (Leichte Sprache) in a narrower column with larger text, line height 1.6, left aligned and without hyphenation.
 
 These properties are checked by an automated test suite (axe-core and a BITV 2.0 suite with keyboard, layout, contrast and form tests) on every template and pattern in every style variation. Automated tests do not replace a test by people: screen reader checks are done by hand, and the accessibility of a site also depends on its content and plugins. Report accessibility problems at https://leitvia.com.
 
@@ -55,7 +51,7 @@ Leitvia works with Polylang for multilingual sites. Polylang translates posts an
 
 Leitvia itself makes no external requests and sets no cookies. Fonts, images and styles ship with the theme, and templates and patterns show no avatars, because WordPress loads them from Gravatar, a third-party service; author pages identify the author by name and biography. WordPress core, plugins and embedded content can still send requests or set cookies.
 
-WooCommerce loads nothing from other hosts on the front end of a new shop, but its feature "Order attribution" is on by default and sets cookies (sbjs_*) on every page view, before a visitor does anything. Switch it off under WooCommerce, Settings, Advanced, Features unless your consent solution covers it; the cart cookies then only appear once a visitor adds a product to the cart. Usage tracking and marketplace suggestions in the admin can be switched off under WooCommerce, Settings, Advanced as well. The recipe "Shop" of the plugin Leitvia Studio switches all of these off. Product reviews show avatars through WordPress; without a plugin for local profile pictures they come from Gravatar while "Show Avatars" under Settings, Discussion is on.
+WooCommerce loads nothing from other hosts on the front end of a new shop, but its feature "Order attribution" is on by default and sets cookies (sbjs_*) on every page view, before a visitor does anything. Switch it off under WooCommerce, Settings, Advanced, Features unless your consent solution covers it; the cart cookies then only appear once a visitor adds a product to the cart. Usage tracking and marketplace suggestions in the admin can be switched off under WooCommerce, Settings, Advanced as well. Product reviews show avatars through WordPress; without a plugin for local profile pictures they come from Gravatar while "Show Avatars" under Settings, Discussion is on.
 
 == Support ==
 
@@ -71,6 +67,15 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.11 =
+* The description and the readme describe the theme on its own, without recommending plugins or paid add-ons.
+* The readme quotes the copyright lines of the bundled fonts from their OFL.txt files and lists the origin of every image, logo and icon.
+* The licence text is LICENSE.txt.
+* The pattern Footer mega names no translation plugin in its description. Design contract 1.13.3.
+* The fonts of the active style are preloaded through WordPress (filter wp_preload_resources) instead of link tags the theme prints itself; the files and the order stay the same.
+* Right-to-left languages: content that templates and patterns align to the start edge sits on the right, as it should, instead of on the left (core writes the left alignment as a physical margin).
+* Table style Comparison: the first column stays in place while a wide table scrolls sideways, for example under 200 % text zoom, so every row keeps its label and the table shows that it scrolls (WCAG 1.4.4, 1.4.10).
 
 = 1.2.10 =
 * Long words no longer push a page sideways on phones: headings and post titles wrap a word that is longer than the line, and German headings hyphenate (WCAG 1.4.10 Reflow). Pages in easy language keep words whole.
@@ -165,16 +170,23 @@ Resources used by the theme are listed here.
 
 = Fonts =
 
-Bundled locally (latin and latin-ext subsets, WOFF2), all licensed under the SIL Open Font License 1.1. The license text sits next to each font in assets/fonts/. Files were obtained from Google Fonts (https://fonts.google.com), source repository https://github.com/google/fonts.
+Bundled locally (latin and latin-ext subsets, WOFF2), all licensed under the SIL Open Font License 1.1. The license text with the copyright line below sits next to each font in assets/fonts/<font>/OFL.txt. Files were obtained from Google Fonts (https://fonts.google.com), source repository https://github.com/google/fonts.
 
-* Newsreader (with the optical size axis), Copyright 2020 The Newsreader Project Authors, SIL OFL 1.1, https://github.com/productiontype/Newsreader
-* Inter Tight (upright and italic, weight axis), Copyright 2022 The Inter Project Authors, SIL OFL 1.1, https://github.com/google/fonts/tree/main/ofl/intertight
-* IBM Plex Sans (upright and italic, weight axis), Copyright 2017 IBM Corp., SIL OFL 1.1, https://github.com/IBM/plex
-* IBM Plex Mono, Copyright 2017 IBM Corp., SIL OFL 1.1, https://github.com/IBM/plex
+* Newsreader (with the optical size axis): Copyright 2020 The Newsreader Project Authors (http://github.com/productiontype/Newsreader). License: SIL Open Font License 1.1, assets/fonts/newsreader/OFL.txt.
+* Inter Tight (upright and italic, weight axis): Copyright 2022 The Inter Project Authors (https://github.com/rsms/inter-tight). License: SIL Open Font License 1.1, assets/fonts/inter-tight/OFL.txt.
+* IBM Plex Sans (upright and italic, weight axis): Copyright © 2017 IBM Corp. with Reserved Font Name "Plex". Source: https://github.com/IBM/plex. License: SIL Open Font License 1.1, assets/fonts/ibm-plex-sans/OFL.txt.
+* IBM Plex Mono: Copyright © 2017 IBM Corp. with Reserved Font Name "Plex". Source: https://github.com/IBM/plex. License: SIL Open Font License 1.1, assets/fonts/ibm-plex-mono/OFL.txt.
 
 = Images and logos =
 
-Images and logos in assets/images are created by Patrick Schlesinger, CMS ADMINS, licensed under GPLv2 or later.
+All files in assets/images were created by Patrick Schlesinger, CMS ADMINS, for this theme and are licensed under GPLv2 or later:
+
+* landscape.webp, portrait.webp, square.webp, detail.webp: placeholder illustrations for the patterns, drawn as vector graphics and exported as WebP.
+* logo-1.svg to logo-5.svg: logos of fictional companies (Tervane, Kolmar Works, Brinnel and Co, Halvera, Marlow Fenn) for the pattern "Logos"; any resemblance to real brands is unintended.
+
+= Icons =
+
+* The download icon of the list style "Download" (assets/css/blocks/core--list.css, an inline SVG used as a CSS mask) was drawn for this theme by Patrick Schlesinger, CMS ADMINS, and is licensed under GPLv2 or later.
 
 = Screenshot =
 

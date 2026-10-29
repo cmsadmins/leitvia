@@ -331,6 +331,24 @@ function related_posts_query( array $block ): array {
 add_filter( 'render_block_data', __NAMESPACE__ . '\related_posts_query' );
 
 /**
+ * Start-aligned content in right-to-left languages. Templates and patterns align their constrained content to the
+ * start edge ("justifyContent":"left", contract layout), and core writes that as a physical margin-left: 0 !important
+ * on the children, so in RTL the column would stay on the left. On an RTL site the theme reads "left" as the start
+ * edge and hands core "right". Flex layouts already justify with flex-start and stay as they are.
+ *
+ * @param array $block Parsed block.
+ */
+function rtl_start_justification( array $block ): array {
+	$layout = $block['attrs']['layout'] ?? null;
+	if ( ! is_rtl() || ! is_array( $layout ) || 'constrained' !== ( $layout['type'] ?? '' ) || 'left' !== ( $layout['justifyContent'] ?? '' ) ) {
+		return $block;
+	}
+	$block['attrs']['layout']['justifyContent'] = 'right';
+	return $block;
+}
+add_filter( 'render_block_data', __NAMESPACE__ . '\rtl_start_justification' );
+
+/**
  * Drops the related posts with their heading while there is no other post to show.
  *
  * @param string $html  Block HTML.
@@ -420,10 +438,10 @@ function theme_image_size( string $html ): string {
 	$tags         = new \WP_HTML_Tag_Processor( $html );
 	$base         = get_theme_file_uri( 'assets/images/' );
 	// Content saved with a path relative to the site root (/wp-content/themes/...) counts as well.
-	$path = (string) wp_parse_url( $base, PHP_URL_PATH );
+	$root = (string) wp_parse_url( $base, PHP_URL_PATH );
 	while ( $tags->next_tag( 'img' ) ) {
 		$src = (string) $tags->get_attribute( 'src' );
-		if ( null !== $tags->get_attribute( 'width' ) || ! ( str_starts_with( $src, $base ) || str_starts_with( $src, $path ) ) ) {
+		if ( null !== $tags->get_attribute( 'width' ) || ! ( str_starts_with( $src, $base ) || str_starts_with( $src, $root ) ) ) {
 			continue;
 		}
 		$file = basename( (string) wp_parse_url( $src, PHP_URL_PATH ) );
@@ -445,10 +463,15 @@ add_filter( 'render_block_core/cover', __NAMESPACE__ . '\theme_image_size' );
  * Preloads the Latin upright files of the body, heading and ui (button) fonts in the active style, so text above the fold
  * renders in its own font instead of swapping from the fallback (layout shift through font-display: swap).
  * The files come from this site; style variations and token sets that change the fonts are resolved through the
- * global settings. Italic, Latin Extended and monospace files load on demand as before.
+ * global settings. Italic, Latin Extended and monospace files load on demand as before. Core prints the links
+ * (filter wp_preload_resources, wp_head at priority 1).
+ *
+ * @param array<int, array<string, string>> $resources Resources core preloads.
+ * @return array<int, array<string, string>>
  */
-function preload_fonts(): void {
-	$families = array();
+function preload_fonts( $resources ): array {
+	$resources = (array) $resources;
+	$families  = array();
 	foreach ( (array) wp_get_global_settings( array( 'typography', 'fontFamilies' ) ) as $origin ) {
 		foreach ( (array) $origin as $family ) {
 			$families[ $family['slug'] ?? '' ] = $family;
@@ -479,10 +502,16 @@ function preload_fonts(): void {
 		}
 	}
 	foreach ( array_unique( $urls ) as $url ) {
-		printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( $url ) );
+		$resources[] = array(
+			'href'        => $url,
+			'as'          => 'font',
+			'type'        => 'font/woff2',
+			'crossorigin' => 'anonymous',
+		);
 	}
+	return $resources;
 }
-add_action( 'wp_head', __NAMESPACE__ . '\preload_fonts', 1 );
+add_filter( 'wp_preload_resources', __NAMESPACE__ . '\preload_fonts' );
 
 /**
  * The shop header starter pattern is offered in the inserter only while WooCommerce registers its mini cart block, so a
@@ -562,6 +591,8 @@ add_filter( 'woocommerce_reset_variations_link', __NAMESPACE__ . '\reset_variati
  * before the disclosure or, in the link variant, as part of its summary. Germanized prints this filter's result in the
  * product block, the cart and checkout blocks, the shortcode [gzd_legal_guarantee] and its global locations; without
  * Germanized the filter never runs. Styles come from core/details and core/image, the theme CSS stays as it is.
+ * Presentation only: this and the two functions below change how and where the notice of Germanized shows; they add
+ * no shop function, store nothing and decide nothing legal. The text, image and link come from Germanized.
  *
  * @param string $html    Markup from Germanized.
  * @param string $variant full, preview or link.

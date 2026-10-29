@@ -2,7 +2,10 @@
  * Comparison: hairlines between rows, meta caps in the head, tabular figures. Columns after the first align to the
  * end so figures line up. Rows cannot carry classes, so the highlighted row is the table footer (core "Footer section").
  * Columns size to their content even with fixed layout on, so words never break mid-word. Tables wider than the
- * screen scroll inside the figure, which functions.php makes a focusable region so arrow keys scroll it.
+ * screen scroll inside the figure, which functions.php makes a focusable region so arrow keys scroll it. The first
+ * column stays in place while the others scroll under it, so a table wider than the screen (or under text zoom) shows
+ * that it scrolls and every row keeps its label. The fixed cells need an opaque ground: surface behind the ink text,
+ * a pair the contract keeps at AA in every palette; in a colored band that would be a light strip, so there they scroll.
  */
 .wp-block-table.is-style-comparison {
 	overflow-x: auto;
@@ -34,8 +37,16 @@
 	white-space: nowrap;
 }
 .wp-block-table.is-style-comparison :is(th, td):first-child {
+	position: sticky;
+	inset-inline-start: 0;
+	z-index: 1;
 	min-width: 6em;
 	padding-inline-start: 0;
+	background-color: var(--wp--preset--color--surface);
+}
+:is(.has-background:not(.has-surface-background-color), .is-style-inverse) .wp-block-table.is-style-comparison :is(th, td):first-child {
+	position: static;
+	background-color: transparent;
 }
 .wp-block-table.is-style-comparison :is(th, td):last-child {
 	padding-inline-end: 0;
