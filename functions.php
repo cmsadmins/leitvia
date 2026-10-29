@@ -433,12 +433,19 @@ add_filter( 'render_block_data', __NAMESPACE__ . '\translated_template_part' );
  * @param array $items Breadcrumb items, each with label and url.
  */
 function translated_breadcrumb_home( array $items ): array {
-	$home = home_url( '/' );
-	if ( empty( $items[0]['url'] ) || untrailingslashit( $items[0]['url'] ) !== untrailingslashit( $home ) ) {
-		return $items;
+	// Polylang filters home_url() for calls from theme files, so here it would already name the start page of the
+	// current language. The item core built is the start page of the default language: compare with that one.
+	if ( function_exists( 'pll_home_url' ) && function_exists( 'pll_default_language' ) ) {
+		$default = pll_home_url( (string) pll_default_language() );
+		$current = pll_home_url();
+	} else {
+		$default = home_url( '/' );
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- the filter of WPML, answered by WPML and compatible plugins.
+		$current = apply_filters( 'wpml_home_url', $default );
 	}
-	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- the filter of WPML, answered by WPML and compatible plugins.
-	$items[0]['url'] = function_exists( 'pll_home_url' ) ? pll_home_url() : apply_filters( 'wpml_home_url', $home );
+	if ( ! empty( $items[0]['url'] ) && untrailingslashit( $items[0]['url'] ) === untrailingslashit( $default ) ) {
+		$items[0]['url'] = $current;
+	}
 	return $items;
 }
 add_filter( 'block_core_breadcrumbs_items', __NAMESPACE__ . '\translated_breadcrumb_home' );

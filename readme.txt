@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.12
+Stable tag: 1.2.13
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,9 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.13 =
+* The first item of the Breadcrumbs block leads to the start page of the current language with Polylang as well; 1.2.12 compared it with a start page Polylang had already translated.
 
 = 1.2.12 =
 * New pattern Previous and next: links to the previous and the next page of a series and back to its overview, for guides, case studies and catalog entries. Design contract 1.13.4.
