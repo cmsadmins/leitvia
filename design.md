@@ -146,6 +146,7 @@ The `pageFrames` section names the slots of each page type (`intro`, `toc`, `act
 | About | `page-landing` | `hero-editorial`, `content-two-columns`, `content-stats`, `proof-team`, `content-quote`, `cta-contact` |
 | Contact | `page` | `cta-contact`, `content-faq`, a form plugin block in a plain section |
 | Documentation home | `page-landing` | `hero-search`, `content-feature-grid` or `content-steps`, `content-changelog`, `content-downloads`, `content-faq`, `cta-contact` |
+| Series or catalog entry | `page-landing` | `hero-editorial` as the head with name and purpose, the content of the entry, `content-pager` at the end; the overview lists every entry with `content-feature-catalog` |
 
 Before using a pattern read its `useWhen` and `docs.avoidWhen`. Respect `docs.contentLength` (characters of the main heading and of each supporting text) so layouts do not break. `images` lists every image slot with aspect ratio, display width and the pixel size to deliver.
 

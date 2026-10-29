@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.3",
+	"contractVersion": "1.13.4",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -1120,6 +1120,34 @@
 					"text": [
 						150,
 						300
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-pager",
+			"title": "Previous and next",
+			"description": "Links to the previous and the next page of a series and back to its overview, each under a short label. Use at the end of guides, case studies and catalog entries that readers go through in order.",
+			"area": "content",
+			"useWhen": "At the end of a page that belongs to a series read in order, such as a guide chapter, a case study or a catalog entry.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "grid",
+				"weight": "light",
+				"role": "close",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The page stands alone or the series has only two pages; link the other page in the text instead.",
+				"a11y": "The links sit in a nav landmark with its own name; each link names its target page, and the label above only adds the direction.",
+				"contentLength": {
+					"heading": null,
+					"text": [
+						10,
+						60
 					]
 				},
 				"replacedBy": null

@@ -426,6 +426,24 @@ function translated_template_part( array $block ): array {
 add_filter( 'render_block_data', __NAMESPACE__ . '\translated_template_part' );
 
 /**
+ * Core starts the Breadcrumbs block with home_url( '/' ), the start page of the default language. On a page in another
+ * language the first crumb leads to the start page of that language instead, as Polylang (pll_home_url) or WPML and
+ * plugins that answer its filter wpml_home_url name it. Without such a plugin nothing changes.
+ *
+ * @param array $items Breadcrumb items, each with label and url.
+ */
+function translated_breadcrumb_home( array $items ): array {
+	$home = home_url( '/' );
+	if ( empty( $items[0]['url'] ) || untrailingslashit( $items[0]['url'] ) !== untrailingslashit( $home ) ) {
+		return $items;
+	}
+	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- the filter of WPML, answered by WPML and compatible plugins.
+	$items[0]['url'] = function_exists( 'pll_home_url' ) ? pll_home_url() : apply_filters( 'wpml_home_url', $home );
+	return $items;
+}
+add_filter( 'block_core_breadcrumbs_items', __NAMESPACE__ . '\translated_breadcrumb_home' );
+
+/**
  * Pattern images point to fixed files in assets/images/. The block editor's markup for core/image and core/cover
  * carries no width and height attributes, so the browser cannot reserve the space before the file arrives and the page
  * shifts (CLS). This adds the file's intrinsic size to such images on render; the saved markup stays canonical.
