@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.13
+Stable tag: 1.2.14
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -59,7 +59,7 @@ Leitvia is developed and maintained by CMS ADMINS, https://cms-admins.de. Ask qu
 
 == Legal ==
 
-Leitvia is a product of CMS ADMINS, a brand of MSRV Hosting und Service GbR, Parkstraße 19, 80339 München, Germany, represented by Patrick Schlesinger and Peter Laschtowitz. Contact: support@cms-admins.de.
+Leitvia is a product of CMS ADMINS, a brand of Patrick Schlesinger, Parkstraße 19, 80339 München, Germany. Contact: support@cms-admins.de.
 
 Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It is provided as is, without any warranty, to the extent permitted by applicable law; see sections 11 and 12 of the GPL. You are responsible for checking that your site meets the legal requirements that apply to it, such as accessibility, privacy and imprint duties; Leitvia helps with these but does not replace that check.
 
@@ -67,6 +67,9 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.14 =
+* The theme ships patterns/dates.json with the date each pattern was added and last changed, so the Pattern Lab of Leitvia Studio can list the newest first.
 
 = 1.2.13 =
 * The first item of the Breadcrumbs block leads to the start page of the current language with Polylang as well; 1.2.12 compared it with a start page Polylang had already translated.

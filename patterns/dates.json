@@ -1,0 +1,330 @@
+{
+	"leitvia/content-asymmetric": {
+		"added": "2026-10-18",
+		"updated": "2026-10-18"
+	},
+	"leitvia/content-break-image": {
+		"added": "2026-10-18",
+		"updated": "2026-10-18"
+	},
+	"leitvia/content-changelog": {
+		"added": "2026-10-15",
+		"updated": "2026-10-20"
+	},
+	"leitvia/content-compare-two": {
+		"added": "2026-10-15",
+		"updated": "2026-10-26"
+	},
+	"leitvia/content-downloads": {
+		"added": "2026-10-24",
+		"updated": "2026-10-24"
+	},
+	"leitvia/content-faq": {
+		"added": "2026-10-15",
+		"updated": "2026-10-17"
+	},
+	"leitvia/content-feature-catalog": {
+		"added": "2026-10-15",
+		"updated": "2026-10-16"
+	},
+	"leitvia/content-feature-grid": {
+		"added": "2026-10-15",
+		"updated": "2026-10-15"
+	},
+	"leitvia/content-media-pair": {
+		"added": "2026-10-18",
+		"updated": "2026-10-18"
+	},
+	"leitvia/content-overlap": {
+		"added": "2026-10-18",
+		"updated": "2026-10-18"
+	},
+	"leitvia/content-pager": {
+		"added": "2026-10-29",
+		"updated": "2026-10-29"
+	},
+	"leitvia/content-price-list": {
+		"added": "2026-10-15",
+		"updated": "2026-10-27"
+	},
+	"leitvia/content-quote": {
+		"added": "2026-10-15",
+		"updated": "2026-10-20"
+	},
+	"leitvia/content-statement": {
+		"added": "2026-10-18",
+		"updated": "2026-10-18"
+	},
+	"leitvia/content-stats": {
+		"added": "2026-10-15",
+		"updated": "2026-10-18"
+	},
+	"leitvia/content-steps": {
+		"added": "2026-10-15",
+		"updated": "2026-10-18"
+	},
+	"leitvia/content-text-media": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/content-two-columns": {
+		"added": "2026-10-15",
+		"updated": "2026-10-15"
+	},
+	"leitvia/content-video": {
+		"added": "2026-10-28",
+		"updated": "2026-10-28"
+	},
+	"leitvia/cta-banner": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/cta-contact": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/cta-newsletter": {
+		"added": "2026-10-15",
+		"updated": "2026-10-20"
+	},
+	"leitvia/cta-split": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/footer-columns": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/footer-mega": {
+		"added": "2026-10-15",
+		"updated": "2026-10-29"
+	},
+	"leitvia/footer-minimal": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/footer-newsletter": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/header-centered": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/header-cta": {
+		"added": "2026-10-15",
+		"updated": "2026-10-26"
+	},
+	"leitvia/header-default": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/header-masthead": {
+		"added": "2026-10-24",
+		"updated": "2026-10-24"
+	},
+	"leitvia/header-minimal": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/header-search": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/header-shop": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/header-split": {
+		"added": "2026-10-26",
+		"updated": "2026-10-26"
+	},
+	"leitvia/header-utility": {
+		"added": "2026-10-26",
+		"updated": "2026-10-26"
+	},
+	"leitvia/hero-centered": {
+		"added": "2026-10-15",
+		"updated": "2026-10-20"
+	},
+	"leitvia/hero-cover-image": {
+		"added": "2026-10-15",
+		"updated": "2026-10-18"
+	},
+	"leitvia/hero-editorial": {
+		"added": "2026-10-15",
+		"updated": "2026-10-15"
+	},
+	"leitvia/hero-overlap": {
+		"added": "2026-10-26",
+		"updated": "2026-10-26"
+	},
+	"leitvia/hero-search": {
+		"added": "2026-10-24",
+		"updated": "2026-10-24"
+	},
+	"leitvia/hero-split-image": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/hero-teaser-trio": {
+		"added": "2026-10-26",
+		"updated": "2026-10-26"
+	},
+	"leitvia/hidden-page-404": {
+		"added": "2026-10-15",
+		"updated": "2026-10-15"
+	},
+	"leitvia/hidden-page-author-no-results": {
+		"added": "2026-10-15",
+		"updated": "2026-10-15"
+	},
+	"leitvia/hidden-page-blog-heading": {
+		"added": "2026-10-15",
+		"updated": "2026-10-24"
+	},
+	"leitvia/hidden-page-checkout-footer": {
+		"added": "2026-10-19",
+		"updated": "2026-10-19"
+	},
+	"leitvia/hidden-page-checkout-header": {
+		"added": "2026-10-18",
+		"updated": "2026-10-18"
+	},
+	"leitvia/hidden-page-docs-sidebar": {
+		"added": "2026-10-15",
+		"updated": "2026-10-16"
+	},
+	"leitvia/hidden-page-no-results": {
+		"added": "2026-10-15",
+		"updated": "2026-10-15"
+	},
+	"leitvia/hidden-page-order-details": {
+		"added": "2026-10-18",
+		"updated": "2026-10-18"
+	},
+	"leitvia/hidden-page-post-author": {
+		"added": "2026-10-24",
+		"updated": "2026-10-24"
+	},
+	"leitvia/hidden-page-post-byline": {
+		"added": "2026-10-15",
+		"updated": "2026-10-15"
+	},
+	"leitvia/hidden-page-post-navigation": {
+		"added": "2026-10-24",
+		"updated": "2026-10-24"
+	},
+	"leitvia/hidden-page-product-details": {
+		"added": "2026-10-18",
+		"updated": "2026-10-19"
+	},
+	"leitvia/hidden-page-read-more": {
+		"added": "2026-10-24",
+		"updated": "2026-10-24"
+	},
+	"leitvia/hidden-page-related-posts": {
+		"added": "2026-10-24",
+		"updated": "2026-10-24"
+	},
+	"leitvia/hidden-page-shop-filters": {
+		"added": "2026-10-18",
+		"updated": "2026-10-18"
+	},
+	"leitvia/hidden-page-sidebar": {
+		"added": "2026-10-15",
+		"updated": "2026-10-15"
+	},
+	"leitvia/offer-pricing-3": {
+		"added": "2026-10-15",
+		"updated": "2026-10-20"
+	},
+	"leitvia/page-accessibility-statement": {
+		"added": "2026-10-15",
+		"updated": "2026-10-16"
+	},
+	"leitvia/proof-logos": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/proof-team": {
+		"added": "2026-10-15",
+		"updated": "2026-10-22"
+	},
+	"leitvia/proof-testimonial": {
+		"added": "2026-10-15",
+		"updated": "2026-10-22"
+	},
+	"leitvia/proof-testimonials-grid": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/proof-trust-strip": {
+		"added": "2026-10-15",
+		"updated": "2026-10-18"
+	},
+	"leitvia/shop-bestsellers": {
+		"added": "2026-10-19",
+		"updated": "2026-10-19"
+	},
+	"leitvia/shop-category-tiles": {
+		"added": "2026-10-19",
+		"updated": "2026-10-24"
+	},
+	"leitvia/shop-legal-guarantee": {
+		"added": "2026-10-25",
+		"updated": "2026-10-25"
+	},
+	"leitvia/shop-legal-info": {
+		"added": "2026-10-19",
+		"updated": "2026-10-19"
+	},
+	"leitvia/shop-new-arrivals": {
+		"added": "2026-10-19",
+		"updated": "2026-10-19"
+	},
+	"leitvia/shop-product-hero": {
+		"added": "2026-10-19",
+		"updated": "2026-10-19"
+	},
+	"leitvia/shop-trust-badges": {
+		"added": "2026-10-19",
+		"updated": "2026-10-19"
+	},
+	"leitvia/shop-usp-bar": {
+		"added": "2026-10-19",
+		"updated": "2026-10-24"
+	},
+	"leitvia/teaser-cards-3": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/teaser-editorial-grid": {
+		"added": "2026-10-18",
+		"updated": "2026-10-19"
+	},
+	"leitvia/teaser-featured-post": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/teaser-front-page": {
+		"added": "2026-10-24",
+		"updated": "2026-10-24"
+	},
+	"leitvia/teaser-posts-badge": {
+		"added": "2026-10-15",
+		"updated": "2026-10-18"
+	},
+	"leitvia/teaser-posts-grid": {
+		"added": "2026-10-15",
+		"updated": "2026-10-19"
+	},
+	"leitvia/teaser-posts-list": {
+		"added": "2026-10-15",
+		"updated": "2026-10-20"
+	},
+	"leitvia/teaser-services": {
+		"added": "2026-10-15",
+		"updated": "2026-10-18"
+	}
+}
