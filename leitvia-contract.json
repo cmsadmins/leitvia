@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.4",
+	"contractVersion": "1.13.5",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -3363,7 +3363,7 @@
 				}
 			],
 			"docs": {
-				"avoidWhen": "The picture explains itself or needs more than six points; then use a list or the feature grid. Needs Leitvia Studio for the spotlight block.",
+				"avoidWhen": "The picture explains itself or needs more than six points; then use a list or the feature grid. The points sit where the sample picture has its parts: with another image, move every point with leitvia/update-block, attributes x and y in percent of the image, or the points show at nothing. Needs Leitvia Studio for the spotlight block.",
 				"a11y": "Each point is a disclosure with a visible number and a name that screen readers announce; on narrow screens the notes follow the image as a list in the same order. The image keeps a meaningful alt text, the notes add detail and never the only description.",
 				"contentLength": {
 					"heading": [
@@ -3582,7 +3582,7 @@
 				}
 			],
 			"docs": {
-				"avoidWhen": "Pictures without distinct objects, or more than six points; use an image with a caption or a product grid. Needs Leitvia Studio for the spotlight block.",
+				"avoidWhen": "Pictures without distinct objects, or more than six points; use an image with a caption or a product grid. The points sit on the objects of the sample picture: with another image, move every point with leitvia/update-block, attributes x and y in percent of the image. Needs Leitvia Studio for the spotlight block.",
 				"a11y": "Every point is a disclosure with its name as the accessible name; the number is hidden from assistive technology. Below 782 px the points follow the picture as a list in the same order, so nothing depends on the picture.",
 				"contentLength": {
 					"heading": [
