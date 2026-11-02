@@ -506,6 +506,23 @@ function translated_breadcrumb_home( array $items ): array {
 add_filter( 'block_core_breadcrumbs_items', __NAMESPACE__ . '\translated_breadcrumb_home' );
 
 /**
+ * A posts page named like the category of a post ("News" and the category News) gives two neighbouring crumbs with the
+ * same label. One goes: the earlier one stays (it leads to the posts page), unless the later one is the current page.
+ *
+ * @param array $items Breadcrumb items, each with label and url.
+ */
+function distinct_breadcrumbs( array $items ): array {
+	$last = count( $items ) - 1;
+	for ( $i = $last; $i > 0; $i-- ) {
+		if ( isset( $items[ $i ]['label'], $items[ $i - 1 ]['label'] ) && 0 === strcasecmp( trim( wp_strip_all_tags( $items[ $i ]['label'] ) ), trim( wp_strip_all_tags( $items[ $i - 1 ]['label'] ) ) ) ) {
+			unset( $items[ $i === $last ? $i - 1 : $i ] );
+		}
+	}
+	return array_values( $items );
+}
+add_filter( 'block_core_breadcrumbs_items', __NAMESPACE__ . '\distinct_breadcrumbs', 20 );
+
+/**
  * Pattern images point to fixed files in assets/images/. The block editor's markup for core/image and core/cover
  * carries no width and height attributes, so the browser cannot reserve the space before the file arrives and the page
  * shifts (CLS). This adds the file's intrinsic size to such images on render; the saved markup stays canonical.
