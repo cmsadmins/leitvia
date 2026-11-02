@@ -9,6 +9,7 @@
 	background-color: color-mix(in srgb, currentcolor 8%, transparent);
 	font-family: var(--wp--preset--font-family--mono);
 	font-size: 0.875em;
+	overflow-wrap: anywhere;
 }
 
 /* Badge, eyebrow and footer column heads: ui font in caps, hierarchy by color and space; 12 px only here. */

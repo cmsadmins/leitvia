@@ -1,3 +1,8 @@
+/* Long code names (hooks, functions) break inside the column instead of scrolling the page at 320 px (WCAG 1.4.10). */
+.wp-block-list code {
+	overflow-wrap: anywhere;
+}
+
 /* Divided: no markers, hairlines between items. Download: one file per item, link first, decorative file mark. */
 .wp-block-list:is(.is-style-divided, .is-style-download) {
 	list-style: none;
