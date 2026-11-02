@@ -8,3 +8,46 @@
 	text-decoration-thickness: 1px;
 	text-underline-offset: 0.2em;
 }
+
+/*
+ * Post card (patterns/hidden-page-post-card.php): one link per card. The title link reaches over the whole card through
+ * a pseudo-element, so image, excerpt and date click through without a second link that would name the post twice.
+ * Category links lie above it and keep their own target. Keyboard focus keeps the theme ring on the title link.
+ */
+.leitvia-post-card {
+	position: relative;
+}
+.leitvia-post-card .wp-block-post-title {
+	font-size: var(--wp--preset--font-size--heading-s);
+}
+.leitvia-post-card .wp-block-post-title a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+}
+.leitvia-post-card .wp-block-post-terms {
+	position: relative;
+	z-index: 1;
+}
+
+/*
+ * Lead story: on the first page of the posts index the first post (the sticky one, else the newest) spans the grid.
+ * From 48rem image and text stand side by side, two thirds to one third, with a larger title. Archives keep the grid.
+ */
+body.blog:not(.paged) .leitvia-post-grid > li:first-child {
+	grid-column: 1 / -1;
+}
+@media (min-width: 48rem) {
+	body.blog:not(.paged) .leitvia-post-grid > li:first-child .leitvia-post-card:has(> .wp-block-post-featured-image) {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		gap: var(--wp--preset--spacing--l);
+		align-items: center;
+	}
+	body.blog:not(.paged) .leitvia-post-grid > li:first-child .leitvia-post-card > * {
+		margin-block: 0;
+	}
+	body.blog:not(.paged) .leitvia-post-grid > li:first-child .wp-block-post-title {
+		font-size: var(--wp--preset--font-size--heading-l);
+	}
+}

@@ -3,7 +3,7 @@
  * Title: Post byline
  * Slug: leitvia/hidden-page-post-byline
  * Categories: text
- * Description: Byline for single posts with linked author, labelled publish and update dates and reading time.
+ * Description: Byline for single posts with linked author, labelled publish and update dates and reading time, on one line where it fits, the parts divided by middle dots.
  * Keywords: byline, author, date, updated, reading time
  * Inserter: no
  *
@@ -24,8 +24,8 @@ $leitvia_labelled_date_format = static function ( string $label ): string {
 };
 
 ?>
-<!-- wp:group {"metadata":{"name":"Byline"},"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|xs","left":"var:preset|spacing|m"}}},"textColor":"ink-muted","fontSize":"meta","layout":{"type":"flex","flexWrap":"wrap"}} -->
-<div class="wp-block-group has-ink-muted-color has-text-color has-meta-font-size">
+<!-- wp:group {"metadata":{"name":"Byline"},"align":"wide","className":"leitvia-byline","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|xxs","left":"var:preset|spacing|xs"}}},"textColor":"ink-muted","fontSize":"meta","layout":{"type":"flex","flexWrap":"wrap"}} -->
+<div class="wp-block-group alignwide leitvia-byline has-ink-muted-color has-text-color has-meta-font-size">
 	<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 	<div class="wp-block-group">
 		<!-- wp:paragraph -->

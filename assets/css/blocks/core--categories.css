@@ -1,0 +1,32 @@
+/*
+ * Chips (patterns/hidden-page-category-chips.php): the categories as a row of pill links, the first one to all posts
+ * (functions.php, category_chips_all). The current page, marked by core or the theme with aria-current, is filled in
+ * ink. Each pill is at least 24 px high (WCAG 2.5.8).
+ */
+.wp-block-categories.is-style-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--wp--preset--spacing--xs);
+	margin-block: 0;
+	padding: 0;
+	list-style: none;
+	font-family: var(--wp--preset--font-family--ui);
+	font-size: var(--wp--preset--font-size--meta);
+	line-height: 1.4;
+}
+.wp-block-categories.is-style-chips a {
+	display: inline-block;
+	padding: 0.4em 1em;
+	border: 0.0625rem solid var(--wp--preset--color--stroke);
+	border-radius: var(--wp--preset--border-radius--pill);
+	color: var(--wp--preset--color--ink);
+	text-decoration: none;
+}
+.wp-block-categories.is-style-chips a:hover {
+	border-color: var(--wp--preset--color--ink);
+}
+.wp-block-categories.is-style-chips a[aria-current] {
+	border-color: var(--wp--preset--color--ink);
+	background-color: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--surface);
+}

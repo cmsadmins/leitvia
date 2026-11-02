@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.16
+Stable tag: 1.2.17
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,13 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.17 =
+* The posts index is a grid of cards with the newest or sticky post as a wide lead story, category chips above it and pagination at /page/2/.
+* Archives, author pages and related posts use the same card: 16:9 image, category, title, excerpt and date, with one link per card.
+* Post titles and headings no longer hyphenate automatically.
+* The author box links the editorial page when Leitvia Studio names one (filter leitvia_editorial_url).
+* Contract 1.13.6: purposes of the blog templates, patterns post card and category chips, block style chips of the categories block.
 
 = 1.2.16 =
 * Inline code in paragraphs and lists breaks inside narrow columns instead of scrolling the page at 320 px.

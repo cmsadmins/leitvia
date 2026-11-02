@@ -51,3 +51,16 @@
 .is-style-header-split > .wp-block-buttons {
 	justify-self: end;
 }
+
+/*
+ * Byline (patterns/hidden-page-post-byline.php): a middle dot between its parts, empty alternative text so screen
+ * readers skip it. Browsers without that syntax show the dot from the first declaration.
+ */
+.wp-block-group.leitvia-byline > * + *::before {
+	content: "·";
+	content: "·" / "";
+	margin-inline-end: 0.5em;
+}
+.wp-block-group.leitvia-byline > .wp-block-group::before {
+	margin-inline-end: 0;
+}

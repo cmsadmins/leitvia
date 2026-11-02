@@ -96,6 +96,9 @@ function register_block_style_variations(): void {
 		'core/post-terms' => array(
 			'badge' => __( 'Badge', 'leitvia' ),
 		),
+		'core/categories' => array(
+			'chips' => __( 'Chips', 'leitvia' ),
+		),
 	);
 	foreach ( $styles as $block => $variations ) {
 		foreach ( $variations as $name => $label ) {
@@ -306,6 +309,58 @@ function search_landmark_name( string $html, array $block ): string {
 	return $tags->get_updated_html();
 }
 add_filter( 'render_block_core/search', __NAMESPACE__ . '\search_landmark_name', 10, 2 );
+
+/**
+ * A featured image without a link of its own stands next to the post title in every template and post card of the
+ * theme, and the title already names the post. An alt text that only repeats the title would be read twice, so it
+ * becomes empty and the image decorative. Any other alt text stays.
+ *
+ * @param string    $html     Block HTML.
+ * @param array     $block    Parsed block.
+ * @param \WP_Block $instance Block instance with the post context.
+ */
+function featured_image_alt( string $html, array $block, \WP_Block $instance ): string {
+	$post = (int) ( $instance->context['postId'] ?? 0 );
+	$tags = new \WP_HTML_Tag_Processor( $html );
+	if ( ! empty( $block['attrs']['isLink'] ) || ! $post || ! $tags->next_tag( 'img' ) ) {
+		return $html;
+	}
+	$alt    = trim( (string) $tags->get_attribute( 'alt' ) );
+	$titles = array( trim( get_post_field( 'post_title', $post ) ), trim( html_entity_decode( wp_strip_all_tags( get_the_title( $post ) ), ENT_QUOTES ) ) );
+	if ( '' === $alt || ! in_array( $alt, $titles, true ) ) {
+		return $html;
+	}
+	$tags->set_attribute( 'alt', '' );
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block_core/post-featured-image', __NAMESPACE__ . '\featured_image_alt', 10, 3 );
+
+/**
+ * The Chips style of the categories block (patterns/hidden-page-category-chips.php) starts with a link to all posts,
+ * marked as the current page on the posts index; core marks the current category (current-cat, aria-current). With a
+ * static front page and no posts page there is no index to link to, and the list starts with the categories.
+ *
+ * @param string $html  Block HTML.
+ * @param array  $block Parsed block.
+ */
+function category_chips_all( string $html, array $block ): string {
+	if ( ! in_array( 'is-style-chips', explode( ' ', $block['attrs']['className'] ?? '' ), true ) ) {
+		return $html;
+	}
+	$page = (int) get_option( 'page_for_posts' );
+	$url  = $page ? get_permalink( $page ) : ( 'posts' === get_option( 'show_on_front' ) ? home_url( '/' ) : '' );
+	if ( ! $url ) {
+		return $html;
+	}
+	$item = sprintf(
+		'<li class="cat-item"><a href="%1$s"%2$s>%3$s</a></li>',
+		esc_url( $url ),
+		is_home() ? ' aria-current="page"' : '',
+		esc_html_x( 'All', 'all post categories', 'leitvia' )
+	);
+	return preg_replace_callback( '/<ul\b[^>]*>/', fn( array $ul ): string => $ul[0] . $item, $html, 1 );
+}
+add_filter( 'render_block_core/categories', __NAMESPACE__ . '\category_chips_all', 10, 2 );
 
 /**
  * Namespace of the related posts query below a single post, see patterns/hidden-page-related-posts.php.

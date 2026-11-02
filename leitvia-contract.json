@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.5",
+	"contractVersion": "1.13.6",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -334,15 +334,15 @@
 	"templates": [
 		{
 			"slug": "index",
-			"purpose": "Fallback for every view without a more specific template."
+			"purpose": "Fallback for every view without a more specific template: title and the posts as a grid of post cards (featured image, category, title as the one link per card, excerpt, date) with pagination."
 		},
 		{
 			"slug": "home",
-			"purpose": "Posts index with blog heading (title and excerpt of the posts page when one is set), featured sticky post and paginated list with a continue reading link per post."
+			"purpose": "Posts index with blog heading (title and excerpt of the posts page when one is set), category chips and the posts of the main query (posts per page from the reading settings, sticky posts first) as a grid of post cards, three columns on wide screens, one on phones. On the first page the first post leads across the grid with image and text side by side. Each card has one link, its title; pagination leads to /page/2/ and on."
 		},
 		{
 			"slug": "single",
-			"purpose": "Single post as an article with breadcrumbs above the one h1, byline, publish and update dates and a 16:9 featured image; Google News ready. Below the post: author box, previous and next post, up to three related posts from the same categories and comments while they are open or exist."
+			"purpose": "Single post as an article with breadcrumbs above the one h1, a byline on one line where it fits (author, publish and update dates, reading time) and a 16:9 featured image; Google News ready. Below the post: author box (with a link to how the site works when a plugin names one), previous and next post, up to three related posts from the same categories as cards with image and comments while they are open or exist."
 		},
 		{
 			"slug": "page",
@@ -362,11 +362,11 @@
 		},
 		{
 			"slug": "archive",
-			"purpose": "Category, tag and date archives with breadcrumbs, title, description and post list."
+			"purpose": "Category, tag and date archives with breadcrumbs, title, category chips with the current category marked, description and the posts as a grid of post cards with one link each, paginated (/page/2/)."
 		},
 		{
 			"slug": "author",
-			"purpose": "Author profile with bio and their posts."
+			"purpose": "Author profile with bio and their posts as a grid of post cards with one link each, paginated (/page/2/)."
 		},
 		{
 			"slug": "search",
@@ -515,6 +515,12 @@
 			"name": "badge",
 			"purpose": "Category or tag links shown as pill labels.",
 			"context": "In post teasers and single post headers."
+		},
+		{
+			"block": "core/categories",
+			"name": "chips",
+			"purpose": "Categories as a row of pill links, led by a link to all posts; the current one is filled.",
+			"context": "Above a post grid, inside a navigation named Categories; only with two or more categories that have posts."
 		},
 		{
 			"block": "core/table",
@@ -2216,6 +2222,31 @@
 			}
 		},
 		{
+			"slug": "leitvia/hidden-page-category-chips",
+			"title": "Category chips",
+			"description": "The categories that have posts as a row of pill links in a named navigation, led by a link to all posts; the current one is marked. Renders nothing while fewer than two categories have posts.",
+			"area": "page",
+			"useWhen": "Inserted by the home and archive templates above the post grid.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "A navigation landmark named Categories around a list of links; the current category or, on the posts index, the link to all posts carries aria-current=\"page\" and is filled. Pills are at least 24 px high.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/hidden-page-checkout-footer",
 			"title": "Checkout footer",
 			"description": "Footer of the checkout without navigation: a quiet note on secure payment and the legal links, nothing that leads away from the order.",
@@ -2349,7 +2380,7 @@
 		{
 			"slug": "leitvia/hidden-page-post-author",
 			"title": "About the author",
-			"description": "Author box below a single post: a heading, the linked name of the author and the biographical info of the profile. No avatar, so no request goes to Gravatar.",
+			"description": "Author box below a single post: a heading, the linked name of the author, the biographical info of the profile and, when a plugin names one, a link to how the site works. No avatar, so no request goes to Gravatar.",
 			"area": "page",
 			"useWhen": "Inserted by the single template below the post.",
 			"composition": {
@@ -2363,7 +2394,7 @@
 			"images": [],
 			"docs": {
 				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
-				"a11y": "An aside landmark named About the author with an h2; no avatar, so nothing is requested from Gravatar. The biography comes from the user profile and stays empty when the profile has none.",
+				"a11y": "A complementary landmark named About the author with an h2; the optional link How we work only appears when a plugin answers the filter leitvia_editorial_url.",
 				"contentLength": {
 					"heading": null,
 					"text": null
@@ -2374,7 +2405,7 @@
 		{
 			"slug": "leitvia/hidden-page-post-byline",
 			"title": "Post byline",
-			"description": "Byline for single posts with linked author, labelled publish and update dates and reading time.",
+			"description": "Byline for single posts with linked author, labelled publish and update dates and reading time, on one line where it fits, the parts divided by middle dots.",
 			"area": "page",
 			"useWhen": "Inserted by the single template below the post title.",
 			"composition": {
@@ -2389,6 +2420,39 @@
 			"docs": {
 				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
 				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-post-card",
+			"title": "Post card",
+			"description": "One post in a post grid: 16:9 featured image, category, title, excerpt and date. The title is the one link and covers the whole card; the category links stay their own targets.",
+			"area": "page",
+			"useWhen": "Inserted by the home, archive, author and index templates as the content of each post in the post grid.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [
+				{
+					"aspectRatio": "16/9",
+					"displayWidth": "25rem",
+					"recommendedSize": "800x450",
+					"count": 1,
+					"source": "featured-image"
+				}
+			],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "The h2 title link is the one link to the post and covers the card, so a screen reader hears each post once; category links stay separate. The image has no link, and an alt text that only repeats the title is emptied. Keyboard focus rings the whole card.",
 				"contentLength": {
 					"heading": null,
 					"text": null
@@ -2452,9 +2516,9 @@
 		{
 			"slug": "leitvia/hidden-page-read-more",
 			"title": "Continue reading link",
-			"description": "Link to the full post below its excerpt in the post lists of the blog, archive, author and search templates. Core adds the post title for screen readers.",
+			"description": "Link to the full post below its excerpt in the search results. Core adds the post title for screen readers.",
 			"area": "page",
-			"useWhen": "Inserted by the blog, archive, author and search templates below each excerpt.",
+			"useWhen": "Inserted by the search template below each excerpt.",
 			"composition": {
 				"tone": "surface",
 				"density": "regular",
@@ -2477,7 +2541,7 @@
 		{
 			"slug": "leitvia/hidden-page-related-posts",
 			"title": "Related posts",
-			"description": "Up to three other posts from the categories of the current post below a single post, each with linked title and date. Renders nothing when there are none.",
+			"description": "Up to three other posts from the categories of the current post below a single post, as cards with featured image, category, linked title, excerpt and date. Renders nothing when there are none.",
 			"area": "page",
 			"useWhen": "Inserted by the single template below the post.",
 			"composition": {
@@ -2488,10 +2552,18 @@
 				"role": "frame",
 				"width": "reading"
 			},
-			"images": [],
+			"images": [
+				{
+					"aspectRatio": "16/9",
+					"displayWidth": "25rem",
+					"recommendedSize": "800x450",
+					"count": 3,
+					"source": "featured-image"
+				}
+			],
 			"docs": {
 				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
-				"a11y": "An h2 above up to three h3 title links with dates as time elements; the whole section is left out when no other post matches.",
+				"a11y": "An h2 above up to three cards with an h3 title link each, the only link of the card besides its categories; dates as time elements; an alt text that only repeats the title is emptied. The whole section is left out when no other post matches.",
 				"contentLength": {
 					"heading": null,
 					"text": null

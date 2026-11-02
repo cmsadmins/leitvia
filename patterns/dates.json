@@ -183,6 +183,10 @@
 		"added": "2026-10-15",
 		"updated": "2026-10-24"
 	},
+	"leitvia/hidden-page-category-chips": {
+		"added": "2026-11-02",
+		"updated": "2026-11-02"
+	},
 	"leitvia/hidden-page-checkout-footer": {
 		"added": "2026-10-19",
 		"updated": "2026-10-19"
@@ -205,11 +209,15 @@
 	},
 	"leitvia/hidden-page-post-author": {
 		"added": "2026-10-24",
-		"updated": "2026-10-24"
+		"updated": "2026-11-02"
 	},
 	"leitvia/hidden-page-post-byline": {
 		"added": "2026-10-15",
-		"updated": "2026-10-15"
+		"updated": "2026-11-02"
+	},
+	"leitvia/hidden-page-post-card": {
+		"added": "2026-11-02",
+		"updated": "2026-11-02"
 	},
 	"leitvia/hidden-page-post-navigation": {
 		"added": "2026-10-24",
@@ -221,11 +229,11 @@
 	},
 	"leitvia/hidden-page-read-more": {
 		"added": "2026-10-24",
-		"updated": "2026-10-24"
+		"updated": "2026-11-02"
 	},
 	"leitvia/hidden-page-related-posts": {
 		"added": "2026-10-24",
-		"updated": "2026-10-24"
+		"updated": "2026-11-02"
 	},
 	"leitvia/hidden-page-shop-filters": {
 		"added": "2026-10-18",

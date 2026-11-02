@@ -1,13 +1,15 @@
 /*
  * Titles fill the line and only avoid a lone last word. Balanced wrapping halved two-line titles in the journal
- * list and on posts, so they broke at half the column width.
+ * list and on posts, so they broke at half the column width. German titles hyphenate only at soft hyphens set by hand:
+ * automatic hyphenation split large titles badly ("bar-rierefreie"); overflow-wrap keeps long compounds inside the
+ * column at 320 px.
  */
 .wp-block-post-title {
 	text-wrap: pretty;
 	overflow-wrap: break-word;
 }
 :lang(de) .wp-block-post-title {
-	hyphens: auto;
+	hyphens: manual;
 }
 .wp-block-post-title a:hover {
 	text-decoration: underline;
