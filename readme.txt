@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.18
+Stable tag: 1.2.19
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,12 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.19 =
+* The byline of a single post (author, dates, reading time) has the wide width and stays on one line on desktop; title, excerpt and text keep the reading width.
+* Post titles in card grids take the heading colour instead of the link colour; the underline on hover stays.
+* A captioned table no longer gets role="region", which ARIA in HTML does not allow on a figure with a figcaption. The caption names it, the table stays keyboard scrollable.
+* Fonts installed through the Font Library are preloaded when a theme preset such as body names them ("Inter, sans-serif"), so text does not shift when the font arrives.
 
 = 1.2.18 =
 * The Breadcrumbs block names a posts page and a category of the same name (News and News) only once.

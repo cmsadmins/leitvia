@@ -217,37 +217,14 @@ function term_image_size( string $html, array $block, \WP_Block $instance ): str
 add_filter( 'render_block_core/image', __NAMESPACE__ . '\term_image_size', 10, 3 );
 
 /**
- * Returns the text of the first figcaption in a block's HTML, or an empty string.
- *
- * @param string $html Block HTML.
- */
-function figcaption_text( string $html ): string {
-	$tags = new \WP_HTML_Tag_Processor( $html );
-	if ( ! $tags->next_tag( 'figcaption' ) ) {
-		return '';
-	}
-	$text = '';
-	while ( $tags->next_token() ) {
-		if ( 'FIGCAPTION' === $tags->get_tag() && $tags->is_tag_closer() ) {
-			break;
-		}
-		if ( '#text' === $tags->get_token_name() ) {
-			$text .= $tags->get_modifiable_text();
-		}
-	}
-	return trim( preg_replace( '/\s+/', ' ', $text ) );
-}
-
-/**
  * Makes the outer element of a block keyboard focusable, so wide content can be scrolled with the arrow keys
- * in every browser (WCAG 2.1.1). With a label it also becomes a named region. Existing attributes are kept.
+ * in every browser (WCAG 2.1.1). An existing tabindex is kept.
  *
  * @param string $html       Block HTML.
  * @param string $tag        Outer tag name.
  * @param string $class_name Outer class name.
- * @param string $label      Accessible name, empty for none.
  */
-function add_scroll_region( string $html, string $tag, string $class_name, string $label = '' ): string {
+function add_scroll_region( string $html, string $tag, string $class_name ): string {
 	$tags = new \WP_HTML_Tag_Processor( $html );
 	if ( ! $tags->next_tag(
 		array(
@@ -257,27 +234,20 @@ function add_scroll_region( string $html, string $tag, string $class_name, strin
 	) ) {
 		return $html;
 	}
-	$attributes = array( 'tabindex' => '0' );
-	if ( '' !== $label ) {
-		$attributes['role']       = 'region';
-		$attributes['aria-label'] = $label;
-	}
-	foreach ( $attributes as $name => $value ) {
-		if ( null === $tags->get_attribute( $name ) ) {
-			$tags->set_attribute( $name, $value );
-		}
+	if ( null === $tags->get_attribute( 'tabindex' ) ) {
+		$tags->set_attribute( 'tabindex', '0' );
 	}
 	return $tags->get_updated_html();
 }
 
 /**
- * Table blocks scroll sideways when their columns do not fit, see core--table.css. Only a captioned table
- * becomes a named region; a generic name would add landmarks that say nothing.
+ * Table blocks scroll sideways when their columns do not fit, see core--table.css. A captioned figure is named by
+ * its figcaption already; role="region" is not allowed on a figure with a caption (ARIA in HTML), so none is added.
  *
  * @param string $html Block HTML.
  */
 function table_scroll_region( string $html ): string {
-	return add_scroll_region( $html, 'figure', 'wp-block-table', figcaption_text( $html ) );
+	return add_scroll_region( $html, 'figure', 'wp-block-table' );
 }
 add_filter( 'render_block_core/table', __NAMESPACE__ . '\table_scroll_region' );
 
@@ -574,6 +544,15 @@ function preload_fonts( $resources ): array {
 			$families[ $family['slug'] ?? '' ] = $family;
 		}
 	}
+	// A preset without files of its own (body: "Inter, sans-serif") uses the faces of the family of that name, as
+	// installed through the Font Library.
+	$first_name = static fn( array $family ): string => strtolower( trim( explode( ',', (string) ( $family['fontFamily'] ?? '' ) )[0], " \"'" ) );
+	$faces      = array();
+	foreach ( $families as $family ) {
+		if ( ! empty( $family['fontFace'] ) ) {
+			$faces[ $first_name( $family ) ] = $family['fontFace'];
+		}
+	}
 	$slugs = array(
 		wp_get_global_styles( array( 'typography', 'fontFamily' ) ),
 		wp_get_global_styles( array( 'elements', 'heading', 'typography', 'fontFamily' ) ),
@@ -584,7 +563,7 @@ function preload_fonts( $resources ): array {
 		if ( ! is_string( $value ) || ! preg_match( '/(?:\||--)font-family(?:\||--)([a-z0-9-]+)/', $value, $m ) ) {
 			continue;
 		}
-		foreach ( $families[ $m[1] ]['fontFace'] ?? array() as $face ) {
+		foreach ( $families[ $m[1] ]['fontFace'] ?? $faces[ $first_name( $families[ $m[1] ] ?? array() ) ] ?? array() as $face ) {
 			$src   = (array) ( $face['src'] ?? array() );
 			$first = (string) reset( $src );
 			if ( 'normal' !== ( $face['fontStyle'] ?? 'normal' ) || ! str_starts_with( $face['unicodeRange'] ?? 'U+0000', 'U+0000' ) ) {

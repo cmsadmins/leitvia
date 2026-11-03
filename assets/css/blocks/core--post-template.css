@@ -20,6 +20,10 @@
 .leitvia-post-card .wp-block-post-title {
 	font-size: var(--wp--preset--font-size--heading-s);
 }
+/* Titles in a grid take the heading colour; a wall of link-coloured headlines leaves nothing to lead the eye. */
+.leitvia-post-card .wp-block-post-title a {
+	color: inherit;
+}
 .leitvia-post-card .wp-block-post-title a::after {
 	content: "";
 	position: absolute;
