@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.20
+Stable tag: 1.2.21
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,9 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.21 =
+* The text of the lightbox buttons Close, Previous and Next takes the text colour of the dialog. On dark palettes it was black on a dark background.
 
 = 1.2.20 =
 * Images in posts and galleries open in the lightbox of WordPress ("Enlarge on click") unless they link somewhere: a dialog with a close button, Escape and the focus back on the image afterwards. In a gallery the previous and next buttons and the arrow keys slide through its images.

@@ -9,3 +9,9 @@
 	outline-offset: 0.125rem;
 	box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
 }
+
+/* The text of Close, Previous and Next takes the colour of the dialog; a button does not inherit it and stayed black on
+   dark palettes. */
+.wp-lightbox-overlay button {
+	color: inherit;
+}
