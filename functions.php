@@ -527,6 +527,61 @@ add_filter( 'render_block_core/image', __NAMESPACE__ . '\theme_image_size' );
 add_filter( 'render_block_core/cover', __NAMESPACE__ . '\theme_image_size' );
 
 /**
+ * The lightbox of core ("Enlarge on click", theme.json settings.blocks.core/image.lightbox) is on for every image
+ * that links nowhere. Core brings the dialog, focus handling, Escape, arrow keys and the previous and next buttons
+ * inside a gallery. The theme adjusts these things here, the button text below:
+ *
+ * - Decorative images (empty alt, such as logos and ornaments) stay plain: there is nothing to look at more closely,
+ *   and a button "Enlarge" for an image without a description would only be one more tab stop. A gallery decides
+ *   for all its images, so they are left alone there, as is an image whose editor set the lightbox explicitly.
+ * - Images inside a block of a plugin (a slider, a before and after comparison, an image with hotspots) stay plain
+ *   too: that block has its own controls on the image, and a second button there would cover them.
+ * - Outside galleries the lightbox is for articles: single posts and other single entries, not pages. Pages are
+ *   composed of patterns whose images are part of the layout (overlaps, teasers, heroes); the trigger would change
+ *   their stacking and add a tab stop to every card. An image on a page still opens when its editor switches
+ *   "Enlarge on click" on.
+ * - Gallery images open in full. Core sizes the lightbox like the thumbnail, so a cropped gallery (the default)
+ *   showed the crop there too; "contain" makes core measure the uncropped image instead.
+ *
+ * @param array          $block        Parsed block.
+ * @param array          $source       Unused.
+ * @param \WP_Block|null $parent_block Parent block.
+ */
+function lightbox_image( array $block, array $source = array(), $parent_block = null ): array {
+	if ( 'core/image' !== $block['blockName'] || isset( $block['attrs']['lightbox'] ) ) {
+		return $block;
+	}
+	$parent = $parent_block instanceof \WP_Block ? (string) $parent_block->name : '';
+	if ( 'core/gallery' === $parent ) {
+		$block['attrs']['scale'] = 'contain';
+	} elseif ( ! is_singular() || is_page() || ( '' !== $parent && ! str_starts_with( $parent, 'core/' ) ) || preg_match( '/<img\b[^>]*\balt=""/', (string) ( $block['innerHTML'] ?? '' ) ) ) {
+		$block['attrs']['lightbox'] = array( 'enabled' => false );
+	}
+	return $block;
+}
+add_filter( 'render_block_data', __NAMESPACE__ . '\lightbox_image', 10, 3 );
+
+/**
+ * The buttons of the lightbox show their text next to the icon ("Close", "Previous", "Next"), so they say what they do
+ * without hovering. Core shows icons only; a gallery that saved its own choice of buttons keeps it.
+ *
+ * @param array          $context      Block context.
+ * @param array          $block        Parsed block.
+ * @param \WP_Block|null $parent_block Parent block.
+ */
+function lightbox_button_text( array $context, array $block, $parent_block = null ): array {
+	if ( 'core/image' !== $block['blockName'] ) {
+		return $context;
+	}
+	$chosen = $parent_block instanceof \WP_Block && 'core/gallery' === $parent_block->name && isset( $parent_block->parsed_block['attrs']['navigationButtonType'] );
+	if ( ! $chosen ) {
+		$context['navigationButtonType'] = 'both';
+	}
+	return $context;
+}
+add_filter( 'render_block_context', __NAMESPACE__ . '\lightbox_button_text', 10, 3 );
+
+/**
  * Preloads the Latin upright files of the body, heading and ui (button) fonts in the active style, so text above the fold
  * renders in its own font instead of swapping from the fallback (layout shift through font-display: swap).
  * The files come from this site; style variations and token sets that change the fonts are resolved through the

@@ -1,0 +1,11 @@
+/*
+ * Lightbox of core images (theme.json settings.blocks.core/image.lightbox, functions.php): the double focus ring of
+ * the theme on the trigger "Enlarge" and on Close, Previous and Next in the dialog, see core--button.css. Core draws a
+ * translucent ring that fails the contrast check on dark palettes.
+ */
+.wp-lightbox-container button:focus-visible,
+.wp-lightbox-overlay button:focus-visible {
+	outline: 0.125rem solid var(--wp--preset--color--focus);
+	outline-offset: 0.125rem;
+	box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
+}
