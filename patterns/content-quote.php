@@ -13,7 +13,7 @@
 ?>
 <!-- wp:group {"metadata":{"name":"Quote"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|xxl","bottom":"var:preset|spacing|xxl"}}},"backgroundColor":"surface-alt","layout":{"type":"constrained","contentSize":"52rem","justifyContent":"left"}} -->
 <div class="wp-block-group alignfull has-surface-alt-background-color has-background" style="padding-top:var(--wp--preset--spacing--xxl);padding-bottom:var(--wp--preset--spacing--xxl)">
-	<!-- wp:quote {"style":{"typography":{"lineHeight":"1.3"}},"fontSize":"heading-m"} -->
+	<!-- wp:quote {"leitviaAnimation":"fade","style":{"typography":{"lineHeight":"1.3"}},"fontSize":"heading-m"} -->
 	<blockquote class="wp-block-quote has-heading-m-font-size" style="line-height:1.3">
 		<!-- wp:paragraph -->
 		<p><?php esc_html_e( 'They asked better questions about our readers than we had asked ourselves in ten years. The new site is calmer, faster and, for the first time, easy for the whole newsroom to use.', 'leitvia' ); ?></p>

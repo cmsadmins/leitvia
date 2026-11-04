@@ -32,7 +32,7 @@
 	<!-- /wp:group -->
 	<!-- wp:woocommerce/product-collection {"queryId":11,"query":{"perPage":4,"pages":1,"offset":0,"postType":"product","order":"desc","orderBy":"date","search":"","exclude":[],"inherit":false,"taxQuery":{},"isProductCollectionBlock":true,"featured":false,"woocommerceOnSale":false,"woocommerceStockStatus":["instock","onbackorder"],"woocommerceAttributes":[],"woocommerceHandPickedProducts":[],"filterable":false},"tagName":"div","displayLayout":{"type":"flex","columns":4,"shrinkColumns":true},"dimensions":{"widthType":"fill"},"collection":"woocommerce/product-collection/new-arrivals","hideControls":["inherit"],"queryContextIncludes":["collection"],"align":"wide"} -->
 	<div class="wp-block-woocommerce-product-collection alignwide">
-		<!-- wp:woocommerce/product-template -->
+		<!-- wp:woocommerce/product-template {"leitviaAnimation":"stagger"} -->
 			<!-- wp:woocommerce/product-image {"style":{"dimensions":{"aspectRatio":"1/1"}}} -->
 			<div class="is-loading"></div>
 			<!-- /wp:woocommerce/product-image -->

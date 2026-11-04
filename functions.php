@@ -72,11 +72,15 @@ function register_block_style_variations(): void {
 			'eyebrow' => __( 'Eyebrow', 'leitvia' ),
 		),
 		'core/group'      => array(
-			'note'         => __( 'Note', 'leitvia' ),
-			'success'      => __( 'Success', 'leitvia' ),
-			'warning'      => __( 'Warning', 'leitvia' ),
-			'inverse'      => __( 'Inverse', 'leitvia' ),
-			'header-split' => __( 'Header split', 'leitvia' ),
+			'note'                  => __( 'Note', 'leitvia' ),
+			'success'               => __( 'Success', 'leitvia' ),
+			'warning'               => __( 'Warning', 'leitvia' ),
+			'inverse'               => __( 'Inverse', 'leitvia' ),
+			'header-split'          => __( 'Header split', 'leitvia' ),
+			// For the outermost group of a header template part, see "Sticky header" in core--group.css.
+			'sticky-header'         => __( 'Sticky header', 'leitvia' ),
+			'sticky-header-desktop' => __( 'Sticky header on large screens', 'leitvia' ),
+			'sticky-header-mobile'  => __( 'Sticky header on small screens', 'leitvia' ),
 		),
 		'core/cover'      => array(
 			'inverse' => __( 'Inverse', 'leitvia' ),

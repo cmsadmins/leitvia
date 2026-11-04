@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.22
+Stable tag: 1.2.23
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,11 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.23 =
+* Optional sticky header: the block styles Sticky header, Sticky header on large screens and Sticky header on small screens on the outermost group of the header part keep the header at the top while the page scrolls, pure CSS and off by default. It scrolls away in windows lower than 500 px or not wider than 320 px, at 200 % zoom, with enlarged text and in print, and focused elements and jump targets stop below it (WCAG 2.4.11).
+* Contract 1.13.8: the block styles sticky-header, sticky-header-desktop and sticky-header-mobile.
+* With Leitvia Studio the patterns animate once as they come into view: the cards of Three cards, Posts grid, the shop categories and the product grids of New arrivals and Bestsellers one after another, the two columns of Editorial grid one after another, Steps, Quote and Testimonial fade in. Nothing in the first screen is hidden, and without JavaScript or with reduced motion everything shows at once.
 
 = 1.2.22 =
 * Only the first image of a post or page loads at once, with high priority; every later one loads lazily. WordPress keeps the first three eager, which took bandwidth from the largest image on phones.

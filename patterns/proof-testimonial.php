@@ -13,7 +13,7 @@
 ?>
 <!-- wp:group {"metadata":{"name":"Testimonial"},"align":"full","className":"is-style-inverse","style":{"spacing":{"padding":{"top":"var:preset|spacing|xxl","bottom":"var:preset|spacing|xxl"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull is-style-inverse" style="padding-top:var(--wp--preset--spacing--xxl);padding-bottom:var(--wp--preset--spacing--xxl)">
-	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|m","left":"var:preset|spacing|xxl"}}}} -->
+	<!-- wp:columns {"leitviaAnimation":"fade","align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|m","left":"var:preset|spacing|xxl"}}}} -->
 	<div class="wp-block-columns alignwide">
 		<!-- wp:column {"width":"25%","style":{"spacing":{"blockGap":"var:preset|spacing|s"}}} -->
 		<div class="wp-block-column" style="flex-basis:25%">

@@ -64,3 +64,68 @@
 .wp-block-group.leitvia-byline > .wp-block-group::before {
 	margin-inline-end: 0;
 }
+
+/*
+ * Sticky header: the block styles Sticky header (every screen), Sticky header on large screens (600 px and wider, where
+ * the navigation shows its items) and Sticky header on small screens (below 600 px, where the navigation is the menu
+ * button), chosen on the outermost group of a header template part. Off by default. The template part element sticks,
+ * not the group: its containing block is the page, and a service bar, announcement or accessibility band above the
+ * group stays with it. Pure CSS.
+ *
+ * Only while the header leaves room for the page (WCAG 1.4.10 reflow, 1.4.4 resize text): in windows at least 31.25rem
+ * (500 px) high and wider than 20rem (320 px). 1280 x 720 at 200 % zoom is 640 x 360, a phone at 200 % zoom or held
+ * sideways is lower than 500 px, so there the header scrolls away with the page. The same once the visitor enlarges the
+ * text with an inline font size on html, as the text size control of an accessibility bar does (media queries do not
+ * see that size, the header would grow with the text), and when a script marks html with data-leitvia-header-tall
+ * because the header takes more than a quarter of the window. Print is not screen and never sticks.
+ *
+ * Focus not obscured (WCAG 2.4.11): while the header sticks, html keeps a scroll padding at the top, so focused
+ * elements, jump targets and the skip link target stop below the header. CSS cannot measure the header: a script may
+ * hand its height in as --leitvia-sticky-header-height (Leitvia Studio does), without one the padding is a quarter of
+ * the window and at least 13rem, more than every header pattern of the theme takes. From 600 px up the admin bar stays
+ * fixed at the top (core lets it scroll away on smaller screens), so the header sticks below it there and the padding
+ * grows by its height.
+ *
+ * z-index 60: above the content and the sticky buy bar of shops (50), so the open menu overlay of the navigation, which
+ * lives in the header, still covers the whole page.
+ */
+@media screen and (height >= 31.25rem) and (width > 20rem) and (width < 37.5rem) {
+	html:not([style*="font-size"], [data-leitvia-header-tall]) .wp-site-blocks > header:has(> :is(.is-style-sticky-header, .is-style-sticky-header-mobile)) {
+		position: sticky;
+		top: 0;
+		z-index: 60;
+	}
+	html:not([style*="font-size"], [data-leitvia-header-tall]):has(.wp-site-blocks > header > :is(.is-style-sticky-header, .is-style-sticky-header-mobile)) {
+		scroll-padding-top: calc(var(--leitvia-sticky-header-height, max(25vh, 13rem)) + var(--wp--preset--spacing--xs));
+	}
+}
+@media screen and (height >= 31.25rem) and (width >= 37.5rem) {
+	html:not([style*="font-size"], [data-leitvia-header-tall]) .wp-site-blocks > header:has(> :is(.is-style-sticky-header, .is-style-sticky-header-desktop)) {
+		position: sticky;
+		top: var(--wp-admin--admin-bar--height, 0px);
+		z-index: 60;
+	}
+	html:not([style*="font-size"], [data-leitvia-header-tall]):has(.wp-site-blocks > header > :is(.is-style-sticky-header, .is-style-sticky-header-desktop)) {
+		scroll-padding-top: calc(var(--wp-admin--admin-bar--height, 0px) + var(--leitvia-sticky-header-height, max(25vh, 13rem)) + var(--wp--preset--spacing--xs));
+	}
+}
+
+/*
+ * A soft shadow under the sticky header once the page has moved by 4rem, so the content clearly passes beneath it.
+ * Driven by the scroll position (scroll-driven animation), without script; only where the browser supports it and the
+ * visitor has not asked for reduced motion. At the top of the page there is none.
+ */
+@media screen and (prefers-reduced-motion: no-preference) {
+	@supports (animation-timeline: scroll()) {
+		.wp-site-blocks > header:has(> :is(.is-style-sticky-header, .is-style-sticky-header-mobile, .is-style-sticky-header-desktop)) {
+			animation: leitvia-sticky-header-shadow linear both;
+			animation-timeline: scroll(root);
+			animation-range: 0 4rem;
+		}
+	}
+}
+@keyframes leitvia-sticky-header-shadow {
+	to {
+		box-shadow: var(--wp--preset--shadow--subtle);
+	}
+}

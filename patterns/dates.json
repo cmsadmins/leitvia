@@ -49,7 +49,7 @@
 	},
 	"leitvia/content-quote": {
 		"added": "2026-10-15",
-		"updated": "2026-10-20"
+		"updated": "2026-11-04"
 	},
 	"leitvia/content-statement": {
 		"added": "2026-10-18",
@@ -61,7 +61,7 @@
 	},
 	"leitvia/content-steps": {
 		"added": "2026-10-15",
-		"updated": "2026-10-18"
+		"updated": "2026-11-04"
 	},
 	"leitvia/content-text-media": {
 		"added": "2026-10-15",
@@ -261,7 +261,7 @@
 	},
 	"leitvia/proof-testimonial": {
 		"added": "2026-10-15",
-		"updated": "2026-10-22"
+		"updated": "2026-11-04"
 	},
 	"leitvia/proof-testimonials-grid": {
 		"added": "2026-10-15",
@@ -273,11 +273,11 @@
 	},
 	"leitvia/shop-bestsellers": {
 		"added": "2026-10-19",
-		"updated": "2026-10-19"
+		"updated": "2026-11-04"
 	},
 	"leitvia/shop-category-tiles": {
 		"added": "2026-10-19",
-		"updated": "2026-10-24"
+		"updated": "2026-11-04"
 	},
 	"leitvia/shop-legal-guarantee": {
 		"added": "2026-10-25",
@@ -289,7 +289,7 @@
 	},
 	"leitvia/shop-new-arrivals": {
 		"added": "2026-10-19",
-		"updated": "2026-10-19"
+		"updated": "2026-11-04"
 	},
 	"leitvia/shop-product-hero": {
 		"added": "2026-10-19",
@@ -305,11 +305,11 @@
 	},
 	"leitvia/teaser-cards-3": {
 		"added": "2026-10-15",
-		"updated": "2026-10-19"
+		"updated": "2026-11-04"
 	},
 	"leitvia/teaser-editorial-grid": {
 		"added": "2026-10-18",
-		"updated": "2026-10-19"
+		"updated": "2026-11-04"
 	},
 	"leitvia/teaser-featured-post": {
 		"added": "2026-10-15",
@@ -325,7 +325,7 @@
 	},
 	"leitvia/teaser-posts-grid": {
 		"added": "2026-10-15",
-		"updated": "2026-10-19"
+		"updated": "2026-11-04"
 	},
 	"leitvia/teaser-posts-list": {
 		"added": "2026-10-15",

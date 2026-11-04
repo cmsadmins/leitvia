@@ -17,7 +17,7 @@
 	<!-- wp:heading {"align":"wide","fontSize":"heading-l"} -->
 	<h2 class="wp-block-heading alignwide has-heading-l-font-size"><?php esc_html_e( 'From the journal', 'leitvia' ); ?></h2>
 	<!-- /wp:heading -->
-	<!-- wp:columns {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|l"},"blockGap":{"top":"var:preset|spacing|l","left":"var:preset|spacing|xl"}}}} -->
+	<!-- wp:columns {"leitviaAnimation":"stagger","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|l"},"blockGap":{"top":"var:preset|spacing|l","left":"var:preset|spacing|xl"}}}} -->
 	<div class="wp-block-columns alignwide" style="margin-top:var(--wp--preset--spacing--l)">
 		<!-- wp:column {"width":"66.66%"} -->
 		<div class="wp-block-column" style="flex-basis:66.66%">

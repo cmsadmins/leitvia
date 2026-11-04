@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.7",
+	"contractVersion": "1.13.8",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -539,6 +539,24 @@
 			"name": "header-split",
 			"purpose": "Three columns of navigation, logo and action, with the logo exactly in the middle.",
 			"context": "The row of a header template part with navigation, site logo group and buttons, as in header-split; not for content."
+		},
+		{
+			"block": "core/group",
+			"name": "sticky-header",
+			"purpose": "Keeps the whole header template part at the top of the screen while the page scrolls, on all screen sizes; pure CSS. It sticks only where it leaves room: in windows at least 500 px high and wider than 320 px, so at 200 % zoom, on a phone held sideways and in print it scrolls away. Focused elements and jump targets stop below it.",
+			"context": "Only the outermost group of a header template part (named Header in the theme patterns), never content. Off by default: choose it for shops, products and long reading where the navigation, search or cart should stay at hand; a calm site keeps the header in the flow."
+		},
+		{
+			"block": "core/group",
+			"name": "sticky-header-desktop",
+			"purpose": "As sticky-header, from 600 px wide only, where the navigation shows its items; on phones the header scrolls away.",
+			"context": "Only the outermost group of a header template part. For headers with several rows or a large logo, whose height would take too much of a phone screen."
+		},
+		{
+			"block": "core/group",
+			"name": "sticky-header-mobile",
+			"purpose": "As sticky-header, below 600 px wide only, where the navigation is the menu button; on larger screens the header scrolls away.",
+			"context": "Only the outermost group of a header template part. For sites read mostly on phones whose menu button and cart should stay in reach."
 		},
 		{
 			"block": "core/buttons",

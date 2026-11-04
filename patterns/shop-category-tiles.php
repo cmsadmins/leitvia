@@ -18,7 +18,7 @@
 	<!-- /wp:heading -->
 	<!-- wp:terms-query {"termQuery":{"perPage":6,"taxonomy":"product_cat","order":"asc","orderBy":"name","include":[],"hideEmpty":true,"showNested":false,"inherit":false},"align":"wide"} -->
 	<div class="wp-block-terms-query alignwide">
-		<!-- wp:term-template {"style":{"spacing":{"blockGap":"var:preset|spacing|m"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"14rem"}} -->
+		<!-- wp:term-template {"leitviaAnimation":"stagger","style":{"spacing":{"blockGap":"var:preset|spacing|m"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"14rem"}} -->
 			<!-- wp:group {"style":{"border":{"radius":"var:preset|border-radius|s"},"spacing":{"padding":{"top":"var:preset|spacing|m","right":"var:preset|spacing|m","bottom":"var:preset|spacing|m","left":"var:preset|spacing|m"},"blockGap":"var:preset|spacing|xs"}},"backgroundColor":"surface-alt"} -->
 			<div class="wp-block-group has-surface-alt-background-color has-background" style="border-radius:var(--wp--preset--border-radius--s);padding-top:var(--wp--preset--spacing--m);padding-right:var(--wp--preset--spacing--m);padding-bottom:var(--wp--preset--spacing--m);padding-left:var(--wp--preset--spacing--m)">
 				<!-- wp:image {"aspectRatio":"4/3","scale":"cover","sizeSlug":"medium_large","linkDestination":"none","metadata":{"bindings":{"url":{"source":"leitvia/term-image"}},"leitviaDecorative":true}} -->
