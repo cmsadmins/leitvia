@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.6",
+	"contractVersion": "1.13.7",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -3664,6 +3664,96 @@
 					"text": [
 						60,
 						140
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/content-faq-schema",
+			"title": "FAQ with structured data",
+			"description": "Heading and short intro above five questions that open one at a time, with FAQ structured data for search engines. Use to answer the questions a site answers itself, on service, product, shop or contact pages.",
+			"area": "content",
+			"useWhen": "Questions that the site answers itself, such as about delivery and returns in a shop, setup in product documentation or the first steps of a service, where search engines may show the answers.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "dense",
+				"layout": "list",
+				"weight": "medium",
+				"role": "detail",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Questions the site does not answer itself, such as answers quoted from others, or content everyone must read; then use leitvia/content-faq or headings. Fewer than three real questions. Needs Leitvia Studio for the FAQ block.",
+				"a11y": "Each question is the summary of a native details element, so it works with keyboard and screen readers without scripting; opening one closes the others. Write questions as full sentences.",
+				"contentLength": {
+					"heading": [
+						15,
+						50
+					],
+					"text": [
+						60,
+						220
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/content-icon-benefits",
+			"title": "Benefits with icons",
+			"description": "Heading and short intro beside a list of five benefits, each with its own icon. Use for what every order, membership or service includes, such as delivery, returns and support.",
+			"area": "content",
+			"useWhen": "Short promises that hold for everything a site offers, such as delivery, returns, payment and support in a shop, or what a membership or a service includes. Pick an icon per item with leitvia/update-block, attribute icon of the item.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "light",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Steps in order or benefits that need a paragraph each; use content-steps or content-feature-grid instead. More than seven items. Needs Leitvia Studio for the icon list block.",
+				"a11y": "The benefits are a real list, so screen readers announce the number of items; the icons are decorative and hidden from assistive technology. Each item makes sense on its own without its icon.",
+				"contentLength": {
+					"heading": [
+						20,
+						60
+					],
+					"text": [
+						20,
+						70
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/content-share-post",
+			"title": "Share at the end of a post",
+			"description": "One line that invites readers to pass the post on, above links to share it on social networks, by email or by copying the link. Use once at the end of an article, a news post or a case study.",
+			"area": "content",
+			"useWhen": "The last block in the content of an article, news post or case study that readers may want to pass on. Add it to the post content with leitvia/create-content or leitvia/update-content; the links share the post they are in.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "list",
+				"weight": "light",
+				"role": "close",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Pages of a site such as home, legal pages, checkout, forms and pages behind a login. Never twice on one page. Needs Leitvia Studio for the share block.",
+				"a11y": "The links sit in a navigation landmark named Share this post; every link names its service and says when it opens a new window, and the copy button reports in a polite live region. Nothing loads from the networks before a click.",
+				"contentLength": {
+					"heading": null,
+					"text": [
+						40,
+						120
 					]
 				},
 				"replacedBy": null

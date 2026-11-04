@@ -645,6 +645,20 @@ function preload_fonts( $resources ): array {
 add_filter( 'wp_preload_resources', __NAMESPACE__ . '\preload_fonts' );
 
 /**
+ * Only the first image of the main content loads at once (with fetchpriority high); every later one loads lazily.
+ * Core keeps the first three eager, but the templates of Leitvia show at most one large image above the fold on a
+ * phone: the featured image of a post or the hero of a page. The two after it are below the fold there and took
+ * bandwidth from the largest paint (Lighthouse mobile on the showcase demo: a post with two images further down at
+ * 93 instead of 98, LCP 3.2 s instead of 2.3 s). An image a site marks as eager or high priority keeps its choice.
+ *
+ * @return int
+ */
+function eager_images(): int {
+	return 1;
+}
+add_filter( 'wp_omit_loading_attr_threshold', __NAMESPACE__ . '\eager_images' );
+
+/**
  * The shop header starter pattern is offered in the inserter only while WooCommerce registers its mini cart block, so a
  * site without WooCommerce never gets a header with blocks it cannot render. It stays registered either way, because the
  * template part header-shop references it.

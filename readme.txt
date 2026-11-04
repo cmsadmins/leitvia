@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.21
+Stable tag: 1.2.22
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,10 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.22 =
+* Only the first image of a post or page loads at once, with high priority; every later one loads lazily. WordPress keeps the first three eager, which took bandwidth from the largest image on phones.
+* Contract 1.13.7: the Leitvia Studio patterns FAQ with structured data, Benefits with icons and Share at the end of a post.
 
 = 1.2.21 =
 * The text of the lightbox buttons Close, Previous and Next takes the text colour of the dialog. On dark palettes it was black on a dark background.
