@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.24
+Stable tag: 1.2.25
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,11 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.25 =
+* New --leitvia-sticky-offset on html: what really covers the top of the screen right now, the admin bar plus the sticky header only while it sticks (not while a tall header scrolls away, at 200 % zoom or at the other width). Everything else that sticks can sit below it.
+* The block option Position: Sticky of a group now stops below the sticky header and keeps its own top value.
+* The order summary of the WooCommerce checkout stops below the sticky header and the admin bar instead of behind them.
 
 = 1.2.24 =
 * Mild hover as a theme standard: a card (a group with a background or a border in a grid or a column that holds a link) lifts 2px with the raised shadow, and the image of a linked image, a card or a post card scales to 1.03 inside its frame, within 200 ms. Keyboard focus shows the same state (WCAG 2.4.7). Only for pointers that can hover and without reduced motion, never with Motion off of Leitvia Studio, and nothing is shown only on hover.

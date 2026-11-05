@@ -88,7 +88,25 @@
  *
  * z-index 60: above the content and the sticky buy bar of shops (50), so the open menu overlay of the navigation, which
  * lives in the header, still covers the whole page.
+ *
+ * --leitvia-sticky-offset on html is what really covers the top of the screen right now, for everything else that
+ * sticks: the admin bar where it stays fixed, plus the header exactly under the conditions above where it sticks. It
+ * is 0px or the admin bar while the header scrolls away, which --leitvia-sticky-header-height cannot tell: that height
+ * is set in either case. Use it as inset-block-start: calc(var(--leitvia-sticky-offset, 0px) + <gap>), with the 0px for
+ * a site without this theme. The block option Position: Sticky of core gets it through the variable core adds to the
+ * top of such a group, so its own top value stays; a group inside the header sticks with the header and does not.
  */
+html {
+	--leitvia-sticky-offset: 0px;
+}
+@media screen and (width >= 37.5rem) {
+	html {
+		--leitvia-sticky-offset: var(--wp-admin--admin-bar--height, 0px);
+	}
+}
+.is-position-sticky:not(.wp-site-blocks > header *) {
+	--wp-admin--admin-bar--position-offset: var(--leitvia-sticky-offset, 0px);
+}
 @media screen and (height >= 31.25rem) and (width > 20rem) and (width < 37.5rem) {
 	html:not([style*="font-size"], [data-leitvia-header-tall]) .wp-site-blocks > header:has(> :is(.is-style-sticky-header, .is-style-sticky-header-mobile)) {
 		position: sticky;
@@ -96,7 +114,8 @@
 		z-index: 60;
 	}
 	html:not([style*="font-size"], [data-leitvia-header-tall]):has(.wp-site-blocks > header > :is(.is-style-sticky-header, .is-style-sticky-header-mobile)) {
-		scroll-padding-top: calc(var(--leitvia-sticky-header-height, max(25vh, 13rem)) + var(--wp--preset--spacing--xs));
+		--leitvia-sticky-offset: var(--leitvia-sticky-header-height, max(25vh, 13rem));
+		scroll-padding-top: calc(var(--leitvia-sticky-offset) + var(--wp--preset--spacing--xs));
 	}
 }
 @media screen and (height >= 31.25rem) and (width >= 37.5rem) {
@@ -106,7 +125,8 @@
 		z-index: 60;
 	}
 	html:not([style*="font-size"], [data-leitvia-header-tall]):has(.wp-site-blocks > header > :is(.is-style-sticky-header, .is-style-sticky-header-desktop)) {
-		scroll-padding-top: calc(var(--wp-admin--admin-bar--height, 0px) + var(--leitvia-sticky-header-height, max(25vh, 13rem)) + var(--wp--preset--spacing--xs));
+		--leitvia-sticky-offset: calc(var(--wp-admin--admin-bar--height, 0px) + var(--leitvia-sticky-header-height, max(25vh, 13rem)));
+		scroll-padding-top: calc(var(--leitvia-sticky-offset) + var(--wp--preset--spacing--xs));
 	}
 }
 

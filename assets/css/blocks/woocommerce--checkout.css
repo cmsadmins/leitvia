@@ -85,3 +85,11 @@ body .wc-block-checkout.wc-block-checkout {
 body :is(.wc-block-components-product-details [class*="__gzd-"] .wc-block-components-product-details__value, .wc-gzd-unit-price, .wc-gzd-small-business-info) {
 	color: var(--wp--preset--color--ink-muted);
 }
+
+/*
+ * The order summary sticks 24 px from the top of the screen in WooCommerce, behind a sticky header and the admin bar:
+ * it keeps that gap below whatever really covers the top (--leitvia-sticky-offset, core--group.css).
+ */
+body .wc-block-checkout__sidebar {
+	top: calc(var(--leitvia-sticky-offset, 0px) + 1.5rem);
+}
