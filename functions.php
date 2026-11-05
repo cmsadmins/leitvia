@@ -621,10 +621,11 @@ function lightbox_button_text( array $context, array $block, $parent_block = nul
 add_filter( 'render_block_context', __NAMESPACE__ . '\lightbox_button_text', 10, 3 );
 
 /**
- * Preloads the Latin upright files of the body and heading fonts in the active style, in the weight each one uses, so
- * the text that can be the largest paint renders in its own font instead of swapping from the fallback. Every preloaded
- * file delays that paint on a slow connection, so buttons, other weights, italics, Latin Extended and monospace load on
- * demand. The files come from this site; style variations and token sets that change the fonts are resolved through
+ * Preloads the Latin upright files of the body, heading and button fonts in the active style, in the weight each one
+ * uses. The body and headings can be the largest paint. The button font also sets navigation and other interface text,
+ * where a late swap changes the line breaks and moves the page (CLS 0.33 on the Plumbline demo with a monospace button
+ * font). Every preloaded file delays the first paint on a slow connection, so other weights, italics, Latin Extended
+ * and monospace load on demand. The files come from this site; style variations and token sets that change the fonts are resolved through
  * the global settings. Core prints the links (filter wp_preload_resources, wp_head at priority 1).
  *
  * @param array<int, array<string, string>> $resources Resources core preloads.
@@ -648,7 +649,7 @@ function preload_fonts( $resources ): array {
 		}
 	}
 	$urls = array();
-	foreach ( array( array( 'typography' ), array( 'elements', 'heading', 'typography' ) ) as $path ) {
+	foreach ( array( array( 'typography' ), array( 'elements', 'heading', 'typography' ), array( 'elements', 'button', 'typography' ) ) as $path ) {
 		$value  = wp_get_global_styles( array( ...$path, 'fontFamily' ) );
 		$weight = wp_get_global_styles( array( ...$path, 'fontWeight' ) );
 		$weight = is_numeric( $weight ) ? (int) $weight : 400;

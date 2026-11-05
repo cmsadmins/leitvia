@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.26
+Stable tag: 1.2.27
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -68,9 +68,12 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 
 == Changelog ==
 
+= 1.2.27 =
+* The button font is preloaded again, in its weight: it also sets navigation and interface text, where a late swap moved the page (CLS 0.33 on one demo with Theme 1.2.26).
+
 = 1.2.26 =
 * Faster first paint on phones: up to 150 KB of stylesheets are printed inside the document instead of linked, smallest first, also those of plugins with files on this site, such as WooCommerce. Pages without WooCommerce no longer have a render-blocking stylesheet.
-* Only the body and heading fonts are preloaded, each in the weight it uses.
+* Only the body and heading fonts are preloaded, each in the weight it uses (the button font came back in 1.2.27).
 
 = 1.2.25 =
 * New --leitvia-sticky-offset on html: what really covers the top of the screen right now, the admin bar plus the sticky header only while it sticks (not while a tall header scrolls away, at 200 % zoom or at the other width). Everything else that sticks can sit below it.
