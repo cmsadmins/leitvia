@@ -16,7 +16,7 @@
 	<!-- wp:heading {"align":"wide","fontSize":"heading-l"} -->
 	<h2 class="wp-block-heading alignwide has-heading-l-font-size"><?php esc_html_e( 'How a project runs, in four steps', 'leitvia' ); ?></h2>
 	<!-- /wp:heading -->
-	<!-- wp:group {"leitviaAnimation":"fade","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|l"},"blockGap":"var:preset|spacing|l"}},"layout":{"type":"grid","columnCount":2,"minimumColumnWidth":"31rem"}} -->
+	<!-- wp:group {"leitviaAnimation":"stagger","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|l"},"blockGap":"var:preset|spacing|l"}},"layout":{"type":"grid","columnCount":2,"minimumColumnWidth":"31rem"}} -->
 	<div class="wp-block-group alignwide" style="margin-top:var(--wp--preset--spacing--l)">
 		<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|l"}},"layout":{"type":"grid","columnCount":2,"minimumColumnWidth":"14rem"}} -->
 		<div class="wp-block-group">

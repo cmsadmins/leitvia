@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.23
+Stable tag: 1.2.24
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,10 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.24 =
+* Mild hover as a theme standard: a card (a group with a background or a border in a grid or a column that holds a link) lifts 2px with the raised shadow, and the image of a linked image, a card or a post card scales to 1.03 inside its frame, within 200 ms. Keyboard focus shows the same state (WCAG 2.4.7). Only for pointers that can hover and without reduced motion, never with Motion off of Leitvia Studio, and nothing is shown only on hover.
+* With Leitvia Studio 1.3.23 the patterns use the new effects once as they come into view: the images of Text and media and Asymmetric are revealed from the inside, the image of Overlap and the heading of Statement wipe up, the cover of Break image moves its background a little while the page scrolls; cards, columns, steps, stats, team, services, shop trust badges and post lists appear one after another, prices rise, testimonials fade in. The first screen and content needed right away (price lists, FAQ, downloads, navigation) stay still.
 
 = 1.2.23 =
 * Optional sticky header: the block styles Sticky header, Sticky header on large screens and Sticky header on small screens on the outermost group of the header part keep the header at the top while the page scrolls, pure CSS and off by default. It scrolls away in windows lower than 500 px or not wider than 320 px, at 200 % zoom, with enlarged text and in print, and focused elements and jump targets stop below it (WCAG 2.4.11).

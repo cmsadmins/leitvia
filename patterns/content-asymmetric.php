@@ -36,7 +36,7 @@
 		<!-- /wp:column -->
 		<!-- wp:column {"width":"38%"} -->
 		<div class="wp-block-column" style="flex-basis:38%">
-			<!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"full","linkDestination":"none","style":{"spacing":{"margin":{"top":"var:preset|spacing|xxl"}}}} -->
+			<!-- wp:image {"aspectRatio":"3/4","scale":"cover","sizeSlug":"full","linkDestination":"none","leitviaAnimation":"mask","style":{"spacing":{"margin":{"top":"var:preset|spacing|xxl"}}}} -->
 			<figure class="wp-block-image size-full" style="margin-top:var(--wp--preset--spacing--xxl)"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/portrait.webp' ) ); ?>" alt="<?php esc_attr_e( 'Illustration of a green arched doorway beneath a terracotta sun', 'leitvia' ); ?>" style="aspect-ratio:3/4;object-fit:cover"/><figcaption class="wp-element-caption"><?php esc_html_e( 'Plenty of space around few elements: the same idea works on a page.', 'leitvia' ); ?></figcaption></figure>
 			<!-- /wp:image -->
 		</div>

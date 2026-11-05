@@ -129,3 +129,28 @@
 		box-shadow: var(--wp--preset--shadow--subtle);
 	}
 }
+
+/*
+ * Hover, mild (theme standard): a card, that is a group with a background or a border in a grid or a column that holds
+ * a link, lifts by 2px and takes the raised shadow of the tokens while the pointer rests on it, and the same while a
+ * link in it has keyboard focus (WCAG 2.4.7), within 200 ms. Images in it scale a little inside their frame
+ * (core--image.css). Only for pointers that can hover and without reduced motion; never with the switch Motion off of
+ * the accessibility bar (html.leitvia-motion-off) or the site setting Motion off of Leitvia Studio
+ * (body.leitvia-motion-off), which any plugin may set. translate, not transform, so an effect on scroll of the same
+ * card keeps its own transform. Nothing is shown only on hover.
+ */
+@media (prefers-reduced-motion: no-preference) {
+	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) :is(.is-layout-grid, .wp-block-column) > .wp-block-group:is(.has-background, .has-border-color):has(a[href]) {
+		transition: translate 200ms ease-out, box-shadow 200ms ease-out;
+	}
+	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) :is(.is-layout-grid, .wp-block-column) > .wp-block-group:is(.has-background, .has-border-color):has(a:focus-visible) {
+		translate: 0 -2px;
+		box-shadow: var(--wp--preset--shadow--raised);
+	}
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) :is(.is-layout-grid, .wp-block-column) > .wp-block-group:is(.has-background, .has-border-color):has(a[href]):hover {
+		translate: 0 -2px;
+		box-shadow: var(--wp--preset--shadow--raised);
+	}
+}

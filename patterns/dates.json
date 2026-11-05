@@ -1,11 +1,11 @@
 {
 	"leitvia/content-asymmetric": {
 		"added": "2026-10-18",
-		"updated": "2026-10-18"
+		"updated": "2026-11-05"
 	},
 	"leitvia/content-break-image": {
 		"added": "2026-10-18",
-		"updated": "2026-10-18"
+		"updated": "2026-11-05"
 	},
 	"leitvia/content-changelog": {
 		"added": "2026-10-15",
@@ -13,7 +13,7 @@
 	},
 	"leitvia/content-compare-two": {
 		"added": "2026-10-15",
-		"updated": "2026-10-26"
+		"updated": "2026-11-05"
 	},
 	"leitvia/content-downloads": {
 		"added": "2026-10-24",
@@ -25,19 +25,19 @@
 	},
 	"leitvia/content-feature-catalog": {
 		"added": "2026-10-15",
-		"updated": "2026-10-16"
+		"updated": "2026-11-05"
 	},
 	"leitvia/content-feature-grid": {
 		"added": "2026-10-15",
-		"updated": "2026-10-15"
+		"updated": "2026-11-05"
 	},
 	"leitvia/content-media-pair": {
 		"added": "2026-10-18",
-		"updated": "2026-10-18"
+		"updated": "2026-11-05"
 	},
 	"leitvia/content-overlap": {
 		"added": "2026-10-18",
-		"updated": "2026-10-18"
+		"updated": "2026-11-05"
 	},
 	"leitvia/content-pager": {
 		"added": "2026-10-29",
@@ -53,23 +53,23 @@
 	},
 	"leitvia/content-statement": {
 		"added": "2026-10-18",
-		"updated": "2026-10-18"
+		"updated": "2026-11-05"
 	},
 	"leitvia/content-stats": {
 		"added": "2026-10-15",
-		"updated": "2026-10-18"
+		"updated": "2026-11-05"
 	},
 	"leitvia/content-steps": {
 		"added": "2026-10-15",
-		"updated": "2026-11-04"
+		"updated": "2026-11-05"
 	},
 	"leitvia/content-text-media": {
 		"added": "2026-10-15",
-		"updated": "2026-10-19"
+		"updated": "2026-11-05"
 	},
 	"leitvia/content-two-columns": {
 		"added": "2026-10-15",
-		"updated": "2026-10-15"
+		"updated": "2026-11-05"
 	},
 	"leitvia/content-video": {
 		"added": "2026-10-28",
@@ -245,7 +245,7 @@
 	},
 	"leitvia/offer-pricing-3": {
 		"added": "2026-10-15",
-		"updated": "2026-10-20"
+		"updated": "2026-11-05"
 	},
 	"leitvia/page-accessibility-statement": {
 		"added": "2026-10-15",
@@ -257,7 +257,7 @@
 	},
 	"leitvia/proof-team": {
 		"added": "2026-10-15",
-		"updated": "2026-10-22"
+		"updated": "2026-11-05"
 	},
 	"leitvia/proof-testimonial": {
 		"added": "2026-10-15",
@@ -265,7 +265,7 @@
 	},
 	"leitvia/proof-testimonials-grid": {
 		"added": "2026-10-15",
-		"updated": "2026-10-19"
+		"updated": "2026-11-05"
 	},
 	"leitvia/proof-trust-strip": {
 		"added": "2026-10-15",
@@ -297,7 +297,7 @@
 	},
 	"leitvia/shop-trust-badges": {
 		"added": "2026-10-19",
-		"updated": "2026-10-19"
+		"updated": "2026-11-05"
 	},
 	"leitvia/shop-usp-bar": {
 		"added": "2026-10-19",
@@ -321,7 +321,7 @@
 	},
 	"leitvia/teaser-posts-badge": {
 		"added": "2026-10-15",
-		"updated": "2026-10-18"
+		"updated": "2026-11-05"
 	},
 	"leitvia/teaser-posts-grid": {
 		"added": "2026-10-15",
@@ -329,10 +329,10 @@
 	},
 	"leitvia/teaser-posts-list": {
 		"added": "2026-10-15",
-		"updated": "2026-10-20"
+		"updated": "2026-11-05"
 	},
 	"leitvia/teaser-services": {
 		"added": "2026-10-15",
-		"updated": "2026-10-18"
+		"updated": "2026-11-05"
 	}
 }

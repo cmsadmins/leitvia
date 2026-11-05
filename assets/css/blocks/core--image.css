@@ -15,3 +15,28 @@
 .wp-lightbox-overlay button {
 	color: inherit;
 }
+
+/*
+ * Hover, mild (theme standard, see core--group.css): an image that is a link, or an image in a card (a group with a
+ * background or a border in a grid or a column that holds a link), scales to 1.03 inside its frame while the pointer
+ * rests on the link or the card, and the same while the link has keyboard focus (WCAG 2.4.7), within 200 ms. Only for
+ * pointers that can hover and without reduced motion, never with Motion off (html or body.leitvia-motion-off). The
+ * frame of a linked image is the link itself (core shows it as inline-block): its focus ring lies outside and stays
+ * whole, while a frame on the figure would cut it off.
+ */
+@media (prefers-reduced-motion: no-preference) {
+	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) :is(.wp-block-image > a, :is(.is-layout-grid, .wp-block-column) > .wp-block-group:is(.has-background, .has-border-color):has(a[href]) .wp-block-image:not(:has(> a))) {
+		overflow: hidden;
+	}
+	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) :is(.wp-block-image > a, :is(.is-layout-grid, .wp-block-column) > .wp-block-group:is(.has-background, .has-border-color):has(a[href]) .wp-block-image) img {
+		transition: scale 200ms ease-out;
+	}
+	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) :is(.wp-block-image > a:focus-visible, :is(.is-layout-grid, .wp-block-column) > .wp-block-group:is(.has-background, .has-border-color):has(a:focus-visible) .wp-block-image) img {
+		scale: 1.03;
+	}
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) :is(.wp-block-image > a:hover, :is(.is-layout-grid, .wp-block-column) > .wp-block-group:is(.has-background, .has-border-color):has(a[href]):hover .wp-block-image) img {
+		scale: 1.03;
+	}
+}

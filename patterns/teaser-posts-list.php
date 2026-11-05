@@ -19,7 +19,7 @@
 	<!-- /wp:heading -->
 	<!-- wp:query {"query":{"perPage":5,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false},"style":{"spacing":{"margin":{"top":"var:preset|spacing|l"}}}} -->
 	<div class="wp-block-query">
-		<!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|m"}}} -->
+		<!-- wp:post-template {"leitviaAnimation":"stagger","style":{"spacing":{"blockGap":"var:preset|spacing|m"}}} -->
 			<!-- wp:columns {"style":{"border":{"top":{"color":"var:preset|color|stroke","width":"0.0625rem"}},"spacing":{"padding":{"top":"var:preset|spacing|m"},"blockGap":{"top":"var:preset|spacing|xxs","left":"var:preset|spacing|l"}}}} -->
 			<div class="wp-block-columns" style="border-top-color:var(--wp--preset--color--stroke);border-top-width:0.0625rem;padding-top:var(--wp--preset--spacing--m)">
 				<!-- wp:column {"width":"25%"} -->

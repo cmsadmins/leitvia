@@ -23,7 +23,7 @@
 		<!-- /wp:heading -->
 	</div>
 	<!-- /wp:group -->
-	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|l","left":"var:preset|spacing|xxl"}}}} -->
+	<!-- wp:columns {"leitviaAnimation":"fade","align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|l","left":"var:preset|spacing|xxl"}}}} -->
 	<div class="wp-block-columns alignwide">
 		<!-- wp:column {"width":"58%"} -->
 		<div class="wp-block-column" style="flex-basis:58%">

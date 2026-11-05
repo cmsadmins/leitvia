@@ -33,7 +33,7 @@
 		<!-- /wp:group -->
 	</div>
 	<!-- /wp:group -->
-	<!-- wp:image {"aspectRatio":"16/9","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"wide","style":{"spacing":{"margin":{"top":"calc(var(--wp--preset--spacing--xl) * -1)"}}}} -->
+	<!-- wp:image {"aspectRatio":"16/9","scale":"cover","sizeSlug":"full","linkDestination":"none","leitviaAnimation":"wipe-up","align":"wide","style":{"spacing":{"margin":{"top":"calc(var(--wp--preset--spacing--xl) * -1)"}}}} -->
 	<figure class="wp-block-image alignwide size-full" style="margin-top:calc(var(--wp--preset--spacing--xl) * -1)"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/detail.webp' ) ); ?>" alt="<?php esc_attr_e( 'Overlapping green, terracotta and grey rectangles on a fine paper grid', 'leitvia' ); ?>" style="aspect-ratio:16/9;object-fit:cover"/></figure>
 	<!-- /wp:image -->
 </div>

@@ -16,7 +16,7 @@
 	<!-- wp:heading {"align":"wide","fontSize":"heading-m"} -->
 	<h2 class="wp-block-heading alignwide has-heading-m-font-size"><?php esc_html_e( 'Shop with confidence', 'leitvia' ); ?></h2>
 	<!-- /wp:heading -->
-	<!-- wp:group {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|l"},"blockGap":"var:preset|spacing|l"}},"layout":{"type":"grid","columnCount":4,"minimumColumnWidth":"13rem"}} -->
+	<!-- wp:group {"leitviaAnimation":"stagger","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|l"},"blockGap":"var:preset|spacing|l"}},"layout":{"type":"grid","columnCount":4,"minimumColumnWidth":"13rem"}} -->
 	<div class="wp-block-group alignwide" style="margin-top:var(--wp--preset--spacing--l)">
 		<!-- wp:group {"style":{"border":{"top":{"color":"var:preset|color|stroke","width":"0.0625rem"}},"spacing":{"padding":{"top":"var:preset|spacing|m"},"blockGap":"var:preset|spacing|xs"}}} -->
 		<div class="wp-block-group" style="border-top-color:var(--wp--preset--color--stroke);border-top-width:0.0625rem;padding-top:var(--wp--preset--spacing--m)">

@@ -1,4 +1,4 @@
-/* Cards answer hover with a fine underline on the title, never by scaling the image. */
+/* Cards answer hover with a fine underline on the title; the featured image scales a little in its frame (below). */
 .wp-block-post-template .wp-block-post-title a {
 	text-decoration: none;
 }
@@ -53,5 +53,27 @@ body.blog:not(.paged) .leitvia-post-grid > li:first-child {
 	}
 	body.blog:not(.paged) .leitvia-post-grid > li:first-child .wp-block-post-title {
 		font-size: var(--wp--preset--font-size--heading-l);
+	}
+}
+
+/*
+ * Hover, mild (theme standard, see core--group.css): the featured image of a post card scales to 1.03 inside its frame
+ * while the pointer rests on the card or its title link has keyboard focus (WCAG 2.4.7), within 200 ms. Only for
+ * pointers that can hover and without reduced motion, never with Motion off (html or body.leitvia-motion-off).
+ */
+@media (prefers-reduced-motion: no-preference) {
+	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) .leitvia-post-card .wp-block-post-featured-image {
+		overflow: hidden;
+	}
+	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) .leitvia-post-card .wp-block-post-featured-image img {
+		transition: scale 200ms ease-out;
+	}
+	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) .leitvia-post-card:has(a:focus-visible) .wp-block-post-featured-image img {
+		scale: 1.03;
+	}
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) .leitvia-post-card:hover .wp-block-post-featured-image img {
+		scale: 1.03;
 	}
 }

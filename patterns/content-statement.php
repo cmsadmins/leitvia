@@ -13,7 +13,7 @@
 ?>
 <!-- wp:group {"metadata":{"name":"Statement"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|xxl","bottom":"var:preset|spacing|xxl"}}},"backgroundColor":"accent","textColor":"on-accent","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull has-on-accent-color has-accent-background-color has-text-color has-background" style="padding-top:var(--wp--preset--spacing--xxl);padding-bottom:var(--wp--preset--spacing--xxl)">
-	<!-- wp:heading {"align":"wide","fontSize":"display"} -->
+	<!-- wp:heading {"leitviaAnimation":"wipe-up","align":"wide","fontSize":"display"} -->
 	<h2 class="wp-block-heading alignwide has-display-font-size"><?php esc_html_e( 'We would rather publish one honest page than ten that only fill space.', 'leitvia' ); ?></h2>
 	<!-- /wp:heading -->
 	<!-- wp:columns {"verticalAlignment":"bottom","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|l"},"blockGap":{"top":"var:preset|spacing|m","left":"var:preset|spacing|xxl"}}}} -->
