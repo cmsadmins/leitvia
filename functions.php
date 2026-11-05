@@ -39,11 +39,46 @@ function register_block_styles(): void {
 add_action( 'init', __NAMESPACE__ . '\register_block_styles' );
 
 /**
+ * Prints the stylesheets of the blocks on a page inside the document. At the 20 KB of core, navigation, image and cover
+ * stay linked and hold back the first paint; on a throttled phone that alone costs a second and the Speed Index. Core
+ * counts smallest first, so 150 KB takes a page of many blocks; stylesheets beyond that, like the classic one of
+ * WooCommerce, stay linked. The document grows by a few KB gzip, which arrive with it.
+ *
+ * @return int Bytes of CSS to print inline.
+ */
+function inline_styles_limit(): int {
+	return 150000;
+}
+add_filter( 'styles_inline_size_limit', __NAMESPACE__ . '\inline_styles_limit' );
+
+/**
+ * Core only prints a stylesheet inside the document when it knows the file. Plugins such as WooCommerce enqueue theirs
+ * by URL, so the path comes from the URL here, for files of this site. Left out in right-to-left languages when a
+ * stylesheet has its own right-to-left file, which only the link picks.
+ */
+function style_paths(): void {
+	$styles = wp_styles();
+	$root   = content_url( '/' );
+	foreach ( $styles->queue as $handle ) {
+		$src = $styles->registered[ $handle ]->src ?? '';
+		if ( ! is_string( $src ) || ! str_starts_with( $src, $root ) || $styles->get_data( $handle, 'path' ) || ( is_rtl() && $styles->get_data( $handle, 'rtl' ) ) ) {
+			continue;
+		}
+		$path = WP_CONTENT_DIR . '/' . substr( (string) strtok( $src, '?' ), strlen( $root ) );
+		if ( is_readable( $path ) ) {
+			wp_style_add_data( $handle, 'path', $path );
+		}
+	}
+}
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\style_paths', 1000 );
+
+/**
  * The account pages of WooCommerce come in through a shortcode, not a block, so their stylesheet loads by page.
  */
 function enqueue_account_styles(): void {
 	if ( function_exists( 'is_account_page' ) && is_account_page() ) {
 		wp_enqueue_style( 'leitvia-woocommerce--account', get_theme_file_uri( 'assets/css/blocks/woocommerce--account.css' ), array(), wp_get_theme()->get( 'Version' ) );
+		wp_style_add_data( 'leitvia-woocommerce--account', 'path', get_theme_file_path( 'assets/css/blocks/woocommerce--account.css' ) );
 	}
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_account_styles' );
@@ -586,11 +621,11 @@ function lightbox_button_text( array $context, array $block, $parent_block = nul
 add_filter( 'render_block_context', __NAMESPACE__ . '\lightbox_button_text', 10, 3 );
 
 /**
- * Preloads the Latin upright files of the body, heading and ui (button) fonts in the active style, so text above the fold
- * renders in its own font instead of swapping from the fallback (layout shift through font-display: swap).
- * The files come from this site; style variations and token sets that change the fonts are resolved through the
- * global settings. Italic, Latin Extended and monospace files load on demand as before. Core prints the links
- * (filter wp_preload_resources, wp_head at priority 1).
+ * Preloads the Latin upright files of the body and heading fonts in the active style, in the weight each one uses, so
+ * the text that can be the largest paint renders in its own font instead of swapping from the fallback. Every preloaded
+ * file delays that paint on a slow connection, so buttons, other weights, italics, Latin Extended and monospace load on
+ * demand. The files come from this site; style variations and token sets that change the fonts are resolved through
+ * the global settings. Core prints the links (filter wp_preload_resources, wp_head at priority 1).
  *
  * @param array<int, array<string, string>> $resources Resources core preloads.
  * @return array<int, array<string, string>>
@@ -612,19 +647,22 @@ function preload_fonts( $resources ): array {
 			$faces[ $first_name( $family ) ] = $family['fontFace'];
 		}
 	}
-	$slugs = array(
-		wp_get_global_styles( array( 'typography', 'fontFamily' ) ),
-		wp_get_global_styles( array( 'elements', 'heading', 'typography', 'fontFamily' ) ),
-		wp_get_global_styles( array( 'elements', 'button', 'typography', 'fontFamily' ) ),
-	);
-	$urls  = array();
-	foreach ( $slugs as $value ) {
+	$urls = array();
+	foreach ( array( array( 'typography' ), array( 'elements', 'heading', 'typography' ) ) as $path ) {
+		$value  = wp_get_global_styles( array( ...$path, 'fontFamily' ) );
+		$weight = wp_get_global_styles( array( ...$path, 'fontWeight' ) );
+		$weight = is_numeric( $weight ) ? (int) $weight : 400;
 		if ( ! is_string( $value ) || ! preg_match( '/(?:\||--)font-family(?:\||--)([a-z0-9-]+)/', $value, $m ) ) {
 			continue;
 		}
 		foreach ( $families[ $m[1] ]['fontFace'] ?? $faces[ $first_name( $families[ $m[1] ] ?? array() ) ] ?? array() as $face ) {
 			$src   = (array) ( $face['src'] ?? array() );
 			$first = (string) reset( $src );
+			// fontWeight is one weight, or a range ("400 700") for a variable font.
+			$range = array_map( 'intval', explode( ' ', (string) ( $face['fontWeight'] ?? '400' ) ) );
+			if ( $weight < $range[0] || $weight > end( $range ) ) {
+				continue;
+			}
 			if ( 'normal' !== ( $face['fontStyle'] ?? 'normal' ) || ! str_starts_with( $face['unicodeRange'] ?? 'U+0000', 'U+0000' ) ) {
 				continue;
 			}
