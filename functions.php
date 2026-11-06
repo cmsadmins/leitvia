@@ -12,6 +12,26 @@ namespace Leitvia;
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Translations of the release zip in languages/, for sites without a language pack of WordPress.org. A pack in
+ * WP_LANG_DIR wins.
+ */
+function load_translations(): void {
+	load_theme_textdomain( 'leitvia', get_template_directory() . '/languages' );
+}
+add_action( 'after_setup_theme', __NAMESPACE__ . '\load_translations' );
+
+/**
+ * Drops the wrapper of a template part without content, so the optional part post-closing leaves no element or gap
+ * until something is written into it.
+ *
+ * @param string $content Rendered block.
+ */
+function drop_empty_template_part( string $content ): string {
+	return preg_match( '#^<(\w+)[^>]*>\s*</\1>$#', trim( $content ) ) ? '' : $content;
+}
+add_filter( 'render_block_core/template-part', __NAMESPACE__ . '\drop_empty_template_part' );
+
+/**
  * Registers per-block stylesheets so CSS loads only when the block is on the page.
  */
 function register_block_styles(): void {
@@ -105,6 +125,9 @@ function register_block_style_variations(): void {
 		'core/paragraph'  => array(
 			'badge'   => __( 'Badge', 'leitvia' ),
 			'eyebrow' => __( 'Eyebrow', 'leitvia' ),
+		),
+		'core/site-logo'  => array(
+			'on-dark' => __( 'On dark band', 'leitvia' ),
 		),
 		'core/group'      => array(
 			'note'                  => __( 'Note', 'leitvia' ),
@@ -465,6 +488,22 @@ function docs_section_pages( ?string $html, array $block ): ?string {
 	return preg_replace_callback( '/<ul\b[^>]*>/', fn( array $ul ): string => $ul[0] . $item, $children, 1 );
 }
 add_filter( 'pre_render_block', __NAMESPACE__ . '\docs_section_pages', 10, 2 );
+
+/**
+ * A page list inside a navigation gives its pages to the list of the navigation. Core keeps its own <ul>, so the header
+ * of a site without a menu, where core falls back to a page list, had a list directly in a list (WCAG 1.3.1).
+ *
+ * @param string    $html     Rendered block.
+ * @param array     $block    Parsed block.
+ * @param \WP_Block $instance Block instance; every child of a navigation has the context showSubmenuIcon.
+ */
+function page_list_items_in_navigation( string $html, array $block, \WP_Block $instance ): string {
+	if ( ! array_key_exists( 'showSubmenuIcon', $instance->context ) ) {
+		return $html;
+	}
+	return preg_replace( '#^\s*<ul\b[^>]*>(.*)</ul>\s*$#s', '$1', $html ) ?? $html;
+}
+add_filter( 'render_block_core/page-list', __NAMESPACE__ . '\page_list_items_in_navigation', 10, 3 );
 
 /**
  * Polylang translates posts and pages but not template parts. While Polylang shows a language other than its default

@@ -17,7 +17,7 @@
 	<!-- wp:heading {"align":"wide","fontSize":"heading-m"} -->
 	<h2 class="wp-block-heading alignwide has-heading-m-font-size"><?php esc_html_e( 'Notes from the team', 'leitvia' ); ?></h2>
 	<!-- /wp:heading -->
-	<!-- wp:query {"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"ignore","inherit":false},"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|l"}}}} -->
+	<!-- wp:query {"queryId":108,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"ignore","inherit":false},"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|l"}}}} -->
 	<div class="wp-block-query alignwide">
 		<!-- wp:post-template {"leitviaAnimation":"stagger","style":{"spacing":{"blockGap":"var:preset|spacing|m"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"17rem"}} -->
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs"}}} -->

@@ -452,6 +452,7 @@
 		{ "name": "header", "title": "Header", "area": "header" },
 		{ "name": "footer", "title": "Footer", "area": "footer" },
 		{ "name": "sidebar", "title": "Sidebar", "area": "uncategorized" },
+		{ "name": "post-closing", "title": "Post closing", "area": "uncategorized" },
 		{ "name": "header-shop", "title": "Shop header", "area": "header" },
 		{ "name": "checkout-header", "title": "Checkout header", "area": "header" },
 		{ "name": "checkout-footer", "title": "Checkout footer", "area": "footer" },

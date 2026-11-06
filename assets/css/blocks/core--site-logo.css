@@ -1,0 +1,8 @@
+/*
+ * Block style On dark band: draws the site logo in white from its alpha channel, for a dark logo on an inverse band.
+ * WordPress keeps one site logo, so this needs no second file. It needs a transparent background: a logo on a white
+ * rectangle turns into a white rectangle. A logo with its own light file goes in as an Image block instead.
+ */
+.wp-block-site-logo.is-style-on-dark img {
+	filter: brightness(0) invert(1);
+}

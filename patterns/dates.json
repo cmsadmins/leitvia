@@ -15,6 +15,10 @@
 		"added": "2026-10-15",
 		"updated": "2026-11-05"
 	},
+	"leitvia/content-comparison": {
+		"added": "2026-11-01",
+		"updated": "2026-11-01"
+	},
 	"leitvia/content-downloads": {
 		"added": "2026-10-24",
 		"updated": "2026-10-24"
@@ -97,7 +101,7 @@
 	},
 	"leitvia/footer-mega": {
 		"added": "2026-10-15",
-		"updated": "2026-10-29"
+		"updated": "2026-11-06"
 	},
 	"leitvia/footer-minimal": {
 		"added": "2026-10-15",
@@ -233,7 +237,7 @@
 	},
 	"leitvia/hidden-page-related-posts": {
 		"added": "2026-10-24",
-		"updated": "2026-11-02"
+		"updated": "2026-11-06"
 	},
 	"leitvia/hidden-page-shop-filters": {
 		"added": "2026-10-18",
@@ -309,27 +313,27 @@
 	},
 	"leitvia/teaser-editorial-grid": {
 		"added": "2026-10-18",
-		"updated": "2026-11-04"
+		"updated": "2026-11-06"
 	},
 	"leitvia/teaser-featured-post": {
 		"added": "2026-10-15",
-		"updated": "2026-10-19"
+		"updated": "2026-11-06"
 	},
 	"leitvia/teaser-front-page": {
 		"added": "2026-10-24",
-		"updated": "2026-10-24"
+		"updated": "2026-11-06"
 	},
 	"leitvia/teaser-posts-badge": {
 		"added": "2026-10-15",
-		"updated": "2026-11-05"
+		"updated": "2026-11-06"
 	},
 	"leitvia/teaser-posts-grid": {
 		"added": "2026-10-15",
-		"updated": "2026-11-04"
+		"updated": "2026-11-06"
 	},
 	"leitvia/teaser-posts-list": {
 		"added": "2026-10-15",
-		"updated": "2026-11-05"
+		"updated": "2026-11-06"
 	},
 	"leitvia/teaser-services": {
 		"added": "2026-10-15",

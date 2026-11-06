@@ -12,7 +12,7 @@
  */
 
 ?>
-<!-- wp:query {"query":{"perPage":1,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"only","inherit":false},"metadata":{"name":"Featured post"},"align":"full","layout":{"type":"default"}} -->
+<!-- wp:query {"queryId":104,"query":{"perPage":1,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"only","inherit":false},"metadata":{"name":"Featured post"},"align":"full","layout":{"type":"default"}} -->
 <div class="wp-block-query alignfull">
 	<!-- wp:post-template {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|xl","bottom":"var:preset|spacing|xl"}}},"backgroundColor":"surface-alt"} -->
 		<!-- wp:group {"align":"full","layout":{"type":"constrained"}} -->

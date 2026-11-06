@@ -20,7 +20,7 @@
 		<div class="wp-block-column" style="flex-basis:34%">
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|s"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 			<div class="wp-block-group">
-				<!-- wp:site-logo {"width":40} /-->
+				<!-- wp:site-logo {"width":40,"className":"is-style-on-dark"} /-->
 				<!-- wp:site-title {"level":0,"isLink":false,"fontSize":"heading-m","fontFamily":"heading"} /-->
 			</div>
 			<!-- /wp:group -->

@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.8",
+	"contractVersion": "1.13.9",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -302,6 +302,11 @@
 			"purpose": "Optional sidebar with about text, categories and latest posts."
 		},
 		{
+			"name": "post-closing",
+			"area": "uncategorized",
+			"purpose": "Optional section between main and footer of the template single, empty by default: a closing call to action for every post, written with content from the markup of a pattern."
+		},
+		{
 			"name": "header-shop",
 			"area": "header",
 			"purpose": "Header of the shop templates: the default header plus product search, customer account and mini cart; default pattern header-shop.",
@@ -497,6 +502,12 @@
 			"name": "download",
 			"purpose": "List of files to download: no bullets, a decorative file mark before each item, hairlines between items; the link of each item stands on its own line in bold.",
 			"context": "Lists where each item is one link to a file, named with format and size, followed by one sentence about the file; the pattern content-downloads uses it."
+		},
+		{
+			"block": "core/site-logo",
+			"name": "on-dark",
+			"purpose": "Draws a dark logo with a transparent background in white, for dark bands.",
+			"context": "On an Inverse band only. A logo with its own light file in several colors is an Image block instead."
 		},
 		{
 			"block": "core/paragraph",
@@ -757,7 +768,8 @@
 					"name": "actions",
 					"roles": [
 						"close"
-					]
+					],
+					"note": "With Leitvia Studio, leitvia-studio/cta-contact-form lets visitors write from the page; leitvia/cta-contact only lists the ways to reach you."
 				},
 				{
 					"name": "context",
@@ -935,6 +947,37 @@
 					"text": [
 						80,
 						120
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-comparison",
+			"title": "Comparison table",
+			"description": "Eyebrow, heading and short intro above a wide comparison table with a header row of options, one row per feature, a last row linking to each option and a caption with source and date. Use on product and comparison pages when three or four options differ feature by feature.",
+			"area": "content",
+			"useWhen": "Product or comparison pages where three or four plans, editions or options differ in the same features.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "list",
+				"weight": "medium",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Two options (use content-compare-two), prices that depend on volume (use content-price-list) or plans that need a price switch and order buttons (use offer-pricing-3).",
+				"a11y": "A real header row whose first cell names the column of features, and a caption with source and date; the table scrolls sideways as a focusable named region on small screens, so keep the caption. Each link in the last row names its option, so link texts stay unique.",
+				"contentLength": {
+					"heading": [
+						30,
+						60
+					],
+					"text": [
+						80,
+						160
 					]
 				},
 				"replacedBy": null
@@ -1134,7 +1177,7 @@
 				}
 			],
 			"docs": {
-				"avoidWhen": "The page already has an image break or a cover nearby; two large images in a row lose their weight.",
+				"avoidWhen": "The page already has an image break or a cover nearby; two large images in a row lose their weight, or the image is an illustration or diagram: the card covers part of it and the slot crops it.",
 				"a11y": "The card overlaps the image only with its bottom padding, never with text, also at 320 px and with larger text spacing. The card comes first in the DOM, so text is read before the image.",
 				"contentLength": {
 					"heading": [
@@ -2085,7 +2128,7 @@
 				}
 			],
 			"docs": {
-				"avoidWhen": "The next section is also split or overlapping, or no meaningful photo exists.",
+				"avoidWhen": "The next section is also split or overlapping, no meaningful photo exists, or the image is an illustration or diagram: the card covers part of it and the slot crops it.",
 				"a11y": "Holds the only h1, in the card, so text never sits on the image; the image needs alt text when it shows what the page offers.",
 				"contentLength": {
 					"heading": [
@@ -3769,6 +3812,37 @@
 				"a11y": "The links sit in a navigation landmark named Share this post; every link names its service and says when it opens a new window, and the copy button reports in a polite live region. Nothing loads from the networks before a click.",
 				"contentLength": {
 					"heading": null,
+					"text": [
+						40,
+						120
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/cta-contact-form",
+			"title": "Contact form",
+			"description": "Heading and short invitation next to a form with name, email and message that sends an email to the site owner. Use on a contact page or as the closing section of a service page.",
+			"area": "cta",
+			"useWhen": "The actions slot of a contact page, or the close of a service page, when visitors should write without opening a mail program. Set the recipient on the block (empty: the administration address).",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "medium",
+				"role": "close",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Pages that need other fields, uploads or stored entries; a form plugin inside leitvia/form-errors fits those. Never twice on one page. Needs Leitvia Studio for the contact form block.",
+				"a11y": "Visible labels, a summary of errors that takes the focus and links to each field, and messages at the fields. It works without JavaScript and stores nothing on the site.",
+				"contentLength": {
+					"heading": [
+						10,
+						50
+					],
 					"text": [
 						40,
 						120

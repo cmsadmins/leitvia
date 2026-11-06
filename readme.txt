@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.27
+Stable tag: 1.2.28
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,14 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.28 =
+* Every query in the patterns has its own queryId, so Query filter and Load more also work on pages written through abilities.
+* Templates and patterns are translated on German sites: the theme loads the languages folder of its zip, a language pack in WP_LANG_DIR wins. Texts like Published, By, About the author, the 404 page and Back to top were English on other sites.
+* New template part post-closing between the content and the footer of single posts, for one closing section under every post. While it is empty it renders nothing, also no wrapper.
+* Accessibility: a page list in the navigation, which is what the header of a site without a menu shows, no longer leaves a list directly inside a list.
+* New block style On dark band for the site logo: it draws a transparent logo in white, Footer mega uses it.
+* Contract 1.13.9: two overlap patterns name illustrations and diagrams under avoidWhen, because the card covers them and the slot crops them.
 
 = 1.2.27 =
 * The button font is preloaded again, in its weight: it also sets navigation and interface text, where a late swap moved the page (CLS 0.33 on one demo with Theme 1.2.26).

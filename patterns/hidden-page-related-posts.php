@@ -12,7 +12,7 @@
  */
 
 ?>
-<!-- wp:query {"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"excludeCurrent":true},"namespace":"leitvia/related-posts","metadata":{"name":"Related posts"},"align":"wide","layout":{"type":"default"}} -->
+<!-- wp:query {"queryId":101,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false,"excludeCurrent":true},"namespace":"leitvia/related-posts","metadata":{"name":"Related posts"},"align":"wide","layout":{"type":"default"}} -->
 <div class="wp-block-query alignwide">
 	<!-- wp:heading {"fontSize":"heading-s"} -->
 	<h2 class="wp-block-heading has-heading-s-font-size"><?php esc_html_e( 'Related articles', 'leitvia' ); ?></h2>

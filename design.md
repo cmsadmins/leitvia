@@ -140,7 +140,7 @@ The `pageFrames` section names the slots of each page type (`intro`, `toc`, `act
 | --- | --- | --- |
 | Home | `page-landing` | Hero (split image, centered, overlap or three teasers), `proof-logos` or `proof-trust-strip`, `teaser-services`, a proof pattern, `teaser-posts-grid` or `teaser-posts-list`, `cta-banner` |
 | Service | `page-landing` | `hero-centered` or `hero-split-image`, `content-text-media`, `content-steps`, `content-feature-grid`, `proof-testimonials-grid` or `content-quote`, `offer-pricing-3` or `content-price-list`, `content-faq`, `cta-contact` |
-| Product | `page-landing` | `content-feature-catalog`, `content-compare-two`, `offer-pricing-3`, `content-changelog`, `content-downloads`, `teaser-posts-badge` |
+| Product | `page-landing` | `content-feature-catalog`, `content-compare-two`, `content-comparison`, `offer-pricing-3`, `content-changelog`, `content-downloads`, `teaser-posts-badge` |
 | Blog | `home`, `archive`, `author`, `single` | No patterns of your own: the templates carry the overview as a grid of post cards (one link per card, the first post across the grid as lead story) with category chips and pagination, category and author archives in the same grid, and the post page with author box, previous and next post and related posts as cards. A posts page set in the reading settings gives the overview its h1 |
 | Article | `single` | Core blocks in reading width; `content-quote`, `content-stats` or `content-steps` inside long reads; `cta-newsletter` at the end |
 | About | `page-landing` | `hero-editorial`, `content-two-columns`, `content-stats`, `proof-team`, `content-quote`, `cta-contact` |
@@ -184,7 +184,13 @@ Leitvia targets WCAG 2.2 AA and BITV 2.0. Agents must keep it that way:
 - Respect reduced motion. The few theme transitions (color 150 ms, the mild hover 200 ms) switch off under `prefers-reduced-motion` and with Motion off (`leitvia-motion-off` on `html` or `body`, set by the accessibility bar and the Studio setting). Mild hover: a card (a group with a background or a border in a grid or a column that holds a link) lifts 2px with the `raised` shadow, images in cards and linked images scale to 1.03 inside their frame, only for pointers that hover, and keyboard focus on the link gets the same state. Nothing is shown only on hover. Effects on scroll come from Leitvia Studio (`leitviaAnimation`), never from theme CSS.
 - Buttons are 48 px high, the place order button 52 px, shop icons have 44 px targets. Caps labels at 12 px only for eyebrows and badges, never for running text or links. Footer link lists in a navigation drop the underline at rest; running text keeps it.
 
+## Logo on dark bands
+
+WordPress keeps one site logo. On an Inverse band give the Site Logo block the block style On dark band (`is-style-on-dark`): it draws a dark logo with a transparent background in white, as the pattern Footer mega does. A logo with its own light version in several colors goes in as an Image block with that file, linked to the start page, in place of the Site Logo block.
+
 ## Template parts
+
+The optional part `post-closing` sits between the main area and the footer of the template `single`. It ships empty and then renders nothing. A closing section for every post, such as a call to action, goes there once instead of into each post: `leitvia/update-template-part` with `part` `post-closing` and `content` set to the markup of a pattern from `leitvia/get-pattern`; full-width bands stay full width. It does not appear on pages or entries of the content model.
 
 Pick the header by what visitors need first: `header-default` for most sites, `header-cta` when one action such as booking matters on every page, `header-utility` when opening hours and a phone number belong on every page, `header-split` when the logo should lead in the middle, `header-centered` or `header-masthead` for publications. The button of `header-cta`, `header-utility` and `header-split` (block style Header action) is hidden below 1024 px, so its target must also be in the navigation.
 
