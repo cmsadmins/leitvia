@@ -1,5 +1,7 @@
+/* anywhere, not break-word: it also lowers the minimum width, so a long word cannot push a tile or column wider. */
 :where(p) {
 	text-wrap: pretty;
+	overflow-wrap: anywhere;
 }
 
 /* Inline code in running text. The tint follows the text color, so it also reads on surface-alt, ink and accent sections. */

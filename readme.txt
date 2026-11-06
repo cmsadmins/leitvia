@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.29
+Stable tag: 1.2.30
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,14 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.30 =
+* The main button of Header with button, Header with service bar and Header with centered logo stays reachable at every width: below 1024 px the menu items collapse behind the menu button and the button keeps its place, below 600 px it moves to the end of the menu. Its page no longer has to be in the navigation.
+* Long words in paragraphs and lists break inside narrow tiles and columns instead of running over the edge. Headings keep manual hyphenation.
+* Empty archives and searches say No results found. German defaults of system texts use neither du nor Sie.
+* Breadcrumb links are at least 24 px high (WCAG 2.5.8).
+* German variants such as de_DE_formal, de_AT and de_CH use the German translation of the zip.
+* Contract 1.13.11: header button, new description of the no results message.
 
 = 1.2.29 =
 * Outline buttons take the text color of their band, so they stay visible on dark bands, inverse groups and covers. Buttons of forms and blocks on dark bands fill with the accent.

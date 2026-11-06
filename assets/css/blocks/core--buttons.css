@@ -1,6 +1,19 @@
-/* Header action: below 1024 px the header button gives way, its page is in the navigation. */
-@media (max-width: 63.9375rem) {
-	.wp-block-buttons.is-style-header-action {
+/*
+ * Header action: the main action of a site stays reachable at every width. From 1024 px menu items and button share the
+ * header row. Below that the items collapse behind the menu button and the button keeps its place, because the row
+ * has room for logo, button and menu button but not for the items as well. Below 600 px the button moves into the
+ * menu: functions.php copies it there (header_action_in_overlay). A header whose navigation has no menu button keeps it.
+ */
+@media (min-width: 600px) and (max-width: 63.9375rem) {
+	:has(> .is-style-header-action) > nav > .wp-block-navigation__responsive-container-open:not(.always-shown) {
+		display: flex;
+	}
+	:has(> .is-style-header-action) > nav > .wp-block-navigation__responsive-container:not(.is-menu-open) {
+		display: none;
+	}
+}
+@media (max-width: 599.98px) {
+	:has(> nav > .wp-block-navigation__responsive-container-open) > .is-style-header-action {
 		display: none;
 	}
 }

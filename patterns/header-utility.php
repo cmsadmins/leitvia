@@ -3,7 +3,7 @@
  * Title: Header with service bar
  * Slug: leitvia/header-utility
  * Categories: header
- * Description: A slim dark bar above the header with opening hours on the left and a phone number and one more link on the right, then site logo and title, the main navigation and one button for the main action. Below 1024 px the button gives way to the navigation. Use for practices, trades and services that people call before they visit.
+ * Description: A slim dark bar above the header with opening hours on the left and a phone number and one more link on the right, then site logo and title, the main navigation and one button for the main action. Below 1024 px the menu items collapse behind the menu button; the button stays in the header and moves into the menu below 600 px. Use for practices, trades and services that people call before they visit.
  * Keywords: header, top bar, service bar, opening hours, phone, contact, button
  * Block Types: core/template-part/header
  * Viewport Width: 1400

@@ -1,10 +1,10 @@
-/* Long code names (hooks, functions) break inside the column instead of scrolling the page at 320 px (WCAG 1.4.10). */
-.wp-block-list code {
+/* Long words and code names (hooks, functions) break inside the column instead of scrolling the page at 320 px (WCAG 1.4.10). */
+:where(.wp-block-list li) {
 	overflow-wrap: anywhere;
 }
 
 /* Divided: no markers, hairlines between items. Download: one file per item, link first, decorative file mark. */
-.wp-block-list:is(.is-style-divided, .is-style-download) {
+.wp-block-list:is(.is-style-divided, .is-style-download, .is-style-checklist, .is-style-checklist-row) {
 	list-style: none;
 	padding-inline-start: 0;
 }
@@ -39,10 +39,6 @@
  * Checklist: a decorative check mark before each item instead of the bullet. The row variant lets short facts
  * flow side by side and wrap, for trust strips. The mark is hidden from assistive technology.
  */
-.wp-block-list:is(.is-style-checklist, .is-style-checklist-row) {
-	list-style: none;
-	padding-inline-start: 0;
-}
 .wp-block-list:is(.is-style-checklist, .is-style-checklist-row) > li {
 	position: relative;
 	padding-inline-start: 1.5em;

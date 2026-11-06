@@ -30,10 +30,22 @@
 
 /*
  * A dark band that closes the page, in the content or the part post-closing, sits right on the dark Footer mega: a
- * hairline in the footer text color keeps the two apart. Every other footer starts without a line.
+ * hairline in the footer text color keeps the two apart. Every other footer starts without a line. A full-width band
+ * in post-closing meets the footer, so no strip of page background stays between them.
  */
-:has(> .is-style-inverse:last-child, > * > .is-style-inverse:last-child) ~ footer > .is-style-inverse {
+:has(> :is(.is-style-inverse, .has-ink-background-color):last-child, > * > :is(.is-style-inverse, .has-ink-background-color):last-child) ~ footer > .is-style-inverse {
 	border-top: 1px solid var(--wp--preset--color--stroke);
+}
+.wp-site-blocks > aside:has(> .alignfull:last-child) + footer {
+	margin-block-start: 0;
+}
+
+/* A band on ink or accent without a text color of its own reads in the pair of its ground, not in the ink of the page. */
+.has-ink-background-color:not(.has-text-color) {
+	color: var(--wp--preset--color--surface);
+}
+.has-accent-background-color:not(.has-text-color) {
+	color: var(--wp--preset--color--on-accent);
 }
 
 /*

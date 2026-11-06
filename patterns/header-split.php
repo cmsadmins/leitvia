@@ -3,7 +3,7 @@
  * Title: Header with centered logo
  * Slug: leitvia/header-split
  * Categories: header
- * Description: The main navigation on the left, site logo and title exactly in the middle and one button on the right, with a fine line below. On phones the menu button sits on the left and the logo stays in the middle. Use for restaurants, studios, firms and brands whose logo should lead.
+ * Description: The main navigation on the left, site logo and title exactly in the middle and one button on the right, with a fine line below. Below 1024 px the menu button sits on the left and the logo stays in the middle; on phones the button moves into the menu. Use for restaurants, studios, firms and brands whose logo should lead.
  * Keywords: header, centered logo, split navigation, button, restaurant, brand
  * Block Types: core/template-part/header
  * Viewport Width: 1400

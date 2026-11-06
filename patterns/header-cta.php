@@ -3,7 +3,7 @@
  * Title: Header with button
  * Slug: leitvia/header-cta
  * Categories: header
- * Description: Site logo and title on the left, the main navigation and one button for the main action on the right, such as booking or getting in touch, with a fine line below. Below 1024 px the button gives way to the navigation. Use when one action matters on every page.
+ * Description: Site logo and title on the left, the main navigation and one button for the main action on the right, such as booking or getting in touch, with a fine line below. Below 1024 px the menu items collapse behind the menu button; the button stays in the header and moves into the menu below 600 px. Use when one action matters on every page.
  * Keywords: header, navigation, button, call to action, contact, booking
  * Block Types: core/template-part/header
  * Viewport Width: 1400

@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.10",
+	"contractVersion": "1.13.11",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -572,7 +572,7 @@
 		{
 			"block": "core/buttons",
 			"name": "header-action",
-			"purpose": "The button beside the navigation of a header; hidden below 1024 px, where logo, menu items and button no longer fit in one row.",
+			"purpose": "The button beside the navigation of a header. Below 1024 px the menu items collapse behind the menu button and the button stays; below 600 px it moves to the end of the menu, so the main action is reachable at every width.",
 			"context": "Buttons in a header template part only; the target page must also be in the navigation."
 		}
 	],
@@ -1861,7 +1861,7 @@
 		{
 			"slug": "leitvia/header-cta",
 			"title": "Header with button",
-			"description": "Site logo and title on the left, the main navigation and one button for the main action on the right, such as booking or getting in touch, with a fine line below. Below 1024 px the button gives way to the navigation. Use when one action matters on every page.",
+			"description": "Site logo and title on the left, the main navigation and one button for the main action on the right, such as booking or getting in touch, with a fine line below. Below 1024 px the menu items collapse behind the menu button; the button stays in the header and moves into the menu below 600 px. Use when one action matters on every page.",
 			"area": "header",
 			"useWhen": "Sites with one action that matters on every page, such as booking, a quote or getting in touch.",
 			"composition": {
@@ -1875,7 +1875,7 @@
 			"images": [],
 			"docs": {
 				"avoidWhen": "More than six top level menu items, or no single main action; use header-default.",
-				"a11y": "Labelled navigation with a menu button on small screens; the button link names its target and is hidden below 1024 px, so the same page must be in the navigation.",
+				"a11y": "Labelled navigation with a menu button on small screens; the button link names its target and stays reachable at every width, in the header or at the end of the menu.",
 				"contentLength": {
 					"heading": null,
 					"text": null
@@ -1886,7 +1886,7 @@
 		{
 			"slug": "leitvia/header-utility",
 			"title": "Header with service bar",
-			"description": "A slim dark bar above the header with opening hours on the left and a phone number and one more link on the right, then site logo and title, the main navigation and one button for the main action. Below 1024 px the button gives way to the navigation. Use for practices, trades and services that people call before they visit.",
+			"description": "A slim dark bar above the header with opening hours on the left and a phone number and one more link on the right, then site logo and title, the main navigation and one button for the main action. Below 1024 px the menu items collapse behind the menu button; the button stays in the header and moves into the menu below 600 px. Use for practices, trades and services that people call before they visit.",
 			"area": "header",
 			"useWhen": "Practices, trades, offices and services that people call or visit: opening hours and phone number on every page.",
 			"composition": {
@@ -1900,7 +1900,7 @@
 			"images": [],
 			"docs": {
 				"avoidWhen": "Online only businesses, or when the bar would repeat the same facts as the header; use header-cta.",
-				"a11y": "The bar is part of the banner landmark; its phone link uses tel: with the number in the link text. Labelled navigation with a menu button on small screens; the button is hidden below 1024 px, so its page must be in the navigation.",
+				"a11y": "The bar is part of the banner landmark; its phone link uses tel: with the number in the link text. Labelled navigation with a menu button on small screens; the button stays reachable at every width, in the header or at the end of the menu.",
 				"contentLength": {
 					"heading": null,
 					"text": null
@@ -1911,7 +1911,7 @@
 		{
 			"slug": "leitvia/header-split",
 			"title": "Header with centered logo",
-			"description": "The main navigation on the left, site logo and title exactly in the middle and one button on the right, with a fine line below. On phones the menu button sits on the left and the logo stays in the middle. Use for restaurants, studios, firms and brands whose logo should lead.",
+			"description": "The main navigation on the left, site logo and title exactly in the middle and one button on the right, with a fine line below. Below 1024 px the menu button sits on the left and the logo stays in the middle; on phones the button moves into the menu. Use for restaurants, studios, firms and brands whose logo should lead.",
 			"area": "header",
 			"useWhen": "Restaurants, studios, firms and brands with a strong logo and four or five menu items.",
 			"composition": {
@@ -1925,7 +1925,7 @@
 			"images": [],
 			"docs": {
 				"avoidWhen": "More than five top level menu items; the left column wraps. Long site titles without a logo.",
-				"a11y": "Labelled navigation with a menu button on small screens, where it sits on the left; the button is hidden below 1024 px, so its page must be in the navigation.",
+				"a11y": "Labelled navigation with a menu button on small screens, where it sits on the left; the button stays reachable at every width, in the header or at the end of the menu.",
 				"contentLength": {
 					"heading": null,
 					"text": null
@@ -2396,7 +2396,7 @@
 		{
 			"slug": "leitvia/hidden-page-no-results",
 			"title": "No results",
-			"description": "Message shown when a query or search returns no posts.",
+			"description": "Neutral message shown when an archive, a list or a search returns no entries.",
 			"area": "page",
 			"useWhen": "Inserted by query loops in templates when nothing is found.",
 			"composition": {

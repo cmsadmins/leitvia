@@ -8,15 +8,11 @@
 	/* Inner ring for the double focus indicator, see core--button.css. */
 	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
 }
+/* Navigation is a link-only context: no underline at rest, a fine one on hover and on the current page. */
 .wp-block-navigation .current-menu-item > a,
 .wp-block-navigation .current-menu-ancestor > .wp-block-navigation-item__content,
-.wp-block-navigation .wp-block-navigation-item__content[aria-current="page"] {
-	text-decoration: underline;
-	text-decoration-thickness: 1px;
-	text-underline-offset: 0.4em;
-}
-/* Navigation is a link-only context: no underline at rest, a fine one on hover. */
-.wp-block-navigation .wp-block-navigation-item__content:hover {
+.wp-block-navigation .wp-block-navigation-item__content:is([aria-current="page"], :hover),
+.wp-block-navigation .wp-block-navigation__submenu-container [aria-current="page"] .wp-block-navigation-item__label {
 	text-decoration: underline;
 	text-decoration-thickness: 1px;
 	text-underline-offset: 0.4em;
@@ -39,31 +35,28 @@
 	display: grid;
 	grid-template-columns: repeat(2, minmax(16rem, 1fr));
 }
-.wp-block-navigation .wp-block-navigation__submenu-container:not(.is-menu-open *) > .wp-block-navigation-item {
-	align-items: stretch;
-}
-.wp-block-navigation .wp-block-navigation__submenu-container:not(.is-menu-open *) > .wp-block-navigation-item > .wp-block-navigation-item__content {
-	flex-direction: column;
-	gap: var(--wp--preset--spacing--xxs);
-	padding: var(--wp--preset--spacing--xs) var(--wp--preset--spacing--s);
-	text-decoration: none;
-}
-.wp-block-navigation .wp-block-navigation__submenu-container:not(.is-menu-open *) > .wp-block-navigation-item > .wp-block-navigation-item__content:hover {
-	background-color: var(--wp--preset--color--surface-alt);
-}
-.wp-block-navigation .wp-block-navigation__submenu-container:not(.is-menu-open *) .wp-block-navigation-item__label {
-	font-weight: 500;
-}
-.wp-block-navigation .wp-block-navigation__submenu-container [aria-current="page"] .wp-block-navigation-item__label {
-	text-decoration: underline;
-	text-decoration-thickness: 1px;
-	text-underline-offset: 0.4em;
-}
-.wp-block-navigation .wp-block-navigation__submenu-container:not(.is-menu-open *) .wp-block-navigation-item__description {
-	display: block;
-	color: var(--wp--preset--color--ink-muted);
-	font-size: var(--wp--preset--font-size--meta);
-	line-height: 1.4;
+.wp-block-navigation .wp-block-navigation__submenu-container:not(.is-menu-open *) {
+	& > .wp-block-navigation-item {
+		align-items: stretch;
+	}
+	& > .wp-block-navigation-item > .wp-block-navigation-item__content {
+		flex-direction: column;
+		gap: var(--wp--preset--spacing--xxs);
+		padding: var(--wp--preset--spacing--xs) var(--wp--preset--spacing--s);
+		text-decoration: none;
+	}
+	& > .wp-block-navigation-item > .wp-block-navigation-item__content:hover {
+		background-color: var(--wp--preset--color--surface-alt);
+	}
+	& .wp-block-navigation-item__label {
+		font-weight: 500;
+	}
+	& .wp-block-navigation-item__description {
+		display: block;
+		color: var(--wp--preset--color--ink-muted);
+		font-size: var(--wp--preset--font-size--meta);
+		line-height: 1.4;
+	}
 }
 /* Core flips the chevron when open; animate that only for people who did not ask for less motion. */
 @media (prefers-reduced-motion: no-preference) {
@@ -84,42 +77,47 @@
 .wp-block-navigation__responsive-container.is-menu-open {
 	display: flex;
 	flex-direction: column;
+
+	&:not(.disable-default-overlay) .wp-block-navigation__responsive-close {
+		width: 100%;
+		max-width: 28rem;
+		margin-block: auto;
+	}
+	& .wp-block-navigation__responsive-dialog {
+		position: relative;
+	}
+	&,
+	& .wp-block-navigation__container,
+	& .wp-block-navigation__submenu-container {
+		--navigation-layout-justification-setting: center;
+		--navigation-layout-justify: center;
+		--navigation-layout-align: center;
+		text-align: center;
+	}
+	& .wp-block-navigation__responsive-container-content,
+	& .wp-block-navigation__container,
+	& .wp-block-navigation-item,
+	& .wp-block-navigation__submenu-container {
+		align-items: center;
+	}
+	& .wp-block-navigation-item {
+		font-family: var(--wp--preset--font-family--heading);
+		font-size: var(--wp--preset--font-size--heading-m);
+	}
+	/*
+	 * Overlay submenus: smaller centred groups. Core keeps them open (toggle inert but visible, it carries the label);
+	 * Studio makes them collapsible (data-leitvia-collapsible). See docs/accessibility/known-limitations.md.
+	 */
+	& .wp-block-navigation__submenu-container .wp-block-navigation-item {
+		font-size: var(--wp--preset--font-size--heading-s);
+	}
+	& .wp-block-navigation-item .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container {
+		padding: var(--wp--preset--spacing--xs) 0 0;
+	}
 }
-.wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) .wp-block-navigation__responsive-close {
-	width: 100%;
-	max-width: 28rem;
-	margin-block: auto;
-}
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-dialog {
-	position: relative;
-}
-.wp-block-navigation__responsive-container.is-menu-open,
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container,
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container {
-	--navigation-layout-justification-setting: center;
-	--navigation-layout-justify: center;
-	--navigation-layout-align: center;
-	text-align: center;
-}
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content,
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container,
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item,
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container {
-	align-items: center;
-}
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item {
-	font-family: var(--wp--preset--font-family--heading);
-	font-size: var(--wp--preset--font-size--heading-m);
-}
-/*
- * Overlay submenus: smaller centred groups. Core keeps them open (toggle inert but visible, it carries the label);
- * Studio makes them collapsible (data-leitvia-collapsible). See docs/accessibility/known-limitations.md.
- */
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container .wp-block-navigation-item {
-	font-size: var(--wp--preset--font-size--heading-s);
-}
-.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container {
-	padding: var(--wp--preset--spacing--xs) 0 0;
+/* The copy of the header button at the end of the menu, see header_action_in_overlay() in functions.php. */
+.wp-block-navigation__responsive-container:not(.is-menu-open) .leitvia-overlay-action {
+	display: none;
 }
 /* Overlay part (parts/navigation-overlay.html): close button, submenu toggles next to their labels. */
 .wp-block-navigation-overlay-close {

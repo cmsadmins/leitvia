@@ -13,10 +13,17 @@ defined( 'ABSPATH' ) || exit;
 
 /**
  * Translations of the release zip in languages/, for sites without a language pack of WordPress.org. A pack in
- * WP_LANG_DIR wins.
+ * WP_LANG_DIR wins. The zip holds de_DE only, so de_DE_formal, de_AT, de_CH and the other German variants read that
+ * file instead of showing English; the German defaults stay free of du and Sie for this reason.
  */
 function load_translations(): void {
 	load_theme_textdomain( 'leitvia', get_template_directory() . '/languages' );
+	if ( preg_match( '/^de_(?!DE$)/', determine_locale() ) ) {
+		get_translations_for_domain( 'leitvia' ); // Loads a language pack of the variant when there is one.
+		if ( ! is_textdomain_loaded( 'leitvia' ) ) {
+			load_textdomain( 'leitvia', get_template_directory() . '/languages/de_DE.mo' );
+		}
+	}
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\load_translations' );
 
@@ -887,3 +894,21 @@ function footer_end( string $html, array $block ): string {
 	return substr_replace( $html, (string) ob_get_clean(), $end, 0 );
 }
 add_filter( 'render_block_core/template-part', __NAMESPACE__ . '\footer_end', 10, 2 );
+
+/**
+ * The header button leaves the header below 600 px, see core--buttons.css. A copy goes to the end of the menu, so the
+ * main action stays one tap away on a phone even when its page is not in the navigation. The copy follows the button:
+ * its text and address come from the header, nothing is stored twice, and a hand-made overlay part gets it as well.
+ * The anchor is the last list before the closing tags of the responsive container, in the default and in a custom
+ * overlay; core--navigation.css hides the copy while the menu is not open as an overlay.
+ *
+ * @param string $html Rendered template part.
+ */
+function header_action_in_overlay( string $html ): string {
+	if ( ! preg_match( '#<div class="wp-block-buttons\b[^"]*\bis-style-header-action\b.*?</div>\s*</div>#s', $html, $action ) ) {
+		return $html;
+	}
+	$copy = str_replace( 'is-style-header-action', 'leitvia-overlay-action', $action[0] );
+	return preg_replace_callback( '#^(.*</ul>)(?=(?:\s*</div>){4,}\s*</nav>)#s', fn( array $start ): string => $start[1] . $copy, $html, 1 ) ?? $html;
+}
+add_filter( 'render_block_core/template-part', __NAMESPACE__ . '\header_action_in_overlay' );
