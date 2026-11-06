@@ -27,7 +27,7 @@
 }
 
 /* Accent text falls below 4.5:1 on ink and accent sections, so the eyebrow takes the section text color there. */
-:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) .is-style-eyebrow {
+:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) .is-style-eyebrow {
 	color: inherit;
 }
 

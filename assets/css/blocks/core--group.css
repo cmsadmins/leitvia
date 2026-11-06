@@ -4,18 +4,36 @@
  * on hover and focus. Focus: the double ring of core--button.css, repeated here because block CSS such as social
  * links overrides the zero-specificity ring of theme.json.
  */
-:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) a:where(:not(.wp-element-button)),
-:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) a:where(:not(.wp-element-button)):hover {
+:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) :is(a, a:hover):where(:not(.wp-element-button)) {
 	color: inherit;
 	text-decoration: underline;
 }
-:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) :is(.wp-block-navigation, .is-style-divided, .wp-block-social-links) a:where(:not(.wp-element-button)):not(:hover, :focus-visible) {
+:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) :is(.wp-block-navigation, .is-style-divided, .wp-block-social-links) a:where(:not(.wp-element-button)):not(:hover, :focus-visible) {
 	text-decoration: none;
 }
-:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) a:where(:not(.wp-element-button)):focus-visible {
+:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) a:where(:not(.wp-element-button)):focus-visible {
 	outline: 2px solid var(--wp--preset--color--focus);
 	outline-offset: 2px;
 	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
+}
+
+/*
+ * Buttons of blocks and forms (contact form, load more, search, file) are element buttons without core/button. Ink on
+ * an ink band would vanish, so they take the accent there like the fill button in core--button.css. Outline buttons
+ * need nothing: their text and border inherit the band color (theme.json).
+ */
+:is(.has-ink-background-color, .is-style-inverse) .wp-element-button:not(.wp-block-button__link, .has-background) {
+	border-color: var(--wp--preset--color--accent);
+	background-color: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--on-accent);
+}
+
+/*
+ * A dark band that closes the page, in the content or the part post-closing, sits right on the dark Footer mega: a
+ * hairline in the footer text color keeps the two apart. Every other footer starts without a line.
+ */
+:has(> .is-style-inverse:last-child, > * > .is-style-inverse:last-child) ~ footer > .is-style-inverse {
+	border-top: 1px solid var(--wp--preset--color--stroke);
 }
 
 /*

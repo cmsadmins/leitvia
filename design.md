@@ -190,7 +190,7 @@ WordPress keeps one site logo. On an Inverse band give the Site Logo block the b
 
 ## Template parts
 
-The optional part `post-closing` sits between the main area and the footer of the template `single`. It ships empty and then renders nothing. A closing section for every post, such as a call to action, goes there once instead of into each post: `leitvia/update-template-part` with `part` `post-closing` and `content` set to the markup of a pattern from `leitvia/get-pattern`; full-width bands stay full width. It does not appear on pages or entries of the content model.
+The optional part `post-closing` sits between the main area and the footer of the template `single`. It ships empty and then renders nothing; with content it is a complementary landmark (`aside`). A closing section for every post, such as a call to action, goes there once instead of into each post: `leitvia/update-template-part` with `part` `post-closing` and `content` set to the markup of a pattern from `leitvia/get-pattern`; full-width bands stay full width. It does not appear on pages or entries of the content model.
 
 Pick the header by what visitors need first: `header-default` for most sites, `header-cta` when one action such as booking matters on every page, `header-utility` when opening hours and a phone number belong on every page, `header-split` when the logo should lead in the middle, `header-centered` or `header-masthead` for publications. The button of `header-cta`, `header-utility` and `header-split` (block style Header action) is hidden below 1024 px, so its target must also be in the navigation.
 

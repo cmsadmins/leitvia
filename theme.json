@@ -339,7 +339,7 @@
 						},
 						"color": {
 							"background": "transparent",
-							"text": "var:preset|color|ink"
+							"text": "inherit"
 						},
 						"spacing": {
 							"padding": {

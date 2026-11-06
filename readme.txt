@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.28
+Stable tag: 1.2.29
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,14 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.29 =
+* Outline buttons take the text color of their band, so they stay visible on dark bands, inverse groups and covers. Buttons of forms and blocks on dark bands fill with the accent.
+* The template part post-closing is a landmark once it has content, also without a wrapper while it is empty.
+* The blog overview shows the featured image and content of the posts page below its title and excerpt.
+* A dark band that closes a page and Footer mega are kept apart by a hairline.
+* The pattern Team sets portraits and names on one line, without the offset of the second column.
+* Contract 1.13.10: new pattern Counted key figures of Leitvia Studio.
 
 = 1.2.28 =
 * Every query in the patterns has its own queryId, so Query filter and Load more also work on pages written through abilities.

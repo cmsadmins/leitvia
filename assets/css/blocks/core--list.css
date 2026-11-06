@@ -59,10 +59,10 @@
 	font-weight: 600;
 }
 /* Accent marks fall below 3:1 on ink and accent bands, so they take the band text color there. */
-:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) .wp-block-list > li::before {
+:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) .wp-block-list > li::before {
 	color: inherit;
 }
-:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) .is-style-download > li::before {
+:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) .is-style-download > li::before {
 	background: currentcolor;
 }
 .wp-block-list.is-style-checklist-row {

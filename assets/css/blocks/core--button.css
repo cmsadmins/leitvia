@@ -12,7 +12,7 @@
 @media (prefers-reduced-motion: no-preference) {
 	.wp-element-button,
 	.wp-block-button__link {
-		transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+		transition: background-color .15s, color .15s, border-color .15s;
 	}
 }
 /* theme.json style variations have no pseudo states, so the outline hover lives here. */
@@ -21,7 +21,7 @@
 	color: var(--wp--preset--color--surface);
 }
 /* On ink and accent bands the ink hover would vanish: surface instead, except buttons with a preset text color. */
-:is(.has-background.has-ink-background-color, .has-background.has-accent-background-color, .is-style-inverse) .wp-block-button__link:not(.has-text-color):hover {
+:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) .wp-block-button__link:not(.has-text-color):hover {
 	border-color: var(--wp--preset--color--surface);
 	background-color: var(--wp--preset--color--surface);
 	color: var(--wp--preset--color--ink);

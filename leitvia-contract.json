@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.9",
+	"contractVersion": "1.13.10",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -2260,7 +2260,7 @@
 		{
 			"slug": "leitvia/hidden-page-blog-heading",
 			"title": "Blog heading",
-			"description": "Page heading with a short lead for the posts index. With a posts page set in the reading settings, its title and excerpt replace the default texts.",
+			"description": "Page heading with a short lead for the posts index. With a posts page set in the reading settings, its title and excerpt replace the default texts, its featured image and content follow.",
 			"area": "page",
 			"useWhen": "Inserted by the home template above the posts index.",
 			"composition": {
@@ -2271,7 +2271,15 @@
 				"role": "frame",
 				"width": "reading"
 			},
-			"images": [],
+			"images": [
+				{
+					"aspectRatio": "intrinsic",
+					"displayWidth": "44rem",
+					"recommendedSize": "1408x792",
+					"count": 1,
+					"source": "featured-image"
+				}
+			],
 			"docs": {
 				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
 				"a11y": "Keeps the heading level of the template it sits in.",
@@ -2747,7 +2755,7 @@
 		{
 			"slug": "leitvia/proof-team",
 			"title": "Team",
-			"description": "Heading and intro above four people with portrait, name and role in a staggered row, four across on wide screens and two by two on narrower ones, never three and one. Use on about or company pages to introduce the people behind the work.",
+			"description": "Heading and intro above four people with portrait, name and role on one line, four across on wide screens and two by two on narrower ones, never three and one. Use on about or company pages to introduce the people behind the work.",
 			"area": "proof",
 			"useWhen": "About and company pages introducing the people behind the work.",
 			"composition": {
@@ -3686,6 +3694,37 @@
 					"text": [
 						30,
 						80
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/content-stats-counter",
+			"title": "Counted key figures",
+			"description": "Heading and a short intro above four figures that count up as they scroll into view, four across on wide screens and two by two on narrower ones. Use to back up a claim with numbers where a little motion fits.",
+			"area": "content",
+			"useWhen": "Backing up a claim with four figures on a landing or company page, where a little motion fits.",
+			"composition": {
+				"tone": "surface",
+				"density": "airy",
+				"layout": "grid",
+				"weight": "heavy",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Figures that need explanation or a calmer page; use leitvia/content-stats.",
+				"a11y": "The final value is in the markup, the count is decorative and stays off with reduced motion. Each label says what its number means.",
+				"contentLength": {
+					"heading": [
+						20,
+						60
+					],
+					"text": [
+						40,
+						120
 					]
 				},
 				"replacedBy": null

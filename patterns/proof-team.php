@@ -3,7 +3,7 @@
  * Title: Team
  * Slug: leitvia/proof-team
  * Categories: team, about
- * Description: Heading and intro above four people with portrait, name and role in a staggered row, four across on wide screens and two by two on narrower ones, never three and one. Use on about or company pages to introduce the people behind the work.
+ * Description: Heading and intro above four people with portrait, name and role on one line, four across on wide screens and two by two on narrower ones, never three and one. Use on about or company pages to introduce the people behind the work.
  * Keywords: team, people, staff, about, studio, portraits
  * Viewport Width: 1400
  *
@@ -51,8 +51,8 @@
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
-			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs","margin":{"top":"var:preset|spacing|xl"}}}} -->
-			<div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--xl)">
+			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs"}}} -->
+			<div class="wp-block-group">
 				<!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","metadata":{"leitviaDecorative":true},"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|xs"}}}} -->
 				<figure class="wp-block-image size-full" style="margin-bottom:var(--wp--preset--spacing--xs)"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/portrait.webp' ) ); ?>" alt="" style="aspect-ratio:1;object-fit:cover"/></figure>
 				<!-- /wp:image -->
@@ -81,8 +81,8 @@
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
-			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs","margin":{"top":"var:preset|spacing|xl"}}}} -->
-			<div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--xl)">
+			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs"}}} -->
+			<div class="wp-block-group">
 				<!-- wp:image {"aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","metadata":{"leitviaDecorative":true},"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|xs"}}}} -->
 				<figure class="wp-block-image size-full" style="margin-bottom:var(--wp--preset--spacing--xs)"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/images/portrait.webp' ) ); ?>" alt="" style="aspect-ratio:1;object-fit:cover"/></figure>
 				<!-- /wp:image -->
