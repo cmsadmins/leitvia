@@ -1,7 +1,13 @@
-/* anywhere, not break-word: it also lowers the minimum width, so a long word cannot push a tile or column wider. */
+/*
+ * anywhere, not break-word: it also lowers the minimum width, so a long word cannot push a tile or column wider. It is
+ * only the last resort: where the language has a dictionary, a long word breaks at a syllable with a hyphen first. The
+ * limit keeps short words whole, so wide columns look as before.
+ */
 :where(p) {
 	text-wrap: pretty;
 	overflow-wrap: anywhere;
+	hyphens: auto;
+	hyphenate-limit-chars: 10 3 3;
 }
 
 /* Inline code in running text. The tint follows the text color, so it also reads on surface-alt, ink and accent sections. */

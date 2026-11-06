@@ -1,4 +1,13 @@
 /*
+ * Cells are narrow on a phone, and core breaks words of a fixed layout anywhere: a word breaks at a syllable with a
+ * hyphen first, the core rule stays the last resort for a word without a dictionary. No limit on the word length, a
+ * column can be narrower than a short word.
+ */
+.wp-block-table :where(th, td) {
+	hyphens: auto;
+}
+
+/*
  * Comparison: hairlines between rows, meta caps in the head, tabular figures. Columns after the first align to the
  * end so figures line up. Rows cannot carry classes, so the highlighted row is the table footer (core "Footer section").
  * Columns size to their content even with fixed layout on, so words never break mid-word. Tables wider than the

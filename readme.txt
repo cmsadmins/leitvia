@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.30
+Stable tag: 1.2.31
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,10 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.31 =
+* Paragraphs, lists and table cells hyphenate in the language of the page, so a word breaks at a syllable with a hyphen before it breaks anywhere. Paragraphs and lists do so for words of ten letters or more. Pages in easy language and headings stay as they are.
+* A full-width band as the last section meets the footer on every template with this content area, without a strip of page background.
 
 = 1.2.30 =
 * The main button of Header with button, Header with service bar and Header with centered logo stays reachable at every width: below 1024 px the menu items collapse behind the menu button and the button keeps its place, below 600 px it moves to the end of the menu. Its page no longer has to be in the navigation.

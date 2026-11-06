@@ -1,12 +1,24 @@
 /*
  * Landing pages: full-width sections that follow each other touch, so colour bands meet without a strip of page background.
- * Every other block keeps the normal block gap. A full-width last section also meets the footer.
+ * Every other block keeps the normal block gap.
  */
 .page-template-page-landing .wp-block-post-content > .alignfull + .alignfull {
 	margin-block-start: 0;
 }
-.page-template-page-landing main:has(> .wp-block-post-content > .alignfull:last-child) + footer {
-	margin-block-start: 0;
+
+/*
+ * On every template: a full-width last section meets the footer, without the gap to the footer and without the bottom
+ * padding of main, which is an inline style of the template: a negative margin of the same size takes it back. The
+ * section brings its own padding.
+ */
+main:has(> .wp-block-post-content:last-child > .alignfull:last-child) {
+	&[style*='padding-bottom'] {
+		margin-block-end: calc(-1 * var(--wp--preset--spacing--xl));
+	}
+
+	& + footer {
+		margin-block-start: 0;
+	}
 }
 
 /*
@@ -19,7 +31,7 @@
 	text-align: start;
 	hyphens: manual;
 }
-.wp-block-post-content.is-easy-language :is(.wp-block-heading, p) {
+.wp-block-post-content.is-easy-language :is(.wp-block-heading, p, li, td, th) {
 	hyphens: manual;
 }
 .wp-block-post-content.is-easy-language :is(.has-text-align-center, .has-text-align-right, .has-text-align-justify) {
