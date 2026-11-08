@@ -140,6 +140,7 @@ function register_block_style_variations(): void {
 			'note'                  => __( 'Note', 'leitvia' ),
 			'success'               => __( 'Success', 'leitvia' ),
 			'warning'               => __( 'Warning', 'leitvia' ),
+			'tip'                   => __( 'Tip', 'leitvia' ),
 			'inverse'               => __( 'Inverse', 'leitvia' ),
 			'header-split'          => __( 'Header split', 'leitvia' ),
 			// For the outermost group of a header template part, see "Sticky header" in core--group.css.

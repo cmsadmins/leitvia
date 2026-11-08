@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.11",
+	"contractVersion": "1.13.12",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -480,6 +480,12 @@
 			"context": "Inside the content, for a caution before an action; start with a word that names the risk."
 		},
 		{
+			"block": "core/group",
+			"name": "tip",
+			"purpose": "Tip box on a light tint of the accent color with a full hairline frame in the accent color, text stays ink; without a left accent line.",
+			"context": "Inside the content, for a recurring tip in the voice of the author, often with a portrait and name (see content-author-tip); not for warnings or neutral hints."
+		},
+		{
 			"block": "core/list",
 			"name": "checklist",
 			"purpose": "Feature or benefit list with decorative check marks.",
@@ -846,6 +852,42 @@
 					"text": [
 						300,
 						700
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-author-tip",
+			"title": "Author tip",
+			"description": "A short tip in the voice of the author with a round portrait and the name, set apart from the running text. Save it once as a synced pattern with a real portrait and repeat it every three to five sections of a long guide.",
+			"area": "content",
+			"useWhen": "A recurring tip in the voice of the author inside a long guide or article, every three to five sections.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "split",
+				"weight": "light",
+				"role": "context",
+				"width": "reading"
+			},
+			"images": [
+				{
+					"aspectRatio": "1/1",
+					"displayWidth": "4rem",
+					"recommendedSize": "200x200",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The tip is generic advice without a named author, or the page already carries a quote band within two sections (use content-quote there).",
+				"a11y": "Uses the group style tip and a native blockquote with cite; the round portrait keeps empty alt because the name follows as text.",
+				"contentLength": {
+					"heading": null,
+					"text": [
+						80,
+						200
 					]
 				},
 				"replacedBy": null

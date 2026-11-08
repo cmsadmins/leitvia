@@ -4,17 +4,19 @@
  * on hover and focus. Focus: the double ring of core--button.css, repeated here because block CSS such as social
  * links overrides the zero-specificity ring of theme.json.
  */
-:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) :is(a, a:hover):where(:not(.wp-element-button)) {
-	color: inherit;
-	text-decoration: underline;
-}
-:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) :is(.wp-block-navigation, .is-style-divided, .wp-block-social-links) a:where(:not(.wp-element-button)):not(:hover, :focus-visible) {
-	text-decoration: none;
-}
-:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) a:where(:not(.wp-element-button)):focus-visible {
-	outline: 2px solid var(--wp--preset--color--focus);
-	outline-offset: 2px;
-	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
+:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) {
+	& :is(a, a:hover):where(:not(.wp-element-button)) {
+		color: inherit;
+		text-decoration: underline;
+	}
+	& :is(.wp-block-navigation, .is-style-divided, .wp-block-social-links) a:where(:not(.wp-element-button)):not(:hover, :focus-visible) {
+		text-decoration: none;
+	}
+	& a:where(:not(.wp-element-button)):focus-visible {
+		outline: 2px solid var(--wp--preset--color--focus);
+		outline-offset: 2px;
+		box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
+	}
 }
 
 /*
@@ -52,7 +54,7 @@
  * Notices: a light tint of the role color over surface and a full hairline frame in the role color. Text stays ink.
  * Note uses ink-muted, so it never reads as an error box in palettes with a red accent.
  */
-.wp-block-group:is(.is-style-note, .is-style-success, .is-style-warning) {
+.wp-block-group:is(.is-style-note, .is-style-success, .is-style-warning, .is-style-tip) {
 	--leitvia-notice: var(--wp--preset--color--ink-muted);
 	padding: var(--wp--preset--spacing--m);
 	border: 0.0625rem solid var(--leitvia-notice);
@@ -65,6 +67,9 @@
 }
 .wp-block-group.is-style-warning {
 	--leitvia-notice: var(--wp--preset--color--warning);
+}
+.wp-block-group.is-style-tip {
+	--leitvia-notice: var(--wp--preset--color--accent);
 }
 
 /* Logos in an inverse band take its text color, in light and dark palettes alike. */
