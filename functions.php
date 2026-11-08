@@ -403,6 +403,56 @@ function category_chips_all( string $html, array $block ): string {
 add_filter( 'render_block_core/categories', __NAMESPACE__ . '\category_chips_all', 10, 2 );
 
 /**
+ * The category line above the title of a post (post-terms with the class leitvia-primary-term) names one category, not
+ * all of them: a post in twenty categories would print twenty links over its headline. It is the primary category that
+ * Yoast SEO stores (_yoast_wpseo_primary_category) or, without one, the first. The tag list below the text stays complete.
+ *
+ * @param string         $html     Block HTML.
+ * @param array          $block    Parsed block.
+ * @param \WP_Block|null $instance Block instance, its context names the post.
+ */
+function primary_term_only( string $html, array $block, $instance = null ): string {
+	$classes = explode( ' ', $block['attrs']['className'] ?? '' );
+	$post_id = $instance instanceof \WP_Block ? (int) ( $instance->context['postId'] ?? 0 ) : 0;
+	$terms   = in_array( 'leitvia-primary-term', $classes, true ) && $post_id ? get_the_terms( $post_id, $block['attrs']['term'] ?? 'category' ) : false;
+	if ( ! is_array( $terms ) || count( $terms ) < 2 ) {
+		return $html;
+	}
+	$primary = (int) get_post_meta( $post_id, '_yoast_wpseo_primary_category', true );
+	$term    = null;
+	foreach ( $terms as $candidate ) {
+		$term ??= $candidate;
+		if ( $candidate->term_id === $primary ) {
+			$term = $candidate;
+			break;
+		}
+	}
+	$link = get_term_link( $term );
+	if ( is_wp_error( $link ) || ! preg_match( '~<a\b[^>]*\shref="' . preg_quote( esc_url( $link ), '~' ) . '"[^>]*>.*?</a>~s', $html, $anchor ) || ! preg_match( '~^(<[^>]+>).*(</[a-z0-9]+>)\s*$~s', $html, $wrap ) ) {
+		return $html;
+	}
+	return $wrap[1] . $anchor[0] . $wrap[2];
+}
+add_filter( 'render_block_core/post-terms', __NAMESPACE__ . '\primary_term_only', 10, 3 );
+
+/**
+ * The lead under the title of a post (post-excerpt with the class leitvia-own-excerpt) only shows an excerpt the author
+ * wrote. WordPress otherwise cuts one from the text, and the same words would stand right below in the content.
+ *
+ * @param string         $html     Block HTML.
+ * @param array          $block    Parsed block.
+ * @param \WP_Block|null $instance Block instance, its context names the post.
+ */
+function own_excerpt_only( string $html, array $block, $instance = null ): string {
+	if ( ! in_array( 'leitvia-own-excerpt', explode( ' ', $block['attrs']['className'] ?? '' ), true ) ) {
+		return $html;
+	}
+	$post_id = $instance instanceof \WP_Block ? (int) ( $instance->context['postId'] ?? 0 ) : 0;
+	return $post_id && has_excerpt( $post_id ) ? $html : '';
+}
+add_filter( 'render_block_core/post-excerpt', __NAMESPACE__ . '\own_excerpt_only', 10, 3 );
+
+/**
  * Namespace of the related posts query below a single post, see patterns/hidden-page-related-posts.php.
  */
 const RELATED_POSTS = 'leitvia/related-posts';
@@ -816,6 +866,59 @@ function reset_variations_button(): string {
 	return '<button type="button" class="reset_variations" aria-label="' . esc_attr__( 'Clear options', 'leitvia' ) . '">' . esc_html__( 'Clear', 'leitvia' ) . '</button>';
 }
 add_filter( 'woocommerce_reset_variations_link', __NAMESPACE__ . '\reset_variations_button' );
+
+/**
+ * The name of a WooCommerce purchase button has to start with its visible text (WCAG 2.5.3, axe label-content-name-mismatch).
+ * WooCommerce sets aria-label to the description of the product ("Add to cart: ...", in translations a sentence that does
+ * not start with the button text, or "1 in cart" next to a label about adding). Runs over the blocks that render the
+ * loop button (product button, which product collections use, and the product grids of handpicked, new, on sale and the
+ * like). A button the block script updates in place loses the label, so its name follows the visible text. Where the
+ * label of any other button does not start with the visible text it becomes "visible text: product name"; the name comes from
+ * data-product_id or the block context and only for published products. Without a name it is the visible text alone, the
+ * title link next to the button names the product. Same idea as the buy link of leitvia/product-compare.
+ *
+ * @param string         $content  Rendered block.
+ * @param array          $block    Parsed block.
+ * @param \WP_Block|null $instance Block instance, its context names the product.
+ */
+function purchase_button_label( string $content, array $block = array(), $instance = null ): string {
+	$fallback = $instance instanceof \WP_Block ? (int) ( $instance->context['postId'] ?? 0 ) : 0;
+	$html     = new \WP_HTML_Tag_Processor( $content );
+	while ( $html->next_tag() ) {
+		if ( ! in_array( $html->get_tag(), array( 'A', 'BUTTON' ), true ) || ! ( $html->has_class( 'wc-block-components-product-button__button' ) || $html->has_class( 'add_to_cart_button' ) ) ) {
+			continue;
+		}
+		$label = $html->get_attribute( 'aria-label' );
+		if ( ! is_string( $label ) ) {
+			continue;
+		}
+		// The button of the product button block adds in place, and its script changes the text ("1 in cart") but not
+		// the label: without a label its name is always the visible text.
+		if ( null !== $html->get_attribute( 'data-wp-on--click' ) ) {
+			$html->remove_attribute( 'aria-label' );
+			continue;
+		}
+		$id = (int) $html->get_attribute( 'data-product_id' );
+		$id = $id > 0 ? $id : $fallback;
+		$html->set_bookmark( 'button' );
+		$text = '';
+		while ( $html->next_token() && ! ( $html->is_tag_closer() && in_array( $html->get_tag(), array( 'A', 'BUTTON' ), true ) ) ) {
+			$text .= '#text' === $html->get_token_name() ? $html->get_modifiable_text() : '';
+		}
+		$html->seek( 'button' );
+		$text = trim( (string) preg_replace( '~\s+~', ' ', $text ) );
+		if ( '' === $text || str_starts_with( mb_strtolower( $label ), mb_strtolower( $text ) ) ) {
+			continue;
+		}
+		$name = $id && 'publish' === get_post_status( $id ) ? wp_strip_all_tags( get_the_title( $id ) ) : '';
+		$html->set_attribute( 'aria-label', '' !== $name ? $text . ': ' . $name : $text );
+	}
+	return $html->get_updated_html();
+}
+foreach ( array( 'woocommerce/product-button', 'woocommerce/handpicked-products', 'woocommerce/product-best-sellers', 'woocommerce/product-category', 'woocommerce/product-new', 'woocommerce/product-on-sale', 'woocommerce/product-tag', 'woocommerce/product-top-rated', 'woocommerce/products-by-attribute' ) as $leitvia_button_block ) {
+	add_filter( 'render_block_' . $leitvia_button_block, __NAMESPACE__ . '\purchase_button_label', 10, 3 );
+}
+unset( $leitvia_button_block );
 
 /**
  * The EU notice on the legal guarantee from Germanized as a disclosure from core blocks. Germanized opens it in a popover

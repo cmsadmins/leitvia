@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.32
+Stable tag: 1.2.33
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,12 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.33 =
+* Posts take the full width like pages: wide and full-width blocks in the text reach as far as on a page, the running text keeps the reading width, and header, featured image, byline and author tip line up on the left.
+* The category line above the title of a post names only the main category (the primary category of Yoast SEO, otherwise the first one).
+* The lead under the title of a post appears only when the post has an excerpt of its own, no longer as the start of the text.
+* The add-to-cart buttons in product lists have an accessible name that begins with their visible text, also after a product was added (WCAG 2.5.3).
 
 = 1.2.32 =
 * New group style Tip for a tip in the voice of the author, set apart from the running text like the other notice styles, in the accent color.
