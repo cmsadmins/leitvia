@@ -1,8 +1,7 @@
 /*
  * Ink, accent and inverse bands: accent links reach only 1.7 to 3.4:1 there, so links take the band text color
  * (passes in light and dark palettes), underlined in running text; navigation, divided lists and social links only
- * on hover and focus. Focus: the double ring of core--button.css, repeated here because block CSS such as social
- * links overrides the zero-specificity ring of theme.json.
+ * on hover and focus. Their focus ring is in assets/css/focus.css.
  */
 :is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) {
 	& :is(a, a:hover):where(:not(.wp-element-button)) {
@@ -11,13 +10,7 @@
 	}
 	& :is(.wp-block-navigation, .is-style-divided, .wp-block-social-links) a:where(:not(.wp-element-button)):not(:hover, :focus-visible) {
 		text-decoration: none;
-	}
-	& a:where(:not(.wp-element-button)):focus-visible {
-		outline: 2px solid var(--wp--preset--color--focus);
-		outline-offset: 2px;
-		box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
-	}
-}
+	}}
 
 /*
  * Buttons of blocks and forms (contact form, load more, search, file) are element buttons without core/button. Ink on
@@ -51,10 +44,34 @@
 }
 
 /*
- * Notices: a light tint of the role color over surface and a full hairline frame in the role color. Text stays ink.
- * Note uses ink-muted, so it never reads as an error box in palettes with a red accent.
+ * Links on a weak extra surface: Leitvia Studio gives every block on a color.surface-extra on which accent falls below
+ * 4.5:1 the class has-ink-links (Compiler::INK_LINKS), so its links take ink, which reaches 4.5:1 on every extra
+ * surface. Buttons keep their own colors.
  */
-.wp-block-group:is(.is-style-note, .is-style-success, .is-style-warning, .is-style-tip) {
+.has-ink-links a:where(:not(.wp-element-button)) {
+	color: var(--wp--preset--color--ink);
+}
+
+/*
+ * A group with a background color and no padding of its own gets padding all round (1.25em 2.375em, the values of
+ * core). Core keeps that rule in the block theme styles (group/theme.css, wp-block-styles), which this theme does not
+ * load, and with root padding aware alignments (theme.json) a constrained group nested in another one loses the sides
+ * as well: ".has-global-padding :where(... > .has-global-padding)" sets padding-left and padding-right to 0, so text
+ * touched the edge of the tint. This sets all four sides for nested groups that are not full width. A padding set on
+ * the block is inline and stays; block styles (tip, tile, notices) bring their own padding and are left out, and a
+ * group on surface, the color of the page, shows no tint that would need it.
+ */
+.has-global-padding :where(.wp-block-group.has-background:not([class*="is-style-"], .has-surface-background-color)).has-global-padding:not(.alignfull) {
+	padding: 1.25em 2.375em;
+}
+
+/*
+ * Notices: a light tint of the role color over surface and a full hairline frame in the role color. Text stays ink.
+ * Note uses ink-muted, so it never reads as an error box in palettes with a red accent. The tip has no frame: a soft
+ * surface-alt panel with the medium radius and generous padding, in theme.json (styles.blocks.core/group.variations.tip);
+ * up to 480 px, the mobile breakpoint of core, portrait, tip and name stack and center (below).
+ */
+.wp-block-group:is(.is-style-note, .is-style-success, .is-style-warning) {
 	--leitvia-notice: var(--wp--preset--color--ink-muted);
 	padding: var(--wp--preset--spacing--m);
 	border: 0.0625rem solid var(--leitvia-notice);
@@ -68,8 +85,14 @@
 .wp-block-group.is-style-warning {
 	--leitvia-notice: var(--wp--preset--color--warning);
 }
-.wp-block-group.is-style-tip {
-	--leitvia-notice: var(--wp--preset--color--accent);
+@media (width <= 480px) {
+	.wp-block-group.is-style-tip {
+		flex-direction: column;
+		text-align: center;
+	}
+	.wp-block-group.is-style-tip .is-layout-flex {
+		justify-content: center;
+	}
 }
 
 /* Logos in an inverse band take its text color, in light and dark palettes alike. */
@@ -182,6 +205,33 @@ html {
 @keyframes leitvia-sticky-header-shadow {
 	to {
 		box-shadow: var(--wp--preset--shadow--subtle);
+	}
+}
+
+/*
+ * Tile (group style tile, pattern teaser-icon-tiles): one clickable area. The first link, the title, reaches over the
+ * whole tile through a pseudo-element with the corners of the tile, so icon and padding click through without a second
+ * link. The title keeps the text color and is underlined only on hover and focus; the focus ring sits on the tile
+ * (assets/css/focus.css). Padding all round and the medium radius come from theme.json, the surface from the block.
+ */
+.wp-block-group.is-style-tile {
+	position: relative;
+
+	& a {
+		color: inherit;
+		text-decoration: none;
+	}
+	& a::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+	}
+	&:hover a,
+	& a:focus-visible {
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.2em;
 	}
 }
 

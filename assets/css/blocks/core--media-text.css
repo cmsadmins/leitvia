@@ -1,0 +1,4 @@
+/* The image of Media and text takes the media radius of the token set (radius.media), like every photo. */
+.wp-block-media-text__media img {
+	border-radius: var(--wp--preset--border-radius--media);
+}

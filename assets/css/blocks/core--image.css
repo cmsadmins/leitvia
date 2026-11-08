@@ -1,13 +1,16 @@
-/*
- * Lightbox of core images (theme.json settings.blocks.core/image.lightbox, functions.php): the double focus ring of
- * the theme on the trigger "Enlarge" and on Close, Previous and Next in the dialog, see core--button.css. Core draws a
- * translucent ring that fails the contrast check on dark palettes.
- */
-.wp-lightbox-container button:focus-visible,
-.wp-lightbox-overlay button:focus-visible {
-	outline: 0.125rem solid var(--wp--preset--color--focus);
-	outline-offset: 0.125rem;
-	box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
+/* Lightbox of core images (theme.json settings.blocks.core/image.lightbox, functions.php): the focus ring of its
+   buttons is in assets/css/focus.css. */
+
+/* Pinch zoom on the enlarged image: the overlay allows the zoom of two fingers but no panning with one, so the page
+   behind it stays put (functions.php lightbox_pinch_zoom()). */
+.wp-lightbox-overlay {
+	touch-action: pinch-zoom;
+}
+
+/* The core style Rounded stays a circle: the media radius of theme.json (styles.blocks.core/image) comes later with the
+   same specificity as the rule of core and would square round portraits again. */
+.wp-block-image.is-style-rounded img {
+	border-radius: 9999px;
 }
 
 /* The text of Close, Previous and Next takes the colour of the dialog; a button does not inherit it and stayed black on
@@ -22,11 +25,13 @@
  * rests on the link or the card, and the same while the link has keyboard focus (WCAG 2.4.7), within 200 ms. Only for
  * pointers that can hover and without reduced motion, never with Motion off (html or body.leitvia-motion-off). The
  * frame of a linked image is the link itself (core shows it as inline-block): its focus ring lies outside and stays
- * whole, while a frame on the figure would cut it off.
+ * whole, while a frame on the figure would cut it off. The frame takes the media radius (radius.media) of the image, so
+ * the scaled image keeps its round corners.
  */
 @media (prefers-reduced-motion: no-preference) {
 	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) :is(.wp-block-image > a, :is(.is-layout-grid, .wp-block-column) > .wp-block-group:is(.has-background, .has-border-color):has(a[href]) .wp-block-image:not(:has(> a))) {
 		overflow: hidden;
+		border-radius: var(--wp--preset--border-radius--media);
 	}
 	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) :is(.wp-block-image > a, :is(.is-layout-grid, .wp-block-column) > .wp-block-group:is(.has-background, .has-border-color):has(a[href]) .wp-block-image) img {
 		transition: scale 200ms ease-out;

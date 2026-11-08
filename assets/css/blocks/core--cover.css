@@ -6,3 +6,9 @@
 .wp-block-cover.is-style-inverse > .wp-block-cover__background:not([class*="-background-color"]) {
 	background-color: inherit;
 }
+
+/* A cover inside the content takes the media radius of the token set (radius.media); a full-width band keeps square
+   edges. */
+.wp-block-cover:not(.alignfull) {
+	border-radius: var(--wp--preset--border-radius--media);
+}

@@ -1,13 +1,4 @@
-.wp-block-navigation a:where(:not(.wp-element-button)):focus-visible,
-.wp-block-navigation .wp-block-navigation-submenu__toggle:focus-visible,
-.wp-block-navigation__responsive-container-open:focus-visible,
-.wp-block-navigation__responsive-container-close:focus-visible,
-.wp-block-navigation-overlay-close:focus-visible {
-	outline: 2px solid var(--wp--preset--color--focus);
-	outline-offset: 2px;
-	/* Inner ring for the double focus indicator, see core--button.css. */
-	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
-}
+/* Focus ring of links and menu buttons: assets/css/focus.css. */
 /* Navigation is a link-only context: no underline at rest, a fine one on hover and on the current page. */
 .wp-block-navigation .current-menu-item > a,
 .wp-block-navigation .current-menu-ancestor > .wp-block-navigation-item__content,

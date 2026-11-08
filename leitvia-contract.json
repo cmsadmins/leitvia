@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.12",
+	"contractVersion": "1.13.13",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -175,6 +175,17 @@
 			{
 				"slug": "pill",
 				"purpose": "Round portraits, avatars and switches only; never buttons or badges."
+			},
+			{
+				"slug": "media",
+				"purpose": "Corner of every photo, the preset --wp--preset--border-radius--media that the theme applies; never a radius per image.",
+				"fallback": "none",
+				"choices": [
+					"none",
+					"s",
+					"m",
+					"l"
+				]
 			}
 		],
 		"shadow": [
@@ -482,8 +493,20 @@
 		{
 			"block": "core/group",
 			"name": "tip",
-			"purpose": "Tip box on a light tint of the accent color with a full hairline frame in the accent color, text stays ink; without a left accent line.",
+			"purpose": "Tip box as a soft surface-alt panel without a frame or left line; stacks and centers below 480 px.",
 			"context": "Inside the content, for a recurring tip in the voice of the author, often with a portrait and name (see content-author-tip); not for warnings or neutral hints."
+		},
+		{
+			"block": "core/group",
+			"name": "tile",
+			"purpose": "One clickable tile: padding all round, medium radius, the first link reaches over the whole tile, underlined on hover and focus only, focus ring on the tile.",
+			"context": "Groups in a grid with an icon and a linked title, on surface-alt or a surface-extra (see teaser-icon-tiles); one link per tile."
+		},
+		{
+			"block": "core/image",
+			"name": "illustration",
+			"purpose": "Cut-out illustration on a transparent background: no media radius, no shadow.",
+			"context": "Illustrations and cut-out product shots, never photos."
 		},
 		{
 			"block": "core/list",
@@ -860,9 +883,9 @@
 		{
 			"slug": "leitvia/content-author-tip",
 			"title": "Author tip",
-			"description": "A short tip in the voice of the author with a round portrait and the name, set apart from the running text. Save it once as a synced pattern with a real portrait and repeat it every three to five sections of a long guide.",
+			"description": "A short tip in the voice of the author with a large round portrait in an accent ring, a small heart before the eyebrow and the name in italics, on a soft tinted panel. Save it once as a synced pattern with a real portrait and repeat it every three to five sections of a long guide; tip and name can be overridden in every copy.",
 			"area": "content",
-			"useWhen": "A recurring tip in the voice of the author inside a long guide or article, every three to five sections.",
+			"useWhen": "A recurring tip in the voice of the author inside a long guide or article, every three to five sections. As a synced pattern the paragraphs named Tip and Name carry pattern overrides (core/pattern-overrides), so each use sets its own text while portrait and design stay shared.",
 			"composition": {
 				"tone": "surface",
 				"density": "dense",
@@ -874,7 +897,7 @@
 			"images": [
 				{
 					"aspectRatio": "1/1",
-					"displayWidth": "4rem",
+					"displayWidth": "6rem",
 					"recommendedSize": "200x200",
 					"count": 1,
 					"source": "inline"
@@ -882,7 +905,7 @@
 			],
 			"docs": {
 				"avoidWhen": "The tip is generic advice without a named author, or the page already carries a quote band within two sections (use content-quote there).",
-				"a11y": "Uses the group style tip and a native blockquote with cite; the round portrait keeps empty alt because the name follows as text.",
+				"a11y": "Uses the group style tip and a native blockquote for the tip, the name follows as a paragraph; the round portrait keeps empty alt because the name follows as text, the heart is decorative.",
 				"contentLength": {
 					"heading": null,
 					"text": [
@@ -2599,7 +2622,7 @@
 		{
 			"slug": "leitvia/hidden-page-product-details",
 			"title": "Product details",
-			"description": "Below the product summary: the WooCommerce product tabs (description, additional information, reviews and tabs added by plugins), then related products.",
+			"description": "Below the product summary: the WooCommerce product tabs (description, additional information, reviews and tabs added by plugins), then related products with image, title and price, without a buy button.",
 			"area": "page",
 			"useWhen": "Inserted by the single product template below the product summary.",
 			"composition": {
@@ -3178,6 +3201,34 @@
 			"docs": {
 				"avoidWhen": "The posts depend on their images to be understood.",
 				"a11y": "Titles are h3 links; the date column comes first in source order, so it is read before the title.",
+				"contentLength": {
+					"heading": [
+						10,
+						40
+					],
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/teaser-icon-tiles",
+			"title": "Icon tiles",
+			"description": "Heading and a short intro above four tiles, each with an icon and a title that links to its page; the whole tile is one link. Two across on phones, up to four across on wide screens. Use for a short menu of topics or services, such as the ways to plan a visit.",
+			"area": "teaser",
+			"useWhen": "A short menu of four to eight topics or services with a page each, where an icon and a title say enough. Tiles take surface-alt or a surface-extra as background; icons are core icons (core/icon, collection core).",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "A topic needs a sentence of explanation or there is no page to link to; use teaser-services or content-feature-grid instead.",
+				"a11y": "Titles are h3 links that name their target; the whole tile clicks through the title link, so each tile is one tab stop with the focus ring on the tile. Icons are decorative.",
 				"contentLength": {
 					"heading": [
 						10,

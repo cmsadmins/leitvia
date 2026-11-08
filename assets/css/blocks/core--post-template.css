@@ -59,11 +59,13 @@ body.blog:not(.paged) .leitvia-post-grid > li:first-child {
 /*
  * Hover, mild (theme standard, see core--group.css): the featured image of a post card scales to 1.03 inside its frame
  * while the pointer rests on the card or its title link has keyboard focus (WCAG 2.4.7), within 200 ms. Only for
- * pointers that can hover and without reduced motion, never with Motion off (html or body.leitvia-motion-off).
+ * pointers that can hover and without reduced motion, never with Motion off (html or body.leitvia-motion-off). The frame
+ * takes the media radius, so the scaled image keeps its round corners.
  */
 @media (prefers-reduced-motion: no-preference) {
 	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) .leitvia-post-card .wp-block-post-featured-image {
 		overflow: hidden;
+		border-radius: var(--wp--preset--border-radius--media);
 	}
 	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) .leitvia-post-card .wp-block-post-featured-image img {
 		transition: scale 200ms ease-out;

@@ -111,6 +111,17 @@ function enqueue_account_styles(): void {
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_account_styles' );
 
 /**
+ * The double focus ring of the theme (assets/css/focus.css), one rule for all elements that draw it, on every page
+ * and in the editor. Enqueued once the blocks of the template are rendered, so it comes after their styles and holds
+ * against block CSS of equal specificity. Printed inline like the block styles (path data).
+ */
+function enqueue_focus_ring(): void {
+	wp_enqueue_style( 'leitvia-focus', get_theme_file_uri( 'assets/css/focus.css' ), array(), wp_get_theme()->get( 'Version' ) );
+	wp_style_add_data( 'leitvia-focus', 'path', get_theme_file_path( 'assets/css/focus.css' ) );
+}
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_focus_ring' );
+
+/**
  * Registers block style variations that need theme CSS.
  */
 function register_block_style_variations(): void {
@@ -141,6 +152,7 @@ function register_block_style_variations(): void {
 			'success'               => __( 'Success', 'leitvia' ),
 			'warning'               => __( 'Warning', 'leitvia' ),
 			'tip'                   => __( 'Tip', 'leitvia' ),
+			'tile'                  => __( 'Tile', 'leitvia' ),
 			'inverse'               => __( 'Inverse', 'leitvia' ),
 			'header-split'          => __( 'Header split', 'leitvia' ),
 			// For the outermost group of a header template part, see "Sticky header" in core--group.css.
@@ -150,6 +162,10 @@ function register_block_style_variations(): void {
 		),
 		'core/cover'      => array(
 			'inverse' => __( 'Inverse', 'leitvia' ),
+		),
+		// Cut-out illustrations: no media radius and no shadow, see core/image in theme.json.
+		'core/image'      => array(
+			'illustration' => __( 'Illustration', 'leitvia' ),
 		),
 		'core/table'      => array(
 			'comparison' => __( 'Comparison', 'leitvia' ),
@@ -185,10 +201,11 @@ function register_block_style_variations(): void {
 add_action( 'init', __NAMESPACE__ . '\register_block_style_variations' );
 
 /**
- * Registers the demo client logos as an icon collection, so the Icon block draws them in the current text color.
- * The files hold only paths: core keeps svg, path and polygon elements and drops everything else.
+ * Registers the icon collection of the theme, so the Icon block draws its icons in the current text color: the demo
+ * client logos and the heart of the author tip. The files hold only paths: core keeps svg, path and polygon elements
+ * and drops everything else.
  */
-function register_logo_icons(): void {
+function register_icons(): void {
 	wp_register_icon_collection( 'leitvia', array( 'label' => __( 'Leitvia', 'leitvia' ) ) );
 	$logos = array(
 		1 => __( 'Tervane', 'leitvia' ),
@@ -206,8 +223,17 @@ function register_logo_icons(): void {
 			)
 		);
 	}
+	// The heart before the eyebrow of the author tip (patterns/content-author-tip.php): the outline of the Lucide heart,
+	// filled in the text color, since core keeps no stroke.
+	wp_register_icon(
+		'leitvia/heart',
+		array(
+			'label'     => __( 'Heart', 'leitvia' ),
+			'file_path' => get_theme_file_path( 'assets/icons/heart.svg' ),
+		)
+	);
 }
-add_action( 'init', __NAMESPACE__ . '\register_logo_icons' );
+add_action( 'init', __NAMESPACE__ . '\register_icons' );
 
 /**
  * Block bindings source leitvia/site-meta for values that change by themselves. The copyright line of the footer
@@ -718,6 +744,25 @@ function lightbox_button_text( array $context, array $block, $parent_block = nul
 add_filter( 'render_block_context', __NAMESPACE__ . '\lightbox_button_text', 10, 3 );
 
 /**
+ * Pinch zoom in the lightbox of core images (WCAG 1.4.4, 1.4.10), for every lightbox of the site, the scroll gallery
+ * of Leitvia Pro included. Core cancels every touchmove on the open overlay (actions.handleTouchMove calls
+ * preventDefault), which also cancels the pinch of two fingers, so an enlarged image could not be zoomed on a phone.
+ * The overlay is printed without that directive; core--image.css gives it touch-action: pinch-zoom instead, so one
+ * finger still does not scroll the page behind it. Swipe to the next image (touchstart, touchend), Escape and the
+ * close button stay as core made them.
+ */
+function lightbox_pinch_zoom(): void {
+	if ( ! function_exists( 'block_core_image_print_lightbox_overlay' ) || ! has_action( 'wp_footer', 'block_core_image_print_lightbox_overlay' ) ) {
+		return;
+	}
+	remove_action( 'wp_footer', 'block_core_image_print_lightbox_overlay' );
+	ob_start();
+	block_core_image_print_lightbox_overlay();
+	echo str_replace( 'data-wp-on--touchmove="actions.handleTouchMove"', '', (string) ob_get_clean() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- markup of core, escaped there.
+}
+add_action( 'wp_footer', __NAMESPACE__ . '\lightbox_pinch_zoom', 9 );
+
+/**
  * Preloads the Latin upright files of the body, heading and button fonts in the active style, in the weight each one
  * uses. The body and headings can be the largest paint. The button font also sets navigation and other interface text,
  * where a late swap changes the line breaks and moves the page (CLS 0.33 on the Plumbline demo with a monospace button
@@ -1016,3 +1061,44 @@ function header_action_in_overlay( string $html ): string {
 	return preg_replace_callback( '#^(.*</ul>)(?=(?:\s*</div>){4,}\s*</nav>)#s', fn( array $start ): string => $start[1] . $copy, $html, 1 ) ?? $html;
 }
 add_filter( 'render_block_core/template-part', __NAMESPACE__ . '\header_action_in_overlay' );
+
+/**
+ * Parts of a post split with the page break block (core/nextpage). The post content block appends wp_link_pages()
+ * below the text of such a post; instead of the bare numbers it gets a navigation named "Part 2 of 5", the list of all
+ * parts with their titles, the current one marked with aria-current and in bold, and large links to the previous and
+ * the next part. A part is titled with its first heading, or "Part n" when it has none. Only on a single post or page
+ * in the main loop, nothing on posts with one page, in lists or in feeds.
+ * Address and title of each part stay as WordPress makes them. The links core built are replaced, not used.
+ *
+ * Styled with preset classes and the flex layout of core only, so the theme CSS budget stays as it is.
+ */
+function post_parts(): string {
+	global $page, $numpages, $multipage, $pages;
+	if ( ! is_singular() || ! in_the_loop() || ! $multipage || $numpages < 2 ) {
+		return '';
+	}
+	$current = min( max( 1, (int) $page ), (int) $numpages );
+	$titles  = array();
+	for ( $n = 1; $n <= $numpages; $n++ ) {
+		$heading = preg_match( '#<h[1-6]\b[^>]*>(.*?)</h[1-6]>#is', (string) ( $pages[ $n - 1 ] ?? '' ), $m ) ? trim( html_entity_decode( wp_strip_all_tags( $m[1] ), ENT_QUOTES ) ) : '';
+		/* translators: %d: number of the part. */
+		$titles[ $n ] = '' !== $heading ? $heading : sprintf( __( 'Part %d', 'leitvia' ), $n );
+	}
+	$link = static fn( int $n, string $attr, string $text ): string => str_replace( '<a ', rtrim( '<a ' . $attr ) . ' ', _wp_link_page( $n ) ) . $text . '</a>';
+	$id   = wp_unique_id( 'leitvia-post-parts-' );
+	$html = '<nav class="leitvia-post-parts" aria-labelledby="' . esc_attr( $id ) . '"><h2 id="' . esc_attr( $id ) . '" class="wp-block-heading has-heading-s-font-size">'
+		/* translators: 1: number of the current part, 2: number of parts. */
+		. esc_html( sprintf( __( 'Part %1$d of %2$d', 'leitvia' ), $current, $numpages ) ) . '</h2><ol>';
+	foreach ( $titles as $n => $title ) {
+		$html .= '<li>' . ( $n === $current ? $link( $n, 'aria-current="page"', '<strong>' . esc_html( $title ) . '</strong>' ) : $link( $n, '', esc_html( $title ) ) ) . '</li>';
+	}
+	$html .= '</ol><p class="is-layout-flex items-justified-space-between has-heading-font-family has-lead-font-size">';
+	if ( $current > 1 ) {
+		$html .= $link( $current - 1, 'rel="prev"', esc_html__( 'Previous:', 'leitvia' ) . ' ' . esc_html( $titles[ $current - 1 ] ) );
+	}
+	if ( $current < $numpages ) {
+		$html .= $link( $current + 1, 'rel="next"', esc_html__( 'Next:', 'leitvia' ) . ' ' . esc_html( $titles[ $current + 1 ] ) );
+	}
+	return $html . '</p></nav>';
+}
+add_filter( 'wp_link_pages', __NAMESPACE__ . '\post_parts' );

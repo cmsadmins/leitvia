@@ -107,7 +107,8 @@
 				{ "slug": "s", "name": "Small", "size": "0.125rem" },
 				{ "slug": "m", "name": "Medium", "size": "0.5rem" },
 				{ "slug": "l", "name": "Large", "size": "1rem" },
-				{ "slug": "pill", "name": "Pill", "size": "999rem" }
+				{ "slug": "pill", "name": "Pill", "size": "999rem" },
+				{ "slug": "media", "name": "Images", "size": "0" }
 			]
 		},
 		"shadow": {
@@ -352,6 +353,61 @@
 					}
 				}
 			},
+			"core/group": {
+				"variations": {
+					"tip": {
+						"border": {
+							"radius": "var:preset|border-radius|m"
+						},
+						"color": {
+							"background": "var:preset|color|surface-alt",
+							"text": "var:preset|color|ink"
+						},
+						"spacing": {
+							"padding": {
+								"top": "var:preset|spacing|l",
+								"bottom": "var:preset|spacing|l",
+								"left": "var:preset|spacing|l",
+								"right": "var:preset|spacing|l"
+							}
+						}
+					},
+					"tile": {
+						"border": {
+							"radius": "var:preset|border-radius|m"
+						},
+						"color": {
+							"text": "var:preset|color|ink"
+						},
+						"spacing": {
+							"padding": {
+								"top": "var:preset|spacing|m",
+								"bottom": "var:preset|spacing|m",
+								"left": "var:preset|spacing|m",
+								"right": "var:preset|spacing|m"
+							}
+						}
+					}
+				}
+			},
+			"core/image": {
+				"border": {
+					"radius": "var(--wp--preset--border-radius--media)"
+				},
+				"variations": {
+					"illustration": {
+						"border": {
+							"radius": "0"
+						},
+						"shadow": "none"
+					}
+				}
+			},
+			"core/post-featured-image": {
+				"border": {
+					"radius": "var(--wp--preset--border-radius--media)"
+				}
+			},
 			"core/separator": {
 				"color": {
 					"text": "var:preset|color|stroke"
@@ -392,6 +448,11 @@
 					"fontFamily": "var:preset|font-family|ui",
 					"fontSize": "0.9375rem",
 					"fontWeight": "450"
+				}
+			},
+			"woocommerce/product-image": {
+				"border": {
+					"radius": "var(--wp--preset--border-radius--media)"
 				}
 			},
 			"woocommerce/product-sale-badge": {

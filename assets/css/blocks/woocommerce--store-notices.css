@@ -21,7 +21,7 @@
 	background-color: var(--leitvia-notice);
 	fill: var(--wp--preset--color--surface);
 }
-/* Double focus ring of core--button.css on every shop control; 0,4,1 beats WooCommerce's 0,4,0. */
+/* Double focus ring of focus.css on every shop control; 0,4,1 beats WooCommerce's 0,4,0. */
 body :is(.wc-block-components-notice-banner.wc-block-components-notice-banner, .wc-block-checkout, .wc-block-cart, .wp-block-add-to-cart-form, .wp-block-woocommerce-product-details, .woocommerce-ordering, .wp-block-woocommerce-customer-account) :is(a, button, input, select, textarea, [tabindex]):focus-visible {
 	outline: 2px solid var(--wp--preset--color--focus);
 	outline-offset: 2px;

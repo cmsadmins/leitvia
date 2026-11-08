@@ -233,7 +233,7 @@
 	},
 	"leitvia/hidden-page-product-details": {
 		"added": "2026-10-18",
-		"updated": "2026-10-19"
+		"updated": "2026-11-08"
 	},
 	"leitvia/hidden-page-read-more": {
 		"added": "2026-10-24",
@@ -326,6 +326,10 @@
 	"leitvia/teaser-front-page": {
 		"added": "2026-10-24",
 		"updated": "2026-11-06"
+	},
+	"leitvia/teaser-icon-tiles": {
+		"added": "2026-11-08",
+		"updated": "2026-11-08"
 	},
 	"leitvia/teaser-posts-badge": {
 		"added": "2026-10-15",

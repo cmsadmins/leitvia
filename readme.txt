@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.33
+Stable tag: 1.2.34
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,18 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.34 =
+* Posts in parts (page break block) end with a navigation "Part 2 of 3" that lists every part by its first heading, marks the current one and links to the next and previous part.
+* New token role radius.media: photos, featured images, covers, product images and their hover zoom take one corner from the token set (none, small, medium or large). New image style Illustration for cut-out images without corner and shadow.
+* Author tip with a larger round portrait in an accent ring, a heart before the eyebrow, the tip in the heading serif and the name in italics, on a soft panel. Tip and name carry pattern overrides, so a synced author tip has its own text in every place.
+* New pattern Icon tiles and group style Tile: four tiles with an icon and a linked title, each tile one link with the focus ring on the tile.
+* Groups with a background color and no padding of their own get padding all round, also inside other groups.
+* Links on extra surfaces where the accent color falls below 4.5:1 turn ink; Leitvia Studio marks these blocks.
+* Images in the lightbox can be zoomed with two fingers on phones (WCAG 1.4.4).
+* Related products below a product show image, title and price without a second buy button.
+* One focus ring rule for all elements in assets/css/focus.css instead of a copy per block.
+* Contract 1.13.13: role radius.media, image style illustration, group style tile, pattern teaser-icon-tiles, new description of the author tip.
 
 = 1.2.33 =
 * Posts take the full width like pages: wide and full-width blocks in the text reach as far as on a page, the running text keeps the reading width, and header, featured image, byline and author tip line up on the left.
@@ -289,6 +301,7 @@ All files in assets/images were created by Patrick Schlesinger, CMS ADMINS, for 
 
 = Icons =
 
+* assets/icons/heart.svg, the heart before the eyebrow of the pattern "Author tip": the icon heart of Lucide 1.60.0 (https://lucide.dev), Copyright (c) Lucide Contributors 2022, parts Copyright (c) 2013-2022 Cole Bemis (Feather). License: ISC License, https://lucide.dev/license.
 * The download icon of the list style "Download" (assets/css/blocks/core--list.css, an inline SVG used as a CSS mask) was drawn for this theme by Patrick Schlesinger, CMS ADMINS, and is licensed under GPLv2 or later.
 
 = Screenshot =

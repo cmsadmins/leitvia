@@ -14,9 +14,3 @@
 	white-space: pre;
 	overflow-wrap: normal;
 }
-.wp-block-code.is-style-terminal:focus-visible {
-	outline: 0.125rem solid var(--wp--preset--color--focus);
-	outline-offset: 0.125rem;
-	/* Inner ring for the double focus indicator, see core--button.css. */
-	box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
-}

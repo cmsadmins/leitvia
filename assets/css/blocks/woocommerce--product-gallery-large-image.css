@@ -8,3 +8,8 @@
 		transition: none;
 	}
 }
+/* Media radius (radius.media) on the large image and the thumbnails, like every photo. */
+.wp-block-woocommerce-product-gallery-large-image img,
+.wp-block-woocommerce-product-gallery-thumbnails img {
+	border-radius: var(--wp--preset--border-radius--media);
+}

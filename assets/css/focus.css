@@ -1,0 +1,55 @@
+/*
+ * Double focus ring of the theme, one rule for every element that draws it: an outline in the focus color plus a
+ * surface ring in the gap. No one color reaches 3:1 on surface, accent and ink, so on accent and ink the surface ring
+ * carries it (REQUIRED_PAIRS in scripts/lib/contrast.mjs). Loaded on every page and in the editor
+ * (functions.php enqueue_focus_ring()), after the block styles, so it holds against block CSS of equal specificity.
+ * Each selector keeps the specificity it had in its block file. Widths in rem, so the ring grows with the text size.
+ *
+ * - Buttons (core--button.css before).
+ * - Links on ink, accent and inverse bands (core--group.css): repeated for them because block CSS such as social
+ *   links overrides the zero-specificity ring of theme.json.
+ * - Navigation links, submenu toggles, menu open and close buttons (core--navigation.css).
+ * - Fields of the comment form and the search field (core--post-comments-form.css, core--search.css).
+ * - Scrollable code, tables and tab panels, tab buttons and the summary of details (core--code.css, core--table.css,
+ *   core--tabs.css, core--details.css).
+ * - The lightbox trigger and the buttons of the lightbox dialog (core--image.css): core draws a translucent ring that
+ *   fails the contrast check on dark palettes.
+ * - Videos: their controls are tab stops in the browser's own shadow DOM, out of reach for theme CSS, so the video
+ *   shows the ring while any of them has focus (core--video.css).
+ * - Tiles (group style tile): the ring sits on the whole tile while its link has focus, not on the title (below).
+ */
+.wp-element-button:focus-visible,
+.wp-block-button__link:focus-visible,
+:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) a:where(:not(.wp-element-button)):focus-visible,
+.wp-block-navigation a:where(:not(.wp-element-button)):focus-visible,
+.wp-block-navigation .wp-block-navigation-submenu__toggle:focus-visible,
+.wp-block-navigation__responsive-container-open:focus-visible,
+.wp-block-navigation__responsive-container-close:focus-visible,
+.wp-block-navigation-overlay-close:focus-visible,
+.wp-block-post-comments-form :is(input:not([type="submit"]), textarea):focus-visible,
+.wp-block-search__input:focus-visible,
+.wp-block-code.is-style-terminal:focus-visible,
+.wp-block-table:focus-visible,
+.wp-block-tab-list button:focus-visible,
+.wp-block-tab-panel:focus-visible,
+.wp-block-details > summary:focus-visible,
+.wp-lightbox-container button:focus-visible,
+.wp-lightbox-overlay button:focus-visible,
+.wp-block-video:focus-within video {
+	outline: 0.125rem solid var(--wp--preset--color--focus);
+	outline-offset: 0.125rem;
+	box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
+}
+/* Tiles in a rule of their own: a browser without :has() would drop a whole selector list with it. Without :has()
+   the title link keeps its own ring. */
+@supports selector(:has(a)) {
+	.wp-block-group.is-style-tile:has(a:focus-visible) {
+		outline: 0.125rem solid var(--wp--preset--color--focus);
+		outline-offset: 0.125rem;
+		box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
+	}
+	.wp-block-group.is-style-tile a:focus-visible {
+		outline: 0;
+		box-shadow: none;
+	}
+}

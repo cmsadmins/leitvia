@@ -3,7 +3,7 @@
  * Title: Product details
  * Slug: leitvia/hidden-page-product-details
  * Categories: text
- * Description: Below the product summary: the WooCommerce product tabs (description, additional information, reviews and tabs added by plugins), then related products.
+ * Description: Below the product summary: the WooCommerce product tabs (description, additional information, reviews and tabs added by plugins), then related products with image, title and price, without a buy button.
  * Keywords: product, details, description, reviews, related products, woocommerce
  * Inserter: no
  *
@@ -38,7 +38,6 @@
 			<!-- wp:woocommerce/product-price -->
 			<div class="is-loading"></div>
 			<!-- /wp:woocommerce/product-price -->
-			<!-- wp:woocommerce/product-button /-->
 		<!-- /wp:post-template -->
 	</div>
 	<!-- /wp:query -->

@@ -8,7 +8,7 @@ Leitvia is warm, editorial and calm. Pages read like a well edited magazine: gen
 
 - Say less, show structure. Prefer one strong section over three weak ones.
 - Contrast comes from scale, tone and rhythm, not from more colors or effects.
-- Sharp edges by default. Radius tokens only where the role table allows them.
+- Sharp edges by default. Radius tokens only where the role table allows them. One exception for content boxes: the group style Tip (pattern `content-author-tip`) is a soft `surface-alt` panel with the radius `m` and no frame, so a recurring tip in the voice of the author reads warmer than a notice.
 - Primary buttons are ink rectangles with a 2 px radius; the accent stays for links, eyebrows and hover. Buttons never become pills.
 - One small-text voice: eyebrows, badges, footer heads and table heads share the `ui` font in caps at 12 px. Hierarchy comes from color and space, not weight.
 - No gradients, no emojis, no decorative borders on the left edge of boxes.
@@ -35,7 +35,7 @@ Use role presets only. Never write hex values, px values, custom CSS or `!import
 | Font size | `meta`, `body`, `lead`, `heading-s`, `heading-m`, `heading-l`, `display` | `display` once per screen; h2 is `heading-m` or `heading-l`, except in `content-statement`, where the one sentence is the section |
 | Font family | `body`, `heading`, `mono`, `ui` | `heading` also for large figures; `ui` for buttons, navigation, eyebrows, badges, meta lines, form fields and shop controls. Token sets without `ui` use `body` |
 | Spacing | `xxs`, `xs`, `s`, `m`, `l`, `xl`, `xxl`, `xxxl` | Section padding follows density: `xxl` airy, `xl` regular, `l` dense |
-| Radius | `none`, `s`, `m`, `l`, `pill` | `none` for content boxes and badges, `s` (2 px) for buttons and fields, `pill` only for round portraits and switches |
+| Radius | `none`, `s`, `m`, `l`, `pill`, `media` | `none` for content boxes and badges, `s` (2 px) for buttons and fields, `pill` only for round portraits and switches; `media` is the corner of every photo (one of `none`, `s`, `m`, `l`, default `none`), applied by the theme through the preset `--wp--preset--border-radius--media`, never per image. Cut-out illustrations take the image style Illustration |
 | Shadow | `subtle`, `raised` | Rare; `raised` for floating elements only |
 
 ## Combination rules

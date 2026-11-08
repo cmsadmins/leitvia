@@ -1,9 +1,4 @@
-/* Focus ring as in core--button.css. */
-.wp-block-search__input:focus-visible {
-	outline: 2px solid var(--wp--preset--color--focus);
-	outline-offset: 2px;
-	box-shadow: 0 0 0 2px var(--wp--preset--color--surface);
-}
+/* Focus ring of the field: assets/css/focus.css. */
 /* Lets the form shrink in a flex row (header-search) instead of overflowing at 320px. */
 .wp-block-search {
 	min-width: 0;
