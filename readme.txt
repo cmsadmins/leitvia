@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.34
+Stable tag: 1.2.35
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,11 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.35 =
+* The icon of a tile lines up with its title. Centred and end-aligned tiles and icons deeper inside a tile keep their place.
+* The CSS budget of the theme is 31 KB as shipped (30 KB before), for the line-up of tile icons.
+* Contract 1.13.14: the template archive-product names taxonomy-product_cat and taxonomy-product_tag for categories and tags laid out apart from the shop page.
 
 = 1.2.34 =
 * Posts in parts (page break block) end with a navigation "Part 2 of 3" that lists every part by its first heading, marks the current one and links to the next and previous part.

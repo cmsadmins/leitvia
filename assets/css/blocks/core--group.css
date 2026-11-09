@@ -213,9 +213,19 @@ html {
  * whole tile through a pseudo-element with the corners of the tile, so icon and padding click through without a second
  * link. The title keeps the text color and is underlined only on hover and focus; the focus ring sits on the tile
  * (assets/css/focus.css). Padding all round and the medium radius come from theme.json, the surface from the block.
+ * The glyphs of the icon set keep a sixth of their box free on each side; an icon that is a direct child of a tile
+ * aligned to the start moves back by that much, so the drawn icon lines up with the title. Centred or end-aligned
+ * tiles and icons deeper inside (a row with icon and text) keep their place.
  */
 .wp-block-group.is-style-tile {
 	position: relative;
+
+	&:not(.is-content-justification-center, .is-content-justification-right) > .wp-block-icon svg {
+		translate: calc(-16.7% * var(--leitvia-dir, 1));
+	}
+	&:dir(rtl) {
+		--leitvia-dir: -1;
+	}
 
 	& a {
 		color: inherit;
