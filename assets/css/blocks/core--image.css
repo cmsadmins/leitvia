@@ -45,3 +45,25 @@
 		scale: 1.03;
 	}
 }
+
+/*
+ * A wide text column (a token set with size.content above 48rem, often equal to size.wide) would let an image without
+ * an alignment (any align* class) and without a width (is-resized) grow with it, a 1024 px picture in the middle of the text. Directly in
+ * the post content such an image stays at 40rem, but only while the text column is wider than 48rem; in narrower
+ * columns it keeps the width of the column as before. CSS has no if, so the second term of min() does the switch:
+ * (48.0625rem - column) * 1000 is a huge length while the column is up to 48rem wide (the extra 1px keeps 48rem
+ * itself on that side), so min() takes the column, and max(0rem, ...) turns it into 0 above, so min() takes 40rem.
+ */
+.wp-block-post-content > .wp-block-image:not([class*="align"], .is-resized) {
+	--leitvia-column: var(--wp--style--global--content-size, 100%);
+	max-width: min(var(--leitvia-column), 40rem + max(0rem, (48.0625rem - var(--leitvia-column)) * 1000));
+}
+
+/*
+ * Image style Illustration: a cut-out illustration keeps a modest size whatever the width of the column, at most
+ * --leitvia-illustration-max (20rem; a child theme or custom CSS may set another value on :root). Wide and full
+ * alignments are a deliberate choice and stay. After the rule above, which has the same specificity.
+ */
+.wp-block-image.is-style-illustration:not(.alignwide, .alignfull) {
+	max-width: var(--leitvia-illustration-max, 20rem);
+}

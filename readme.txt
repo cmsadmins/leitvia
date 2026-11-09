@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.36
+Stable tag: 1.2.37
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,11 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.37 =
+* In a text column wider than 48rem (a token set with a wide size.content) an image directly in the post content without an alignment and without a width stays at 40rem instead of filling the column; in narrower columns nothing changes. Wide and full images keep their width.
+* The image style Illustration stays at most 20rem wide in any column (custom property --leitvia-illustration-max), unless the image is wide or full.
+* The CSS budget of the theme is 32 KB as shipped (31 KB before), for these two rules.
 
 = 1.2.36 =
 * Below a single post, the rule, the author box, the post navigation, the related posts and the comments stand at the wide width of the bands, from the same left edge. The author box is a calm tinted panel, the related posts stand in three columns from tablet width.
