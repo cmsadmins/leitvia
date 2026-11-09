@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.14",
+	"contractVersion": "1.13.15",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -358,7 +358,7 @@
 		},
 		{
 			"slug": "single",
-			"purpose": "Single post as an article with breadcrumbs above the one h1, a byline on one line where it fits (author, publish and update dates, reading time) and a 16:9 featured image; Google News ready. Below the post: author box (with a link to how the site works when a plugin names one), previous and next post, up to three related posts from the same categories as cards with image and comments while they are open or exist."
+			"purpose": "Single post as an article with breadcrumbs above the one h1, a byline on one line where it fits (author, publish and update dates, reading time) and a 16:9 featured image; Google News ready. Below the post, at the wide width of the bands and starting at the same left edge: a rule, the author box as a calm tinted panel without avatar (with a link to how the site works when a plugin names one), previous and next post, up to three related posts from the same categories as cards with image (three columns from tablet width) and comments while they are open or exist."
 		},
 		{
 			"slug": "page",
@@ -501,6 +501,12 @@
 			"name": "tile",
 			"purpose": "One clickable tile: padding all round, medium radius, the first link reaches over the whole tile, underlined on hover and focus only, focus ring on the tile.",
 			"context": "Groups in a grid with an icon and a linked title, on surface-alt or a surface-extra (see teaser-icon-tiles); one link per tile."
+		},
+		{
+			"block": "core/gallery",
+			"name": "collage",
+			"purpose": "Three to five photos set off against each other on a grid of 6 by 6 cells, each reaching at most a sixth into its neighbour, media radius and the subtle shadow; on phones two offset columns without overlap.",
+			"context": "Galleries of three to five photos next to a short text about people, trips or a group (see content-photo-collage); never for product shots or illustrations."
 		},
 		{
 			"block": "core/image",
@@ -1280,6 +1286,45 @@
 					"text": [
 						10,
 						60
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-photo-collage",
+			"title": "Photo collage",
+			"description": "Three to five photos set off against each other and overlapping a little next to an eyebrow, a heading, a short lead, a paragraph and a button. On phones the photos stand in two offset columns without overlap. Use for people, trips and groups with several photos; switch the columns to the block style Media right to put the photos on the right.",
+			"area": "content",
+			"useWhen": "Sections about people, trips or a group with three to five photos of their own next to a short text. On long pages alternate the sides (block style Media right on the columns) and the background (surface, surface-alt, a surface-extra).",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "intrinsic",
+					"displayWidth": "22rem",
+					"recommendedSize": "1200x1200",
+					"count": 4,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "Fewer than three or more than five photos, product shots or illustrations that need to be seen whole (the collage crops), or a plain grid of many pictures (use a gallery).",
+				"a11y": "The order of the images in the document is the reading order, overlap only follows that order. Every photo needs an alt text that says what it shows; the lightbox opens each one in full like any gallery image.",
+				"contentLength": {
+					"heading": [
+						30,
+						70
+					],
+					"text": [
+						80,
+						240
 					]
 				},
 				"replacedBy": null
@@ -2514,7 +2559,7 @@
 		{
 			"slug": "leitvia/hidden-page-post-author",
 			"title": "About the author",
-			"description": "Author box below a single post: a heading, the linked name of the author, the biographical info of the profile and, when a plugin names one, a link to how the site works. No avatar, so no request goes to Gravatar.",
+			"description": "Author box below a single post, a calm tinted panel with the medium radius: a heading, the linked name of the author, the biographical info of the profile and, when a plugin names one, a link to how the site works. No avatar, so no request goes to Gravatar.",
 			"area": "page",
 			"useWhen": "Inserted by the single template below the post.",
 			"composition": {
@@ -2675,7 +2720,7 @@
 		{
 			"slug": "leitvia/hidden-page-related-posts",
 			"title": "Related posts",
-			"description": "Up to three other posts from the categories of the current post below a single post, as cards with featured image, category, linked title, excerpt and date. Renders nothing when there are none.",
+			"description": "Up to three other posts from the categories of the current post below a single post, as cards with featured image, category, linked title, excerpt and date, in three columns from tablet width and one on phones. Renders nothing when there are none.",
 			"area": "page",
 			"useWhen": "Inserted by the single template below the post.",
 			"composition": {

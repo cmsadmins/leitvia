@@ -51,6 +51,10 @@
 		"added": "2026-10-29",
 		"updated": "2026-10-29"
 	},
+	"leitvia/content-photo-collage": {
+		"added": "2026-11-09",
+		"updated": "2026-11-09"
+	},
 	"leitvia/content-price-list": {
 		"added": "2026-10-15",
 		"updated": "2026-10-27"
@@ -217,7 +221,7 @@
 	},
 	"leitvia/hidden-page-post-author": {
 		"added": "2026-10-24",
-		"updated": "2026-11-02"
+		"updated": "2026-11-09"
 	},
 	"leitvia/hidden-page-post-byline": {
 		"added": "2026-10-15",
@@ -241,7 +245,7 @@
 	},
 	"leitvia/hidden-page-related-posts": {
 		"added": "2026-10-24",
-		"updated": "2026-11-06"
+		"updated": "2026-11-09"
 	},
 	"leitvia/hidden-page-shop-filters": {
 		"added": "2026-10-18",

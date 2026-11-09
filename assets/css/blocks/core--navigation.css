@@ -16,15 +16,32 @@
 	background-color: var(--wp--preset--color--surface);
 	box-shadow: var(--wp--preset--shadow--subtle);
 }
-.wp-block-navigation .has-child > .wp-block-navigation-submenu__toggle[aria-expanded="true"] ~ .wp-block-navigation__submenu-container:not(.is-menu-open *) {
+/*
+ * Hover bridge: a menu that opens on hover (core's default, no submenuVisibility "click") closed while the pointer
+ * crossed the gap of the margin above, from the link into the panel. A transparent strip over that gap belongs to the
+ * panel, so the item stays hovered. It is only there while the panel shows (it inherits visibility: hidden). Submenus
+ * further down open to the side and keep core's own bridge.
+ */
+.wp-block-navigation__container > .has-child > .wp-block-navigation__submenu-container:not(.is-menu-open *)::before {
+	content: "";
+	position: absolute;
+	inset: auto 0 100%;
+	height: calc(var(--wp--preset--spacing--xs) + 1px);
+}
+/*
+ * Open panel, the same whether it opened by click (aria-expanded), by hover or, without the hover and click mode, by
+ * focus inside it, like core shows it. Sizing a closed panel would make it overflow.
+ */
+.wp-block-navigation .has-child:is(:has(> [aria-expanded="true"]), :not(.open-on-click):hover, :not(.open-on-click, .open-on-hover-click):focus-within) > .wp-block-navigation__submenu-container:not(.is-menu-open *) {
 	gap: var(--wp--preset--spacing--xxs);
 	min-width: 18rem;
 	padding: var(--wp--preset--spacing--s);
-}
-/* From six entries on the panel turns into a two-column grid. */
-.wp-block-navigation .has-child > .wp-block-navigation-submenu__toggle[aria-expanded="true"] ~ .wp-block-navigation__submenu-container:has(> :nth-child(6)):not(.is-menu-open *) {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(16rem, 1fr));
+
+	/* From six entries on the panel turns into a two-column grid. */
+	&:has(> :nth-child(6)) {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(16rem, 1fr));
+	}
 }
 .wp-block-navigation .wp-block-navigation__submenu-container:not(.is-menu-open *) {
 	& > .wp-block-navigation-item {

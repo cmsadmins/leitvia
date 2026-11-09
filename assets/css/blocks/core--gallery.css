@@ -1,0 +1,79 @@
+/*
+ * Collage (gallery style, pattern content-photo-collage): three to five photos set off against each other and, from
+ * tablet width, overlapping a little. The order of the images in the document is the reading order; a later image lies
+ * on an earlier one only through that order, no z-index. Corners come from the media radius of every image
+ * (radius.media, theme.json core/image), the only shadow is the theme token subtle, the gap is the block gap of the
+ * gallery. Core sizes gallery images by width with an id selector (:not(#individual-image), columns-default); the same
+ * selector with the style class sets them free for the grid, and the style sheet of the theme loads after core's.
+ * Links and the lightbox work as in any gallery.
+ */
+.wp-block-gallery.has-nested-images.is-style-collage {
+	display: grid;
+
+	& > figure.wp-block-image:not(#individual-image) {
+		width: auto;
+	}
+	& img {
+		box-shadow: var(--wp--preset--shadow--subtle);
+	}
+}
+
+/*
+ * Phones: two columns of portrait frames, the second one set lower, without overlap. Columns as minmax(0, 1fr): with
+ * plain 1fr the large intrinsic width of a photo widened its column beyond the screen.
+ */
+@media (max-width: 48.8125rem) {
+	.wp-block-gallery.has-nested-images.is-style-collage {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+
+		& > figure {
+			aspect-ratio: 4 / 5;
+		}
+		& > figure:nth-child(even):not(#individual-image) {
+			margin-top: var(--wp--preset--spacing--l);
+		}
+	}
+}
+
+/*
+ * From tablet width: a square of 6 by 6 cells for up to five images. Each image spans its own cells and reaches at most one cell (a sixth)
+ * into its neighbour: the first one large at the top left, the second one at the right a row lower, the third one
+ * below, the fourth and fifth at the lower corners.
+ */
+@media (min-width: 48.875rem) {
+	.wp-block-gallery.has-nested-images.is-style-collage {
+		grid: repeat(6, 1fr) / repeat(6, minmax(0, 1fr));
+		aspect-ratio: 1;
+
+		& > :nth-child(1) {
+			grid-area: 1 / 1 / 4 / 5;
+		}
+		& > :nth-child(2) {
+			grid-area: 2 / 4 / 5 / 7;
+		}
+		& > :nth-child(3) {
+			grid-area: 4 / 2 / 7 / 5;
+		}
+		& > :nth-child(4) {
+			grid-area: 4 / 5 / 7 / 7;
+		}
+		& > :nth-child(5) {
+			grid-area: 4 / 1 / 6 / 3;
+		}
+
+		/*
+		 * Six images and more do not fit the square: the collage falls back to the calm grid of two columns of
+		 * portrait frames, as on phones, instead of putting the sixth one into a free cell. After the placements, with
+		 * the same specificity, so it wins.
+		 */
+		&:has(> :nth-child(6)) {
+			grid: auto-flow / repeat(2, minmax(0, 1fr));
+			aspect-ratio: auto;
+
+			& > * {
+				grid-area: auto;
+				aspect-ratio: 4 / 5;
+			}
+		}
+	}
+}

@@ -8,7 +8,7 @@ Leitvia is warm, editorial and calm. Pages read like a well edited magazine: gen
 
 - Say less, show structure. Prefer one strong section over three weak ones.
 - Contrast comes from scale, tone and rhythm, not from more colors or effects.
-- Sharp edges by default. Radius tokens only where the role table allows them. One exception for content boxes: the group style Tip (pattern `content-author-tip`) is a soft `surface-alt` panel with the radius `m` and no frame, so a recurring tip in the voice of the author reads warmer than a notice.
+- Sharp edges by default. Radius tokens only where the role table allows them. Two exceptions for content boxes: the group style Tip (pattern `content-author-tip`) is a soft `surface-alt` panel with the radius `m` and no frame, so a recurring tip in the voice of the author reads warmer than a notice; the author box below a single post (`hidden-page-post-author`) is the same calm panel, without avatar.
 - Primary buttons are ink rectangles with a 2 px radius; the accent stays for links, eyebrows and hover. Buttons never become pills.
 - One small-text voice: eyebrows, badges, footer heads and table heads share the `ui` font in caps at 12 px. Hierarchy comes from color and space, not weight.
 - No gradients, no emojis, no decorative borders on the left edge of boxes.
@@ -91,6 +91,7 @@ Pages should read like a designed magazine, not like stacked slices of equal wei
 | `teaser-editorial-grid` | surface, grid, regular | Lead story on two thirds, four more posts beside it |
 | `teaser-front-page` | surface, asymmetric, dense | Newspaper front: the sticky lead wide, headlines in brief and three more stories beside it |
 | `content-media-pair` | surface-alt, asymmetric, airy | Two images of different size, offset, with captions |
+| `content-photo-collage` | surface, split, regular | Three to five photos set off and overlapping a little (gallery style Collage) beside a short text; for people, trips and groups, alternating sides with Media right |
 | `hero-overlap` | surface, overlap, regular | Opening photo on two thirds, the card with the h1 reaching into it from the right |
 | `hero-teaser-trio` | surface, grid, regular | Opening with three tall picture teasers instead of one message |
 

@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.35
+Stable tag: 1.2.36
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,14 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.36 =
+* Below a single post, the rule, the author box, the post navigation, the related posts and the comments stand at the wide width of the bands, from the same left edge. The author box is a calm tinted panel, the related posts stand in three columns from tablet width.
+* An image block with a height but no aspect ratio keeps the proportions of its file instead of being stretched; with an aspect ratio it stays cropped.
+* Submenus opened on hover no longer close while the pointer moves from the link into them. Padding, minimum width and two columns from six entries apply on hover and focus as well.
+* New pattern Photo collage with the gallery style Collage: three to five photos set off against each other and overlapping a little from tablet width, two offset columns on phones. Six photos and more stand in two columns.
+* WooCommerce 11.1 to 11.2.2: the mini cart no longer loads its module on the cart and checkout pages, where it asked the store API in a loop.
+* Contract 1.13.15: pattern content-photo-collage, gallery style collage, the end of a single post in the purpose of the template single.
 
 = 1.2.35 =
 * The icon of a tile lines up with its title. Centred and end-aligned tiles and icons deeper inside a tile keep their place.

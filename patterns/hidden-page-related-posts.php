@@ -3,7 +3,7 @@
  * Title: Related posts
  * Slug: leitvia/hidden-page-related-posts
  * Categories: posts
- * Description: Up to three other posts from the categories of the current post below a single post, as cards with featured image, category, linked title, excerpt and date. Renders nothing when there are none.
+ * Description: Up to three other posts from the categories of the current post below a single post, as cards with featured image, category, linked title, excerpt and date, in three columns from tablet width and one on phones. Renders nothing when there are none.
  * Keywords: related posts, more articles, same category, query
  * Block Types: core/query
  * Inserter: no
@@ -17,7 +17,7 @@
 	<!-- wp:heading {"fontSize":"heading-s"} -->
 	<h2 class="wp-block-heading has-heading-s-font-size"><?php esc_html_e( 'Related articles', 'leitvia' ); ?></h2>
 	<!-- /wp:heading -->
-	<!-- wp:post-template {"className":"leitvia-post-grid","style":{"spacing":{"blockGap":"var:preset|spacing|l"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"14rem"}} -->
+	<!-- wp:post-template {"className":"leitvia-post-grid","style":{"spacing":{"blockGap":"var:preset|spacing|l"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"12rem"}} -->
 		<!-- wp:group {"className":"leitvia-post-card","layout":{"type":"default"}} -->
 		<div class="wp-block-group leitvia-post-card">
 			<!-- wp:post-featured-image {"aspectRatio":"16/9","sizeSlug":"medium_large"} /-->

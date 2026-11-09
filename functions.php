@@ -167,6 +167,10 @@ function register_block_style_variations(): void {
 		'core/image'      => array(
 			'illustration' => __( 'Illustration', 'leitvia' ),
 		),
+		// Three to five photos set off and overlapping a little (pattern content-photo-collage), see core--gallery.css.
+		'core/gallery'    => array(
+			'collage' => __( 'Collage', 'leitvia' ),
+		),
 		'core/table'      => array(
 			'comparison' => __( 'Comparison', 'leitvia' ),
 		),
@@ -689,6 +693,32 @@ add_filter( 'render_block_core/image', __NAMESPACE__ . '\theme_image_size' );
 add_filter( 'render_block_core/cover', __NAMESPACE__ . '\theme_image_size' );
 
 /**
+ * An image block with a fixed height but no aspect ratio (common after a migration: width and height in pixels from the
+ * old page) stretched its image: core sets the height inline, max-width shrinks the width on smaller screens, and
+ * without object-fit the picture is squeezed. The height then comes from the image itself (height: auto), so it keeps
+ * its proportions at every width. With an aspect ratio the block crops (object-fit: cover) and stays as core renders
+ * it. Done on render, because a stylesheet cannot beat the inline height without !important; the saved markup stays
+ * as it is, and Leitvia Studio warns about such blocks when they are written (leitvia_image_fixed_height).
+ *
+ * @param string $html  Block HTML.
+ * @param array  $block Parsed block.
+ */
+function image_height_from_file( string $html, array $block ): string {
+	if ( empty( $block['attrs']['height'] ) || ! empty( $block['attrs']['aspectRatio'] ) ) {
+		return $html;
+	}
+	$tags = new \WP_HTML_Tag_Processor( $html );
+	if ( $tags->next_tag( 'img' ) ) {
+		$style = (string) preg_replace( '/(^|;)\s*height\s*:[^;]*/i', '$1height:auto', (string) $tags->get_attribute( 'style' ), -1, $count );
+		if ( $count ) {
+			$tags->set_attribute( 'style', $style );
+		}
+	}
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block_core/image', __NAMESPACE__ . '\image_height_from_file', 10, 2 );
+
+/**
  * The lightbox of core ("Enlarge on click", theme.json settings.blocks.core/image.lightbox) is on for every image
  * that links nowhere. Core brings the dialog, focus handling, Escape, arrow keys and the previous and next buttons
  * inside a gallery. The theme adjusts these things here, the button text below:
@@ -911,6 +941,24 @@ function reset_variations_button(): string {
 	return '<button type="button" class="reset_variations" aria-label="' . esc_attr__( 'Clear options', 'leitvia' ) . '">' . esc_html__( 'Clear', 'leitvia' ) . '</button>';
 }
 add_filter( 'woocommerce_reset_variations_link', __NAMESPACE__ . '\reset_variations_button' );
+
+/**
+ * Workaround for WooCommerce 11.1 to 11.2.2 (woocommerce/woocommerce#68484, fixed in 11.3.0): on the cart and checkout
+ * pages the mini cart renders only a hidden button, yet core still loads its script module woocommerce/mini-cart. Its
+ * Interactivity state is missing there, so refreshCartItems() polls undefinedwc/store/v1/cart, a 404 page, again and
+ * again with growing retries (404 errors in the console, load on the server). The mini cart is not interactive on these
+ * pages, so the module leaves the queue. Remove this once the theme requires WooCommerce 11.3.0 or later; from that
+ * version on it does nothing.
+ *
+ * @param string $html Rendered mini cart block.
+ */
+function mini_cart_module_off_cart( string $html ): string {
+	if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '11.3.0', '<' ) && function_exists( 'is_cart' ) && ( is_cart() || is_checkout() ) ) {
+		wp_dequeue_script_module( 'woocommerce/mini-cart' );
+	}
+	return $html;
+}
+add_filter( 'render_block_woocommerce/mini-cart', __NAMESPACE__ . '\mini_cart_module_off_cart' );
 
 /**
  * The name of a WooCommerce purchase button has to start with its visible text (WCAG 2.5.3, axe label-content-name-mismatch).
