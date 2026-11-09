@@ -216,9 +216,24 @@ html {
  * The glyphs of the icon set keep a sixth of their box free on each side; an icon that is a direct child of a tile
  * aligned to the start moves back by that much, so the drawn icon lines up with the title. Centred or end-aligned
  * tiles and icons deeper inside (a row with icon and text) keep their place.
+ * Titles follow the width of the tile: in a grid the tile is a container, and the size heading-s of its title shrinks
+ * to 12 % of the tile down to 1rem, so "Stell- & Campingplätze finden" takes two lines in two tiles across at 390 px.
+ * Long words hyphenate by the language of the page (lang on html), at least 4 letters on each side; overflow-wrap
+ * breaks a word only where no hyphen fits. Pages in easy language keep words whole (core--post-content.css).
  */
+.is-layout-grid > .is-style-tile {
+	container-type: inline-size;
+}
 .wp-block-group.is-style-tile {
 	position: relative;
+	--leitvia-tile-title: var(--wp--preset--font-size--heading-s);
+
+	& .wp-block-heading:not(.is-easy-language *) {
+		--wp--preset--font-size--heading-s: clamp(1rem, 12cqi, var(--leitvia-tile-title));
+		hyphens: auto;
+		hyphenate-limit-chars: 8 4 4;
+		overflow-wrap: anywhere;
+	}
 
 	&:not(.is-content-justification-center, .is-content-justification-right) > .wp-block-icon svg {
 		translate: calc(-16.7% * var(--leitvia-dir, 1));

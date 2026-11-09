@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.37
+Stable tag: 1.2.38
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,11 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.38 =
+* Tile titles (group style Tile) follow the width of the tile: in a grid the tile is a container and the size heading-s shrinks down to 1rem, so a long title takes at most two lines in narrow tiles.
+* Titles of tiles, post cards and product cards hyphenate long words by the language of the page (at least 4 letters on each side) and break a word only where no hyphen fits. Large titles keep hyphenating only at soft hyphens, pages in easy language keep words whole.
+* Product grid blocks of WooCommerce (Hand-picked Products, Newest Products, Products by Category and the other grids) show two products side by side up to 600 px with a smaller title, from tablet width the columns set in the block. Own stylesheet woocommerce--product-grid.css, loaded only with these blocks.
 
 = 1.2.37 =
 * In a text column wider than 48rem (a token set with a wide size.content) an image directly in the post content without an alignment and without a width stays at 40rem instead of filling the column; in narrower columns nothing changes. Wide and full images keep their width.

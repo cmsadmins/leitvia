@@ -11,6 +11,15 @@
 :lang(de) .wp-block-post-title {
 	hyphens: manual;
 }
+/*
+ * Titles of post and product cards are small and narrow: long words hyphenate there, as tile titles do (core--group.css).
+ * Pages in easy language keep words whole here too.
+ */
+:is(.leitvia-post-card, .wc-block-product, .wp-block-post.product) .wp-block-post-title:not(.is-easy-language *) {
+	hyphens: auto;
+	hyphenate-limit-chars: 8 4 4;
+	overflow-wrap: anywhere;
+}
 .wp-block-post-title a:hover {
 	text-decoration: underline;
 	text-decoration-thickness: 0.0625rem;

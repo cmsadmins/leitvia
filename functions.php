@@ -51,16 +51,25 @@ function register_block_styles(): void {
 		if ( str_ends_with( $file, 'woocommerce--account.css' ) ) {
 			continue;
 		}
-		$block = str_replace( '--', '/', basename( $file, '.css' ) );
-		wp_enqueue_block_style(
-			$block,
-			array(
-				'handle' => 'leitvia-' . basename( $file, '.css' ),
-				'src'    => get_theme_file_uri( 'assets/css/blocks/' . basename( $file ) ),
-				'path'   => $file,
-				'ver'    => wp_get_theme()->get( 'Version' ),
-			)
-		);
+		$blocks = array( str_replace( '--', '/', basename( $file, '.css' ) ) );
+		// One file for the product grid blocks of WooCommerce: all of them render .wc-block-grid.
+		if ( str_ends_with( $file, 'woocommerce--product-grid.css' ) ) {
+			$blocks = array_map(
+				fn( string $name ): string => 'woocommerce/' . $name,
+				array( 'handpicked-products', 'product-best-sellers', 'product-category', 'product-new', 'product-on-sale', 'product-tag', 'product-top-rated', 'products-by-attribute' )
+			);
+		}
+		foreach ( $blocks as $block ) {
+			wp_enqueue_block_style(
+				$block,
+				array(
+					'handle' => 'leitvia-' . basename( $file, '.css' ),
+					'src'    => get_theme_file_uri( 'assets/css/blocks/' . basename( $file ) ),
+					'path'   => $file,
+					'ver'    => wp_get_theme()->get( 'Version' ),
+				)
+			);
+		}
 	}
 }
 add_action( 'init', __NAMESPACE__ . '\register_block_styles' );

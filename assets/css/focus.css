@@ -10,8 +10,8 @@
  *   links overrides the zero-specificity ring of theme.json.
  * - Navigation links, submenu toggles, menu open and close buttons (core--navigation.css).
  * - Fields of the comment form and the search field (core--post-comments-form.css, core--search.css).
- * - Scrollable code, tables and tab panels, tab buttons and the summary of details (core--code.css, core--table.css,
- *   core--tabs.css, core--details.css).
+ * - Scrollable code, tables and tab panels, tab buttons (core--code.css, core--table.css, core--tabs.css) and every
+ *   summary of a details element: the Details block and those of add-ons, such as the folded list of a data map.
  * - The lightbox trigger and the buttons of the lightbox dialog (core--image.css): core draws a translucent ring that
  *   fails the contrast check on dark palettes.
  * - Videos: their controls are tab stops in the browser's own shadow DOM, out of reach for theme CSS, so the video
@@ -32,7 +32,7 @@
 .wp-block-table:focus-visible,
 .wp-block-tab-list button:focus-visible,
 .wp-block-tab-panel:focus-visible,
-.wp-block-details > summary:focus-visible,
+summary:focus-visible,
 .wp-lightbox-container button:focus-visible,
 .wp-lightbox-overlay button:focus-visible,
 .wp-block-video:focus-within video {

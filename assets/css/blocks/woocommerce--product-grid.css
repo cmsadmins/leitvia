@@ -1,0 +1,30 @@
+/*
+ * Product grid blocks of WooCommerce (handpicked-products, product-new, product-category and the others that render
+ * .wc-block-grid; functions.php registers this file for each). WooCommerce stacks them in one column up to 480 px, so
+ * one product with its image fills a phone screen. Up to 600 px a grid of two or more columns shows two products side
+ * by side with a smaller title and the price below it; from 600 px the grid keeps the columns set in the block. The
+ * selectors start with body and the item takes :nth-child(n) to outrank the column rules of WooCommerce.
+ */
+.wc-block-grid__product-title {
+	hyphens: auto;
+	hyphenate-limit-chars: 8 4 4;
+	overflow-wrap: anywhere;
+}
+@media (max-width: 37.5rem) {
+	body .wc-block-grid:not(.has-1-columns) {
+		& .wc-block-grid__products {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: var(--wp--preset--spacing--m) var(--wp--preset--spacing--s);
+			margin-inline: 0;
+		}
+		& .wc-block-grid__product:nth-child(n) {
+			max-width: none;
+			margin: 0;
+			padding: 0;
+		}
+		& .wc-block-grid__product-title {
+			font-size: var(--wp--preset--font-size--meta);
+		}
+	}
+}
