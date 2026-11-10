@@ -8,6 +8,10 @@
 	text-wrap: pretty;
 	overflow-wrap: break-word;
 }
+/* As headings, see core--heading.css. */
+:where(.is-layout-flex:not(.is-nowrap:not(.is-vertical)), .is-layout-grid) > .wp-block-post-title {
+	overflow-wrap: anywhere;
+}
 :lang(de) .wp-block-post-title {
 	hyphens: manual;
 }

@@ -34,8 +34,11 @@
 	background-color: var(--wp--preset--color--ink);
 	color: var(--wp--preset--color--surface);
 }
-/* Core breaks labels anywhere; wrap between words, break only a word wider than the button. */
+/* Core breaks labels anywhere; wrap between words, break only a word wider than the button (anywhere if rows wrap). */
 .wp-block-button__link {
 	word-break: normal;
 	overflow-wrap: break-word;
+}
+.wp-block-buttons:not(.is-nowrap) .wp-block-button__link {
+	overflow-wrap: anywhere;
 }

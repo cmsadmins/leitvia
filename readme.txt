@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.41
+Stable tag: 1.2.42
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,10 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.42 =
+* Long words, code names and addresses (a hook, a class name, a URL) break inside their box at 320 px instead of widening the page: in terms, captions, the summary of details, form labels, the post navigation, headings, post titles, buttons and tabs, also in cards and flex rows. A word breaks only where it does not fit at all. Tables keep whole words in their cells and scroll inside their figure.
+* The CSS budget of the theme is 40 KB as shipped (33 KB before).
 
 = 1.2.41 =
 * A full-width block that cannot reach the edge of the window, in a column, details, media and text, the inner container of a cover, tabs, a card of a query loop or the description tab of a product, takes the normal edge as its padding instead of the padding of the whole window, so its text no longer breaks after every word on wide screens. Full-width blocks right in the content keep the full bleed.

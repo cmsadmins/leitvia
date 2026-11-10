@@ -3,6 +3,10 @@
 	font-variant-numeric: lining-nums proportional-nums;
 	overflow-wrap: break-word;
 }
+/* Right in a card, a row that wraps or a grid, a long word must not widen the box; not in rows without wrapping. */
+:where(.is-layout-flex:not(.is-nowrap:not(.is-vertical)), .is-layout-grid) > .wp-block-heading {
+	overflow-wrap: anywhere;
+}
 /*
  * No automatic hyphenation: in large type it split words where nobody would ("bar-rierefreie"). Soft hyphens (&shy;)
  * set by hand still apply, and overflow-wrap above breaks a long German compound (Auftragsverarbeitungsvertrag) at

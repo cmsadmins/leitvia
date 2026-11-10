@@ -1,4 +1,23 @@
 /*
+ * Long words and code names break inside their box at 320 px (WCAG 1.4.10). break-word keeps the minimum width of a
+ * box, so table cells keep whole words; anywhere lowers it for boxes that size to their content (flex items, cards),
+ * outside table cells. See also core--paragraph.css, core--list.css, core--heading.css, core--button.css.
+ */
+body {
+	overflow-wrap: break-word;
+}
+:where(:is(dt, dd, figcaption, summary, legend, label, .wp-block-post-navigation-link):not(:is(th, td) *)) {
+	overflow-wrap: anywhere;
+}
+/* A group in a row that wraps shrinks to the row, not to its longest word; a fieldset to its box. */
+:where(.is-layout-flex:not(.is-nowrap:not(.is-vertical))) > .wp-block-group {
+	min-width: 0;
+}
+:where(fieldset) {
+	min-inline-size: 0;
+}
+
+/*
  * Ink, accent and inverse bands: accent links reach only 1.7 to 3.4:1 there, so links take the band text color
  * (passes in light and dark palettes), underlined in running text; navigation, divided lists and social links only
  * on hover and focus. Their focus ring is in assets/css/focus.css.

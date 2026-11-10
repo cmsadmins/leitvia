@@ -3,7 +3,9 @@
 	gap: 0;
 	border-block-end: 1px solid var(--wp--preset--color--stroke);
 }
+/* A long label breaks inside the tab instead of widening the tab list at 320 px. */
 .wp-block-tab-list button {
+	overflow-wrap: anywhere;
 	min-block-size: 2.75rem;
 	padding: var(--wp--preset--spacing--xs) var(--wp--preset--spacing--s);
 	color: var(--wp--preset--color--ink-muted);
