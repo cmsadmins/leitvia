@@ -35,6 +35,25 @@
 	margin-block-start: 0;
 }
 
+/*
+ * Full width only where it can bleed. The root padding (theme.json) is max(spacing m, (100vw - wideSize) / 2), and a
+ * block with has-global-padding takes it as its padding. Core moves a full-width block out to the viewport edge only
+ * as a direct child of a padded container (".has-global-padding > .alignfull"), and takes that back inside a nested
+ * constrained group (".has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding...) > .alignfull"
+ * gets margin 0). Anywhere else, in a column, the content of media and text, details, the inner container of a cover,
+ * a tabs panel, a card of a query loop or the description tab of a product, the block stays in its box but kept the
+ * padding of the viewport: at 1707 px and 80rem 213 px on each side, the text inside broke after every word. There the
+ * block takes the normal edge, spacing m, as its root padding, and so do full-width blocks inside it. Blocks right in
+ * main, the post content or another full-width block, in a post of a full-width query loop that is a list, not a grid
+ * (the band of the pattern Featured post), and template parts outside main, keep the full bleed. A synced pattern keeps
+ * its wrapper .wp-block-block only in the editor, so it counts as transparent there. This file loads on every page (main is a
+ * group), so the rule covers full-width blocks of every kind, not only groups.
+ */
+.has-global-padding :is(:not(.has-global-padding, .alignfull, .wp-block-block, .alignfull > .wp-block-post, .alignfull > .wp-block-post-template:not(.is-layout-grid) > .wp-block-post), :not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) > .alignfull.has-global-padding {
+	--wp--style--root--padding-right: var(--wp--preset--spacing--m);
+	--wp--style--root--padding-left: var(--wp--preset--spacing--m);
+}
+
 /* A band on ink or accent without a text color of its own reads in the pair of its ground, not in the ink of the page. */
 .has-ink-background-color:not(.has-text-color) {
 	color: var(--wp--preset--color--surface);
