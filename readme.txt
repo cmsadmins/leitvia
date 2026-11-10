@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.38
+Stable tag: 1.2.39
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,11 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.39 =
+* Product page: upsells stand as a grid of product cards like the related products (four columns, two on phones, eight at most), in the order of the upsell list and before the related products; the classic upsell list of WooCommerce leaves where the grid stands.
+* The box of the product template shows the short description with its formatting (lists stay lists) and nothing when there is none, never the start of the description.
+* Add to cart form: a variation select with a long value fills its cell and shortens the shown value instead of pushing the form past the screen; labels and values of the variations wrap.
 
 = 1.2.38 =
 * Tile titles (group style Tile) follow the width of the tile: in a grid the tile is a container and the size heading-s shrinks down to 1rem, so a long title takes at most two lines in narrow tiles.

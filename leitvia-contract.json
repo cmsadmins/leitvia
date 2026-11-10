@@ -2667,7 +2667,7 @@
 		{
 			"slug": "leitvia/hidden-page-product-details",
 			"title": "Product details",
-			"description": "Below the product summary: the WooCommerce product tabs (description, additional information, reviews and tabs added by plugins), then related products with image, title and price, without a buy button.",
+			"description": "Below the product summary: the WooCommerce product tabs (description, additional information, reviews and tabs added by plugins), then upsells and related products with image, title and price, without a buy button.",
 			"area": "page",
 			"useWhen": "Inserted by the single product template below the product summary.",
 			"composition": {

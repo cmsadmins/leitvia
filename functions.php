@@ -941,6 +941,32 @@ function register_shop_patterns(): void {
 add_action( 'init', __NAMESPACE__ . '\register_shop_patterns', 20 );
 
 /**
+ * Upsells as a block: where the product template shows the upsells as a product collection (the pattern
+ * leitvia/hidden-page-product-details or the collection woocommerce/product-collection/upsells itself), the classic
+ * upsell list that WooCommerce's compatibility layer prints after the last product block leaves, so the upsells stand
+ * once, in the grid of the related products. Other templates keep the classic list. Filter
+ * woocommerce_blocks_hook_compatibility_additional_data.
+ *
+ * @param mixed  $data       Hooked functions the layer removes.
+ * @param string $class_name Compatibility class asking.
+ * @return mixed
+ */
+function upsells_as_block( $data, $class_name = '' ) {
+	global $_wp_current_template_content;
+	$template = is_string( $_wp_current_template_content ) ? $_wp_current_template_content : '';
+	if ( 'SingleProductTemplateCompatibility' !== $class_name || ! is_array( $data ) || ! preg_match( '#leitvia/hidden-page-product-details|woocommerce/product-collection/upsells#', $template ) ) {
+		return $data;
+	}
+	$data[] = array(
+		'hook'     => 'woocommerce_after_single_product_summary',
+		'function' => 'woocommerce_upsell_display',
+		'priority' => 15,
+	);
+	return $data;
+}
+add_filter( 'woocommerce_blocks_hook_compatibility_additional_data', __NAMESPACE__ . '\upsells_as_block', 10, 2 );
+
+/**
  * "Clear" next to the options of a variable product resets the form: an action, so a button instead of WooCommerce's
  * link to "#" (WCAG 4.1.2, a link would announce a page change and Space would not press it). WooCommerce finds it by
  * the class reset_variations; woocommerce--add-to-cart-form.css draws it as a text link. Replaces the markup of the
