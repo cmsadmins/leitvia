@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.39
+Stable tag: 1.2.40
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -67,6 +67,9 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.40 =
+* Add to cart form: labels and values of the variations wrap between words and break a word only where it does not fit at all, so a label such as "Varianten" stays whole next to a select that fills its cell.
 
 = 1.2.39 =
 * Product page: upsells stand as a grid of product cards like the related products (four columns, two on phones, eight at most), in the order of the upsell list and before the related products; the classic upsell list of WooCommerce leaves where the grid stands.

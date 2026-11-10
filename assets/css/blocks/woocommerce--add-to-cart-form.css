@@ -24,7 +24,7 @@ body .wp-block-add-to-cart-form {
 	& .variations :is(th, td) {
 		padding-block: var(--wp--preset--spacing--xxs);
 		text-align: start;
-		overflow-wrap: anywhere;
+		overflow-wrap: break-word;
 	}
 	& .reset_variations {
 		margin-inline-start: var(--wp--preset--spacing--s);
@@ -63,7 +63,8 @@ body .wp-block-add-to-cart-form {
 /* Long variation values ("Variant C with two hooks and a basket"): a select takes the width of its longest option, and
    neither max-width nor min-width: 0 lets a table cell shrink below it, so the form ran past a 390 px screen (and past
    the column at 1440 px). The select of a variation fills its value cell instead (width: 100%, a percentage the table
-   does not count as the cell's minimum) and shortens its shown value; labels and values wrap. Other selects of the form
+   does not count as the cell's minimum) and shortens its shown value; labels and values wrap between words and break
+   a word only where it does not fit at all (break-word, not anywhere: "Varianten" broke into "Varia" and "nten"). Other selects of the form
    stay within it. Weight 0,4,6 over WooCommerce's 0,4,5 (woocommerce-blocktheme.css: .woocommerce div.product form.cart
    table.variations td select, min-width: 70%; woocommerce.css: 75% at 0,4,3). */
 body .wp-block-add-to-cart-form form.variations_form.cart table.variations tr td select {
