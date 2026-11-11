@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.43
+Stable tag: 1.2.44
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -13,6 +13,24 @@ An AI-first block theme built on semantic design tokens.
 == Description ==
 
 Leitvia is an AI-first block theme built on semantic design tokens. Every pattern uses roles instead of values, so style variations, AI agents and editors can change the whole design without breaking layout or accessibility. Warm editorial by default, flexible from personal blogs to large corporate sites and online shops built with WooCommerce.
+
+== AI agents ==
+
+The design contract leitvia-contract.json and the guide design.md ship with the theme; agents read them before they write. Leitvia uses its own role presets and switches the core presets off. Agents that learned block markup on default themes write core slugs, so the theme keeps the common ones as aliases of a role (assets/css/core-presets.css, listed as coreAliases in the contract), and Leitvia Studio rewrites them to the role when it saves content:
+
+* Colors: base is surface, contrast is ink, primary is accent, secondary is ink-muted, tertiary is surface-alt.
+* Spacing: 20, 30, 40, 50, 60, 70 and 80 are xs, s, m, l, xl, xxl and xxxl.
+* Font sizes: small is meta, medium is body, large is lead, x-large is heading-m, xx-large is display.
+* Font families: monospace is mono, system-sans-serif is ui. Shadows: natural is subtle, deep is raised.
+
+Any other slug is no preset of the theme and renders nothing; Studio rejects it and names the roles to use. Further rules for agents:
+
+* Accent boxes use the group styles Tip and Note (is-style-tip, is-style-note), never a border on the left edge.
+* Corners use the radius presets, never px. The theme has no duotone and no gradients; for text on an image use a Cover with dimRatio and the Inverse style (is-style-inverse).
+* Eyebrows, badges and tiles are block styles (is-style-eyebrow, is-style-badge, is-style-tile), not sizes and colors set by hand.
+* Never reset the global styles: with Leitvia Studio the active token set lives there and overrides every style variation.
+* On a site, work through the abilities of Leitvia Studio (leitvia/get-contract, leitvia/compose-page, leitvia/create-pattern) instead of writing theme files.
+* New patterns and presets for the theme itself need an entry in the contract; design.md has the checklist.
 
 == Accessibility ==
 
@@ -67,6 +85,12 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.44 =
+* Patterns written with the WordPress agent skills keep their look: the preset names of WordPress core (colors base, contrast, primary, secondary and tertiary, spacing 20 to 80, font sizes small to xx-large, shadows natural and deep, font families monospace and system-sans-serif) point to the roles of the theme. The aliases cost 2.9 KB of CSS as shipped; the theme stays under its budget of 40 KB.
+* Teaser patterns with a query loop leave out their heading as well when there are no posts to show, instead of a heading above an empty grid.
+* design.md and this readme explain to AI agents how the core preset names map to the roles, which block styles replace accent borders, rounded corners, duotone and gradients, and why the global styles of a site with a token set are never reset.
+* Contract 1.13.16: coreAliases, the core preset names and the role each one points to.
 
 = 1.2.43 =
 * Titles in query loops (posts index, archives, author pages, related posts and the query patterns) follow the width of their post: heading sizes shrink to keep about 22 characters a line, down to 1.125rem, and long words hyphenate in post grids. A 48 px title in a 384 px column held 12 characters of a German compound before.

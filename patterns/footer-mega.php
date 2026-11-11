@@ -8,6 +8,9 @@
  * Block Types: core/template-part/footer
  * Viewport Width: 1400
  *
+ * Render-time by design. wp_date() writes the year of the copyright line when the pattern is inserted, and the
+ * binding to leitvia/site-meta (key copyright) shows the current year on every view, also after the footer is saved.
+ *
  * @package Leitvia
  */
 
@@ -49,7 +52,7 @@
 				<p class="has-meta-font-size"><?php esc_html_e( '14 Fernhill Yard, London E8 3QD, United Kingdom', 'leitvia' ); ?></p>
 				<!-- /wp:paragraph -->
 				<!-- wp:paragraph {"fontSize":"meta"} -->
-				<p class="has-meta-font-size"><?php esc_html_e( 'New projects:', 'leitvia' ); ?> <a href="mailto:hello@example.com">hello@example.com</a><br><?php esc_html_e( 'Support:', 'leitvia' ); ?> <a href="mailto:support@example.com">support@example.com</a><br><?php esc_html_e( 'Phone:', 'leitvia' ); ?> <a href="tel:+442079460958">+44 20 7946 0958</a></p>
+				<p class="has-meta-font-size"><?php esc_html_e( 'New projects:', 'leitvia' ); ?> <a href="mailto:<?php echo esc_attr__( 'hello@example.com', 'leitvia' ); ?>"><?php echo esc_html__( 'hello@example.com', 'leitvia' ); ?></a><br><?php esc_html_e( 'Support:', 'leitvia' ); ?> <a href="mailto:<?php echo esc_attr__( 'support@example.com', 'leitvia' ); ?>"><?php echo esc_html__( 'support@example.com', 'leitvia' ); ?></a><br><?php esc_html_e( 'Phone:', 'leitvia' ); ?> <a href="tel:<?php echo esc_attr__( '+442079460958', 'leitvia' ); ?>"><?php echo esc_html__( '+44 20 7946 0958', 'leitvia' ); ?></a></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->

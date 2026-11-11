@@ -8,6 +8,9 @@
  * Block Types: core/template-part/footer
  * Viewport Width: 1400
  *
+ * Render-time by design. wp_date() writes the year of the copyright line when the pattern is inserted, and the
+ * binding to leitvia/site-meta (key copyright) shows the current year on every view, also after the footer is saved.
+ *
  * @package Leitvia
  */
 

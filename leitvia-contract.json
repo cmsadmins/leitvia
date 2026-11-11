@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.15",
+	"contractVersion": "1.13.16",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -198,6 +198,40 @@
 				"purpose": "Overlays and elements that float above content, such as menus."
 			}
 		]
+	},
+	"coreAliases": {
+		"$comment": "Core preset slugs that agents trained on default WordPress themes write, mapped to the Leitvia role they stand for. The theme defines each alias as a CSS variable and class pointing at its role (assets/css/core-presets.css, generated from this list), Leitvia Studio rewrites them to the role when it saves content, and its token lint rejects any other unknown preset slug. Write roles; the aliases are only a safety net. Keys follow roles.",
+		"color": {
+			"base": "surface",
+			"contrast": "ink",
+			"primary": "accent",
+			"secondary": "ink-muted",
+			"tertiary": "surface-alt"
+		},
+		"spacing": {
+			"20": "xs",
+			"30": "s",
+			"40": "m",
+			"50": "l",
+			"60": "xl",
+			"70": "xxl",
+			"80": "xxxl"
+		},
+		"fontSize": {
+			"small": "meta",
+			"medium": "body",
+			"large": "lead",
+			"x-large": "heading-m",
+			"xx-large": "display"
+		},
+		"fontFamily": {
+			"monospace": "mono",
+			"system-sans-serif": "ui"
+		},
+		"shadow": {
+			"natural": "subtle",
+			"deep": "raised"
+		}
 	},
 	"pairs": [
 		{

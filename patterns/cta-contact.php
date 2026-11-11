@@ -33,10 +33,10 @@
 			<!-- wp:list {"className":"is-style-divided","fontSize":"heading-s","fontFamily":"heading"} -->
 			<ul class="wp-block-list is-style-divided has-heading-font-family has-heading-s-font-size">
 				<!-- wp:list-item -->
-				<li><?php esc_html_e( 'Write to', 'leitvia' ); ?> <a href="mailto:hello@example.com">hello@example.com</a></li>
+				<li><?php esc_html_e( 'Write to', 'leitvia' ); ?> <a href="mailto:<?php echo esc_attr__( 'hello@example.com', 'leitvia' ); ?>"><?php echo esc_html__( 'hello@example.com', 'leitvia' ); ?></a></li>
 				<!-- /wp:list-item -->
 				<!-- wp:list-item -->
-				<li><?php esc_html_e( 'Call', 'leitvia' ); ?> <a href="tel:+442079460958">+44 20 7946 0958</a></li>
+				<li><?php esc_html_e( 'Call', 'leitvia' ); ?> <a href="tel:<?php echo esc_attr__( '+442079460958', 'leitvia' ); ?>"><?php echo esc_html__( '+44 20 7946 0958', 'leitvia' ); ?></a></li>
 				<!-- /wp:list-item -->
 				<!-- wp:list-item -->
 				<li><?php esc_html_e( 'Visit the studio at 14 Fernhill Yard, London E8 3QD', 'leitvia' ); ?></li>

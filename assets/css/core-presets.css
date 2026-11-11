@@ -1,0 +1,51 @@
+/*
+ * Core preset slugs as aliases of the Leitvia roles, generated from coreAliases in leitvia-contract.json by
+ * scripts/build-core-presets.mjs; do not edit by hand. Markup written for a default theme (textColor base, spacing 50,
+ * fontSize large) keeps the look of the role it stands for. Leitvia Studio rewrites these slugs to the role on save.
+ * Loaded on every page and in the editor (functions.php enqueue_core_presets()).
+ */
+:root{
+--wp--preset--color--base:var(--wp--preset--color--surface);
+--wp--preset--color--contrast:var(--wp--preset--color--ink);
+--wp--preset--color--primary:var(--wp--preset--color--accent);
+--wp--preset--color--secondary:var(--wp--preset--color--ink-muted);
+--wp--preset--color--tertiary:var(--wp--preset--color--surface-alt);
+--wp--preset--spacing--20:var(--wp--preset--spacing--xs);
+--wp--preset--spacing--30:var(--wp--preset--spacing--s);
+--wp--preset--spacing--40:var(--wp--preset--spacing--m);
+--wp--preset--spacing--50:var(--wp--preset--spacing--l);
+--wp--preset--spacing--60:var(--wp--preset--spacing--xl);
+--wp--preset--spacing--70:var(--wp--preset--spacing--xxl);
+--wp--preset--spacing--80:var(--wp--preset--spacing--xxxl);
+--wp--preset--font-size--small:var(--wp--preset--font-size--meta);
+--wp--preset--font-size--medium:var(--wp--preset--font-size--body);
+--wp--preset--font-size--large:var(--wp--preset--font-size--lead);
+--wp--preset--font-size--x-large:var(--wp--preset--font-size--heading-m);
+--wp--preset--font-size--xx-large:var(--wp--preset--font-size--display);
+--wp--preset--font-family--monospace:var(--wp--preset--font-family--mono);
+--wp--preset--font-family--system-sans-serif:var(--wp--preset--font-family--ui);
+--wp--preset--shadow--natural:var(--wp--preset--shadow--subtle);
+--wp--preset--shadow--deep:var(--wp--preset--shadow--raised);
+}
+.has-base-color{color:var(--wp--preset--color--base)}
+.has-base-background-color{background-color:var(--wp--preset--color--base)}
+.has-base-border-color{border-color:var(--wp--preset--color--base)}
+.has-contrast-color{color:var(--wp--preset--color--contrast)}
+.has-contrast-background-color{background-color:var(--wp--preset--color--contrast)}
+.has-contrast-border-color{border-color:var(--wp--preset--color--contrast)}
+.has-primary-color{color:var(--wp--preset--color--primary)}
+.has-primary-background-color{background-color:var(--wp--preset--color--primary)}
+.has-primary-border-color{border-color:var(--wp--preset--color--primary)}
+.has-secondary-color{color:var(--wp--preset--color--secondary)}
+.has-secondary-background-color{background-color:var(--wp--preset--color--secondary)}
+.has-secondary-border-color{border-color:var(--wp--preset--color--secondary)}
+.has-tertiary-color{color:var(--wp--preset--color--tertiary)}
+.has-tertiary-background-color{background-color:var(--wp--preset--color--tertiary)}
+.has-tertiary-border-color{border-color:var(--wp--preset--color--tertiary)}
+.has-small-font-size{font-size:var(--wp--preset--font-size--small)}
+.has-medium-font-size{font-size:var(--wp--preset--font-size--medium)}
+.has-large-font-size{font-size:var(--wp--preset--font-size--large)}
+.has-x-large-font-size{font-size:var(--wp--preset--font-size--x-large)}
+.has-xx-large-font-size{font-size:var(--wp--preset--font-size--xx-large)}
+.has-monospace-font-family{font-family:var(--wp--preset--font-family--monospace)}
+.has-system-sans-serif-font-family{font-family:var(--wp--preset--font-family--system-sans-serif)}

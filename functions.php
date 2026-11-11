@@ -131,6 +131,29 @@ function enqueue_focus_ring(): void {
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_focus_ring' );
 
 /**
+ * Core preset slugs (base, contrast, spacing 50, large) as aliases of the roles (assets/css/core-presets.css, generated
+ * from coreAliases in the contract), so markup written for a default theme keeps the look of its role. In the editor
+ * as a stylesheet; on the front end appended to the inline global styles, where the presets it points to live, so the
+ * aliases take nothing from the inline budget of the block styles (styles_inline_size_limit).
+ */
+function enqueue_core_presets(): void {
+	if ( ! is_admin() ) {
+		return;
+	}
+	wp_enqueue_style( 'leitvia-core-presets', get_theme_file_uri( 'assets/css/core-presets.css' ), array(), wp_get_theme()->get( 'Version' ) );
+	wp_style_add_data( 'leitvia-core-presets', 'path', get_theme_file_path( 'assets/css/core-presets.css' ) );
+}
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_core_presets' );
+
+/**
+ * The aliases of enqueue_core_presets() on the front end, after core enqueued the global styles.
+ */
+function inline_core_presets(): void {
+	wp_add_inline_style( 'global-styles', (string) file_get_contents( get_theme_file_path( 'assets/css/core-presets.css' ) ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Local theme file.
+}
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\inline_core_presets', 20 );
+
+/**
  * Registers block style variations that need theme CSS.
  */
 function register_block_style_variations(): void {
@@ -533,15 +556,27 @@ function rtl_start_justification( array $block ): array {
 add_filter( 'render_block_data', __NAMESPACE__ . '\rtl_start_justification' );
 
 /**
- * Drops the related posts with their heading while there is no other post to show.
+ * Drops a list of posts with its heading while there is no post to show: the related posts query, and every post
+ * teaser (leitvia/teaser-* with a query) as a whole section, so no heading and button stand above an empty grid. A
+ * teaser is found by the patternName the editor and Studio put on its root block, or as a Pattern block in a
+ * template. Teasers without a query (cards, tiles, services) stay as they are.
  *
  * @param string $html  Block HTML.
  * @param array  $block Parsed block.
  */
-function hide_empty_related_posts( string $html, array $block ): string {
-	return RELATED_POSTS === ( $block['attrs']['namespace'] ?? '' ) && ! str_contains( $html, 'wp-block-post-template' ) ? '' : $html;
+function hide_empty_post_lists( string $html, array $block ): string {
+	if ( 'core/pattern' === $block['blockName'] ) {
+		$slug    = (string) ( $block['attrs']['slug'] ?? '' );
+		$pattern = str_starts_with( $slug, 'leitvia/teaser-' ) ? \WP_Block_Patterns_Registry::get_instance()->get_registered( $slug ) : null;
+		$list    = $pattern && str_contains( (string) $pattern['content'], '<!-- wp:query ' );
+	} else {
+		$name = $block['attrs']['metadata']['patternName'] ?? '';
+		$list = ( 'core/query' === $block['blockName'] && RELATED_POSTS === ( $block['attrs']['namespace'] ?? '' ) )
+			|| ( is_string( $name ) && str_starts_with( $name, 'leitvia/teaser-' ) && in_array( 'core/query', block_names( array( $block ) ), true ) );
+	}
+	return $list && ! str_contains( $html, 'wp-block-post-template' ) ? '' : $html;
 }
-add_filter( 'render_block_core/query', __NAMESPACE__ . '\hide_empty_related_posts', 10, 2 );
+add_filter( 'render_block', __NAMESPACE__ . '\hide_empty_post_lists', 10, 2 );
 
 /**
  * The documentation sidebar marks its page list with this class, see patterns/hidden-page-docs-sidebar.php.
@@ -916,6 +951,17 @@ function block_names( array $blocks ): array {
 }
 
 /**
+ * The pattern category of the shop patterns, while WooCommerce runs. On init 9, before core registers the theme
+ * patterns on init, so the category exists when a pattern names it.
+ */
+function register_pattern_categories(): void {
+	if ( function_exists( 'WC' ) ) {
+		register_block_pattern_category( 'leitvia-shop', array( 'label' => __( 'Shop', 'leitvia' ) ) );
+	}
+}
+add_action( 'init', __NAMESPACE__ . '\register_pattern_categories', 9 );
+
+/**
  * The shop patterns (leitvia/shop-*) exist only while WooCommerce runs and every block they use is registered, so the
  * inserter never offers a pattern with missing blocks. The legal information pattern also needs the blocks of Germanized;
  * without them it is gone and the product template, which references it, renders nothing in its place.
@@ -924,9 +970,6 @@ function register_shop_patterns(): void {
 	$registry = \WP_Block_Patterns_Registry::get_instance();
 	$blocks   = \WP_Block_Type_Registry::get_instance();
 	$woo      = function_exists( 'WC' );
-	if ( $woo ) {
-		register_block_pattern_category( 'leitvia-shop', array( 'label' => __( 'Shop', 'leitvia' ) ) );
-	}
 	foreach ( (array) glob( get_theme_file_path( 'patterns/shop-*.php' ) ) as $file ) {
 		$name = 'leitvia/' . basename( $file, '.php' );
 		if ( ! $registry->is_registered( $name ) ) {

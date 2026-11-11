@@ -157,6 +157,37 @@ Style core blocks with the theme block styles before reaching for classes, color
 
 With Leitvia Studio active, `GET /wp-json/leitvia-studio/v1/blocks` returns every block of Studio and its add-ons: name, description, allowed parents and children, supports, the attributes as JSON schema and usage rules (`useWhen`, `avoidWhen`, `a11y`). Core blocks that Studio changes, such as Code, Embed and Tabs, are listed there with the change. Read the catalog before building a section from blocks, and prefer a pattern when one fits.
 
+## Agents with the WordPress skills
+
+Agents that learned block markup on default themes write core preset slugs such as `base`, spacing `50` or `large`. Leitvia has its own roles and switches the core presets off. `coreAliases` in the contract maps each common core slug to its role: the theme keeps the alias as a CSS variable and class (`assets/css/core-presets.css`), and Leitvia Studio rewrites it to the role when it saves content. Write the role; the alias is only a safety net. Any other slug is no preset here and renders nothing, so text in `ink` on an unknown background stays ink on ink. Studio rejects such slugs (token lint `no-unknown-preset`) and names the roles to use instead.
+
+| Kind | Core slug | Leitvia role |
+| --- | --- | --- |
+| Color | `base`, `contrast`, `primary`, `secondary`, `tertiary` | `surface`, `ink`, `accent`, `ink-muted`, `surface-alt` |
+| Spacing | `20`, `30`, `40`, `50`, `60`, `70`, `80` | `xs`, `s`, `m`, `l`, `xl`, `xxl`, `xxxl` |
+| Font size | `small`, `medium`, `large`, `x-large`, `xx-large` | `meta`, `body`, `lead`, `heading-m`, `display` |
+| Font family | `monospace`, `system-sans-serif` | `mono`, `ui` |
+| Shadow | `natural`, `deep` | `subtle`, `raised` |
+
+What the general skills suggest and what Leitvia does instead:
+
+- Accent box: no border on the left edge. Use the group style Tip (`is-style-tip`) for a tip in the voice of the author and Note (`is-style-note`) for a neutral hint.
+- Corners: the radius presets (`var:preset|border-radius|s`), never a value in px. Content boxes keep `none`.
+- No duotone and no gradient: the theme defines neither. For text on an image use a Cover with `dimRatio` and the Inverse style (`is-style-inverse`), not a gradient overlay.
+- Eyebrow, badge and tile: the block styles `is-style-eyebrow` and `is-style-badge` on a paragraph, `is-style-tile` on a group, not a font size, color and border set by hand.
+- Global styles: never reset them. With Leitvia Studio the active token set lives in the global styles of the site and overrides every style variation; a reset deletes the design of the site. Change the design with `leitvia/set-variation` or the token set abilities.
+- On a site work through the abilities of Leitvia Studio (`leitvia/get-contract`, `leitvia/get-tokens`, `leitvia/compose-page`, `leitvia/create-pattern`, `leitvia/update-template-part`), not through files. Theme files are replaced by every update; content written through the abilities passes the checks and stays.
+
+### Checklist for new patterns and presets
+
+For changes to the theme itself. The tests fail until every point holds.
+
+1. A pattern file in `patterns/` with Title, Slug (`leitvia/<area>-<name>`, the file name), Categories, Description and Keywords.
+2. An entry in `patterns` of `leitvia-contract.json` with the same slug, title and description, word for word, plus area, `useWhen` and composition metadata.
+3. Role presets only: no hex, px, `!important` or core slug. Section padding follows the density of the pattern.
+4. A new preset goes into `theme.json` and into `roles` of the contract with a purpose, in the same order, and its slug never mixes digits and letters. A core slug that should keep working goes into `coreAliases`; the theme CSS for it is generated from there.
+5. Change the contract version: minor for additions, patch for descriptions.
+
 ## Tone of voice
 
 - Calm, precise, friendly. Write like a senior editor, not like an advert.

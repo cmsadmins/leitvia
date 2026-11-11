@@ -93,7 +93,7 @@
 	},
 	"leitvia/cta-contact": {
 		"added": "2026-10-15",
-		"updated": "2026-10-19"
+		"updated": "2026-11-11"
 	},
 	"leitvia/cta-newsletter": {
 		"added": "2026-10-15",
@@ -105,19 +105,19 @@
 	},
 	"leitvia/footer-columns": {
 		"added": "2026-10-15",
-		"updated": "2026-10-19"
+		"updated": "2026-11-11"
 	},
 	"leitvia/footer-mega": {
 		"added": "2026-10-15",
-		"updated": "2026-11-06"
+		"updated": "2026-11-11"
 	},
 	"leitvia/footer-minimal": {
 		"added": "2026-10-15",
-		"updated": "2026-10-19"
+		"updated": "2026-11-11"
 	},
 	"leitvia/footer-newsletter": {
 		"added": "2026-10-15",
-		"updated": "2026-10-19"
+		"updated": "2026-11-11"
 	},
 	"leitvia/header-centered": {
 		"added": "2026-10-15",
@@ -329,7 +329,7 @@
 	},
 	"leitvia/teaser-front-page": {
 		"added": "2026-10-24",
-		"updated": "2026-11-06"
+		"updated": "2026-11-11"
 	},
 	"leitvia/teaser-icon-tiles": {
 		"added": "2026-11-08",

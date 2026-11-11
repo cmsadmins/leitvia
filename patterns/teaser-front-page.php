@@ -73,7 +73,7 @@
 		<!-- wp:column {"width":"22%","style":{"spacing":{"blockGap":"var:preset|spacing|s"}}} -->
 		<div class="wp-block-column" style="flex-basis:22%">
 			<!-- wp:heading {"style":{"typography":{"fontWeight":"600"}},"fontSize":"body","fontFamily":"ui"} -->
-			<h2 class="wp-block-heading has-ui-font-family has-body-font-size" style="font-weight:600"><?php esc_html_e( 'More stories', 'leitvia' ); ?></h2>
+			<h2 class="wp-block-heading has-ui-font-family has-body-font-size" style="font-weight:600"><?php esc_html_e( 'More from the newsroom', 'leitvia' ); ?></h2>
 			<!-- /wp:heading -->
 			<!-- wp:query {"queryId":107,"query":{"perPage":3,"pages":0,"offset":4,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"exclude","inherit":false}} -->
 			<div class="wp-block-query">
