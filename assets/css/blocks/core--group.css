@@ -97,9 +97,9 @@ body {
  * as well: ".has-global-padding :where(... > .has-global-padding)" sets padding-left and padding-right to 0, so text
  * touched the edge of the tint. This sets all four sides for nested groups that are not full width. A padding set on
  * the block is inline and stays; block styles (tip, tile, notices) bring their own padding and are left out, and a
- * group on surface, the color of the page, shows no tint that would need it.
+ * group on surface, the color of the page, shows no tint that would need it. Inverse is a tint without .has-background.
  */
-.has-global-padding :where(.wp-block-group.has-background:not([class*="is-style-"], .has-surface-background-color)).has-global-padding:not(.alignfull) {
+.has-global-padding :where(.wp-block-group.has-background:not([class*="is-style-"], .has-surface-background-color), .wp-block-group.is-style-inverse).has-global-padding:not(.alignfull) {
 	padding: 1.25em 2.375em;
 }
 

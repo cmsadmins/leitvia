@@ -1,3 +1,18 @@
+/*
+ * Query loops: each post is a container, and the heading sizes of its title shrink to 8 % of its width (about 22
+ * characters a line), down to 1.125rem. A 48 px title in a 384 px column held 12 characters of a German compound.
+ */
+.wp-block-post-template > .wp-block-post {
+	container-type: inline-size;
+	--leitvia-post-s: var(--wp--preset--font-size--heading-s);
+	--leitvia-post-m: var(--wp--preset--font-size--heading-m);
+	--leitvia-post-l: var(--wp--preset--font-size--heading-l);
+}
+.wp-block-post-template .wp-block-post-title {
+	--wp--preset--font-size--heading-s: clamp(1.125rem, 8cqi, var(--leitvia-post-s));
+	--wp--preset--font-size--heading-m: clamp(1.125rem, 8cqi, var(--leitvia-post-m));
+	--wp--preset--font-size--heading-l: clamp(1.125rem, 8cqi, var(--leitvia-post-l));
+}
 /* Cards answer hover with a fine underline on the title; the featured image scales a little in its frame (below). */
 .wp-block-post-template .wp-block-post-title a {
 	text-decoration: none;
@@ -36,20 +51,24 @@
 
 /*
  * Lead story: on the first page of the posts index the first post (the sticky one, else the newest) spans the grid.
- * From 48rem image and text stand side by side, two thirds to one third, with a larger title. Archives keep the grid.
+ * From 64rem image and text stand side by side, three fifths to two fifths, with a larger title that follows the
+ * width of the text column (container, core--post-title.css). Archives keep the grid.
  */
 body.blog:not(.paged) .leitvia-post-grid > li:first-child {
 	grid-column: 1 / -1;
 
-	@media (min-width: 48rem) {
+	@media (min-width: 64rem) {
 		& .leitvia-post-card:has(> .wp-block-post-featured-image) {
 			display: grid;
-			grid-template-columns: 2fr 1fr;
+			grid-template-columns: 3fr 2fr;
 			gap: var(--wp--preset--spacing--l);
 			align-items: center;
 		}
 		& .leitvia-post-card > * {
 			margin-block: 0;
+		}
+		& .leitvia-post-card:has(> .wp-block-post-featured-image) > :not(.wp-block-post-featured-image) {
+			container-type: inline-size;
 		}
 		& .wp-block-post-title {
 			font-size: var(--wp--preset--font-size--heading-l);
