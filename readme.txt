@@ -16,6 +16,8 @@ Leitvia is an AI-first block theme built on semantic design tokens. Every patter
 
 == AI agents ==
 
+Leitvia supports the standards WordPress sets for AI agents and will keep supporting them: the skills of WordPress/agent-skills (https://github.com/WordPress/agent-skills), the Abilities API and the MCP Adapter. The developer guide at https://leitvia.com/docs/developers/ shows how theme, Leitvia Studio and the agent skills work together.
+
 The design contract leitvia-contract.json and the guide design.md ship with the theme; agents read them before they write. Leitvia uses its own role presets and switches the core presets off. Agents that learned block markup on default themes write core slugs, so the theme keeps the common ones as aliases of a role (assets/css/core-presets.css, listed as coreAliases in the contract), and Leitvia Studio rewrites them to the role when it saves content:
 
 * Colors: base is surface, contrast is ink, primary is accent, secondary is ink-muted, tertiary is surface-alt.
@@ -31,6 +33,7 @@ Any other slug is no preset of the theme and renders nothing; Studio rejects it 
 * Never reset the global styles: with Leitvia Studio the active token set lives there and overrides every style variation.
 * On a site, work through the abilities of Leitvia Studio (leitvia/get-contract, leitvia/compose-page, leitvia/create-pattern) instead of writing theme files.
 * New patterns and presets for the theme itself need an entry in the contract; design.md has the checklist.
+* Patterns, templates and template parts kept as files go into the child theme Leitvia Child (https://github.com/cmsadmins/leitvia-child), which survives updates of this theme. Blocks of your own go into a plugin, built from Leitvia Block Starter (https://github.com/cmsadmins/leitvia-block-starter), never into a theme.
 
 == Accessibility ==
 
