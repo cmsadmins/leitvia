@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.44
+Stable tag: 1.2.45
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -88,6 +88,10 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.45 =
+* Tables in the comparison style wrap long text between words, so a column of descriptions fits a narrow screen; a figure and its unit stay on one line.
+* The readme names the official WordPress agent skills the theme supports, the child theme and the block starter, and links the developer guide.
 
 = 1.2.44 =
 * Patterns written with the WordPress agent skills keep their look: the preset names of WordPress core (colors base, contrast, primary, secondary and tertiary, spacing 20 to 80, font sizes small to xx-large, shadows natural and deep, font families monospace and system-sans-serif) point to the roles of the theme. The aliases cost 2.9 KB of CSS as shipped; the theme stays under its budget of 40 KB.

@@ -41,9 +41,10 @@
 :where(.wp-block-table.is-style-comparison) :is(th, td):not(:first-child) {
 	text-align: end;
 }
-/* Keep figures and their units on one line. */
+/* Cells wrap between words, so text fits the column; the minimum width keeps a figure and its unit on one line. */
 .wp-block-table.is-style-comparison tbody td:not(:first-child) {
-	white-space: nowrap;
+	min-inline-size: 5em;
+	overflow-wrap: break-word;
 }
 .wp-block-table.is-style-comparison :is(th, td):first-child {
 	position: sticky;
