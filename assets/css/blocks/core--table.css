@@ -61,6 +61,22 @@
 .wp-block-table.is-style-comparison :is(th, td):last-child {
 	padding-inline-end: 0;
 }
+/* Phones: 16 px between columns instead of 48 and smaller minimums (a short figure and its unit still fit), so four
+   columns fit 390 px; only a word that cannot break still scrolls under the fixed first column. */
+@media (width < 37.5rem) {
+	.wp-block-table.is-style-comparison :is(th, td):not(:first-child) {
+		padding-inline-start: var(--wp--preset--spacing--xxs);
+	}
+	.wp-block-table.is-style-comparison :is(th, td):not(:last-child) {
+		padding-inline-end: var(--wp--preset--spacing--xxs);
+	}
+	.wp-block-table.is-style-comparison tbody td:not(:first-child) {
+		min-inline-size: 3em;
+	}
+	.wp-block-table.is-style-comparison :is(th, td):first-child {
+		min-width: 4em;
+	}
+}
 .wp-block-table.is-style-comparison thead th {
 	border-bottom-color: var(--wp--preset--color--ink);
 	color: var(--wp--preset--color--ink-muted);

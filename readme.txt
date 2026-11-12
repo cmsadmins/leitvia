@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.45
+Stable tag: 1.2.46
 License: GNU General Public License v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
@@ -13,6 +13,8 @@ An AI-first block theme built on semantic design tokens.
 == Description ==
 
 Leitvia is an AI-first block theme built on semantic design tokens. Every pattern uses roles instead of values, so style variations, AI agents and editors can change the whole design without breaking layout or accessibility. Warm editorial by default, flexible from personal blogs to large corporate sites and online shops built with WooCommerce.
+
+[Leitvia Studio](https://wordpress.org/plugins/leitvia-studio/) is an optional companion plugin from the plugin directory. The theme does not need it: all templates, patterns and style variations work without it. Studio adds token sets you can switch and edit, patterns that animate once as they come into view, and abilities for AI agents.
 
 == AI agents ==
 
@@ -88,6 +90,10 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.46 =
+* Tables in the comparison style fit a phone: below 600 px the gap between columns is 16 px instead of 48 and the minimum widths of the cells are smaller, so four columns fit 390 px without scrolling in their figure (the pricing table of leitvia.com scrolled 53 px). Only a word that cannot break still scrolls under the fixed first column.
+* The readme names Leitvia Studio as an optional companion plugin from the plugin directory: the theme works without it, Studio adds token sets, patterns that animate once as they come into view and abilities for AI agents. A path with a placeholder in the font credits is set as code, so the directory shows it in full.
 
 = 1.2.45 =
 * Tables in the comparison style wrap long text between words, so a column of descriptions fits a narrow screen; a figure and its unit stay on one line.
@@ -360,7 +366,7 @@ Resources used by the theme are listed here.
 
 = Fonts =
 
-Bundled locally (latin and latin-ext subsets, WOFF2), all licensed under the SIL Open Font License 1.1. The license text with the copyright line below sits next to each font in assets/fonts/<font>/OFL.txt. Files were obtained from Google Fonts (https://fonts.google.com), source repository https://github.com/google/fonts.
+Bundled locally (latin and latin-ext subsets, WOFF2), all licensed under the SIL Open Font License 1.1. The license text with the copyright line below sits next to each font in `assets/fonts/{font}/OFL.txt`. Files were obtained from Google Fonts (https://fonts.google.com), source repository https://github.com/google/fonts.
 
 * Newsreader (with the optical size axis): Copyright 2020 The Newsreader Project Authors (http://github.com/productiontype/Newsreader). License: SIL Open Font License 1.1, assets/fonts/newsreader/OFL.txt.
 * Inter Tight (upright and italic, weight axis): Copyright 2022 The Inter Project Authors (https://github.com/rsms/inter-tight). License: SIL Open Font License 1.1, assets/fonts/inter-tight/OFL.txt.
