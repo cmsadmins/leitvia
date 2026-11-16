@@ -28,6 +28,17 @@ function load_translations(): void {
 add_action( 'after_setup_theme', __NAMESPACE__ . '\load_translations' );
 
 /**
+ * Declares WooCommerce support, as the WordPress.org theme review asks for a theme with shop templates (ticket
+ * #296762, point 4). WooCommerce treats every block theme as supported anyway; the declaration only makes it explicit
+ * and keeps its "theme does not declare support" notice away on classic checks. The gallery features zoom, lightbox
+ * and slider stay unregistered: they act on the classic gallery, the theme uses the block woocommerce/product-gallery.
+ */
+function setup(): void {
+	add_theme_support( 'woocommerce' );
+}
+add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
+
+/**
  * Drops the wrapper of a template part without content, so the optional part post-closing leaves no element or gap
  * until something is written into it.
  *
@@ -239,9 +250,13 @@ add_action( 'init', __NAMESPACE__ . '\register_block_style_variations' );
 /**
  * Registers the icon collection of the theme, so the Icon block draws its icons in the current text color: the demo
  * client logos and the heart of the author tip. The files hold only paths: core keeps svg, path and polygon elements
- * and drops everything else.
+ * and drops everything else. Without the icon API (a WordPress before the Icon block, or a core build without it) the
+ * patterns keep their icon blocks, which render nothing; the theme must not fail on init (ticket #296762, point 3).
  */
 function register_icons(): void {
+	if ( ! function_exists( 'wp_register_icon_collection' ) || ! function_exists( 'wp_register_icon' ) ) {
+		return;
+	}
 	wp_register_icon_collection( 'leitvia', array( 'label' => __( 'Leitvia', 'leitvia' ) ) );
 	$logos = array(
 		1 => __( 'Tervane', 'leitvia' ),
@@ -277,6 +292,9 @@ add_action( 'init', __NAMESPACE__ . '\register_icons' );
  * the Site Editor keeps the binding instead of the year it was saved in. Presentation only: nothing is stored.
  */
 function register_site_meta_binding(): void {
+	if ( ! function_exists( 'register_block_bindings_source' ) ) {
+		return;
+	}
 	register_block_bindings_source(
 		'leitvia/site-meta',
 		array(
@@ -302,6 +320,9 @@ function site_meta_value( array $args ): ?string {
  * keeps no src and core drops it, so the tile shows name and description only.
  */
 function register_term_image_binding(): void {
+	if ( ! function_exists( 'register_block_bindings_source' ) ) {
+		return;
+	}
 	register_block_bindings_source(
 		'leitvia/term-image',
 		array(

@@ -3,8 +3,8 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.46
-License: GNU General Public License v2 or later
+Stable tag: 1.2.47
+License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
 
@@ -15,6 +15,14 @@ An AI-first block theme built on semantic design tokens.
 Leitvia is an AI-first block theme built on semantic design tokens. Every pattern uses roles instead of values, so style variations, AI agents and editors can change the whole design without breaking layout or accessibility. Warm editorial by default, flexible from personal blogs to large corporate sites and online shops built with WooCommerce.
 
 [Leitvia Studio](https://wordpress.org/plugins/leitvia-studio/) is an optional companion plugin from the plugin directory. The theme does not need it: all templates, patterns and style variations work without it. Studio adds token sets you can switch and edit, patterns that animate once as they come into view, and abilities for AI agents.
+
+== Installation ==
+
+1. In your WordPress admin, go to Appearance, Themes and click "Add New Theme".
+2. Search for "Leitvia", or click "Upload Theme" and choose the zip file of the theme.
+3. Click "Install Now", then "Activate".
+4. Go to Appearance, Editor to set up your site with the Site Editor, the style variations and the block patterns.
+5. Optional: install Leitvia Studio from Plugins, Add New Plugin for switchable token sets and the abilities for AI agents.
 
 == AI agents ==
 
@@ -90,6 +98,10 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.47 =
+* Changes from the WordPress.org theme review: the readme has an Installation section, the theme ships languages/leitvia.pot for translators, and the license is declared as GPL-2.0-or-later in style.css and readme.
+* The theme declares WooCommerce support with add_theme_support( 'woocommerce' ) and registers its icon collection and block bindings only when WordPress provides these functions, so an older WordPress loads the theme without an error.
 
 = 1.2.46 =
 * Tables in the comparison style fit a phone: below 600 px the gap between columns is 16 px instead of 48 and the minimum widths of the cells are smaller, so four columns fit 390 px without scrolling in their figure (the pricing table of leitvia.com scrolled 53 px). Only a word that cannot break still scrolls under the fixed first column.

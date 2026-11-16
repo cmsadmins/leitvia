@@ -1,0 +1,3577 @@
+# Copyright (C) 2026 Patrick Schlesinger, CMS ADMINS
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Leitvia 1.2.47\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/leitvia\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Leitvia check-i18n\n"
+"X-Domain: leitvia\n"
+
+#: functions.php
+msgid "Media right"
+msgstr ""
+
+#: functions.php
+msgid "Overlap"
+msgstr ""
+
+#: functions.php
+msgid "Header action"
+msgstr ""
+
+#: functions.php
+msgid "Badge"
+msgstr ""
+
+#: functions.php
+msgid "Eyebrow"
+msgstr ""
+
+#: functions.php
+msgid "On dark band"
+msgstr ""
+
+#: functions.php
+msgid "Note"
+msgstr ""
+
+#: functions.php
+msgid "Success"
+msgstr ""
+
+#: functions.php
+msgid "Warning"
+msgstr ""
+
+#: functions.php
+msgid "Tip"
+msgstr ""
+
+#: functions.php
+msgid "Tile"
+msgstr ""
+
+#: functions.php
+msgid "Inverse"
+msgstr ""
+
+#: functions.php
+msgid "Header split"
+msgstr ""
+
+#: functions.php
+msgid "Sticky header"
+msgstr ""
+
+#: functions.php
+msgid "Sticky header on large screens"
+msgstr ""
+
+#: functions.php
+msgid "Sticky header on small screens"
+msgstr ""
+
+#: functions.php
+msgid "Illustration"
+msgstr ""
+
+#: functions.php
+msgid "Collage"
+msgstr ""
+
+#: functions.php
+msgid "Comparison"
+msgstr ""
+
+#: functions.php
+msgid "Terminal"
+msgstr ""
+
+#: functions.php
+msgid "Divided"
+msgstr ""
+
+#: functions.php
+msgid "Checklist"
+msgstr ""
+
+#: functions.php
+msgid "Checklist row"
+msgstr ""
+
+#: functions.php
+msgid "Download"
+msgstr ""
+
+#: functions.php
+msgid "Chips"
+msgstr ""
+
+#: functions.php style.css
+msgid "Leitvia"
+msgstr ""
+
+#: functions.php patterns/proof-logos.php
+msgid "Tervane"
+msgstr ""
+
+#: functions.php patterns/proof-logos.php
+msgid "Kolmar Works"
+msgstr ""
+
+#: functions.php
+msgid "Brinnel & Co"
+msgstr ""
+
+#: functions.php patterns/proof-logos.php
+msgid "Halvera"
+msgstr ""
+
+#: functions.php patterns/proof-logos.php
+msgid "Marlow Fenn"
+msgstr ""
+
+#: functions.php
+msgid "Heart"
+msgstr ""
+
+#: functions.php
+msgid "Site details"
+msgstr ""
+
+#: functions.php
+msgid "Term image"
+msgstr ""
+
+#: functions.php patterns/header-masthead.php patterns/header-search.php patterns/header-shop.php patterns/hero-search.php patterns/hidden-page-404.php
+msgid "Search"
+msgstr ""
+
+#: functions.php
+msgctxt "all post categories"
+msgid "All"
+msgstr ""
+
+#: functions.php
+msgid "Shop"
+msgstr ""
+
+#: functions.php
+msgid "Clear options"
+msgstr ""
+
+#: functions.php
+msgid "Clear"
+msgstr ""
+
+#: functions.php
+msgid "Your legal guarantee rights"
+msgstr ""
+
+#: functions.php
+msgid "Your legal guarantee rights: Minimum two-year legal guarantee protection for goods sold in the European Union."
+msgstr ""
+
+#: functions.php
+msgid "The legal guarantee in the EU, explained on europa.eu"
+msgstr ""
+
+#: functions.php
+msgid "Part %d"
+msgstr ""
+
+#: functions.php
+msgid "Part %1$d of %2$d"
+msgstr ""
+
+#: functions.php
+msgid "Previous:"
+msgstr ""
+
+#: functions.php
+msgid "Next:"
+msgstr ""
+
+#: patterns/content-asymmetric.php
+msgid "Field notes"
+msgstr ""
+
+#: patterns/content-asymmetric.php
+msgid "A good page reads like a conversation, not like a brochure."
+msgstr ""
+
+#: patterns/content-asymmetric.php
+msgid "Readers arrive with a question. The page that answers it first, in plain words and in the order they would ask, earns the next minute of their attention."
+msgstr ""
+
+#: patterns/content-asymmetric.php
+msgid "We sketch that conversation before any layout exists. Every section gets one job, a heading that states it and the shortest text that does it. What does not answer a question moves further down or leaves the page."
+msgstr ""
+
+#: patterns/content-asymmetric.php
+msgid "The result is calmer to read and easier to keep up to date, because each part has a reason to be there."
+msgstr ""
+
+#: patterns/content-asymmetric.php patterns/content-photo-collage.php patterns/hero-split-image.php patterns/hero-teaser-trio.php
+msgid "Illustration of a green arched doorway beneath a terracotta sun"
+msgstr ""
+
+#: patterns/content-asymmetric.php
+msgid "Plenty of space around few elements: the same idea works on a page."
+msgstr ""
+
+#: patterns/content-asymmetric.php
+msgctxt "Pattern title"
+msgid "Asymmetric feature"
+msgstr ""
+
+#: patterns/content-asymmetric.php
+msgctxt "Pattern description"
+msgid "Two thirds of text with a large heading next to a portrait image that sits lower than the text, with a caption. Use to tell one idea at length with a picture that keeps the page from feeling boxed in."
+msgstr ""
+
+#: patterns/content-author-tip.php
+msgid "My tip"
+msgstr ""
+
+#: patterns/content-author-tip.php
+msgid "Book the first night before you set off. Arriving with a place to sleep makes the rest of the trip feel easy."
+msgstr ""
+
+#: patterns/content-author-tip.php
+msgid "Alex Morgan, author"
+msgstr ""
+
+#: patterns/content-author-tip.php
+msgctxt "Pattern title"
+msgid "Author tip"
+msgstr ""
+
+#: patterns/content-author-tip.php
+msgctxt "Pattern description"
+msgid "A short tip in the voice of the author with a large round portrait in an accent ring, a small heart before the eyebrow and the name in italics, on a soft tinted panel. Save it once as a synced pattern with a real portrait and repeat it every three to five sections of a long guide; tip and name can be overridden in every copy."
+msgstr ""
+
+#: patterns/content-break-image.php
+msgid "Some things need room. A quiet page gives readers the time to think."
+msgstr ""
+
+#: patterns/content-break-image.php
+msgid "We leave space on purpose, so the important parts stand out without shouting."
+msgstr ""
+
+#: patterns/content-break-image.php
+msgctxt "Pattern title"
+msgid "Full-width image break"
+msgstr ""
+
+#: patterns/content-break-image.php
+msgctxt "Pattern description"
+msgid "Edge-to-edge image under a dark overlay with one short statement and a supporting line. Use as a pause between text-heavy sections; it counts as a break in the composition rules."
+msgstr ""
+
+#: patterns/content-changelog.php patterns/footer-mega.php
+msgid "Changelog"
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "What changed in the last three releases"
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "Every release is tested on the two latest WordPress versions before it ships. Updates install themselves unless you turn that off."
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "Version 2.4.0 · 8 October 2026"
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "Added:"
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "database load check for sites with more than 50,000 posts."
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "Changed:"
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "weekly reports now group findings by page instead of by check."
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "Fixed:"
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "certificate warnings for domains with an uppercase letter in the name."
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "Version 2.3.2 · 17 September 2026"
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "uptime alerts sent twice when two regions failed in the same minute."
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "report links that opened the dashboard of the wrong site in multisite networks."
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "Version 2.3.0 · 2 September 2026"
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "reports with your own logo for the Agency plan."
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "a filter to leave staging domains out of every check."
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "image weight check ignores images below 20 kilobytes."
+msgstr ""
+
+#: patterns/content-changelog.php
+msgid "Read the full changelog"
+msgstr ""
+
+#: patterns/content-changelog.php
+msgctxt "Pattern title"
+msgid "Changelog"
+msgstr ""
+
+#: patterns/content-changelog.php
+msgctxt "Pattern description"
+msgid "Heading and intro above three releases as expandable sections, each titled with version and date and listing its changes, the latest one open. Use on product, download or documentation pages."
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Two ways to run it. The same checks either way."
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Install the plugin and keep the controls yourself, or let our team watch the reports and act on them for you."
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Self-managed"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "You act on the reports"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "The plugin runs every check on your server and sends a weekly summary to the people you choose."
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "All checks of your plan, run on your own server"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Weekly report by email and in the dashboard"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Fixes applied by your team when it suits you"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Community forum for questions"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Needs WordPress 7.0 and PHP 8.2 or later."
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Managed"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Recommended"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "We act on the reports"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Our team reviews every alert within one working day, applies safe fixes and tells you what changed and why."
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Everything in self-managed"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Alerts reviewed by a developer, not a script"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Safe fixes applied with a backup taken first"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Monthly call to go through open findings"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgid "Available for the Pro and Agency plans."
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgctxt "Pattern title"
+msgid "Compare two options"
+msgstr ""
+
+#: patterns/content-compare-two.php
+msgctxt "Pattern description"
+msgid "Two cards side by side, each with a label, heading, check list and footnote, the right one on an ink background and marked as recommended. Use to explain two modes or editions of a product."
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Compare plans"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Find the plan that fits how your team works."
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Every plan has the same core features. They differ in how many people sign in, how long files are kept and how fast we reply."
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Feature"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Starter"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Plus"
+msgstr ""
+
+#: patterns/content-comparison.php patterns/footer-columns.php
+msgid "Team"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "People who can sign in"
+msgstr ""
+
+#: patterns/content-comparison.php patterns/content-price-list.php
+msgid "1"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Up to 5"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Unlimited"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "File history"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "30 days"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "1 year"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Support reply"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Within 3 working days"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Within 1 working day"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Within 4 hours"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Next step"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Starter in detail"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Plus in detail"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Ask about Team"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgid "Source: sample product sheet, as of 1 October 2026. Plans, limits and reply times are examples."
+msgstr ""
+
+#: patterns/content-comparison.php
+msgctxt "Pattern title"
+msgid "Comparison table"
+msgstr ""
+
+#: patterns/content-comparison.php
+msgctxt "Pattern description"
+msgid "Eyebrow, heading and short intro above a wide comparison table with a header row of options, one row per feature, a last row linking to each option and a caption with source and date. Use on product and comparison pages when three or four options differ feature by feature."
+msgstr ""
+
+#: patterns/content-downloads.php
+msgid "Documents to download"
+msgstr ""
+
+#: patterns/content-downloads.php
+msgid "Product sheet, prices and terms in one place. Every link shows the format and size of the file before you open it."
+msgstr ""
+
+#: patterns/content-downloads.php
+msgid "Product sheet (PDF, 240 KB)"
+msgstr ""
+
+#: patterns/content-downloads.php
+msgid "Features, technical data and system requirements on two pages."
+msgstr ""
+
+#: patterns/content-downloads.php
+msgid "Price list 2026 (PDF, 180 KB)"
+msgstr ""
+
+#: patterns/content-downloads.php
+msgid "All plans and services with prices excluding VAT."
+msgstr ""
+
+#: patterns/content-downloads.php
+msgid "Terms and conditions (PDF, 96 KB)"
+msgstr ""
+
+#: patterns/content-downloads.php
+msgid "The terms that apply to every order."
+msgstr ""
+
+#: patterns/content-downloads.php
+msgid "Logo package (ZIP, 1.2 MB)"
+msgstr ""
+
+#: patterns/content-downloads.php
+msgid "Logos in SVG and PNG for light and dark backgrounds."
+msgstr ""
+
+#: patterns/content-downloads.php
+msgctxt "Pattern title"
+msgid "Downloads"
+msgstr ""
+
+#: patterns/content-downloads.php
+msgctxt "Pattern description"
+msgid "Heading and short intro above a list of files to download, one per row with a decorative file mark: the link names the file, its format and its size, a sentence below says what is inside. Use on product, service, press or documentation pages that offer documents."
+msgstr ""
+
+#: patterns/content-faq.php
+msgid "Questions we hear before most projects"
+msgstr ""
+
+#: patterns/content-faq.php
+msgid "Something missing here? Send us a short note and we will answer it, usually within a day."
+msgstr ""
+
+#: patterns/content-faq.php
+msgid "How long does a typical project take?"
+msgstr ""
+
+#: patterns/content-faq.php
+msgid "Most relaunches take twelve to sixteen weeks from the first workshop to going live. Smaller projects, such as a new section or a design refresh, usually fit into four to six weeks."
+msgstr ""
+
+#: patterns/content-faq.php
+msgid "Can we keep our existing content?"
+msgstr ""
+
+#: patterns/content-faq.php
+msgid "Yes. We migrate posts, pages, media and authors, then check redirects so existing links and search rankings keep working."
+msgstr ""
+
+#: patterns/content-faq.php
+msgid "Who will maintain the site after launch?"
+msgstr ""
+
+#: patterns/content-faq.php
+msgid "Your team edits the content; we take care of updates, backups and monitoring on a monthly plan. You can also host and maintain it yourselves, and we will hand over full documentation."
+msgstr ""
+
+#: patterns/content-faq.php
+msgid "Do you work with organizations outside Europe?"
+msgstr ""
+
+#: patterns/content-faq.php
+msgid "We do. About a third of our clients are based in North America and Asia. We schedule calls across time zones and do most of the work in writing."
+msgstr ""
+
+#: patterns/content-faq.php
+msgid "What does a project cost?"
+msgstr ""
+
+#: patterns/content-faq.php
+msgid "Fixed prices start at 18,000 euros for a complete relaunch. After a free first call, you receive a written estimate with every phase listed."
+msgstr ""
+
+#: patterns/content-faq.php
+msgctxt "Pattern title"
+msgid "Frequently asked questions"
+msgstr ""
+
+#: patterns/content-faq.php
+msgctxt "Pattern description"
+msgid "Heading and short intro next to five expandable questions with answers, the first one open. Use to answer common questions before people get in touch."
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Feature catalog"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Every check the service runs, and the plan that includes it."
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Core"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Included in every plan"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Pro"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Pro and Agency plans only"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Security"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "12 checks"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Run every hour against the live site, so a problem shows up before a visitor or a search engine finds it."
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Login hardening"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Spots weak admin accounts and repeated failed logins from the same network."
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "File changes"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Compares core and plugin files with their release and lists every change."
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Malware signatures"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Scans uploads and themes against a signature list updated twice a day."
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Certificate expiry"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Warns three weeks before the TLS certificate of any domain runs out."
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Performance"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "8 checks"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Measured from three regions on real page loads, with the slowest templates ranked first."
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Core Web Vitals"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Tracks loading, interaction and layout shift for the ten busiest pages."
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Image weight"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Lists images that are larger than they are ever shown on screen."
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Database load"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Finds slow queries and the plugin that sends them."
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Uptime from three regions"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "Checks the home page every minute and confirms an outage from a second region."
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgid "See all 20 checks in detail"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgctxt "Pattern title"
+msgid "Feature catalog"
+msgstr ""
+
+#: patterns/content-feature-catalog.php
+msgctxt "Pattern description"
+msgid "A legend of plan badges above two feature groups, each with a large count, a short intro and a grid of items marked with the plan that includes them. Use on product pages to show the full scope of an offer."
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "Everything a publication needs, from the first sketch to year five."
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "Six services, one team. Book them together for a relaunch or one at a time when a single part needs attention."
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "Editorial strategy"
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "We map what you publish, who reads it and what should change. You get a plan your team can follow without us."
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "Design systems"
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "Type, color and spacing defined once and used everywhere, so new pages look right on the first try."
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "WordPress development"
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "Block themes and plugins built on core features, kept lean and documented for the people who maintain them."
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "Accessibility reviews"
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "Manual and automated checks against WCAG 2.2, with fixes ranked by how many readers they help."
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "Performance tuning"
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "Faster pages through smaller images, fewer scripts and caching that survives the next plugin update."
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "Care and support"
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgid "A fixed monthly plan for updates, backups and small changes, answered by the people who built the site."
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgctxt "Pattern title"
+msgid "Feature grid"
+msgstr ""
+
+#: patterns/content-feature-grid.php
+msgctxt "Pattern description"
+msgid "Heading and lead text above six tiles, each with a short title and description. Use to list services, features or principles at a glance."
+msgstr ""
+
+#: patterns/content-media-pair.php
+msgid "The whole picture and the detail that makes it work"
+msgstr ""
+
+#: patterns/content-media-pair.php
+msgid "A site is judged at two distances: the first glance at a page and the moment someone reads a single line. We design for both."
+msgstr ""
+
+#: patterns/content-media-pair.php patterns/content-photo-collage.php patterns/hero-overlap.php patterns/teaser-cards-3.php
+msgid "Illustration of layered green hills below a terracotta sun"
+msgstr ""
+
+#: patterns/content-media-pair.php
+msgid "The whole: a page seen from a distance, with a clear order of large shapes."
+msgstr ""
+
+#: patterns/content-media-pair.php patterns/content-photo-collage.php patterns/content-text-media.php patterns/hero-teaser-trio.php patterns/teaser-cards-3.php
+msgid "Still life of a green block, a terracotta circle and a grey triangle on a shelf"
+msgstr ""
+
+#: patterns/content-media-pair.php
+msgid "The detail: a few objects, placed with care."
+msgstr ""
+
+#: patterns/content-media-pair.php
+msgctxt "Pattern title"
+msgid "Offset image pair"
+msgstr ""
+
+#: patterns/content-media-pair.php
+msgctxt "Pattern description"
+msgid "Heading and short introduction above two images of different size, the smaller one set lower, each with a caption. Use to show two sides of a project, a before and after or a detail next to the whole."
+msgstr ""
+
+#: patterns/content-overlap.php
+msgid "Our approach"
+msgstr ""
+
+#: patterns/content-overlap.php
+msgid "Layers of meaning, one clear message."
+msgstr ""
+
+#: patterns/content-overlap.php
+msgid "A site is more than its pages. Tone, structure and pictures work together, and each of them can be changed without breaking the others. That is how a site stays useful for years instead of months."
+msgstr ""
+
+#: patterns/content-overlap.php
+msgid "See how we plan a site"
+msgstr ""
+
+#: patterns/content-overlap.php patterns/content-photo-collage.php patterns/cta-split.php patterns/hero-teaser-trio.php
+msgid "Overlapping green, terracotta and grey rectangles on a fine paper grid"
+msgstr ""
+
+#: patterns/content-overlap.php
+msgctxt "Pattern title"
+msgid "Text card over image"
+msgstr ""
+
+#: patterns/content-overlap.php
+msgctxt "Pattern description"
+msgid "A tinted text card with heading, paragraph and link whose lower edge overlaps a wide image below it. Use to give one message visual depth without placing text on the picture."
+msgstr ""
+
+#: patterns/content-pager.php
+msgid "More in this series"
+msgstr ""
+
+#: patterns/content-pager.php
+msgid "Previous"
+msgstr ""
+
+#: patterns/content-pager.php
+msgid "Plan the content before the design"
+msgstr ""
+
+#: patterns/content-pager.php patterns/footer-mega.php
+msgid "Overview"
+msgstr ""
+
+#: patterns/content-pager.php
+msgid "All chapters of the guide"
+msgstr ""
+
+#: patterns/content-pager.php
+msgid "Next"
+msgstr ""
+
+#: patterns/content-pager.php
+msgid "Test every page before launch"
+msgstr ""
+
+#: patterns/content-pager.php
+msgctxt "Pattern title"
+msgid "Previous and next"
+msgstr ""
+
+#: patterns/content-pager.php
+msgctxt "Pattern description"
+msgid "Links to the previous and the next page of a series and back to its overview, each under a short label. Use at the end of guides, case studies and catalog entries that readers go through in order."
+msgstr ""
+
+#: patterns/content-photo-collage.php
+msgid "Behind the scenes"
+msgstr ""
+
+#: patterns/content-photo-collage.php
+msgid "A few days with the people behind the work"
+msgstr ""
+
+#: patterns/content-photo-collage.php
+msgid "Photos from the studio, from the road and from the table where most ideas start."
+msgstr ""
+
+#: patterns/content-photo-collage.php
+msgid "Pictures tell more about a team than a list of skills. These come from an ordinary week: early sketches, a visit on site and the long lunch on Fridays."
+msgstr ""
+
+#: patterns/content-photo-collage.php
+msgid "Meet the team"
+msgstr ""
+
+#: patterns/content-photo-collage.php
+msgctxt "Pattern title"
+msgid "Photo collage"
+msgstr ""
+
+#: patterns/content-photo-collage.php
+msgctxt "Pattern description"
+msgid "Three to five photos set off against each other and overlapping a little next to an eyebrow, a heading, a short lead, a paragraph and a button. On phones the photos stand in two offset columns without overlap. Use for people, trips and groups with several photos; switch the columns to the block style Media right to put the photos on the right."
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "The more sites you add, the less each one costs."
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "Agency plan prices by number of sites, paid once a year. The price per site drops at each step, and you can move up a step at any time."
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "Sites"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "Price per year"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "Price per site"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "€108"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "€108.00"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "5"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "€450"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "€90.00"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "10"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "€780"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "€78.00"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "25"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "€1,625"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "€65.00"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "50"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "€2,750"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "€55.00"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "More than 50"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "On request"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "Agency plan, prices in euros per year, excluding VAT"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgid "Source: sample price list, as of 1 October 2026. Prices may change for new contracts; running contracts keep their price until renewal."
+msgstr ""
+
+#: patterns/content-price-list.php
+msgctxt "Pattern title"
+msgid "Price list"
+msgstr ""
+
+#: patterns/content-price-list.php
+msgctxt "Pattern description"
+msgid "Heading and short explanation above a comparison table of quantities, total prices and unit prices, with a caption and a dated source note. Use when prices depend on volume, for example per site or per seat."
+msgstr ""
+
+#: patterns/content-quote.php
+msgid "They asked better questions about our readers than we had asked ourselves in ten years. The new site is calmer, faster and, for the first time, easy for the whole newsroom to use."
+msgstr ""
+
+#: patterns/content-quote.php
+msgid "Miriam Achterberg, Managing Editor, The Harbour Review"
+msgstr ""
+
+#: patterns/content-quote.php
+msgctxt "Pattern title"
+msgid "Large quote"
+msgstr ""
+
+#: patterns/content-quote.php
+msgctxt "Pattern description"
+msgid "A single large quotation with its source on a tinted background. Use to let a client, reader or author speak in their own words."
+msgstr ""
+
+#: patterns/content-statement.php
+msgid "We would rather publish one honest page than ten that only fill space."
+msgstr ""
+
+#: patterns/content-statement.php
+msgid "Every page we write has a reader and a question in mind. If we cannot name both, the page does not get built."
+msgstr ""
+
+#: patterns/content-statement.php
+msgid "Read the principles behind our work"
+msgstr ""
+
+#: patterns/content-statement.php
+msgctxt "Pattern title"
+msgid "Statement"
+msgstr ""
+
+#: patterns/content-statement.php
+msgctxt "Pattern description"
+msgid "One sentence in display size across the full content width on the accent color, with a short explanation and a link below it. Use once per page to state a principle or a promise; it counts as a break in the composition rules."
+msgstr ""
+
+#: patterns/content-stats.php
+msgid "What clients can count on"
+msgstr ""
+
+#: patterns/content-stats.php
+msgid "Figures from our own project records, updated every January."
+msgstr ""
+
+#: patterns/content-stats.php
+msgid "14"
+msgstr ""
+
+#: patterns/content-stats.php
+msgid "Years in practice"
+msgstr ""
+
+#: patterns/content-stats.php
+msgid "120+"
+msgstr ""
+
+#: patterns/content-stats.php
+msgid "Sites launched"
+msgstr ""
+
+#: patterns/content-stats.php
+msgid "87%"
+msgstr ""
+
+#: patterns/content-stats.php
+msgid "Clients who return for a second project"
+msgstr ""
+
+#: patterns/content-stats.php
+msgid "2 days"
+msgstr ""
+
+#: patterns/content-stats.php
+msgid "Typical reply time"
+msgstr ""
+
+#: patterns/content-stats.php
+msgctxt "Pattern title"
+msgid "Key figures"
+msgstr ""
+
+#: patterns/content-stats.php
+msgctxt "Pattern description"
+msgid "Heading and a short intro above four large figures with labels, four across on wide screens and two by two on narrower ones, never three and one. Use to back up a claim with numbers, for example on an about or company page."
+msgstr ""
+
+#: patterns/content-steps.php
+msgid "How a project runs, in four steps"
+msgstr ""
+
+#: patterns/content-steps.php
+msgid "Listen"
+msgstr ""
+
+#: patterns/content-steps.php
+msgid "Two workshops with your team and a review of what you already publish. We leave with a clear list of what matters."
+msgstr ""
+
+#: patterns/content-steps.php
+msgid "Write"
+msgstr ""
+
+#: patterns/content-steps.php
+msgid "A short writing sprint turns that list into real page copy, so the design starts from content rather than placeholders."
+msgstr ""
+
+#: patterns/content-steps.php
+msgid "Build"
+msgstr ""
+
+#: patterns/content-steps.php
+msgid "We design and develop in the browser, sharing a working site every week instead of static mockups."
+msgstr ""
+
+#: patterns/content-steps.php
+msgid "Launch and care"
+msgstr ""
+
+#: patterns/content-steps.php
+msgid "After a careful launch we stay on for updates, training and the small changes every new site needs."
+msgstr ""
+
+#: patterns/content-steps.php
+msgctxt "Pattern title"
+msgid "Process steps"
+msgstr ""
+
+#: patterns/content-steps.php
+msgctxt "Pattern description"
+msgid "Heading above four numbered steps, each with a title and a short description, four across on wide screens and two by two on narrower ones, never three and one. Use to explain a process, an onboarding path or how a service works."
+msgstr ""
+
+#: patterns/content-text-media.php patterns/footer-columns.php patterns/hidden-page-post-author.php
+msgid "How we work"
+msgstr ""
+
+#: patterns/content-text-media.php
+msgid "We start with the words, then shape the page around them."
+msgstr ""
+
+#: patterns/content-text-media.php
+msgid "Most redesigns fail because the content arrives last. We reverse the order: a short writing sprint comes first, so every layout decision is made with real text on the table."
+msgstr ""
+
+#: patterns/content-text-media.php
+msgid "The result is a site your team can keep editing without calling us for every change."
+msgstr ""
+
+#: patterns/content-text-media.php
+msgid "Read about our writing sprint"
+msgstr ""
+
+#: patterns/content-text-media.php
+msgctxt "Pattern title"
+msgid "Text and media"
+msgstr ""
+
+#: patterns/content-text-media.php
+msgctxt "Pattern description"
+msgid "Square image next to a heading, two short paragraphs and a link. Use to explain one idea with a picture; switch the block style to Media right to swap the sides."
+msgstr ""
+
+#: patterns/content-two-columns.php
+msgid "A small studio that prefers fewer, longer projects over many quick ones."
+msgstr ""
+
+#: patterns/content-two-columns.php
+msgid "We were founded in 2012 by two editors and a developer who were tired of watching good publications disappear behind slow, fragile websites."
+msgstr ""
+
+#: patterns/content-two-columns.php
+msgid "Since then we have worked with museums, foundations, regional newspapers and a handful of companies that care about how they sound. Each client gets the same people from the first workshop to the last bug fix."
+msgstr ""
+
+#: patterns/content-two-columns.php
+msgid "We take on six projects a year. That limit is deliberate: it leaves room to read every draft, test on real devices and stay available after launch, when most of the useful questions come up."
+msgstr ""
+
+#: patterns/content-two-columns.php
+msgid "If your next project needs patience more than speed, we would like to hear about it. Tell us what you are planning and we will reply within two working days."
+msgstr ""
+
+#: patterns/content-two-columns.php
+msgctxt "Pattern title"
+msgid "Two text columns"
+msgstr ""
+
+#: patterns/content-two-columns.php
+msgctxt "Pattern description"
+msgid "Full-width heading above two columns of running text. Use for an introduction or statement that is too long for a single narrow column."
+msgstr ""
+
+#: patterns/content-video.php
+msgid "See how it works in under a minute"
+msgstr ""
+
+#: patterns/content-video.php
+msgid "A short video walks through the steps one by one. It has no sound, and the transcript below holds the text of every scene."
+msgstr ""
+
+#: patterns/content-video.php
+msgid "The process in five steps. Upload the video file here and choose a still of it as the poster."
+msgstr ""
+
+#: patterns/content-video.php
+msgid "Transcript of the video"
+msgstr ""
+
+#: patterns/content-video.php
+msgid "The first scene: what the viewer sees and what the caption says."
+msgstr ""
+
+#: patterns/content-video.php
+msgid "The next scene, in the same words as on screen."
+msgstr ""
+
+#: patterns/content-video.php
+msgctxt "Pattern title"
+msgid "Video with transcript"
+msgstr ""
+
+#: patterns/content-video.php
+msgctxt "Pattern description"
+msgid "Heading and short introduction above a video with a poster image and a caption, followed by a folded transcript with the text of every scene. Use to explain a process in a short video that stays accessible without sound."
+msgstr ""
+
+#: patterns/cta-banner.php
+msgid "Taking on two projects for spring"
+msgstr ""
+
+#: patterns/cta-banner.php
+msgid "Make your next website the last big rebuild."
+msgstr ""
+
+#: patterns/cta-banner.php
+msgid "Tell us where things stand today. We reply within two working days with honest questions and a first rough plan."
+msgstr ""
+
+#: patterns/cta-banner.php
+msgid "Book an introductory call"
+msgstr ""
+
+#: patterns/cta-banner.php
+msgctxt "Pattern title"
+msgid "Call to action banner"
+msgstr ""
+
+#: patterns/cta-banner.php
+msgctxt "Pattern description"
+msgid "Full-width accent band with a large heading, a short note and one outline button. Use once near the end of a page to ask for the main action."
+msgstr ""
+
+#: patterns/cta-contact.php patterns/footer-columns.php patterns/footer-mega.php patterns/footer-minimal.php
+msgid "Contact"
+msgstr ""
+
+#: patterns/cta-contact.php
+msgid "Talk to the people who will do the work."
+msgstr ""
+
+#: patterns/cta-contact.php
+msgid "No sales team and no ticket queue. Write or call and you reach one of the four of us, usually within a working day."
+msgstr ""
+
+#: patterns/cta-contact.php
+msgid "Write to"
+msgstr ""
+
+#: patterns/cta-contact.php patterns/footer-mega.php
+msgid "hello@example.com"
+msgstr ""
+
+#: patterns/cta-contact.php
+msgid "Call"
+msgstr ""
+
+#: patterns/cta-contact.php patterns/footer-mega.php
+msgid "+442079460958"
+msgstr ""
+
+#: patterns/cta-contact.php patterns/footer-mega.php
+msgid "+44 20 7946 0958"
+msgstr ""
+
+#: patterns/cta-contact.php
+msgid "Visit the studio at 14 Fernhill Yard, London E8 3QD"
+msgstr ""
+
+#: patterns/cta-contact.php
+msgid "Office hours Monday to Thursday, 9:00 to 17:00 UK time."
+msgstr ""
+
+#: patterns/cta-contact.php
+msgctxt "Pattern title"
+msgid "Contact details"
+msgstr ""
+
+#: patterns/cta-contact.php
+msgctxt "Pattern description"
+msgid "Tinted band with a heading and short invitation next to a large, divided list with email, phone and studio address. Use on contact or about pages, or as the closing section of a service page."
+msgstr ""
+
+#: patterns/cta-newsletter.php
+msgid "The monthly letter"
+msgstr ""
+
+#: patterns/cta-newsletter.php
+msgid "One careful email a month, nothing in between."
+msgstr ""
+
+#: patterns/cta-newsletter.php
+msgid "Notes on writing for the web, one project we learned from and a single link worth your evening. Leave with one click whenever you like."
+msgstr ""
+
+#: patterns/cta-newsletter.php
+msgid "Connect your newsletter or form plugin here."
+msgstr ""
+
+#: patterns/cta-newsletter.php
+msgid "Subscribe to the newsletter"
+msgstr ""
+
+#: patterns/cta-newsletter.php
+msgctxt "Pattern title"
+msgid "Newsletter invitation"
+msgstr ""
+
+#: patterns/cta-newsletter.php
+msgctxt "Pattern description"
+msgid "Framed letter card on a tinted band with an italic heading, a short promise and a subscribe button; connect a newsletter or form plugin in place of the note. Use at the end of articles or on a blog index."
+msgstr ""
+
+#: patterns/cta-split.php
+msgid "Case study · The Harbour Review"
+msgstr ""
+
+#: patterns/cta-split.php
+msgid "A smaller site, read twice as often."
+msgstr ""
+
+#: patterns/cta-split.php
+msgid "How a regional magazine cut 1,400 pages down to 300 and rebuilt its archive around the questions readers actually search for."
+msgstr ""
+
+#: patterns/cta-split.php
+msgid "Read the Harbour Review case study"
+msgstr ""
+
+#: patterns/cta-split.php
+msgctxt "Pattern title"
+msgid "Call to action with image"
+msgstr ""
+
+#: patterns/cta-split.php
+msgctxt "Pattern description"
+msgid "Dark section with an image that bleeds to the left edge of the screen and a call to action set low beside it. Use to point to a case study, product or campaign with a strong picture."
+msgstr ""
+
+#: patterns/footer-columns.php patterns/footer-mega.php patterns/footer-minimal.php patterns/footer-newsletter.php
+msgid "Footer"
+msgstr ""
+
+#: patterns/footer-columns.php
+msgid "Studio"
+msgstr ""
+
+#: patterns/footer-columns.php patterns/hero-centered.php
+msgid "About the studio"
+msgstr ""
+
+#: patterns/footer-columns.php patterns/footer-mega.php
+msgid "Careers"
+msgstr ""
+
+#: patterns/footer-columns.php
+msgid "Work"
+msgstr ""
+
+#: patterns/footer-columns.php
+msgid "Selected projects"
+msgstr ""
+
+#: patterns/footer-columns.php
+msgid "Services"
+msgstr ""
+
+#: patterns/footer-columns.php
+msgid "Clients"
+msgstr ""
+
+#: patterns/footer-columns.php
+msgid "Reading"
+msgstr ""
+
+#: patterns/footer-columns.php patterns/footer-minimal.php
+msgid "Journal"
+msgstr ""
+
+#: patterns/footer-columns.php
+msgid "Newsletter"
+msgstr ""
+
+#: patterns/footer-columns.php
+msgid "Talks"
+msgstr ""
+
+#: patterns/footer-columns.php
+msgid "Reading list"
+msgstr ""
+
+#: patterns/footer-columns.php patterns/footer-mega.php patterns/hidden-page-checkout-footer.php
+msgid "Legal"
+msgstr ""
+
+#: patterns/footer-columns.php patterns/footer-mega.php patterns/footer-minimal.php patterns/footer-newsletter.php patterns/hidden-page-checkout-footer.php
+msgid "Imprint"
+msgstr ""
+
+#: patterns/footer-columns.php patterns/footer-mega.php patterns/footer-minimal.php patterns/footer-newsletter.php patterns/hidden-page-checkout-footer.php
+msgid "Privacy policy"
+msgstr ""
+
+#: patterns/footer-columns.php
+msgid "Accessibility"
+msgstr ""
+
+#: patterns/footer-columns.php
+msgctxt "Pattern title"
+msgid "Footer with columns"
+msgstr ""
+
+#: patterns/footer-columns.php
+msgctxt "Pattern description"
+msgid "Quiet footer below a fine rule with the site title and tagline next to three columns of links under small caps heads, closed by a copyright line and legal links. Use as the standard footer on most sites."
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "We build and run websites for product teams that need them fast, accessible and easy to change. Independent since 2014 and still owned by the people who do the work."
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Hosted on servers in the EU"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "99.95% uptime over the last twelve months"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Support from the engineers who build it"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "14 Fernhill Yard, London E8 3QD, United Kingdom"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "New projects:"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Support:"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "support@example.com"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Phone:"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Product"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Features"
+msgstr ""
+
+#: patterns/footer-mega.php patterns/offer-pricing-3.php
+msgid "Pricing"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Integrations"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "System status"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Solutions"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "For agencies"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "For publishers"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "For online shops"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "For the public sector"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Resources"
+msgstr ""
+
+#: patterns/footer-mega.php patterns/hidden-page-docs-sidebar.php
+msgid "Documentation"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Guides"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Blog"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Webinars"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Help center"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Company"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "About us"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Press"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Partners"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Terms of service"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Cancellation policy"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Data processing agreement"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgid "Back to top"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgctxt "Pattern title"
+msgid "Footer mega"
+msgstr ""
+
+#: patterns/footer-mega.php
+msgctxt "Pattern description"
+msgid "Large dark footer with a brand block of short pitch, trust facts and contact details, four link columns (four across or two by two, never three and one), legal navigation, social links, an empty Language switcher group for the language switcher block of a translation plugin and a back to top link. Use on product and company sites with many pages."
+msgstr ""
+
+#: patterns/footer-minimal.php patterns/footer-newsletter.php patterns/hidden-page-sidebar.php
+msgid "About"
+msgstr ""
+
+#: patterns/footer-minimal.php
+msgctxt "Pattern title"
+msgid "Footer minimal"
+msgstr ""
+
+#: patterns/footer-minimal.php
+msgctxt "Pattern description"
+msgid "A single quiet line below a fine rule with the site title and copyright on the left and a short navigation on the right. Use on blogs, portfolios and small sites."
+msgstr ""
+
+#: patterns/footer-newsletter.php
+msgid "One letter a month, then quiet."
+msgstr ""
+
+#: patterns/footer-newsletter.php
+msgid "New essays, one project we learned from and a link worth your evening. Unsubscribe with one click."
+msgstr ""
+
+#: patterns/footer-newsletter.php
+msgid "Subscribe to the letter"
+msgstr ""
+
+#: patterns/footer-newsletter.php
+msgid "Archive"
+msgstr ""
+
+#: patterns/footer-newsletter.php
+msgctxt "Pattern title"
+msgid "Footer with newsletter"
+msgstr ""
+
+#: patterns/footer-newsletter.php
+msgctxt "Pattern description"
+msgid "Accent footer that opens with a newsletter row of heading, short promise and subscribe button, then closes with the site title, copyright and a short navigation. Use on blogs and publications that live from subscribers."
+msgstr ""
+
+#: patterns/header-centered.php patterns/header-cta.php patterns/header-default.php patterns/header-masthead.php patterns/header-minimal.php patterns/header-search.php patterns/header-shop.php patterns/header-split.php patterns/header-utility.php
+msgid "Main navigation"
+msgstr ""
+
+#: patterns/header-centered.php
+msgctxt "Pattern title"
+msgid "Header centered"
+msgstr ""
+
+#: patterns/header-centered.php
+msgctxt "Pattern description"
+msgid "Large centered site title like a magazine masthead, a fine dividing line and the main navigation centered below. Use for publications, journals and personal sites."
+msgstr ""
+
+#: patterns/header-cta.php
+msgid "Get in touch"
+msgstr ""
+
+#: patterns/header-cta.php
+msgctxt "Pattern title"
+msgid "Header with button"
+msgstr ""
+
+#: patterns/header-cta.php
+msgctxt "Pattern description"
+msgid "Site logo and title on the left, the main navigation and one button for the main action on the right, such as booking or getting in touch, with a fine line below. Below 1024 px the menu items collapse behind the menu button; the button stays in the header and moves into the menu below 600 px. Use when one action matters on every page."
+msgstr ""
+
+#: patterns/header-default.php
+msgctxt "Pattern title"
+msgid "Header default"
+msgstr ""
+
+#: patterns/header-default.php
+msgctxt "Pattern description"
+msgid "Site logo and title on the left, main navigation on the right and a fine line below; collapses into a menu button on small screens. Use as the standard header on most sites."
+msgstr ""
+
+#: patterns/header-masthead.php
+msgid "Search the news"
+msgstr ""
+
+#: patterns/header-masthead.php
+msgctxt "Pattern title"
+msgid "Header masthead"
+msgstr ""
+
+#: patterns/header-masthead.php
+msgctxt "Pattern description"
+msgid "Newspaper masthead with a large centered site logo and the tagline below it, then the main navigation and the search between a heavy and a fine rule. Use for news sites and daily publications with a wide logo."
+msgstr ""
+
+#: patterns/header-minimal.php
+msgctxt "Pattern title"
+msgid "Header minimal"
+msgstr ""
+
+#: patterns/header-minimal.php
+msgctxt "Pattern description"
+msgid "Site title on the left and a menu button on the right that always opens the navigation as a full-screen overlay. Use on landing pages where the content should own the first screen."
+msgstr ""
+
+#: patterns/header-search.php
+msgid "Site search"
+msgstr ""
+
+#: patterns/header-search.php
+msgctxt "Pattern title"
+msgid "Header with search"
+msgstr ""
+
+#: patterns/header-search.php
+msgctxt "Pattern description"
+msgid "Site logo and title on the left, main navigation and a search field with a labelled button on the right and a fine line below; on small screens the search moves to its own row. Use on sites with many pages, so visitors can search as well as browse."
+msgstr ""
+
+#: patterns/header-shop.php
+msgid "Search products"
+msgstr ""
+
+#: patterns/header-shop.php
+msgctxt "Pattern title"
+msgid "Header for shops"
+msgstr ""
+
+#: patterns/header-shop.php
+msgctxt "Pattern description"
+msgid "Site logo and title on the left, main navigation, a product search, the customer account link and the mini cart on the right and a fine line below; on small screens the search moves to its own row. Use as the header of WooCommerce shop pages."
+msgstr ""
+
+#: patterns/header-split.php
+msgid "Reserve a table"
+msgstr ""
+
+#: patterns/header-split.php
+msgctxt "Pattern title"
+msgid "Header with centered logo"
+msgstr ""
+
+#: patterns/header-split.php
+msgctxt "Pattern description"
+msgid "The main navigation on the left, site logo and title exactly in the middle and one button on the right, with a fine line below. Below 1024 px the menu button sits on the left and the logo stays in the middle; on phones the button moves into the menu. Use for restaurants, studios, firms and brands whose logo should lead."
+msgstr ""
+
+#: patterns/header-utility.php
+msgid "Open Monday to Friday, 8:00 to 18:00"
+msgstr ""
+
+#: patterns/header-utility.php
+msgid "Call +44 20 7946 0000"
+msgstr ""
+
+#: patterns/header-utility.php
+msgid "Directions"
+msgstr ""
+
+#: patterns/header-utility.php
+msgid "Book an appointment"
+msgstr ""
+
+#: patterns/header-utility.php
+msgctxt "Pattern title"
+msgid "Header with service bar"
+msgstr ""
+
+#: patterns/header-utility.php
+msgctxt "Pattern description"
+msgid "A slim dark bar above the header with opening hours on the left and a phone number and one more link on the right, then site logo and title, the main navigation and one button for the main action. Below 1024 px the menu items collapse behind the menu button; the button stays in the header and moves into the menu below 600 px. Use for practices, trades and services that people call before they visit."
+msgstr ""
+
+#: patterns/hero-centered.php
+msgid "Issue 14 · Autumn"
+msgstr ""
+
+#: patterns/hero-centered.php
+msgid "Good work needs time and a clear form."
+msgstr ""
+
+#: patterns/hero-centered.php
+msgid "Essays, projects and notes on building things that last. Published every month."
+msgstr ""
+
+#: patterns/hero-centered.php
+msgid "Read the latest essay"
+msgstr ""
+
+#: patterns/hero-centered.php
+msgctxt "Pattern title"
+msgid "Hero centered"
+msgstr ""
+
+#: patterns/hero-centered.php
+msgctxt "Pattern description"
+msgid "Centered page intro with eyebrow, large heading, lead text and two buttons. Use at the top of landing pages."
+msgstr ""
+
+#: patterns/hero-cover-image.php
+msgid "Stories from the places between cities."
+msgstr ""
+
+#: patterns/hero-cover-image.php
+msgid "A travel journal about small towns, long walks and the people who keep them going."
+msgstr ""
+
+#: patterns/hero-cover-image.php
+msgid "Start reading the journal"
+msgstr ""
+
+#: patterns/hero-cover-image.php
+msgctxt "Pattern title"
+msgid "Hero cover image"
+msgstr ""
+
+#: patterns/hero-cover-image.php
+msgctxt "Pattern description"
+msgid "Full-width background image with a dark overlay, heading, lead text and a button. Use for strong visual openings on campaign or travel pages."
+msgstr ""
+
+#: patterns/hero-editorial.php
+msgid "Essay · October 14, 2026"
+msgstr ""
+
+#: patterns/hero-editorial.php
+msgid "What a river town remembers after the factories go quiet"
+msgstr ""
+
+#: patterns/hero-editorial.php
+msgid "Three generations explain how a place keeps its character once the work that built it has moved on. A report on memory, housing and the stubborn value of old brick."
+msgstr ""
+
+#: patterns/hero-editorial.php
+msgid "By Hanna Okafor"
+msgstr ""
+
+#: patterns/hero-editorial.php
+msgid "Photographs by Tomas Reiner"
+msgstr ""
+
+#: patterns/hero-editorial.php
+msgid "14 minute read"
+msgstr ""
+
+#: patterns/hero-editorial.php
+msgctxt "Pattern title"
+msgid "Hero editorial"
+msgstr ""
+
+#: patterns/hero-editorial.php
+msgctxt "Pattern description"
+msgid "Magazine-style article opening with category and date, a wide headline, a lead paragraph and a byline. Use at the top of long reads and features."
+msgstr ""
+
+#: patterns/hero-overlap.php patterns/hero-split-image.php
+msgid "Brand and digital studio"
+msgstr ""
+
+#: patterns/hero-overlap.php patterns/hero-split-image.php
+msgid "Websites built to stay useful for years."
+msgstr ""
+
+#: patterns/hero-overlap.php
+msgid "Strategy, design and development from one small team, for publishers, schools and independent companies."
+msgstr ""
+
+#: patterns/hero-overlap.php patterns/hero-split-image.php
+msgid "See selected work"
+msgstr ""
+
+#: patterns/hero-overlap.php
+msgid "Start a project"
+msgstr ""
+
+#: patterns/hero-overlap.php
+msgctxt "Pattern title"
+msgid "Hero with card over image"
+msgstr ""
+
+#: patterns/hero-overlap.php
+msgctxt "Pattern description"
+msgid "A large image on the left and a text card on the right that reaches into the image, with eyebrow, heading, lead text and two buttons; on phones the card overlaps the lower edge of the image. Use when a photo should lead but the text must stay on a calm background."
+msgstr ""
+
+#: patterns/hero-search.php
+msgid "Find the answer before you open a ticket."
+msgstr ""
+
+#: patterns/hero-search.php
+msgid "Search the help center"
+msgstr ""
+
+#: patterns/hero-search.php
+msgid "Guides for every step, answers to common questions and the full reference, searchable in one place and updated with every release."
+msgstr ""
+
+#: patterns/hero-search.php
+msgid "Read most often"
+msgstr ""
+
+#: patterns/hero-search.php
+msgid "First steps"
+msgstr ""
+
+#: patterns/hero-search.php
+msgid "Account and billing"
+msgstr ""
+
+#: patterns/hero-search.php
+msgid "Troubleshooting"
+msgstr ""
+
+#: patterns/hero-search.php
+msgctxt "Pattern title"
+msgid "Hero with search"
+msgstr ""
+
+#: patterns/hero-search.php
+msgctxt "Pattern description"
+msgid "Page intro that leads with search: a large heading, a wide search field with a visible label, a short lead and up to three buttons to the pages most people open first. Use at the top of documentation, help centers and knowledge bases."
+msgstr ""
+
+#: patterns/hero-split-image.php
+msgid "Strategy, design and development from one small team. We work with publishers, schools and independent companies that care about the details."
+msgstr ""
+
+#: patterns/hero-split-image.php
+msgid "Start a project with us"
+msgstr ""
+
+#: patterns/hero-split-image.php
+msgctxt "Pattern title"
+msgid "Hero split with image"
+msgstr ""
+
+#: patterns/hero-split-image.php
+msgctxt "Pattern description"
+msgid "Two-column page intro with heading, lead text and buttons next to a tall image. Use when a picture should carry the first impression."
+msgstr ""
+
+#: patterns/hero-teaser-trio.php
+msgid "Three ways we can help."
+msgstr ""
+
+#: patterns/hero-teaser-trio.php
+msgid "A small studio for brands, websites and the care that keeps them working. Pick where you want to start."
+msgstr ""
+
+#: patterns/hero-teaser-trio.php
+msgid "Brand and identity"
+msgstr ""
+
+#: patterns/hero-teaser-trio.php
+msgid "Names, logos and type that work from the sign on the door to the smallest icon."
+msgstr ""
+
+#: patterns/hero-teaser-trio.php
+msgid "Websites"
+msgstr ""
+
+#: patterns/hero-teaser-trio.php
+msgid "Sites that load fast, read well and stay easy to change for years."
+msgstr ""
+
+#: patterns/hero-teaser-trio.php
+msgid "Care and hosting"
+msgstr ""
+
+#: patterns/hero-teaser-trio.php
+msgid "Updates, backups and small changes, handled by the people who built the site."
+msgstr ""
+
+#: patterns/hero-teaser-trio.php
+msgctxt "Pattern title"
+msgid "Hero with three teasers"
+msgstr ""
+
+#: patterns/hero-teaser-trio.php
+msgctxt "Pattern description"
+msgid "Page intro as three large picture teasers: heading and lead text in one row above three tall images, each with a number, a linked title and one sentence below. Use on home pages that lead straight into three services, stories or offers instead of one big message."
+msgstr ""
+
+#: patterns/hidden-page-404.php
+msgid "Page not found"
+msgstr ""
+
+#: patterns/hidden-page-404.php
+msgid "The page you are looking for does not exist or has moved. Try the search or go back to the homepage."
+msgstr ""
+
+#: patterns/hidden-page-404.php
+msgid "Search this site"
+msgstr ""
+
+#: patterns/hidden-page-404.php
+msgid "Go to homepage"
+msgstr ""
+
+#: patterns/hidden-page-404.php
+msgctxt "Pattern title"
+msgid "Page not found"
+msgstr ""
+
+#: patterns/hidden-page-404.php
+msgctxt "Pattern description"
+msgid "Content of the 404 template with heading, explanation, search form and a link to the homepage."
+msgstr ""
+
+#: patterns/hidden-page-author-no-results.php
+msgid "No articles by this author yet."
+msgstr ""
+
+#: patterns/hidden-page-author-no-results.php
+msgctxt "Pattern title"
+msgid "Author without posts"
+msgstr ""
+
+#: patterns/hidden-page-author-no-results.php
+msgctxt "Pattern description"
+msgid "Message on an author page when the author has not published any posts yet."
+msgstr ""
+
+#: patterns/hidden-page-blog-heading.php
+msgid "Latest writing"
+msgstr ""
+
+#: patterns/hidden-page-blog-heading.php
+msgid "New essays, projects and notes, newest first."
+msgstr ""
+
+#: patterns/hidden-page-blog-heading.php
+msgctxt "Pattern title"
+msgid "Blog heading"
+msgstr ""
+
+#: patterns/hidden-page-blog-heading.php
+msgctxt "Pattern description"
+msgid "Page heading with a short lead for the posts index. With a posts page set in the reading settings, its title and excerpt replace the default texts, its featured image and content follow."
+msgstr ""
+
+#: patterns/hidden-page-category-chips.php patterns/hidden-page-sidebar.php
+msgid "Categories"
+msgstr ""
+
+#: patterns/hidden-page-category-chips.php
+msgctxt "Pattern title"
+msgid "Category chips"
+msgstr ""
+
+#: patterns/hidden-page-category-chips.php
+msgctxt "Pattern description"
+msgid "The categories that have posts as a row of pill links in a named navigation, led by a link to all posts; the current one is marked. Renders nothing while fewer than two categories have posts."
+msgstr ""
+
+#: patterns/hidden-page-checkout-footer.php
+msgid "Payments are encrypted. Your data is used only for this order."
+msgstr ""
+
+#: patterns/hidden-page-checkout-footer.php
+msgid "Terms"
+msgstr ""
+
+#: patterns/hidden-page-checkout-footer.php
+msgctxt "Pattern title"
+msgid "Checkout footer"
+msgstr ""
+
+#: patterns/hidden-page-checkout-footer.php
+msgctxt "Pattern description"
+msgid "Footer of the checkout without navigation: a quiet note on secure payment and the legal links, nothing that leads away from the order."
+msgstr ""
+
+#: patterns/hidden-page-checkout-header.php patterns/shop-trust-badges.php
+msgid "Secure checkout"
+msgstr ""
+
+#: patterns/hidden-page-checkout-header.php
+msgid "Back to cart"
+msgstr ""
+
+#: patterns/hidden-page-checkout-header.php
+msgctxt "Pattern title"
+msgid "Checkout header"
+msgstr ""
+
+#: patterns/hidden-page-checkout-header.php
+msgctxt "Pattern description"
+msgid "Header of the checkout without navigation: site logo and title, the words Secure checkout and a link back to the cart."
+msgstr ""
+
+#: patterns/hidden-page-docs-sidebar.php
+msgid "Documentation menu"
+msgstr ""
+
+#: patterns/hidden-page-docs-sidebar.php
+msgid "Search documentation"
+msgstr ""
+
+#: patterns/hidden-page-docs-sidebar.php
+msgctxt "Pattern title"
+msgid "Documentation sidebar"
+msgstr ""
+
+#: patterns/hidden-page-docs-sidebar.php
+msgctxt "Pattern description"
+msgid "Collapsible documentation menu with a labelled search field and the page tree. Opens beside the content from tablet width on."
+msgstr ""
+
+#: patterns/hidden-page-no-results.php
+msgid "No results found."
+msgstr ""
+
+#: patterns/hidden-page-no-results.php
+msgctxt "Pattern title"
+msgid "No results"
+msgstr ""
+
+#: patterns/hidden-page-no-results.php
+msgctxt "Pattern description"
+msgid "Neutral message shown when an archive, a list or a search returns no entries."
+msgstr ""
+
+#: patterns/hidden-page-order-details.php
+msgid "Order details"
+msgstr ""
+
+#: patterns/hidden-page-order-details.php
+msgid "Downloads"
+msgstr ""
+
+#: patterns/hidden-page-order-details.php
+msgid "Shipping address"
+msgstr ""
+
+#: patterns/hidden-page-order-details.php
+msgid "Billing address"
+msgstr ""
+
+#: patterns/hidden-page-order-details.php
+msgid "Additional information"
+msgstr ""
+
+#: patterns/hidden-page-order-details.php
+msgctxt "Pattern title"
+msgid "Order details"
+msgstr ""
+
+#: patterns/hidden-page-order-details.php
+msgctxt "Pattern description"
+msgid "Order confirmation details: order totals, downloads, billing and shipping address and additional information, each under its own heading."
+msgstr ""
+
+#: patterns/hidden-page-post-author.php
+msgid "About the author"
+msgstr ""
+
+#: patterns/hidden-page-post-author.php
+msgctxt "Pattern title"
+msgid "About the author"
+msgstr ""
+
+#: patterns/hidden-page-post-author.php
+msgctxt "Pattern description"
+msgid "Author box below a single post, a calm tinted panel with the medium radius: a heading, the linked name of the author, the biographical info of the profile and, when a plugin names one, a link to how the site works. No avatar, so no request goes to Gravatar."
+msgstr ""
+
+#: patterns/hidden-page-post-byline.php
+msgctxt "post author"
+msgid "By"
+msgstr ""
+
+#: patterns/hidden-page-post-byline.php
+msgid "Published %s"
+msgstr ""
+
+#: patterns/hidden-page-post-byline.php
+msgid "Updated %s"
+msgstr ""
+
+#: patterns/hidden-page-post-byline.php
+msgid "Reading time"
+msgstr ""
+
+#: patterns/hidden-page-post-byline.php
+msgctxt "Pattern title"
+msgid "Post byline"
+msgstr ""
+
+#: patterns/hidden-page-post-byline.php
+msgctxt "Pattern description"
+msgid "Byline for single posts with linked author, labelled publish and update dates and reading time, on one line where it fits, the parts divided by middle dots."
+msgstr ""
+
+#: patterns/hidden-page-post-card.php
+msgctxt "Pattern title"
+msgid "Post card"
+msgstr ""
+
+#: patterns/hidden-page-post-card.php
+msgctxt "Pattern description"
+msgid "One post in a post grid: 16:9 featured image, category, title, excerpt and date. The title is the one link and covers the whole card; the category links stay their own targets."
+msgstr ""
+
+#: patterns/hidden-page-post-navigation.php
+msgid "More articles"
+msgstr ""
+
+#: patterns/hidden-page-post-navigation.php
+msgid "Previous article:"
+msgstr ""
+
+#: patterns/hidden-page-post-navigation.php
+msgid "Next article:"
+msgstr ""
+
+#: patterns/hidden-page-post-navigation.php
+msgctxt "Pattern title"
+msgid "Post navigation"
+msgstr ""
+
+#: patterns/hidden-page-post-navigation.php
+msgctxt "Pattern description"
+msgid "Links to the previous and the next post below a single post, each named with its direction and the post title."
+msgstr ""
+
+#: patterns/hidden-page-product-details.php
+msgid "You may also like"
+msgstr ""
+
+#: patterns/hidden-page-product-details.php
+msgid "Related products"
+msgstr ""
+
+#: patterns/hidden-page-product-details.php
+msgctxt "Pattern title"
+msgid "Product details"
+msgstr ""
+
+#: patterns/hidden-page-product-details.php
+msgctxt "Pattern description"
+msgid "Below the product summary: the WooCommerce product tabs (description, additional information, reviews and tabs added by plugins), then upsells and related products with image, title and price, without a buy button."
+msgstr ""
+
+#: patterns/hidden-page-read-more.php
+msgid "Continue reading"
+msgstr ""
+
+#: patterns/hidden-page-read-more.php
+msgctxt "Pattern title"
+msgid "Continue reading link"
+msgstr ""
+
+#: patterns/hidden-page-read-more.php
+msgctxt "Pattern description"
+msgid "Link to the full post below its excerpt in the search results. Core adds the post title for screen readers."
+msgstr ""
+
+#: patterns/hidden-page-related-posts.php
+msgid "Related articles"
+msgstr ""
+
+#: patterns/hidden-page-related-posts.php
+msgctxt "Pattern title"
+msgid "Related posts"
+msgstr ""
+
+#: patterns/hidden-page-related-posts.php
+msgctxt "Pattern description"
+msgid "Up to three other posts from the categories of the current post below a single post, as cards with featured image, category, linked title, excerpt and date, in three columns from tablet width and one on phones. Renders nothing when there are none."
+msgstr ""
+
+#: patterns/hidden-page-shop-filters.php
+msgid "Filters"
+msgstr ""
+
+#: patterns/hidden-page-shop-filters.php
+msgid "Clear filters"
+msgstr ""
+
+#: patterns/hidden-page-shop-filters.php
+msgid "Price"
+msgstr ""
+
+#: patterns/hidden-page-shop-filters.php
+msgid "Category"
+msgstr ""
+
+#: patterns/hidden-page-shop-filters.php
+msgid "Availability"
+msgstr ""
+
+#: patterns/hidden-page-shop-filters.php
+msgctxt "Pattern title"
+msgid "Shop filters"
+msgstr ""
+
+#: patterns/hidden-page-shop-filters.php
+msgctxt "Pattern description"
+msgid "WooCommerce product filters for the shop and its archives: active filters with a clear button, price, category and availability."
+msgstr ""
+
+#: patterns/hidden-page-sidebar.php
+msgid "Essays, projects and notes on building things that last."
+msgstr ""
+
+#: patterns/hidden-page-sidebar.php
+msgid "Latest posts"
+msgstr ""
+
+#: patterns/hidden-page-sidebar.php
+msgctxt "Pattern title"
+msgid "Sidebar"
+msgstr ""
+
+#: patterns/hidden-page-sidebar.php
+msgctxt "Pattern description"
+msgid "Sidebar content with a short about text, the category list and the latest posts."
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Three monthly plans, the scope of each in writing."
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Prices in euros per month, billed yearly, excluding VAT."
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "For small teams"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Care"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "€290"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "per month, billed yearly"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "One website"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Updates and backups every week"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Two hours of changes a month"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Reply within two working days"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Choose Care"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Most popular"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Growth"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "€690"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Up to three websites"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Six hours of design and development a month"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "A review of goals and results each quarter"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Reply within one working day"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Choose Growth"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "For larger organizations"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Partner"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "€1,490"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Up to ten websites"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Fifteen hours of work a month"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Accessibility and speed audit twice a year"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "A named contact and a monthly call"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Choose Partner"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgid "Every plan runs month to month after the first year. Unused hours carry over for one month."
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgctxt "Pattern title"
+msgid "Pricing, three plans"
+msgstr ""
+
+#: patterns/offer-pricing-3.php
+msgctxt "Pattern description"
+msgid "Three static plan cards with price, billing period, check list and button, the middle plan framed in the accent color and marked as most popular, with a VAT note above and a note on terms below. Use on pricing and product pages."
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "[Organization name] wants its website to be usable by everyone. This statement applies to [domain, for example www.example.org] and was prepared on [date]."
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "Compliance status"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "This website is [fully / partially / not] compliant with the requirements of [BITV 2.0 / the European Accessibility Act], which refer to the harmonised standard EN 301 549 and to WCAG 2.1 level AA. [Keep the sentence that applies and delete the others.]"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "Content that is not accessible"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "The following content is not yet accessible, for the reasons given:"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "[Content, for example PDF documents published before 2024]: [reason, for example disproportionate burden or not yet fixed]. [Accessible alternative, for example: send us a message and we will provide the information in another format.]"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "[Content from third parties, for example embedded maps or videos]: [reason]. [Accessible alternative.]"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "How this statement was prepared"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "The assessment is based on [a self-assessment / a test by an external testing body, name] carried out on [date]. The statement was last reviewed on [date]."
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "Feedback and contact"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "Have you found a barrier on this website, or do you need content in another format? Please tell us. We will reply within [number] weeks."
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "Email: [address]"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "Phone: [number]"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "Post: [postal address]"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "Enforcement procedure"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgid "If you are not satisfied with our answer, you can contact [the responsible conciliation body or market surveillance authority, name, address, website]. The procedure is free of charge and you do not need a lawyer."
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgctxt "Pattern title"
+msgid "Accessibility statement"
+msgstr ""
+
+#: patterns/page-accessibility-statement.php
+msgctxt "Pattern description"
+msgid "Template for an accessibility statement with the details BITV 2.0 and the European Accessibility Act ask for: scope, compliance status, content that is not accessible, how the statement was prepared, feedback contact and enforcement procedure. Replace every text in square brackets before publishing."
+msgstr ""
+
+#: patterns/proof-logos.php
+msgid "Trusted by teams at"
+msgstr ""
+
+#: patterns/proof-logos.php
+msgid "Brinnel and Co"
+msgstr ""
+
+#: patterns/proof-logos.php
+msgctxt "Pattern title"
+msgid "Client logos"
+msgstr ""
+
+#: patterns/proof-logos.php
+msgctxt "Pattern description"
+msgid "A small label next to a row of five client logos on a tinted band. Use as a quiet pause between larger sections, for example right after the hero."
+msgstr ""
+
+#: patterns/proof-team.php
+msgid "The studio"
+msgstr ""
+
+#: patterns/proof-team.php
+msgid "Four people, no hand-offs between them and you."
+msgstr ""
+
+#: patterns/proof-team.php
+msgid "The people in your first call are the people who build your site. Between us we cover strategy, editorial design, engineering and plain-language writing."
+msgstr ""
+
+#: patterns/proof-team.php
+msgid "Lea Marwitz"
+msgstr ""
+
+#: patterns/proof-team.php
+msgid "Founder and strategy lead"
+msgstr ""
+
+#: patterns/proof-team.php
+msgid "Daniel Okafor"
+msgstr ""
+
+#: patterns/proof-team.php
+msgid "Lead engineer"
+msgstr ""
+
+#: patterns/proof-team.php
+msgid "Sofie Brandauer"
+msgstr ""
+
+#: patterns/proof-team.php
+msgid "Editorial designer"
+msgstr ""
+
+#: patterns/proof-team.php
+msgid "Kenji Arai"
+msgstr ""
+
+#: patterns/proof-team.php
+msgid "Content and accessibility"
+msgstr ""
+
+#: patterns/proof-team.php
+msgctxt "Pattern title"
+msgid "Team"
+msgstr ""
+
+#: patterns/proof-team.php
+msgctxt "Pattern description"
+msgid "Heading and intro above four people with portrait, name and role on one line, four across on wide screens and two by two on narrower ones, never three and one. Use on about or company pages to introduce the people behind the work."
+msgstr ""
+
+#: patterns/proof-testimonial.php
+msgid "Client story"
+msgstr ""
+
+#: patterns/proof-testimonial.php
+msgid "They talked us out of half the pages we asked for. A year on, enquiries are up by a third and our own team runs the site without calling anyone."
+msgstr ""
+
+#: patterns/proof-testimonial.php
+msgid "Jonas Edler"
+msgstr ""
+
+#: patterns/proof-testimonial.php
+msgid "Director of Communications, Kolmar Works"
+msgstr ""
+
+#: patterns/proof-testimonial.php
+msgctxt "Pattern title"
+msgid "Testimonial"
+msgstr ""
+
+#: patterns/proof-testimonial.php
+msgctxt "Pattern description"
+msgid "One large client quote with name, role and a round portrait on a dark band that stays dark in every palette. Use once per page to let a single strong voice break up lighter sections."
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgid "Testimonials"
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgid "Clients tend to stay. Here is why."
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgid "The brief said redesign. What we got was a site our twelve regional offices now update themselves, in one voice, without a single support ticket in the first quarter."
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgid "Ilse Brandt"
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgid "Head of Digital, Halvera"
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgid "Clear estimates, honest pushback and a launch on the date they named in the first week."
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgid "Tomás Reyes"
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgid "Founder, Marlow Fenn"
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgid "Our membership page used to be the slowest on the site. It is now the fastest, and almost twice as many visitors finish the form."
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgid "Annika Holm"
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgid "Membership Manager, Tervane"
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgctxt "Pattern title"
+msgid "Testimonials grid"
+msgstr ""
+
+#: patterns/proof-testimonials-grid.php
+msgctxt "Pattern description"
+msgid "Heading with one large and two shorter client quotes on a dark background. Use on landing or service pages to show several voices at once."
+msgstr ""
+
+#: patterns/proof-trust-strip.php
+msgid "Tested against WCAG 2.2 AA"
+msgstr ""
+
+#: patterns/proof-trust-strip.php
+msgid "Hosted in the European Union"
+msgstr ""
+
+#: patterns/proof-trust-strip.php
+msgid "Data processing agreement included"
+msgstr ""
+
+#: patterns/proof-trust-strip.php
+msgid "Support answered by developers"
+msgstr ""
+
+#: patterns/proof-trust-strip.php
+msgid "Full ownership of code and content"
+msgstr ""
+
+#: patterns/proof-trust-strip.php
+msgctxt "Pattern title"
+msgid "Trust strip"
+msgstr ""
+
+#: patterns/proof-trust-strip.php
+msgctxt "Pattern description"
+msgid "A slim ink band with four to five short facts in a row, each with a decorative check mark. Use right below a hero or above pricing to answer common doubts at a glance."
+msgstr ""
+
+#: patterns/shop-bestsellers.php
+msgid "Our customers’ favourites"
+msgstr ""
+
+#: patterns/shop-bestsellers.php
+msgid "The pieces people order again and again, and give as gifts."
+msgstr ""
+
+#: patterns/shop-bestsellers.php
+msgid "Browse the whole shop"
+msgstr ""
+
+#: patterns/shop-bestsellers.php
+msgctxt "Pattern title"
+msgid "Bestsellers"
+msgstr ""
+
+#: patterns/shop-bestsellers.php
+msgctxt "Pattern description"
+msgid "Heading, a short line and a link to the shop above the four products that sell best, in a grid with image, name, price and add to cart button. Use on a shop home page to show what other customers choose."
+msgstr ""
+
+#: patterns/shop-category-tiles.php
+msgid "Shop by category"
+msgstr ""
+
+#: patterns/shop-category-tiles.php
+msgctxt "Pattern title"
+msgid "Shop category tiles"
+msgstr ""
+
+#: patterns/shop-category-tiles.php
+msgctxt "Pattern description"
+msgid "Heading above one tile per product category of the shop, three across on wide screens, each with the image of the category when it has one, the linked category name and its description. The tiles follow the categories of the shop on their own. Use on a shop home page to lead visitors into the range."
+msgstr ""
+
+#: patterns/shop-legal-guarantee.php
+msgctxt "Pattern title"
+msgid "Legal guarantee notice"
+msgstr ""
+
+#: patterns/shop-legal-guarantee.php
+msgctxt "Pattern description"
+msgid "The EU notice on the legal guarantee from Germanized, as a disclosure with a text summary, the official label and a link to europa.eu. Shows only while the notice is switched on in Germanized and the product is not virtual. Available only while Germanized is active. Use in the single product template below the add to cart form."
+msgstr ""
+
+#: patterns/shop-legal-info.php
+msgctxt "Pattern title"
+msgid "Legal price information"
+msgstr ""
+
+#: patterns/shop-legal-info.php
+msgctxt "Pattern description"
+msgid "The price information German law asks for next to a product price: tax note (incl. VAT), shipping note with a link to the shipping costs, unit price and delivery time, from the blocks of Germanized. Available only while Germanized is active. Use below the price in a product template or a product grid."
+msgstr ""
+
+#: patterns/shop-new-arrivals.php
+msgid "New in the shop"
+msgstr ""
+
+#: patterns/shop-new-arrivals.php
+msgid "Fresh from the workshops this month, in small runs while they last."
+msgstr ""
+
+#: patterns/shop-new-arrivals.php
+msgid "See all new products"
+msgstr ""
+
+#: patterns/shop-new-arrivals.php
+msgctxt "Pattern title"
+msgid "New arrivals"
+msgstr ""
+
+#: patterns/shop-new-arrivals.php
+msgctxt "Pattern description"
+msgid "Heading, a short line and a link to the full range above the four newest products in a grid, each with image, name, price and add to cart button; four across on wide screens. Use on a shop home page or above the footer of a category page."
+msgstr ""
+
+#: patterns/shop-product-hero.php
+msgid "Small workshops, made to last"
+msgstr ""
+
+#: patterns/shop-product-hero.php
+msgid "Everyday objects you will keep for years."
+msgstr ""
+
+#: patterns/shop-product-hero.php
+msgid "Stoneware, linen, oak and paper from makers we visit ourselves. Every piece is checked by hand before it leaves our workshop."
+msgstr ""
+
+#: patterns/shop-product-hero.php
+msgid "Shop the collection"
+msgstr ""
+
+#: patterns/shop-product-hero.php
+msgid "Meet the makers"
+msgstr ""
+
+#: patterns/shop-product-hero.php
+msgctxt "Pattern title"
+msgid "Shop hero with product"
+msgstr ""
+
+#: patterns/shop-product-hero.php
+msgctxt "Pattern description"
+msgid "Two-column shop intro: eyebrow, heading, lead text and two buttons on the left, the newest product of the shop on the right with its image, name, price and add to cart button. Use as the first section of a shop home page."
+msgstr ""
+
+#: patterns/shop-trust-badges.php
+msgid "Shop with confidence"
+msgstr ""
+
+#: patterns/shop-trust-badges.php
+msgid "Every page of the checkout is encrypted, and we never store card numbers."
+msgstr ""
+
+#: patterns/shop-trust-badges.php
+msgid "Payment methods"
+msgstr ""
+
+#: patterns/shop-trust-badges.php
+msgid "Invoice, SEPA direct debit, credit card, PayPal and Apple Pay."
+msgstr ""
+
+#: patterns/shop-trust-badges.php
+msgid "Ships from Germany"
+msgstr ""
+
+#: patterns/shop-trust-badges.php
+msgid "Packed in our workshop in Leipzig, with recycled packaging only."
+msgstr ""
+
+#: patterns/shop-trust-badges.php
+msgid "Real people in support"
+msgstr ""
+
+#: patterns/shop-trust-badges.php
+msgid "Write to us and get an answer within one working day."
+msgstr ""
+
+#: patterns/shop-trust-badges.php
+msgctxt "Pattern title"
+msgid "Shop trust badges"
+msgstr ""
+
+#: patterns/shop-trust-badges.php
+msgctxt "Pattern description"
+msgid "Heading above four trust facts with a fine line on top, four across on wide screens: secure checkout, the payment methods as plain text, where orders ship from and how fast support answers. No logos of payment providers or seal issuers. Use on shop pages near the product grid or before the footer."
+msgstr ""
+
+#: patterns/shop-usp-bar.php
+msgid "Free shipping from 50 euros"
+msgstr ""
+
+#: patterns/shop-usp-bar.php
+msgid "Delivered within Germany in two to four working days."
+msgstr ""
+
+#: patterns/shop-usp-bar.php
+msgid "30 days to return"
+msgstr ""
+
+#: patterns/shop-usp-bar.php
+msgid "Send it back unused and get your money back, return label included."
+msgstr ""
+
+#: patterns/shop-usp-bar.php
+msgid "Pay the way you like"
+msgstr ""
+
+#: patterns/shop-usp-bar.php
+msgid "Invoice, SEPA direct debit, credit card or PayPal."
+msgstr ""
+
+#: patterns/shop-usp-bar.php
+msgctxt "Pattern title"
+msgid "Shop benefits bar"
+msgstr ""
+
+#: patterns/shop-usp-bar.php
+msgctxt "Pattern description"
+msgid "A slim ink band with three short shop promises side by side: shipping, returns and payment, each a small heading with one line of detail; payment methods are named as text, never as logos. Use right below a shop hero or above a product grid."
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "Recent work for clients who publish a lot"
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "Transport"
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "A help centre for a regional rail operator"
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "Four hundred pages of timetable and ticket help, rebuilt as one guide with search that understands station names."
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "Read the case study on the rail help centre"
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "Abstract composition of overlapping terracotta, green and grey panels"
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "Housing"
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "An annual report tenants actually open"
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "Plain language, three clear charts and a print edition for the general assembly, all from the same set of pages."
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "Read the case study on the housing annual report"
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "Publishing"
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "Twelve years of a members’ magazine, online"
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "Every issue since 2014 migrated and tagged, with a new issue template the editors run without outside help."
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgid "Read the case study on the magazine archive"
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgctxt "Pattern title"
+msgid "Three cards"
+msgstr ""
+
+#: patterns/teaser-cards-3.php
+msgctxt "Pattern description"
+msgid "Heading above three cards, each with image, label, title, short text and a link. Use to point to case studies, projects or key pages."
+msgstr ""
+
+#: patterns/teaser-editorial-grid.php patterns/teaser-posts-list.php
+msgid "From the journal"
+msgstr ""
+
+#: patterns/teaser-editorial-grid.php
+msgctxt "Pattern title"
+msgid "Editorial grid"
+msgstr ""
+
+#: patterns/teaser-editorial-grid.php
+msgctxt "Pattern description"
+msgid "Magazine front with the latest post large on two thirds of the width, with image, category, title and excerpt, and the next four posts as a text column beside it. Use on a home or journal page when one story should lead."
+msgstr ""
+
+#: patterns/teaser-featured-post.php
+msgid "Read article"
+msgstr ""
+
+#: patterns/teaser-featured-post.php
+msgctxt "Pattern title"
+msgid "Featured post"
+msgstr ""
+
+#: patterns/teaser-featured-post.php
+msgctxt "Pattern description"
+msgid "The sticky post as a wide band with image, category, title, excerpt and a link to the article. Use above a post list; it renders nothing while no post is sticky."
+msgstr ""
+
+#: patterns/teaser-front-page.php
+msgid "Today in Ashbury and the valley"
+msgstr ""
+
+#: patterns/teaser-front-page.php
+msgid "Updated through the day by the newsroom"
+msgstr ""
+
+#: patterns/teaser-front-page.php
+msgid "In brief"
+msgstr ""
+
+#: patterns/teaser-front-page.php
+msgid "More from the newsroom"
+msgstr ""
+
+#: patterns/teaser-front-page.php
+msgctxt "Pattern title"
+msgid "Front page"
+msgstr ""
+
+#: patterns/teaser-front-page.php
+msgctxt "Pattern description"
+msgid "Newspaper front page in three columns under a page heading: the sticky lead story wide with image, desk, headline, excerpt, author and date, beside it four headlines in brief and three more stories with small images. Use as the top of the home page of a news site that marks its lead story as sticky."
+msgstr ""
+
+#: patterns/teaser-icon-tiles.php
+msgid "Plan your visit"
+msgstr ""
+
+#: patterns/teaser-icon-tiles.php
+msgid "Everything you need before you come, one tap away."
+msgstr ""
+
+#: patterns/teaser-icon-tiles.php
+msgid "Getting here"
+msgstr ""
+
+#: patterns/teaser-icon-tiles.php
+msgid "Opening hours"
+msgstr ""
+
+#: patterns/teaser-icon-tiles.php
+msgid "Guided tours"
+msgstr ""
+
+#: patterns/teaser-icon-tiles.php
+msgid "Contact and booking"
+msgstr ""
+
+#: patterns/teaser-icon-tiles.php
+msgctxt "Pattern title"
+msgid "Icon tiles"
+msgstr ""
+
+#: patterns/teaser-icon-tiles.php
+msgctxt "Pattern description"
+msgid "Heading and a short intro above four tiles, each with an icon and a title that links to its page; the whole tile is one link. Two across on phones, up to four across on wide screens. Use for a short menu of topics or services, such as the ways to plan a visit."
+msgstr ""
+
+#: patterns/teaser-posts-badge.php
+msgid "Notes from the team"
+msgstr ""
+
+#: patterns/teaser-posts-badge.php
+msgctxt "Pattern title"
+msgid "Posts with category badges"
+msgstr ""
+
+#: patterns/teaser-posts-badge.php
+msgctxt "Pattern description"
+msgid "The three latest posts in a grid, each with its category as a badge on the featured image, a linked title, the date and the reading time. Use on product or landing pages to point to recent articles."
+msgstr ""
+
+#: patterns/teaser-posts-grid.php
+msgid "Latest articles"
+msgstr ""
+
+#: patterns/teaser-posts-grid.php
+msgctxt "Pattern title"
+msgid "Posts grid"
+msgstr ""
+
+#: patterns/teaser-posts-grid.php
+msgctxt "Pattern description"
+msgid "Heading above the six latest posts in three columns, each with image, category, title, short excerpt and date. Use on a home or landing page to point readers to recent writing."
+msgstr ""
+
+#: patterns/teaser-posts-list.php
+msgctxt "Pattern title"
+msgid "Posts list"
+msgstr ""
+
+#: patterns/teaser-posts-list.php
+msgctxt "Pattern description"
+msgid "Heading above the five latest posts as a ruled list with the date on the left and title and excerpt on the right. Use where text matters more than images, such as a journal or news section."
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "What we can do for your website"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "Four services that work on their own or together. Most clients start with an audit and decide on the rest once they see the findings."
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "01"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "Content audits"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "We read every page you have, count what gets used and tell you what to keep, merge or retire."
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "Learn more about content audits"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "02"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "Site structure"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "Navigation, page types and URLs planned around the questions your readers arrive with."
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "Learn more about site structure"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "03"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "Theme development"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "A block theme built on core features, so your editors change layouts without touching code."
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "Learn more about theme development"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "04"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "Editor training"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "Half-day sessions for the people who publish, using your own pages instead of a demo site."
+msgstr ""
+
+#: patterns/teaser-services.php
+msgid "Learn more about editor training"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgctxt "Pattern title"
+msgid "Services"
+msgstr ""
+
+#: patterns/teaser-services.php
+msgctxt "Pattern description"
+msgid "Heading and lead text above four numbered services, each with a short description and a link to its page, four across on wide screens and two by two on narrower ones, never three and one. Use on a home or company page to show what you offer."
+msgstr ""
+
+#: style.css
+msgid "https://leitvia.com"
+msgstr ""
+
+#: style.css
+msgid "Leitvia is an AI-first block theme built on semantic design tokens. Every pattern uses roles instead of values, so style variations, AI agents and editors can change the whole design without breaking layout or accessibility. Warm editorial by default, flexible from personal blogs to large corporate sites."
+msgstr ""
+
+#: style.css
+msgid "Patrick Schlesinger, CMS ADMINS"
+msgstr ""
+
+#: style.css
+msgid "https://cms-admins.de"
+msgstr ""
+
+#: styles/colors/clay.json
+msgctxt "Style variation name"
+msgid "Clay Colors"
+msgstr ""
+
+#: styles/colors/clay.json
+msgctxt "Style variation description"
+msgid "A brick red accent on warm off-white, for craft, architecture, food and culture sites."
+msgstr ""
+
+#: styles/colors/clay.json styles/colors/night.json styles/colors/sage.json styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/warm-editorial-dark.json theme.json
+msgctxt "Color name"
+msgid "Surface"
+msgstr ""
+
+#: styles/colors/clay.json styles/colors/night.json styles/colors/sage.json styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/warm-editorial-dark.json theme.json
+msgctxt "Color name"
+msgid "Surface alternate"
+msgstr ""
+
+#: styles/colors/clay.json styles/colors/night.json styles/colors/sage.json styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/warm-editorial-dark.json theme.json
+msgctxt "Color name"
+msgid "Ink"
+msgstr ""
+
+#: styles/colors/clay.json styles/colors/night.json styles/colors/sage.json styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/warm-editorial-dark.json theme.json
+msgctxt "Color name"
+msgid "Ink muted"
+msgstr ""
+
+#: styles/colors/clay.json styles/colors/night.json styles/colors/sage.json styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/warm-editorial-dark.json theme.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr ""
+
+#: styles/colors/clay.json styles/colors/night.json styles/colors/sage.json styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/warm-editorial-dark.json theme.json
+msgctxt "Color name"
+msgid "On accent"
+msgstr ""
+
+#: styles/colors/clay.json styles/colors/night.json styles/colors/sage.json styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/warm-editorial-dark.json theme.json
+msgctxt "Color name"
+msgid "Stroke"
+msgstr ""
+
+#: styles/colors/clay.json styles/colors/night.json styles/colors/sage.json styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/warm-editorial-dark.json theme.json
+msgctxt "Color name"
+msgid "Focus"
+msgstr ""
+
+#: styles/colors/clay.json styles/colors/night.json styles/colors/sage.json styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/warm-editorial-dark.json theme.json
+msgctxt "Color name"
+msgid "Success"
+msgstr ""
+
+#: styles/colors/clay.json styles/colors/night.json styles/colors/sage.json styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/warm-editorial-dark.json theme.json
+msgctxt "Color name"
+msgid "Warning"
+msgstr ""
+
+#: styles/colors/clay.json styles/colors/night.json styles/colors/sage.json styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/warm-editorial-dark.json theme.json
+msgctxt "Color name"
+msgid "Danger"
+msgstr ""
+
+#: styles/colors/night.json
+msgctxt "Style variation name"
+msgid "Night Colors"
+msgstr ""
+
+#: styles/colors/night.json
+msgctxt "Style variation description"
+msgid "A dark palette in cool blue tones, for technology, music and evening event sites."
+msgstr ""
+
+#: styles/colors/sage.json
+msgctxt "Style variation name"
+msgid "Sage Colors"
+msgstr ""
+
+#: styles/colors/sage.json
+msgctxt "Style variation description"
+msgid "Muted sage green on a warm paper ground, for gardening, health, food and sustainability sites."
+msgstr ""
+
+#: styles/corporate-dark.json
+msgctxt "Style variation name"
+msgid "Corporate Dark"
+msgstr ""
+
+#: styles/corporate-dark.json
+msgctxt "Style variation description"
+msgid "IBM Plex on deep navy with a light blue accent, for product, technology and B2B sites that want a confident dark look."
+msgstr ""
+
+#: styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/typography/corporate.json styles/typography/swiss.json theme.json
+msgctxt "Font family name"
+msgid "Body"
+msgstr ""
+
+#: styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/typography/corporate.json styles/typography/swiss.json theme.json
+msgctxt "Font family name"
+msgid "Heading"
+msgstr ""
+
+#: styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/typography/corporate.json styles/typography/swiss.json theme.json
+msgctxt "Font family name"
+msgid "Mono"
+msgstr ""
+
+#: styles/corporate-dark.json styles/corporate-light.json styles/swiss-editorial-dark.json styles/swiss-editorial-light.json styles/typography/corporate.json styles/typography/swiss.json theme.json
+msgctxt "Font family name"
+msgid "UI"
+msgstr ""
+
+#: styles/corporate-light.json
+msgctxt "Style variation name"
+msgid "Corporate Light"
+msgstr ""
+
+#: styles/corporate-light.json
+msgctxt "Style variation description"
+msgid "IBM Plex on white with navy ink and a clear blue accent, for companies, institutions and service sites with a lot of structured content."
+msgstr ""
+
+#: styles/swiss-editorial-dark.json
+msgctxt "Style variation name"
+msgid "Swiss Editorial Dark"
+msgstr ""
+
+#: styles/swiss-editorial-dark.json
+msgctxt "Style variation description"
+msgid "Tight grotesk type, square corners and a coral red accent on near black, for studios and portfolios that put images first."
+msgstr ""
+
+#: styles/swiss-editorial-light.json
+msgctxt "Style variation name"
+msgid "Swiss Editorial Light"
+msgstr ""
+
+#: styles/swiss-editorial-light.json
+msgctxt "Style variation description"
+msgid "Tight grotesk type, square corners and a signal red accent on white, for studios, architects and editorial portfolios."
+msgstr ""
+
+#: styles/typography/corporate.json
+msgctxt "Style variation name"
+msgid "Corporate Typography"
+msgstr ""
+
+#: styles/typography/corporate.json
+msgctxt "Style variation description"
+msgid "IBM Plex Sans for headings and text with steady semibold headlines, for clear, systematic content."
+msgstr ""
+
+#: styles/typography/swiss.json
+msgctxt "Style variation name"
+msgid "Swiss Typography"
+msgstr ""
+
+#: styles/typography/swiss.json
+msgctxt "Style variation description"
+msgid "Inter Tight for headings and text with tight, bold headlines, for a clean and direct voice."
+msgstr ""
+
+#: styles/warm-editorial-dark.json
+msgctxt "Style variation name"
+msgid "Warm Editorial Dark"
+msgstr ""
+
+#: styles/warm-editorial-dark.json
+msgctxt "Style variation description"
+msgid "Serif headlines on deep umber with a soft jade accent, for magazines, journals and long reads that should stay calm after dark."
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Meta"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Body"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Lead"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Display"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2XS"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "XS"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "S"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "M"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "L"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "XL"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "2XL"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "3XL"
+msgstr ""
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "None"
+msgstr ""
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Pill"
+msgstr ""
+
+#: theme.json
+msgctxt "Border radius size name"
+msgid "Images"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Subtle"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Raised"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Landing page (no title)"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Documentation page"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page in easy language"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post closing"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Shop header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Checkout header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Checkout footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Navigation overlay"
+msgstr ""
