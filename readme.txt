@@ -3,10 +3,10 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.47
+Stable tag: 1.2.48
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, accessibility-ready, translation-ready, threaded-comments
+Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, translation-ready, threaded-comments
 
 An AI-first block theme built on semantic design tokens.
 
@@ -47,7 +47,7 @@ Any other slug is no preset of the theme and renders nothing; Studio rejects it 
 
 == Accessibility ==
 
-Leitvia is built to meet WCAG 2.2 level AA and the web requirements of BITV 2.0 / EN 301 549 (chapter 9, WCAG 2.1 AA), and it meets the WordPress.org accessibility-ready requirements:
+Leitvia is built to meet WCAG 2.2 level AA and the web requirements of BITV 2.0 / EN 301 549 (chapter 9, WCAG 2.1 AA), and it follows the accessibility requirements of WordPress.org for themes:
 
 * Skip link to the main content as the first focusable element, landmarks for header, navigation, main content and footer, one h1 per page and no skipped heading levels.
 * Every function works with the keyboard. Submenus open on click, Enter or Space, never on hover alone, report their state with aria-expanded and close with Escape, returning focus to their button. The mobile menu is a modal dialog that keeps focus inside until it is closed.
@@ -98,6 +98,9 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.48 =
+* The tag accessibility-ready is removed at the request of the WordPress.org theme review, so the theme can be listed before the separate accessibility review of the directory. Nothing in the theme changes: it is still tested with axe (WCAG 2.2 AA) and the BITV 2.0 suite, and accessibility.txt stays in the theme.
 
 = 1.2.47 =
 * Changes from the WordPress.org theme review: the readme has an Installation section, the theme ships languages/leitvia.pot for translators, and the license is declared as GPL-2.0-or-later in style.css and readme.
@@ -335,7 +338,7 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Button labels wrap between words, the headings of the shop USP bar are level 2.
 
 = 1.0.2 =
-* accessibility.txt describes how the theme is tested for accessibility, its screen reader text class and where to report problems, as WordPress.org asks of themes with the tag accessibility-ready.
+* accessibility.txt describes how the theme is tested for accessibility, its screen reader text class and where to report problems, in the format WordPress.org asks of themes.
 * The screenshot shows the current look with Newsreader headings.
 * Copyright notices for Newsreader and IBM Plex Mono under Resources.
 
