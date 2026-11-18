@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.50
+Stable tag: 1.2.51
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, translation-ready, threaded-comments
@@ -107,6 +107,11 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.51 =
+* Pagination under the query loops of the blog, archive, author, search and shop templates: the page numbers are 44 px targets set apart by a gap, the current page sits on the alternate surface, previous and next carry arrows. Thank you to Fahim Murshed of the WordPress.org theme review team for spotting it.
+* A centered block in the post content (a button, an image, an embed with the alignment Center) keeps the left edge of the text column and centers inside it; before, core moved it to the middle of the full column, to the right of the text.
+* The theme CSS stays under 43 KB as shipped (42 KB before).
 
 = 1.2.50 =
 * Two full-width bands with a ground of their own (a background color or gradient, the style Inverse, a cover) touch on every page template, not only on landing pages, so a dark band followed by a band on surface-alt leaves no strip of page background between them. Other blocks keep the block gap.

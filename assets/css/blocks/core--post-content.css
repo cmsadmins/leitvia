@@ -53,3 +53,17 @@ main:has(> .wp-block-post-content:last-child > .alignfull:last-child) {
 .page-template-page-docs .wp-block-post-content > .alignfull:is(.has-background, .is-style-inverse) {
 	padding-inline: var(--wp--preset--spacing--m);
 }
+
+/*
+ * Core centers an .aligncenter child with margin auto on both sides and the important flag, which beats the left
+ * justification of the content: a centered button or image moved to the middle of the full column, to the right of
+ * the text. Here the block takes the whole column and keeps the rest beyond the content size as padding on the end
+ * side, so its content box ends at the text column and centers inside it; a figure stacks image and caption. A
+ * template with a content size of its own (page-easy-language, 34rem) centers on the global 37rem, 1.5rem off.
+ */
+.wp-block-post-content.is-layout-constrained > .aligncenter {
+	display: grid;
+	justify-items: center;
+	max-width: none;
+	padding-inline-end: calc(100% - var(--wp--style--global--content-size));
+}
