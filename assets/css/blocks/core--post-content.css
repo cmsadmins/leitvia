@@ -1,8 +1,12 @@
 /*
  * Landing pages: full-width sections that follow each other touch, so colour bands meet without a strip of page background.
- * Every other block keeps the normal block gap.
+ * On every other template (page, single, docs and the rest) two full-width bands with a ground of their own (a
+ * background color or gradient, the style inverse, a cover) touch as well, so a dark band followed by a band on
+ * surface-alt leaves no strip of page background between them. A band next to a section on the page ground keeps the
+ * gap, which shows the page ground anyway. Every other block keeps the normal block gap.
  */
-.page-template-page-landing .wp-block-post-content > .alignfull + .alignfull {
+.page-template-page-landing .wp-block-post-content > .alignfull + .alignfull,
+.wp-block-post-content > .alignfull:is(.has-background, .is-style-inverse, .wp-block-cover) + .alignfull:is(.has-background, .is-style-inverse, .wp-block-cover) {
 	margin-block-start: 0;
 }
 

@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.49
+Stable tag: 1.2.50
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, translation-ready, threaded-comments
@@ -107,6 +107,10 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.50 =
+* Two full-width bands with a ground of their own (a background color or gradient, the style Inverse, a cover) touch on every page template, not only on landing pages, so a dark band followed by a band on surface-alt leaves no strip of page background between them. Other blocks keep the block gap.
+* The theme CSS stays under 42 KB as shipped (41 KB before).
 
 = 1.2.49 =
 * Gravity Forms takes the design tokens of the theme in both of its form themes, Orbital and Gravity Forms 2.5, in every style variation, on light sections as well as on dark and inverse bands: fields, labels, buttons, steps and error messages. Next and submit look like the buttons of the theme, back and save like an outline button, the active step has a second ring, and fields and buttons keep the double focus ring. The stylesheet (6.9 KB) loads only on pages with a form.
