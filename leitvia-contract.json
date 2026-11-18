@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.16",
+	"contractVersion": "1.13.17",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -22,7 +22,9 @@
 			"The page head (breadcrumbs, title, excerpt, byline, meta) starts on the same edge as the content, never centered above left-aligned text.",
 			"wide and full only on purpose: wide for media, card and product grids, tables and a sidebar beside the content (page-docs, archive-product); full for colour bands and edge-to-edge images. Inside a band, wide content keeps the wide edge.",
 			"Centered text only inside a band whose whole content is centered, such as hero-centered or cta-newsletter, never for the running text of a page.",
-			"Set width through layout settings (constrained, justifyContent left, align wide or full), never through a custom max-width or margin on a block. A band that narrows its text with contentSize keeps justifyContent left."
+			"Set width through layout settings (constrained, justifyContent left, align wide or full), never through a custom max-width or margin on a block. A band that narrows its text with contentSize keeps justifyContent left.",
+			"Full-width columns (cta-split) let an image column run to the screen edge; a text column next to it keeps the wide edge on its outer side by itself, so it takes no side padding of its own.",
+			"A grid with columnCount 4 and a minimumColumnWidth wraps four, two, one on the front end, never three and one."
 		]
 	},
 	"roles": {
@@ -503,7 +505,7 @@
 		{
 			"block": "core/group",
 			"name": "inverse",
-			"purpose": "Band that stays dark in every palette: ink with surface text in light palettes, surface-alt with ink text and a hairline in stroke in dark ones, so the band stands apart from the page. Use instead of an ink background; pairs in inversePairs.",
+			"purpose": "Band that stays dark in every palette: ink with surface text in light palettes, surface-alt with ink text and a hairline in stroke in dark ones, so the band stands apart from the page. Use instead of an ink background; pairs in inversePairs. On a group with backgroundColor surface (the stage patterns) the style wins on render, so className is-style-inverse alone makes a stage dark.",
 			"context": "Full-width section bands for calls to action or proof; at most one or two per page, never nested."
 		},
 		{
@@ -573,6 +575,12 @@
 			"context": "Lists where each item is one link to a file, named with format and size, followed by one sentence about the file; the pattern content-downloads uses it."
 		},
 		{
+			"block": "core/quote",
+			"name": "compact",
+			"purpose": "The same quote one size step smaller: body instead of lead, heading-m instead of heading-l, heading-s instead of heading-m.",
+			"context": "Quotes longer than about three lines, such as a testimonial with several sentences; short quotes keep the default."
+		},
+		{
 			"block": "core/site-logo",
 			"name": "on-dark",
 			"purpose": "Draws a dark logo with a transparent background in white, for dark bands.",
@@ -589,6 +597,12 @@
 			"name": "eyebrow",
 			"purpose": "Short uppercase label above a heading.",
 			"context": "Directly above a section heading, two to four words."
+		},
+		{
+			"block": "core/paragraph",
+			"name": "claim",
+			"purpose": "One claim or motto in the heading font, large and italic; size between lead and h2, color inherits, so it works on every band. It wins over a fontSize lead and a textColor ink-muted the paragraph brings along.",
+			"context": "One sentence per page at most, directly below the h1 of a stage or a section heading. It is no heading: a claim that names the topic of a section is an h2."
 		},
 		{
 			"block": "core/post-terms",
@@ -1213,6 +1227,45 @@
 			}
 		},
 		{
+			"slug": "leitvia/content-gallery",
+			"title": "Photo gallery",
+			"description": "Heading and a short lead above eight photos in an even grid, all in the same 4:3 frame, four across from tablet width and two on phones. Each photo opens whole in the lightbox. Use for many photos of one service or project; add images up to forty.",
+			"area": "content",
+			"useWhen": "Many photos of one service, project or place, from six to about forty, that need no text each. Add images with repeat and remove those you lack; keep a multiple of four, or of two on phones, so the last row is full. Captions stay off; a photo that needs words belongs in text and media.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "proof",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "4/3",
+					"displayWidth": "18rem",
+					"recommendedSize": "1200x900",
+					"count": 8,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "Three to five photos next to a text (use content-photo-collage), a product with its buy box (use a scroll gallery), or illustrations and plans that must be seen whole in the grid (the frame crops them).",
+				"a11y": "Every photo needs an alt text that says what it shows; the order in the document is the reading order. Each photo opens whole in the lightbox, which keeps focus, Escape and the buttons Previous and Next of core.",
+				"contentLength": {
+					"heading": [
+						20,
+						60
+					],
+					"text": [
+						60,
+						160
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/content-media-pair",
 			"title": "Offset image pair",
 			"description": "Heading and short introduction above two images of different size, the smaller one set lower, each with a caption. Use to show two sides of a project, a before and after or a detail next to the whole.",
@@ -1510,6 +1563,45 @@
 					],
 					"text": [
 						90,
+						130
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-steps-images",
+			"title": "Process steps with images",
+			"description": "Heading above four numbered steps side by side, each with a small image, a large number in the heading font, a title and one or two sentences; on narrow screens they stack one below the other. Use to show how a job runs in three to five steps when each step has a photo or a drawing, without a long section per step.",
+			"area": "content",
+			"useWhen": "Explaining how a job or service runs in three to five steps, each with a photo or a cut-out drawing of its own, on one screen instead of a section per step. Use remove or repeat on the columns; keep titles to a few words and the text to one or two sentences.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "4/3",
+					"displayWidth": "17rem",
+					"recommendedSize": "800x600",
+					"count": 4,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "Steps without images (use content-steps), more than five steps or steps that need a large photo and a long text each (use a scroll story of Leitvia Pro), or dated milestones (use content-timeline of Leitvia Studio).",
+				"a11y": "Step numbers are visible text before each h3, so the order survives when the columns stack. Photos need an alt text; a drawing that only decorates gets an empty alt and leitviaDecorative.",
+				"contentLength": {
+					"heading": [
+						25,
+						50
+					],
+					"text": [
+						60,
 						130
 					]
 				},
@@ -2030,7 +2122,7 @@
 		{
 			"slug": "leitvia/header-utility",
 			"title": "Header with service bar",
-			"description": "A slim dark bar above the header with opening hours on the left and a phone number and one more link on the right, then site logo and title, the main navigation and one button for the main action. Below 1024 px the menu items collapse behind the menu button; the button stays in the header and moves into the menu below 600 px. Use for practices, trades and services that people call before they visit.",
+			"description": "A slim dark bar above the header with opening hours on the left and a phone number and one more link on the right, then site logo and title, the main navigation and one button for the main action. Below 1024 px the menu items collapse behind the menu button; the button stays in the header and moves into the menu below 600 px. Below 600 px the bar keeps one line with the first link on its right, the phone number; the whole bar repeats at the end of the menu. Use for practices, trades and services that people call before they visit.",
 			"area": "header",
 			"useWhen": "Practices, trades, offices and services that people call or visit: opening hours and phone number on every page.",
 			"composition": {
@@ -2044,7 +2136,7 @@
 			"images": [],
 			"docs": {
 				"avoidWhen": "Online only businesses, or when the bar would repeat the same facts as the header; use header-cta.",
-				"a11y": "The bar is part of the banner landmark; its phone link uses tel: with the number in the link text. Labelled navigation with a menu button on small screens; the button stays reachable at every width, in the header or at the end of the menu.",
+				"a11y": "The bar is part of the banner landmark; its phone link uses tel: with the number in the link text. Labelled navigation with a menu button on small screens; the button stays reachable at every width, in the header or at the end of the menu, and so do the entries the bar drops below 600 px.",
 				"contentLength": {
 					"heading": null,
 					"text": null

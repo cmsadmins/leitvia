@@ -34,12 +34,24 @@ body {
 /*
  * Buttons of blocks and forms (contact form, load more, search, file) are element buttons without core/button. Ink on
  * an ink band would vanish, so they take the accent there like the fill button in core--button.css. Outline buttons
- * need nothing: their text and border inherit the band color (theme.json).
+ * need nothing: their text and border inherit the band color (theme.json). Hover: surface on ink and accent, an
+ * outline on inverse (core--button.css).
  */
-:is(.has-ink-background-color, .is-style-inverse) .wp-element-button:not(.wp-block-button__link, .has-background) {
+:is(.has-ink-background-color, .is-style-inverse) .wp-element-button:not(.wp-block-button__link, .has-background, :hover) {
 	border-color: var(--wp--preset--color--accent);
 	background-color: var(--wp--preset--color--accent);
 	color: var(--wp--preset--color--on-accent);
+}
+:is(.has-ink-background-color, .has-accent-background-color) .wp-element-button:not(.wp-block-button__link, .has-background):hover {
+	border-color: var(--wp--preset--color--surface);
+	background-color: var(--wp--preset--color--surface);
+	color: var(--wp--preset--color--ink);
+}
+.is-style-inverse .wp-element-button:not(.wp-block-button__link, .has-background):hover {
+	border-color: currentcolor;
+	background-color: transparent;
+	color: inherit;
+	text-decoration: underline;
 }
 
 /*
@@ -73,9 +85,13 @@ body {
 	--wp--style--root--padding-left: var(--wp--preset--spacing--m);
 }
 
-/* A band on ink or accent without a text color of its own reads in the pair of its ground, not in the ink of the page. */
+/* A band on ink or accent without a text color of its own reads in the pair of its ground, not in the ink of the page;
+   so does a card on surface in an inverse band (hero-overlap), which would take the light text of the band. */
 .has-ink-background-color:not(.has-text-color) {
 	color: var(--wp--preset--color--surface);
+}
+.is-style-inverse .has-surface-background-color:not(.has-text-color) {
+	color: var(--wp--preset--color--ink);
 }
 .has-accent-background-color:not(.has-text-color) {
 	color: var(--wp--preset--color--on-accent);
@@ -162,6 +178,23 @@ body {
 }
 
 /*
+ * Service bar (class leitvia-service-bar, pattern header-utility): below 600 px, in a header with a menu button, the bar
+ * keeps one line with the first entry of its right group, the phone number, centred. Opening hours, mail and the other
+ * links leave the bar but not the page: functions.php (header_action_in_overlay) copies the whole bar to the end of the
+ * menu. Without a menu button nothing is hidden and the bar wraps as before.
+ */
+@media (max-width: 599.98px) {
+	header:has(.wp-block-navigation__responsive-container-open) .leitvia-service-bar > .wp-block-group {
+		justify-content: center;
+
+		& > :not(:last-child),
+		& > .wp-block-group:last-child > :not(:first-child) {
+			display: none;
+		}
+	}
+}
+
+/*
  * Sticky header: the block styles Sticky header (every screen), Sticky header on large screens (600 px and wider, where
  * the navigation shows its items) and Sticky header on small screens (below 600 px, where the navigation is the menu
  * button), chosen on the outermost group of a header template part. Off by default. The template part element sticks,
@@ -191,6 +224,16 @@ body {
  * is set in either case. Use it as inset-block-start: calc(var(--leitvia-sticky-offset, 0px) + <gap>), with the 0px for
  * a site without this theme. The block option Position: Sticky of core gets it through the variable core adds to the
  * top of such a group, so its own top value stays; a group inside the header sticks with the header and does not.
+ *
+ * Phones: a service bar on top of the header (leitvia-service-bar, first child of the outermost group, one line below
+ * 600 px) scrolls away and only the row with logo and menu button sticks. The header sticks with a negative top of the
+ * height of the bar, --leitvia-sticky-hidden: measured by Leitvia Studio as --leitvia-service-bar-height, else the two
+ * paddings of the bar plus one line of the meta size at the line height 1.6 of the theme. The offset and the scroll padding shrink by
+ * as much, so jump targets stop below the row. Focus on a link of the bar brings the bar back (top 0) until focus
+ * leaves it, so a visitor tabbing back up sees it (WCAG 2.4.7, 2.4.11). Nothing animates and nothing changes size:
+ * no layout shift, nothing to turn off for reduced motion. A header that hides on the way down and shows on the way
+ * up would need a script watching the scroll direction and hides the menu button a visitor is looking for; the row
+ * stays put instead.
  */
 html {
 	--leitvia-sticky-offset: 0px;
@@ -204,13 +247,16 @@ html {
 	--wp-admin--admin-bar--position-offset: var(--leitvia-sticky-offset, 0px);
 }
 @media screen and (height >= 31.25rem) and (width > 20rem) and (width < 37.5rem) {
+	html:not(:has(.leitvia-service-bar :focus)):has(.wp-site-blocks > header > * > .leitvia-service-bar:first-child ~ * .wp-block-navigation__responsive-container-open) {
+		--leitvia-sticky-hidden: var(--leitvia-service-bar-height, calc(2 * var(--wp--preset--spacing--xs) + 1.6 * var(--wp--preset--font-size--meta)));
+	}
 	html:not([style*="font-size"], [data-leitvia-header-tall]) .wp-site-blocks > header:has(> :is(.is-style-sticky-header, .is-style-sticky-header-mobile)) {
 		position: sticky;
-		top: 0;
+		top: calc(0px - var(--leitvia-sticky-hidden, 0px));
 		z-index: 60;
 	}
 	html:not([style*="font-size"], [data-leitvia-header-tall]):has(.wp-site-blocks > header > :is(.is-style-sticky-header, .is-style-sticky-header-mobile)) {
-		--leitvia-sticky-offset: var(--leitvia-sticky-header-height, max(25vh, 13rem));
+		--leitvia-sticky-offset: calc(var(--leitvia-sticky-header-height, max(25vh, 13rem)) - var(--leitvia-sticky-hidden, 0px));
 		scroll-padding-top: calc(var(--leitvia-sticky-offset) + var(--wp--preset--spacing--xs));
 	}
 }

@@ -7,6 +7,11 @@
 	background-color: inherit;
 }
 
+/* Inverse covers dim any photo by at least 70 % (50 % left 3.9:1, inverse-sections.spec.mjs). */
+.wp-block-cover.is-style-inverse > .wp-block-cover__background.has-background-dim:not([class*="-background-color"]):not(.has-background-dim-70, .has-background-dim-80, .has-background-dim-90, .has-background-dim-100) {
+	opacity: 0.7;
+}
+
 /* A cover inside the content takes the media radius of the token set (radius.media); a full-width band keeps square
    edges. */
 .wp-block-cover:not(.alignfull) {

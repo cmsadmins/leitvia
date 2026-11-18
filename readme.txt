@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.48
+Stable tag: 1.2.49
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, translation-ready, threaded-comments
@@ -74,6 +74,15 @@ Leitvia supports WooCommerce with block templates, template parts, patterns and 
 
 The theme adds no shop functions of its own: no shortcodes, no template overrides in a woocommerce folder and no JavaScript. Cart, checkout and payment are WooCommerce blocks.
 
+== Gravity Forms ==
+
+Leitvia styles Gravity Forms in both of its form themes, Orbital and Gravity Forms 2.5. The plugin is not required: without it the theme loads none of this.
+
+* Fields, labels, buttons, steps and error messages take the design tokens of the theme in every style variation, on light sections as well as on dark and inverse ones. Next and submit look like the buttons of the theme, back and save like an outline button.
+* Fields and buttons keep the double focus ring and reach WCAG 2.2 AA contrast.
+* Colors picked in the form block of Gravity Forms do not apply, the style variation of the site decides. This also holds for the look of image choice fields set in the block, which keep the default of Gravity Forms.
+* The stylesheet ships with the theme and loads only on pages with a form.
+
 == Polylang ==
 
 Leitvia works with Polylang for multilingual sites. Polylang translates posts and pages, but its free version does not translate template parts. While a visitor views a language other than the default language, the theme shows the template part with the language code appended to its slug in place of the original, if it exists: header-de for header, footer-fr for footer. Create these parts in the Site Editor. Without Polylang or without such a part nothing changes. The language switcher blocks of Polylang take the link, navigation and focus styles of the theme.
@@ -98,6 +107,21 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.49 =
+* Gravity Forms takes the design tokens of the theme in both of its form themes, Orbital and Gravity Forms 2.5, in every style variation, on light sections as well as on dark and inverse bands: fields, labels, buttons, steps and error messages. Next and submit look like the buttons of the theme, back and save like an outline button, the active step has a second ring, and fields and buttons keep the double focus ring. The stylesheet (6.9 KB) loads only on pages with a form.
+* The theme turns off the styles Gravity Forms prints for each form (styles set to false on gform_pre_render), so the style variation of the site decides. Colors picked in the form block of Gravity Forms no longer apply, and image choice fields keep the default look of Gravity Forms instead of the one picked in the block.
+* An inverse cover keeps its overlay at 70 % or more, so white text stays readable on a light photo.
+* Hover stays visible on dark, accent and inverse bands in every palette: on an inverse band a button turns into an outline in the band color, on an accent band a fill button takes the on-accent pair. Element buttons of forms and the buttons of Gravity Forms follow the same rules.
+* New patterns Photo gallery (content-gallery), eight photos in an even 4:3 grid that open whole in the lightbox, and Process steps with images (content-steps-images), four numbered steps with a small image each.
+* Paragraph style Claim for one motto in the large italic of the heading font, sized between lead and h2, with the color of the band. Quote style Compact sets a longer quote one size step smaller.
+* Header with service bar (header-utility): below 600 px the bar keeps one line with the phone link, the whole bar repeats at the end of the menu, and the menu button is 44 × 44 px.
+* The style Inverse wins over the surface ground of a stage pattern, on the page and in the editor, and a card on an inverse band takes the ink color.
+* Grids of four columns wrap four, two, one instead of three and one. In full-width columns (cta-split) the text column stays on the content edge, also with Media right.
+* Dark bands (service bar, Inverse, Ink, Accent): the focus ring of a link takes the text color of the band, and eyebrows, accent and muted text take the band color, so every pair passes WCAG 2.2 AA.
+* One motion per site: every pattern fades in instead of rising, striking effects use mask only, and no pattern sets a strength of its own, so the duration comes from the site setting.
+* The theme CSS stays under 41 KB as shipped, the stylesheet of Gravity Forms at 6.9 KB.
+* Contract 1.13.17: styles Claim and Compact, patterns content-gallery and content-steps-images, rules for full-width columns and grids of four, new description of header-utility.
 
 = 1.2.48 =
 * The tag accessibility-ready is removed at the request of the WordPress.org theme review, so the theme can be listed before the separate accessibility review of the directory. Nothing in the theme changes: it is still tested with axe (WCAG 2.2 AA) and the BITV 2.0 suite, and accessibility.txt stays in the theme.

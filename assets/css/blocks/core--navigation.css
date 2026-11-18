@@ -123,9 +123,38 @@
 		padding: var(--wp--preset--spacing--xs) 0 0;
 	}
 }
-/* The copy of the header button at the end of the menu, see header_action_in_overlay() in functions.php. */
-.wp-block-navigation__responsive-container:not(.is-menu-open) .leitvia-overlay-action {
+/*
+ * The copies of the header button and of the service bar at the end of the menu, see header_action_in_overlay() in
+ * functions.php. The bar becomes a centred column in body size below the button, its links 44 px high.
+ */
+.wp-block-navigation__responsive-container:not(.is-menu-open) :is(.leitvia-overlay-action, .leitvia-overlay-service) {
 	display: none;
+}
+.leitvia-overlay-service {
+	margin-top: var(--wp--preset--spacing--m);
+	font-size: var(--wp--preset--font-size--body);
+	text-align: center;
+
+	& .wp-block-group {
+		flex-direction: column;
+		align-items: center;
+		gap: var(--wp--preset--spacing--xxs);
+	}
+	& p {
+		margin: 0;
+	}
+	& a {
+		display: inline-flex;
+		align-items: center;
+		min-height: 2.75rem;
+	}
+}
+/* Menu button: 44 px target (WCAG 2.5.5) around the 24 px icon of core, like the close button below. */
+.wp-block-navigation__responsive-container-open {
+	min-width: 2.75rem;
+	min-height: 2.75rem;
+	justify-content: center;
+	align-items: center;
 }
 /* Overlay part (parts/navigation-overlay.html): close button, submenu toggles next to their labels. */
 .wp-block-navigation-overlay-close {

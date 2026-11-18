@@ -22,8 +22,8 @@
 			<!-- /wp:image -->
 		</div>
 		<!-- /wp:column -->
-		<!-- wp:column {"verticalAlignment":"bottom","width":"42%","style":{"spacing":{"padding":{"right":"var:preset|spacing|m","left":"var:preset|spacing|m"}}}} -->
-		<div class="wp-block-column is-vertically-aligned-bottom" style="padding-right:var(--wp--preset--spacing--m);padding-left:var(--wp--preset--spacing--m);flex-basis:42%">
+		<!-- wp:column {"verticalAlignment":"bottom","width":"42%"} -->
+		<div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:42%">
 			<!-- wp:group {"layout":{"type":"constrained","contentSize":"30rem","justifyContent":"left"}} -->
 			<div class="wp-block-group">
 				<!-- wp:paragraph {"className":"is-style-eyebrow"} -->

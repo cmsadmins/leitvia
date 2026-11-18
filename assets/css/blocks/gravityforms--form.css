@@ -1,0 +1,185 @@
+/*
+ * Gravity Forms in the tokens of the theme, light and on inverse or ink bands. Loads only with a form on the page:
+ * with the block gravityforms/form (register_block_styles()) or when Gravity Forms enqueues a form of the shortcode
+ * (enqueue_gravity_forms_styles()). Orbital reads custom properties; they are set here on two classes, which win over
+ * the one class Gravity Forms declares them on, and its style element per form is off (gravity_forms_theme_styles()).
+ * The Gravity Forms 2.5 theme has no custom properties, so rules at the end set its fields, errors, steps and back.
+ */
+.gform_wrapper.gform-theme {
+	--gf-font-family-base: var(--wp--preset--font-family--body);
+	--gf-ctrl-font-family: var(--wp--preset--font-family--ui);
+	--gf-ctrl-btn-font-family: var(--wp--preset--font-family--ui);
+	--gf-color-primary: var(--wp--preset--color--accent);
+	--gf-color-primary-contrast: var(--wp--preset--color--on-accent);
+	--gf-color-primary-darker: var(--wp--preset--color--ink);
+	--gf-color-primary-lighter: var(--wp--preset--color--accent);
+	--gf-color-in-ctrl: var(--wp--preset--color--surface);
+	--gf-color-in-ctrl-contrast: var(--wp--preset--color--ink);
+	--gf-color-out-ctrl-dark: var(--wp--preset--color--ink-muted);
+	--gf-color-out-ctrl-light: var(--wp--preset--color--stroke);
+	--gf-color-danger: var(--wp--preset--color--danger);
+	--gf-color-success: var(--wp--preset--color--success);
+	--gf-ctrl-label-color-primary: currentcolor;
+	--gf-ctrl-label-color-secondary: currentcolor;
+	--gf-ctrl-border-color: var(--wp--preset--color--ink-muted);
+	--gf-ctrl-border-color-focus: var(--wp--preset--color--ink);
+	--gf-ctrl-outline-color-focus: var(--wp--preset--color--focus);
+	--gf-ctrl-outline-width-focus: 0.125rem;
+	--gf-ctrl-outline-offset: 0.125rem;
+	--gf-ctrl-placeholder-color: var(--wp--preset--color--ink-muted);
+	--gf-ctrl-file-zone-color: var(--wp--preset--color--ink-muted);
+	--gf-ctrl-shadow: none;
+	--gf-ctrl-btn-shadow: none;
+	--gf-radius: var(--wp--preset--border-radius--s);
+	--gf-ctrl-btn-bg-color-primary: var(--wp--preset--color--ink);
+	--gf-ctrl-btn-color-primary: var(--wp--preset--color--surface);
+	--gf-ctrl-btn-bg-color-hover-primary: var(--wp--preset--color--accent);
+	--gf-ctrl-btn-color-hover-primary: var(--wp--preset--color--on-accent);
+	--gf-ctrl-btn-shadow-focus: 0 0 0 0.125rem var(--wp--preset--color--surface);
+	--gf-ctrl-btn-bg-color-secondary: transparent;
+	--gf-ctrl-btn-color-secondary: currentcolor;
+	--gf-ctrl-btn-border-color-secondary: currentcolor;
+	--gf-ctrl-btn-border-color-focus-secondary: currentcolor;
+	--gf-ctrl-btn-bg-color-hover-secondary: var(--wp--preset--color--ink);
+	--gf-ctrl-btn-color-hover-secondary: var(--wp--preset--color--surface);
+	--gf-ctrl-btn-border-color-hover-secondary: var(--wp--preset--color--ink);
+	--gf-ctrl-btn-color-simple: currentcolor;
+	--gf-field-pg-steps-number-color-active: var(--wp--preset--color--ink);
+	--gf-form-spinner-bg-color-secondary: color-mix(in srgb, var(--wp--preset--color--accent) 10%, transparent);
+	--gf-form-gap-y: var(--wp--preset--spacing--m);
+	--gf-form-validation-bg-color: transparent;
+	--gf-form-validation-border-color: var(--wp--preset--color--danger);
+	--gf-form-validation-heading-icon-bg-color: transparent;
+	--gf-form-validation-outline-color-focus: var(--wp--preset--color--focus);
+}
+
+/* Fields draw the double ring of the theme (focus.css): the outline in focus, a surface ring in the gap. On ink and
+   inverse bands the focus color alone may stay under 3:1, the surface ring then carries it (REQUIRED_PAIRS and
+   INVERSE_PAIRS in scripts/lib/contrast.mjs). Buttons get the ring through --gf-ctrl-btn-shadow-focus. */
+.gform_wrapper.gform-theme :is(input, select, textarea):focus {
+	box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
+}
+
+/* On inverse and ink bands hints, step numbers, required marks and errors take the text color of the band, since
+   ink-muted, danger and focus are checked on surface only. Fields stay light, their surface sets them off from the
+   band. Buttons take the accent pair, as core--group.css gives element buttons there; the second button (back, save)
+   stays an outline in the band color and is underlined on hover. Surface and accent can stay under 3:1 against the
+   band (surface on the surface-alt band of dark palettes, the accent on ink in light ones), so the steps draw in the
+   band color only: rings, the active one with the outer ring below, completed ones with the check in place of the
+   number. */
+:is(.has-ink-background-color, .is-style-inverse) .gform_wrapper.gform-theme {
+	--gf-color-out-ctrl-dark: currentcolor;
+	--gf-ctrl-desc-color-error: currentcolor;
+	--gf-ctrl-label-color-req: currentcolor;
+	--gf-form-validation-color: currentcolor;
+	--gf-form-validation-border-color: currentcolor;
+	--gf-ctrl-btn-bg-color-primary: var(--wp--preset--color--accent);
+	--gf-ctrl-btn-color-primary: var(--wp--preset--color--on-accent);
+	--gf-ctrl-btn-bg-color-hover-secondary: transparent;
+	--gf-ctrl-btn-color-hover-secondary: currentcolor;
+	--gf-ctrl-btn-border-color-hover-secondary: currentcolor;
+	--gf-field-pg-steps-number-border-color: currentcolor;
+	--gf-field-pg-steps-number-border-color-active: currentcolor;
+	--gf-field-pg-steps-number-bg-color-active: transparent;
+	--gf-field-pg-steps-number-color-active: currentcolor;
+	--gf-field-pg-steps-number-bg-color-complete: transparent;
+	--gf-field-pg-steps-number-border-color-complete: currentcolor;
+	--gf-field-pg-steps-number-color-complete: currentcolor;
+}
+
+/* The surface hover of the first button vanishes on the surface-alt band of dark palettes: on the inverse band it turns
+   into an outline in the band color, like the buttons of core--button.css. */
+.has-ink-background-color .gform_wrapper.gform-theme {
+	--gf-ctrl-btn-bg-color-hover-primary: var(--wp--preset--color--surface);
+	--gf-ctrl-btn-color-hover-primary: var(--wp--preset--color--ink);
+}
+.is-style-inverse .gform_wrapper.gform-theme {
+	--gf-ctrl-btn-bg-color-hover-primary: transparent;
+	--gf-ctrl-btn-color-hover-primary: currentcolor;
+	--gf-ctrl-btn-border-color-hover-primary: currentcolor;
+}
+
+/* Both themes: the active step carries a second ring in its number color (ink, on bands the band color), at least
+   3:1 against the page and the band, where the stroke disc alone is not. On bands back is underlined on hover and a
+   completed step hides its number under the check, which now has no fill (the check sets its own size). */
+.gform_wrapper .gf_step_active .gf_step_number {
+	outline: 0.125rem solid currentcolor;
+	outline-offset: 0.125rem;
+}
+:is(.has-ink-background-color, .is-style-inverse) .gform_wrapper {
+	& .gform_previous_button.button:hover {
+		text-decoration: underline;
+	}
+	& .gf_step_completed .gf_step_number {
+		font-size: 0;
+	}
+}
+
+/* Gravity Forms 2.5 theme ("gravity-theme"): its rules carry two classes and an attribute or element, the div of the
+   wrapper outweighs them. Its error box sits next to the form, not in it. Next, back and submit carry
+   wp-element-button (gravity_forms_button() in functions.php), back as an outline; the focus ring of fields and
+   buttons is in focus.css. Steps match Orbital: active on stroke, completed in the accent. */
+div.gform_wrapper.gravity-theme {
+	& :is(input:not([type="checkbox"], [type="radio"], [type="file"], [type="submit"], [type="button"], [type="image"]), select, textarea) {
+		min-height: 3rem;
+		border: 0.0625rem solid var(--wp--preset--color--ink-muted);
+		border-radius: var(--wp--preset--border-radius--s);
+		background-color: var(--wp--preset--color--surface);
+		color: var(--wp--preset--color--ink);
+		font-family: var(--wp--preset--font-family--ui);
+	}
+	& .gfield_error [aria-invalid="true"] {
+		border-color: var(--wp--preset--color--danger);
+	}
+	& :is(.gfield_required, .gfield_validation_message, .validation_message, .gform_validation_errors > h2, .gfield_error label, .gfield_error legend) {
+		color: var(--wp--preset--color--danger);
+	}
+	& :is(.gfield_validation_message, .validation_message, .gform_validation_errors) {
+		border-color: var(--wp--preset--color--danger);
+		background: var(--wp--preset--color--surface);
+	}
+	& input:is([type="checkbox"], [type="radio"]) {
+		accent-color: var(--wp--preset--color--accent);
+	}
+	& .gform_previous_button.button {
+		border-color: currentcolor;
+		background-color: transparent;
+		color: inherit;
+	}
+	& .gform_previous_button.button:hover {
+		border-color: var(--wp--preset--color--ink);
+		background-color: var(--wp--preset--color--ink);
+		color: var(--wp--preset--color--surface);
+	}
+	& .gf_step_number {
+		border-color: var(--wp--preset--color--stroke);
+		color: var(--wp--preset--color--ink-muted);
+	}
+	& .gf_step_active .gf_step_number {
+		background: var(--wp--preset--color--stroke);
+		color: var(--wp--preset--color--ink);
+	}
+	& .gf_step_completed .gf_step_number::before {
+		border-color: var(--wp--preset--color--accent);
+		background: var(--wp--preset--color--accent);
+	}
+	& .gf_step_completed .gf_step_number::after {
+		color: var(--wp--preset--color--on-accent);
+	}
+}
+
+/* On inverse and ink bands errors, required marks and steps take the text color of the band, back stays an outline
+   on hover, completed steps are a ring with the check in the band color, as in Orbital above. */
+:is(.has-ink-background-color, .is-style-inverse) div.gform_wrapper.gravity-theme {
+	& :is(.gfield_required, .gfield_validation_message, .validation_message, .gform_validation_errors, .gform_validation_errors > h2, .gfield_error label, .gfield_error legend, .gform_previous_button.button:hover, .gf_step_number) {
+		border-color: currentcolor;
+		background: transparent;
+		color: inherit;
+	}
+	& .gf_step_completed .gf_step_number::before,
+	& .gf_step_completed .gf_step_number::after {
+		border-color: currentcolor;
+		background: transparent;
+		color: inherit;
+	}
+}

@@ -39,13 +39,17 @@
 		"added": "2026-10-15",
 		"updated": "2026-11-05"
 	},
+	"leitvia/content-gallery": {
+		"added": "2026-11-17",
+		"updated": "2026-11-17"
+	},
 	"leitvia/content-media-pair": {
 		"added": "2026-10-18",
 		"updated": "2026-11-05"
 	},
 	"leitvia/content-overlap": {
 		"added": "2026-10-18",
-		"updated": "2026-11-05"
+		"updated": "2026-11-17"
 	},
 	"leitvia/content-pager": {
 		"added": "2026-10-29",
@@ -65,7 +69,7 @@
 	},
 	"leitvia/content-statement": {
 		"added": "2026-10-18",
-		"updated": "2026-11-05"
+		"updated": "2026-11-17"
 	},
 	"leitvia/content-stats": {
 		"added": "2026-10-15",
@@ -74,6 +78,10 @@
 	"leitvia/content-steps": {
 		"added": "2026-10-15",
 		"updated": "2026-11-05"
+	},
+	"leitvia/content-steps-images": {
+		"added": "2026-11-17",
+		"updated": "2026-11-17"
 	},
 	"leitvia/content-text-media": {
 		"added": "2026-10-15",
@@ -101,7 +109,7 @@
 	},
 	"leitvia/cta-split": {
 		"added": "2026-10-15",
-		"updated": "2026-10-19"
+		"updated": "2026-11-17"
 	},
 	"leitvia/footer-columns": {
 		"added": "2026-10-15",
@@ -153,7 +161,7 @@
 	},
 	"leitvia/header-utility": {
 		"added": "2026-10-26",
-		"updated": "2026-11-06"
+		"updated": "2026-11-17"
 	},
 	"leitvia/hero-centered": {
 		"added": "2026-10-15",
@@ -257,7 +265,7 @@
 	},
 	"leitvia/offer-pricing-3": {
 		"added": "2026-10-15",
-		"updated": "2026-11-05"
+		"updated": "2026-11-17"
 	},
 	"leitvia/page-accessibility-statement": {
 		"added": "2026-10-15",

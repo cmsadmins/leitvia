@@ -88,13 +88,13 @@ add_action( 'init', __NAMESPACE__ . '\register_block_styles' );
 /**
  * Prints the stylesheets of the blocks on a page inside the document. At the 20 KB of core, navigation, image and cover
  * stay linked and hold back the first paint; on a throttled phone that alone costs a second and the Speed Index. Core
- * counts smallest first, so 150 KB takes a page of many blocks; stylesheets beyond that, like the classic one of
- * WooCommerce, stay linked. The document grows by a few KB gzip, which arrive with it.
+ * counts smallest first, so 150 KB (150 x 1024 bytes) takes a page of many blocks; stylesheets beyond that, like the
+ * classic one of WooCommerce, stay linked. The document grows by a few KB gzip, which arrive with it.
  *
  * @return int Bytes of CSS to print inline.
  */
 function inline_styles_limit(): int {
-	return 150000;
+	return 153600;
 }
 add_filter( 'styles_inline_size_limit', __NAMESPACE__ . '\inline_styles_limit' );
 
@@ -131,6 +131,68 @@ function enqueue_account_styles(): void {
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_account_styles' );
 
 /**
+ * Gravity Forms in the tokens of the theme (assets/css/blocks/gravityforms--form.css). The block gravityforms/form
+ * loads the stylesheet through register_block_styles(); a form of the shortcode loads it here. Runs on
+ * gform_enqueue_scripts, which fires only while Gravity Forms is active and puts a form on the page. The theme needs
+ * no form plugin; without Gravity Forms none of the five hooks below ever runs.
+ */
+function enqueue_gravity_forms_styles(): void {
+	$file = 'assets/css/blocks/gravityforms--form.css';
+	wp_enqueue_style( 'leitvia-gravityforms--form', get_theme_file_uri( $file ), array(), wp_get_theme()->get( 'Version' ) );
+	wp_style_add_data( 'leitvia-gravityforms--form', 'path', get_theme_file_path( $file ) );
+}
+add_action( 'gform_enqueue_scripts', __NAMESPACE__ . '\enqueue_gravity_forms_styles', 10, 0 );
+
+/**
+ * Orbital prints the colors and sizes of each form in a style element with an id selector, which a rule of the
+ * theme could only outweigh with !important. Without it Orbital falls back to the custom properties of its stylesheet,
+ * which the theme sets from the tokens. Colors chosen in the form block of Gravity Forms then no longer apply; the
+ * token set of the site decides. The same goes for the look of image choice fields picked in the block (card or no
+ * card, square or round): Gravity Forms reads it from the styles of the form, so they keep its default, a square card.
+ * Runs on gform_pre_render, before the form markup is built.
+ *
+ * @param mixed $form Form object of Gravity Forms.
+ * @return mixed
+ */
+function gravity_forms_theme_styles( $form ) {
+	if ( is_array( $form ) ) {
+		$form['styles'] = false;
+	}
+	return $form;
+}
+add_filter( 'gform_pre_render', __NAMESPACE__ . '\gravity_forms_theme_styles' );
+
+/**
+ * The next, back and submit buttons of a form take the button of the theme (theme.json elements.button) in every style
+ * variation: the Gravity Forms 2.5 theme gives them no colors. Back stays an outline (gravityforms--form.css). Orbital
+ * keeps its own button rules and reads the tokens from its custom properties. An image button keeps its markup, it has
+ * no text a button style could carry. Runs on gform_next_button, gform_previous_button and gform_submit_button.
+ *
+ * @param mixed $button Button markup of Gravity Forms; another filter may have returned something else.
+ * @return mixed
+ */
+function gravity_forms_button( $button ) {
+	if ( ! is_string( $button ) ) {
+		return $button;
+	}
+	$tags = new \WP_HTML_Tag_Processor( $button );
+	while ( $tags->next_tag() ) {
+		if ( in_array( $tags->get_tag(), array( 'INPUT', 'BUTTON' ), true ) ) {
+			// Gravity Forms 3 renders an image button as a button with an img inside, older versions as input type image.
+			if ( 'image' === strtolower( (string) $tags->get_attribute( 'type' ) ) || $tags->has_class( 'gform_image_button' ) ) {
+				return $button;
+			}
+			$tags->add_class( 'wp-element-button' );
+			break;
+		}
+	}
+	return $tags->get_updated_html();
+}
+add_filter( 'gform_next_button', __NAMESPACE__ . '\gravity_forms_button' );
+add_filter( 'gform_previous_button', __NAMESPACE__ . '\gravity_forms_button' );
+add_filter( 'gform_submit_button', __NAMESPACE__ . '\gravity_forms_button' );
+
+/**
  * The double focus ring of the theme (assets/css/focus.css), one rule for all elements that draw it, on every page
  * and in the editor. Enqueued once the blocks of the template are rendered, so it comes after their styles and holds
  * against block CSS of equal specificity. Printed inline like the block styles (path data).
@@ -155,6 +217,19 @@ function enqueue_core_presets(): void {
 	wp_style_add_data( 'leitvia-core-presets', 'path', get_theme_file_path( 'assets/css/core-presets.css' ) );
 }
 add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_core_presets' );
+
+/**
+ * Rules the editor needs where the theme changes blocks on render (assets/css/editor.css): the inverse ground over a
+ * surface class. Only in the admin, so the front end loads nothing of it.
+ */
+function enqueue_editor_styles(): void {
+	if ( ! is_admin() ) {
+		return;
+	}
+	wp_enqueue_style( 'leitvia-editor', get_theme_file_uri( 'assets/css/editor.css' ), array(), wp_get_theme()->get( 'Version' ) );
+	wp_style_add_data( 'leitvia-editor', 'path', get_theme_file_path( 'assets/css/editor.css' ) );
+}
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_editor_styles' );
 
 /**
  * The aliases of enqueue_core_presets() on the front end, after core enqueued the global styles.
@@ -186,6 +261,10 @@ function register_block_style_variations(): void {
 		'core/paragraph'  => array(
 			'badge'   => __( 'Badge', 'leitvia' ),
 			'eyebrow' => __( 'Eyebrow', 'leitvia' ),
+			'claim'   => __( 'Claim', 'leitvia' ),
+		),
+		'core/quote'      => array(
+			'compact' => __( 'Compact', 'leitvia' ),
 		),
 		'core/site-logo'  => array(
 			'on-dark' => __( 'On dark band', 'leitvia' ),
@@ -575,6 +654,52 @@ function rtl_start_justification( array $block ): array {
 	return $block;
 }
 add_filter( 'render_block_data', __NAMESPACE__ . '\rtl_start_justification' );
+
+/**
+ * Inverse wins over a surface ground. Stage patterns set "backgroundColor":"surface", and core writes that as a preset
+ * class with !important, so a group switched to the Inverse style later (in the editor, or by an agent through
+ * className) kept the light ground under the light text of the style. On render the theme drops the surface class of
+ * an inverse group, so the style sets ground and text together, as on every other band.
+ *
+ * @param string $html  Block HTML.
+ * @param array  $block Parsed block.
+ */
+function inverse_over_surface( string $html, array $block ): string {
+	if ( 'surface' !== ( $block['attrs']['backgroundColor'] ?? '' ) || ! in_array( 'is-style-inverse', explode( ' ', (string) ( $block['attrs']['className'] ?? '' ) ), true ) ) {
+		return $html;
+	}
+	$tags = new \WP_HTML_Tag_Processor( $html );
+	if ( $tags->next_tag() ) {
+		$tags->remove_class( 'has-surface-background-color' );
+		$tags->remove_class( 'has-background' );
+	}
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block_core/group', __NAMESPACE__ . '\inverse_over_surface', 10, 2 );
+
+/**
+ * Grids of four columns wrap 4, 2, 1, never three and one. Core fills a grid with columnCount and minimumColumnWidth
+ * with as many columns of that width as fit, so four cards of 17rem stood three and one at 1024 px. Core puts the
+ * minimum width into min(width, 100%); the theme hands it a width that switches: below zero where four columns fit
+ * (core then takes its quarter), half the grid where two fit, the whole grid below that. The factor 999 makes each
+ * switch a step. Only on the front end; the editor computes its grids itself.
+ *
+ * @param array $block Parsed block.
+ */
+function grid_four_two_one( array $block ): array {
+	$layout = $block['attrs']['layout'] ?? null;
+	if ( ! is_array( $layout ) || 'grid' !== ( $layout['type'] ?? '' ) || 4 !== (int) ( $layout['columnCount'] ?? 0 ) || empty( $layout['minimumColumnWidth'] ) ) {
+		return $block;
+	}
+	$gap = $block['attrs']['style']['spacing']['blockGap'] ?? 'var(--wp--style--block-gap)';
+	$gap = (string) ( is_array( $gap ) ? ( $gap['left'] ?? reset( $gap ) ) : $gap );
+	$gap = '0' === $gap ? '0px' : preg_replace( '/^var:preset\|spacing\|([a-z0-9-]+)$/', 'var(--wp--preset--spacing--$1)', $gap );
+	$min = (string) $layout['minimumColumnWidth'];
+
+	$block['attrs']['layout']['minimumColumnWidth'] = "max(min((100% - $gap) / 2, (4 * $min + 3 * $gap - 100%) * 999), min(100%, (2 * $min + $gap - 100%) * 999))";
+	return $block;
+}
+add_filter( 'render_block_data', __NAMESPACE__ . '\grid_four_two_one' );
 
 /**
  * Drops a list of posts with its heading while there is no post to show: the related posts query, and every post
@@ -1195,16 +1320,35 @@ add_filter( 'render_block_core/template-part', __NAMESPACE__ . '\footer_end', 10
  * The header button leaves the header below 600 px, see core--buttons.css. A copy goes to the end of the menu, so the
  * main action stays one tap away on a phone even when its page is not in the navigation. The copy follows the button:
  * its text and address come from the header, nothing is stored twice, and a hand-made overlay part gets it as well.
+ * The same for a service bar (group with the class leitvia-service-bar, pattern header-utility): below 600 px it keeps
+ * only the first entry on its right, the phone number, so it stays one line (core--group.css). Its whole content goes
+ * below the button, so opening hours, mail and the other links stay reachable, without ids that would repeat.
  * The anchor is the last list before the closing tags of the responsive container, in the default and in a custom
- * overlay; core--navigation.css hides the copy while the menu is not open as an overlay.
+ * overlay; core--navigation.css hides the copies while the menu is not open as an overlay.
  *
  * @param string $html Rendered template part.
  */
 function header_action_in_overlay( string $html ): string {
-	if ( ! preg_match( '#<div class="wp-block-buttons\b[^"]*\bis-style-header-action\b.*?</div>\s*</div>#s', $html, $action ) ) {
+	$copy = '';
+	if ( preg_match( '#<div class="wp-block-buttons\b[^"]*\bis-style-header-action\b.*?</div>\s*</div>#s', $html, $action ) ) {
+		$copy = str_replace( 'is-style-header-action', 'leitvia-overlay-action', $action[0] );
+	}
+	if ( preg_match( '#<div class="[^"]*\bleitvia-service-bar\b[^>]*>#', $html, $bar, PREG_OFFSET_CAPTURE ) ) {
+		// Inner HTML of the bar: count nested divs up to its closing tag.
+		$start = $bar[0][1] + strlen( $bar[0][0] );
+		$end   = $start;
+		$depth = 1;
+		while ( $depth > 0 && preg_match( '#<(/?)div\b#', $html, $tag, PREG_OFFSET_CAPTURE, $end ) ) {
+			$depth += '' === $tag[1][0] ? 1 : -1;
+			$end    = $tag[0][1] + 4;
+		}
+		if ( 0 === $depth ) {
+			$copy .= '<div class="leitvia-overlay-service">' . preg_replace( '# id="[^"]*"#', '', substr( $html, $start, $tag[0][1] - $start ) ) . '</div>';
+		}
+	}
+	if ( '' === $copy ) {
 		return $html;
 	}
-	$copy = str_replace( 'is-style-header-action', 'leitvia-overlay-action', $action[0] );
 	return preg_replace_callback( '#^(.*</ul>)(?=(?:\s*</div>){4,}\s*</nav>)#s', fn( array $start ): string => $start[1] . $copy, $html, 1 ) ?? $html;
 }
 add_filter( 'render_block_core/template-part', __NAMESPACE__ . '\header_action_in_overlay' );

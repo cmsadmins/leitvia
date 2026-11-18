@@ -8,3 +8,18 @@
 .wp-block-quote.has-text-color cite {
 	color: inherit;
 }
+
+/*
+ * Compact: a long quote one step smaller, the look stays. Without a size of its own the quote takes body instead of
+ * lead; the sizes heading-l and heading-m of the patterns move down one step. Their preset class is important, so the
+ * style changes the variable it reads on the quote itself.
+ */
+.wp-block-quote.is-style-compact {
+	font-size: var(--wp--preset--font-size--body);
+}
+.is-style-compact.has-heading-l-font-size {
+	--wp--preset--font-size--heading-l: var(--wp--preset--font-size--heading-m);
+}
+.is-style-compact.has-heading-m-font-size {
+	--wp--preset--font-size--heading-m: var(--wp--preset--font-size--heading-s);
+}

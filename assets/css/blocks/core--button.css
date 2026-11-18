@@ -11,28 +11,39 @@
 	background-color: var(--wp--preset--color--ink);
 	color: var(--wp--preset--color--surface);
 }
-/* The ink fill button takes the accent on ink and inverse bands (checked pair), surface on hover below. */
-:is(.has-background.has-ink-background-color, .is-style-inverse) .wp-block-button:not(.is-style-outline) > .wp-block-button__link:not(.has-text-color, .has-background) {
+/* The ink fill button takes the accent on ink and inverse bands (checked pair); on hover the rules below take over. */
+:is(.has-background.has-ink-background-color, .is-style-inverse) .wp-block-button:not(.is-style-outline) > .wp-block-button__link:not(.has-text-color, .has-background, :hover) {
 	border-color: var(--wp--preset--color--accent);
 	background-color: var(--wp--preset--color--accent);
 	color: var(--wp--preset--color--on-accent);
 }
 /*
- * On ink and accent bands the ink hover would vanish: surface instead, except buttons with a preset text color (first
- * selector, 0,5,0). A fill button in the accent color would vanish on an accent band, so there it fills with surface
- * (second selector, 0,6,0) and inverts to ink on hover and focus. One rule for both; the hover sits
- * below the ink fill rule, which it never overrode anyway (0,5,0 against 0,6,0).
+ * Hover on bands, for every button without a preset text color. On ink and accent bands the ink hover would vanish:
+ * surface instead (first selector). A fill button in the accent color would vanish on an accent band, so there it
+ * fills with surface (second selector, 0,6,0) and turns to the on-accent pair on hover and focus, since ink stays under
+ * 3:1 on the accent of most palettes.
  */
-:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) .wp-block-button__link:not(.has-text-color):hover,
+.has-background:is(.has-ink-background-color, .has-accent-background-color) .wp-block-button__link:not(.has-text-color):hover,
 .has-background.has-accent-background-color .wp-block-button:not(.is-style-outline) > .wp-block-button__link:not(.has-text-color, .has-background) {
 	border-color: var(--wp--preset--color--surface);
 	background-color: var(--wp--preset--color--surface);
 	color: var(--wp--preset--color--ink);
 }
 .has-background.has-accent-background-color .wp-block-button:not(.is-style-outline) > .wp-block-button__link:not(.has-text-color, .has-background):is(:hover, :focus-visible) {
-	border-color: var(--wp--preset--color--ink);
-	background-color: var(--wp--preset--color--ink);
-	color: var(--wp--preset--color--surface);
+	border-color: var(--wp--preset--color--on-accent);
+	background-color: var(--wp--preset--color--on-accent);
+	color: var(--wp--preset--color--accent);
+}
+/*
+ * The inverse band is ink in light palettes and surface-alt in dark ones, where surface stays near 1.1:1. Only its text
+ * color passes on both, so a button there turns into an outline in the band color on hover, underlined to set it off
+ * from the outline at rest. After the outline hover above, which has the same weight.
+ */
+.is-style-inverse .wp-block-button__link:not(.has-text-color):hover {
+	border-color: currentcolor;
+	background-color: transparent;
+	color: inherit;
+	text-decoration: underline;
 }
 /* Core breaks labels anywhere; wrap between words, break only a word wider than the button (anywhere if rows wrap). */
 .wp-block-button__link {

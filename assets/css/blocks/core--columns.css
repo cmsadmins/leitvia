@@ -18,3 +18,25 @@
 		margin-inline-start: calc(var(--wp--preset--spacing--xxl) * -1.5);
 	}
 }
+
+/*
+ * Full-width columns (cta-split): an image column bleeds to the screen edge, a text column keeps the edge of the
+ * content, where logo and wide content start. It takes the root padding on its outer side, stacked on both sides; the
+ * gap of the columns stays the space next to the image. Media right turns the outer side around.
+ */
+.wp-block-columns.alignfull {
+	& > .wp-block-column:not(:has(> .wp-block-image:only-child)) {
+		padding-inline: var(--wp--style--root--padding-left) var(--wp--style--root--padding-right);
+	}
+
+	@media (min-width: 48.875rem) {
+		&:not(.is-style-media-right) > .wp-block-column:not(:last-child),
+		&.is-style-media-right > .wp-block-column:not(:first-child) {
+			padding-inline-end: 0;
+		}
+		&:not(.is-style-media-right) > .wp-block-column:not(:first-child),
+		&.is-style-media-right > .wp-block-column:not(:last-child) {
+			padding-inline-start: 0;
+		}
+	}
+}

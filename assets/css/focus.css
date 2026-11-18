@@ -7,9 +7,10 @@
  *
  * - Buttons (core--button.css before).
  * - Links on ink, accent and inverse bands (core--group.css): repeated for them because block CSS such as social
- *   links overrides the zero-specificity ring of theme.json.
+ *   links overrides the zero-specificity ring of theme.json. Their outline takes the band text color (below).
  * - Navigation links, submenu toggles, menu open and close buttons (core--navigation.css).
  * - Fields of the comment form and the search field (core--post-comments-form.css, core--search.css).
+ * - Gravity Forms 2.5 fields (gravityforms--form.css).
  * - Scrollable code, tables and tab panels, tab buttons (core--code.css, core--table.css, core--tabs.css) and every
  *   summary of a details element: the Details block and those of add-ons, such as the folded list of a data map.
  * - The lightbox trigger and the buttons of the lightbox dialog (core--image.css): core draws a translucent ring that
@@ -28,6 +29,7 @@
 .wp-block-navigation-overlay-close:focus-visible,
 .wp-block-post-comments-form :is(input:not([type="submit"]), textarea):focus-visible,
 .wp-block-search__input:focus-visible,
+div.gform_wrapper.gravity-theme :is(input, select, textarea):focus-visible,
 .wp-block-code.is-style-terminal:focus-visible,
 .wp-block-table:focus-visible,
 .wp-block-tab-list button:focus-visible,
@@ -39,6 +41,13 @@ summary:focus-visible,
 	outline: 0.125rem solid var(--wp--preset--color--focus);
 	outline-offset: 0.125rem;
 	box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
+}
+/* Links on ink, accent and inverse bands, the service bar among them: the outline in the band text color, which the
+   links take as well (core--group.css), 4.5:1 on the band in every palette. The focus color reached only 2.8:1 on a
+   dark band and carried the ring through the surface ring alone. */
+:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) a:where(:not(.wp-element-button)):focus-visible {
+	outline-color: currentcolor;
+	box-shadow: none;
 }
 /* Tiles in a rule of their own: a browser without :has() would drop a whole selector list with it. Without :has()
    the title link keeps its own ring. */

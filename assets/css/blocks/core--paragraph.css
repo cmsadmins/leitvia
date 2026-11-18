@@ -34,9 +34,29 @@
 	color: var(--wp--preset--color--accent);
 }
 
-/* Accent text falls below 4.5:1 on ink and accent sections, so the eyebrow takes the section text color there. */
-:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) .is-style-eyebrow {
+/* Accent and ink-muted text fall below 4.5:1 on ink, accent and inverse sections (an accent eyebrow on a dark stage
+   3.2:1), so the eyebrow and text in either color take the section text color there; the preset color classes are
+   important, so the variables they read become currentcolor. Blocks with a ground of their own keep their colors. */
+:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) :is(.is-style-eyebrow, .has-ink-muted-color, .has-accent-color:not(.has-background)) {
+	--wp--preset--color--ink-muted: currentcolor;
+	--wp--preset--color--accent: currentcolor;
 	color: inherit;
+}
+
+/*
+ * Claim: one statement in the heading font, large and italic, such as a motto below the h1 of a stage. Between lead and
+ * h2 in size; color and weight inherit, so it reads on every band. A heading font without italic faces gets the
+ * slanted form the browser draws. A paragraph from a pattern brings lead and ink-muted along; their preset
+ * classes are important, so the claim sets the variables they read: its own size, and the text color of the band.
+ */
+.is-style-claim {
+	--wp--preset--font-size--lead: var(--wp--preset--font-size--heading-s);
+	--wp--preset--color--ink-muted: currentcolor;
+	font-family: var(--wp--preset--font-family--heading);
+	font-size: var(--wp--preset--font-size--heading-s);
+	font-style: italic;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
 }
 
 /*

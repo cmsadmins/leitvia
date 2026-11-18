@@ -1,0 +1,13 @@
+/*
+ * Only in the editor (functions.php enqueue_editor_styles()). On the front end inverse_over_surface() drops the surface
+ * class of an inverse group; core prints that class with a background color no rule can beat. The editor renders the
+ * block in JavaScript and keeps the class, so the inverse ground comes back as a background image of one color, which
+ * paints over the background color. The group then looks as it will on the page.
+ *
+ * Grids of four columns break 4, 2, 1 only on the front end (grid_four_two_one()): the editor computes its grid from
+ * the attributes in JavaScript, and a rule here would have to copy the minimum width of every grid. It shows 3 and 1
+ * in narrow canvases.
+ */
+.editor-styles-wrapper .is-style-inverse.has-surface-background-color {
+	background-image: linear-gradient(var(--wp--preset--color--ink), var(--wp--preset--color--ink));
+}
