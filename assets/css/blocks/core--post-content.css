@@ -78,6 +78,28 @@ main:has(> .wp-block-post-content:last-child > .alignfull:last-child) {
 :where(.wp-block-post-content, .wp-block-comment-content) :where(img, iframe, .wp-caption) {
 	max-width: 100%;
 }
+/*
+ * Core caps a block in the content at the content size, which is wider than a phone: a captioned image with its pixel
+ * width from the editor stood out of the screen there. The column is the second limit.
+ */
+.wp-block-post-content > .wp-caption {
+	max-width: min(100%, var(--wp--style--global--content-size));
+}
+/* The password form of a protected post: the label above its field, field and button in one row like the search. */
+.post-password-form label {
+	display: grid;
+	gap: var(--wp--preset--spacing--xxs);
+}
+.post-password-form input[type="password"] {
+	min-height: 3rem;
+	padding-inline: var(--wp--preset--spacing--s);
+}
+.post-password-form p:has(label) {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: end;
+	gap: var(--wp--preset--spacing--xs);
+}
 /* A classic pre wraps like the plain code block (core--code.css), so a long line never scrolls the page sideways. */
 :where(.wp-block-post-content, .wp-block-comment-content) pre {
 	white-space: pre-wrap;
@@ -94,4 +116,8 @@ main:has(> .wp-block-post-content:last-child > .alignfull:last-child) {
 .wp-block-post-content :is(.wp-caption-text, .gallery-caption) {
 	color: var(--wp--preset--color--ink-muted);
 	font-size: var(--wp--preset--font-size--meta);
+}
+/* Comments: one block each, set apart by a margin, the replies as well; core steps them in under their parent. */
+.wp-block-comment-template :is(li + li, li ol) {
+	margin-block-start: var(--wp--preset--spacing--m);
 }

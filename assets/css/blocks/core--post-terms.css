@@ -4,6 +4,11 @@
 .wp-block-post-terms a:hover {
 	text-decoration: underline;
 }
+/* With a prefix ("Featured ·", or the block's own prefix) the link stands in running text and keeps its underline (WCAG 1.4.1). */
+.wp-block-post-terms__prefix ~ a {
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
 
 /* Badge: one pill per term, same label type as the paragraph badge. */
 .wp-block-post-terms.is-style-badge {

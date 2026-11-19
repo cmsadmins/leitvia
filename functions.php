@@ -598,6 +598,25 @@ function category_chips_all( string $html, array $block ): string {
 		is_home() ? ' aria-current="page"' : '',
 		esc_html_x( 'All', 'all post categories', 'leitvia' )
 	);
+	// A site with dozens of categories would fill the screen with chips before the first post: from thirteen on, the
+	// row keeps the twelve with the most posts and the current one, the rest stay reachable on the posts themselves.
+	if ( substr_count( $html, '<li' ) > 12 && ! str_contains( $html, 'class="children"' ) ) {
+		$terms = get_terms(
+			array(
+				'taxonomy' => 'category',
+				'orderby'  => 'count',
+				'order'    => 'DESC',
+				'number'   => 12,
+				'fields'   => 'ids',
+			)
+		);
+		$keep  = is_array( $terms ) ? array_map( 'intval', $terms ) : array();
+		$html  = preg_replace_callback(
+			'#<li class="cat-item cat-item-(\d+)(?: [^"]*)?">.*?</li>#s',
+			fn( array $li ): string => in_array( (int) $li[1], $keep, true ) || str_contains( $li[0], 'current-cat' ) ? $li[0] : '',
+			$html
+		);
+	}
 	return preg_replace_callback( '/<ul\b[^>]*>/', fn( array $ul ): string => $ul[0] . $item, $html, 1 );
 }
 add_filter( 'render_block_core/categories', __NAMESPACE__ . '\category_chips_all', 10, 2 );
@@ -634,6 +653,24 @@ function primary_term_only( string $html, array $block, $instance = null ): stri
 	return $wrap[1] . $anchor[0] . $wrap[2];
 }
 add_filter( 'render_block_core/post-terms', __NAMESPACE__ . '\primary_term_only', 10, 3 );
+
+/**
+ * A sticky post on the first page of the posts index is told apart from the rest: the category line of its card
+ * (post-terms with the class leitvia-primary-term) starts with "Featured". On later pages, where it stands in its
+ * chronological place, and everywhere else nothing is added.
+ *
+ * @param string         $html     Block HTML.
+ * @param array          $block    Parsed block.
+ * @param \WP_Block|null $instance Block instance, its context names the post.
+ */
+function sticky_label( string $html, array $block, $instance = null ): string {
+	$post_id = $instance instanceof \WP_Block ? (int) ( $instance->context['postId'] ?? 0 ) : 0;
+	if ( ! $post_id || ! is_home() || is_paged() || ! is_sticky( $post_id ) || ! in_array( 'leitvia-primary-term', explode( ' ', $block['attrs']['className'] ?? '' ), true ) ) {
+		return $html;
+	}
+	return preg_replace( '#^(<[^>]+>)#', '$1<span class="wp-block-post-terms__prefix">' . esc_html__( 'Featured', 'leitvia' ) . ' · </span>', $html, 1 ) ?? $html;
+}
+add_filter( 'render_block_core/post-terms', __NAMESPACE__ . '\sticky_label', 11, 3 );
 
 /**
  * The lead under the title of a post (post-excerpt with the class leitvia-own-excerpt) only shows an excerpt the author
@@ -1431,3 +1468,19 @@ function post_parts(): string {
 	return $html . '</p></nav>';
 }
 add_filter( 'wp_link_pages', __NAMESPACE__ . '\post_parts' );
+
+/**
+ * Core appends the page links only when it finds the page break block in the post (has_block); a classic post split
+ * with the <!--nextpage--> tag got none and its further pages could not be reached. Here such a post gets them too,
+ * inside the content wrapper like core places them.
+ *
+ * @param string $html Block HTML.
+ */
+function classic_post_parts( string $html ): string {
+	global $multipage;
+	if ( ! $multipage || has_block( 'core/nextpage' ) ) {
+		return $html;
+	}
+	return preg_replace( '#</div>\s*$#', wp_link_pages( array( 'echo' => 0 ) ) . '</div>', $html, 1 ) ?? $html;
+}
+add_filter( 'render_block_core/post-content', __NAMESPACE__ . '\classic_post_parts' );

@@ -23,7 +23,7 @@
 			<!-- wp:post-featured-image {"aspectRatio":"16/9","sizeSlug":"medium_large"} /-->
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs"}},"layout":{"type":"default"}} -->
 			<div class="wp-block-group">
-				<!-- wp:post-terms {"term":"category","style":{"typography":{"textTransform":"uppercase","letterSpacing":"0.08em"}}} /-->
+				<!-- wp:post-terms {"term":"category","className":"leitvia-primary-term","style":{"typography":{"textTransform":"uppercase","letterSpacing":"0.08em"}}} /-->
 				<!-- wp:post-title {"level":3,"isLink":true} /-->
 				<!-- wp:post-excerpt {"excerptLength":25} /-->
 				<!-- wp:post-date {"metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"date"}}}},"textColor":"ink-muted","fontSize":"meta"} /-->

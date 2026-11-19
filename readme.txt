@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.54
+Stable tag: 1.2.55
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, translation-ready, threaded-comments
@@ -107,6 +107,18 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.55 =
+* Pages show their comments and the comment form the way posts do; the directory requires it and the template had no comments block.
+* A classic post split with the nextpage tag lists its parts and links them; core appends the page links only for the page break block.
+* From the fourth level on, a submenu opens inside its parent panel instead of beside it, so a menu ten levels deep never leaves the screen.
+* A captioned image with a pixel width stays on a phone screen; core capped it at the content size, which is wider than the screen.
+* The password form of a protected post sets the label above a 48 px field, the button beside it.
+* Comments are set apart from each other, replies as well.
+* The category chips above the posts keep the twelve categories with the most posts and the current one on a site with more.
+* Cards in archives and in the related posts name one category, like the line above a post title; a post in sixty categories printed sixty links.
+* A sticky post is marked "Featured" on the first page of the posts index.
+* The theme CSS stays under 46 KB as shipped (45 KB before).
 
 = 1.2.54 =
 * Classic content, as in the Theme Unit Test Data: images, captions (wp-caption) and iframes take the column as their limit, alignleft and alignright float with the text, caption text is set in meta size and muted, and a classic pre wraps like the plain code block. Required classes of the theme review: wp-caption, wp-caption-text, gallery-caption, alignleft, alignright, aligncenter.
