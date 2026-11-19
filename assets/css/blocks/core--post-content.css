@@ -64,6 +64,34 @@ main:has(> .wp-block-post-content:last-child > .alignfull:last-child) {
 .wp-block-post-content.is-layout-constrained > .aligncenter {
 	display: grid;
 	justify-items: center;
-	max-width: none;
+	box-sizing: border-box;
+	max-width: 100%;
 	padding-inline-end: calc(100% - var(--wp--style--global--content-size));
+}
+
+/*
+ * Classic content (posts written before blocks, the Theme Unit Test Data) and comments: images, captions and iframes keep
+ * their pixel width from the editor, so they get the column as their limit; alignleft and alignright float with the
+ * text, as the classic stylesheet of core did, which a block theme does not load. Caption text in meta size, muted.
+ * :where() keeps the limits below any block stylesheet, so a block that sizes its own image or frame wins.
+ */
+:where(.wp-block-post-content, .wp-block-comment-content) :where(img, iframe, .wp-caption) {
+	max-width: 100%;
+}
+/* A classic pre wraps like the plain code block (core--code.css), so a long line never scrolls the page sideways. */
+:where(.wp-block-post-content, .wp-block-comment-content) pre {
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+.wp-block-post-content :is(img, .wp-caption).alignleft {
+	float: left;
+	margin: 0 var(--wp--preset--spacing--m) var(--wp--preset--spacing--s) 0;
+}
+.wp-block-post-content :is(img, .wp-caption).alignright {
+	float: right;
+	margin: 0 0 var(--wp--preset--spacing--s) var(--wp--preset--spacing--m);
+}
+.wp-block-post-content :is(.wp-caption-text, .gallery-caption) {
+	color: var(--wp--preset--color--ink-muted);
+	font-size: var(--wp--preset--font-size--meta);
 }

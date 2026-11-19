@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.51
+Stable tag: 1.2.54
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, translation-ready, threaded-comments
@@ -107,6 +107,21 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.54 =
+* Classic content, as in the Theme Unit Test Data: images, captions (wp-caption) and iframes take the column as their limit, alignleft and alignright float with the text, caption text is set in meta size and muted, and a classic pre wraps like the plain code block. Required classes of the theme review: wp-caption, wp-caption-text, gallery-caption, alignleft, alignright, aligncenter.
+* One h1 per page: once a template has printed the post title, an h1 in the post content or in a comment becomes an h2 that keeps the h1 size. Templates without a post title, such as landing pages, leave the content alone.
+* A post without a title gets "(Untitled)" as its title on the front end, so its heading, its links and the document title are never empty.
+* A centered block in the post content keeps the column as its limit, so a classic caption with a pixel width no longer scrolls the page sideways.
+* New run npm run test:tut for the Theme Unit Test Data, the content of the WordPress.org reviewers, before every upload.
+* The theme CSS stays under 45 KB as shipped (44 KB before).
+
+= 1.2.53 =
+* Dropdown: a third level opens beside the panel of its parent with the tops aligned, outside its padding, instead of over its entries; in a right-justified menu it opens to the left, as core does.
+* The theme CSS stays under 44 KB as shipped (43 KB before).
+
+= 1.2.52 =
+* Navigation: a submenu link in the dropdown differs from a menu item, smaller, regular weight and muted until hovered or current. In the overlay the levels read apart: menu items in the heading font, submenu links in the UI font at body size as a tight group, a third level in meta size and muted. Thank you to Fahim Murshed of the WordPress.org theme review team for the finding.
 
 = 1.2.51 =
 * Pagination under the query loops of the blog, archive, author, search and shop templates: the page numbers are 44 px targets set apart by a gap, the current page sits on the alternate surface, previous and next carry arrows. Thank you to Fahim Murshed of the WordPress.org theme review team for spotting it.

@@ -17,6 +17,19 @@
 	box-shadow: var(--wp--preset--shadow--subtle);
 }
 /*
+ * Third level: beside the parent panel with the tops aligned, outside its padding and border instead of over its
+ * entries. Core opens it to the right, in a right-justified menu to the left.
+ */
+.wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container:not(.is-menu-open *) {
+	top: calc(-1 * var(--wp--preset--spacing--s) - 1px);
+	left: calc(100% + var(--wp--preset--spacing--s) + 1px);
+	margin-top: 0;
+}
+.wp-block-navigation.items-justified-right .wp-block-navigation__container .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container:not(.is-menu-open *) {
+	left: auto;
+	right: calc(100% + var(--wp--preset--spacing--s) + 1px);
+}
+/*
  * Hover bridge: a menu that opens on hover (core's default, no submenuVisibility "click") closed while the pointer
  * crossed the gap of the margin above, from the link into the panel. A transparent strip over that gap belongs to the
  * panel, so the item stays hovered. It is only there while the panel shows (it inherits visibility: hidden). Submenus
@@ -56,8 +69,15 @@
 	& > .wp-block-navigation-item > .wp-block-navigation-item__content:hover {
 		background-color: var(--wp--preset--color--surface-alt);
 	}
-	& .wp-block-navigation-item__label {
-		font-weight: 500;
+	/* A submenu link differs from a menu item: smaller, regular weight, muted until hovered or current. */
+	& > .wp-block-navigation-item > .wp-block-navigation-item__content {
+		color: var(--wp--preset--color--ink-muted);
+		font-size: var(--wp--preset--font-size--meta);
+		font-weight: 400;
+	}
+	& > .wp-block-navigation-item > .wp-block-navigation-item__content:is(:hover, :focus-visible, [aria-current="page"]),
+	& > .current-menu-item > .wp-block-navigation-item__content {
+		color: var(--wp--preset--color--ink);
 	}
 	& .wp-block-navigation-item__description {
 		display: block;
@@ -113,14 +133,23 @@
 		font-size: var(--wp--preset--font-size--heading-m);
 	}
 	/*
-	 * Overlay submenus: smaller centred groups. Core keeps them open (toggle inert but visible, it carries the label);
-	 * Studio makes them collapsible (data-leitvia-collapsible). See docs/accessibility/known-limitations.md.
+	 * Overlay submenus: core keeps every level open in the overlay and the theme has no JavaScript to collapse them
+	 * (the toggle is inert but visible, it carries the label; Studio makes them collapsible, data-leitvia-collapsible,
+	 * see docs/accessibility/known-limitations.md). So the style carries the hierarchy: menu items in the heading
+	 * font, submenu links in the UI font at body size as a tight group, a third level in meta size and muted.
 	 */
 	& .wp-block-navigation__submenu-container .wp-block-navigation-item {
-		font-size: var(--wp--preset--font-size--heading-s);
+		font-family: var(--wp--preset--font-family--ui);
+		font-size: var(--wp--preset--font-size--body);
+		font-weight: 450;
+	}
+	& .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container .wp-block-navigation-item {
+		color: var(--wp--preset--color--ink-muted);
+		font-size: var(--wp--preset--font-size--meta);
 	}
 	& .wp-block-navigation-item .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container {
-		padding: var(--wp--preset--spacing--xs) 0 0;
+		gap: var(--wp--preset--spacing--xxs);
+		padding: var(--wp--preset--spacing--xs) 0 var(--wp--preset--spacing--s);
 	}
 }
 /*

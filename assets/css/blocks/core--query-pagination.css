@@ -13,7 +13,7 @@
 	flex-wrap: wrap;
 	gap: var(--wp--preset--spacing--xxs);
 }
-.wp-block-query-pagination-numbers .page-numbers {
+.page-numbers {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;

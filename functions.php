@@ -50,6 +50,44 @@ function drop_empty_template_part( string $content ): string {
 add_filter( 'render_block_core/template-part', __NAMESPACE__ . '\drop_empty_template_part' );
 
 /**
+ * A post without a title still gets one on the front end, so its heading, its links and the document title are not
+ * empty (WCAG 2.4.2, 2.4.4; the Theme Unit Test post "Edge case: no title"). The admin shows "(no title)" on its own.
+ *
+ * @param string $title The title.
+ */
+function untitled( string $title ): string {
+	return '' === trim( $title ) && ! is_admin() ? __( '(Untitled)', 'leitvia' ) : $title;
+}
+add_filter( 'the_title', __NAMESPACE__ . '\untitled' );
+
+/**
+ * One h1 per page (BITV 9.1.3.1): once a template has printed the post title, an h1 in the post content or in a comment
+ * becomes an h2 that keeps the h1 size. Templates without a post title (page-landing, the archives) leave the content
+ * alone, so a hero pattern keeps its h1 there.
+ *
+ * @param string $content Rendered block.
+ * @param array  $block   Parsed block.
+ */
+function one_h1( string $content, array $block ): string {
+	static $title_printed = false;
+	if ( 'core/post-title' === $block['blockName'] ) {
+		$title_printed = $title_printed || str_contains( $content, '<h1' );
+		return $content;
+	}
+	if ( ! $title_printed || ! str_contains( $content, '<h1' ) ) {
+		return $content;
+	}
+	$tags = new \WP_HTML_Tag_Processor( $content );
+	while ( $tags->next_tag( 'H1' ) ) {
+		$tags->add_class( 'has-heading-l-font-size' );
+	}
+	return str_ireplace( array( '<h1', '</h1>' ), array( '<h2', '</h2>' ), $tags->get_updated_html() );
+}
+add_filter( 'render_block_core/post-title', __NAMESPACE__ . '\one_h1', 10, 2 );
+add_filter( 'render_block_core/post-content', __NAMESPACE__ . '\one_h1', 10, 2 );
+add_filter( 'render_block_core/comment-content', __NAMESPACE__ . '\one_h1', 10, 2 );
+
+/**
  * Registers per-block stylesheets so CSS loads only when the block is on the page.
  */
 function register_block_styles(): void {
