@@ -30,6 +30,16 @@ Use role presets only. Never write hex values, px values, custom CSS or `!import
 | `focus` | Keyboard focus outline, never decoration |
 | `success`, `warning`, `danger` | Status text and icons, always together with words |
 
+Optional color roles (`optionalRoles` in the contract) exist only in a token set, never in the palette of the theme or a style variation. A set that leaves one out gets the role it falls back to, so every older set looks as before.
+
+| Optional role | Falls back to | Use |
+| --- | --- | --- |
+| `button` | `ink` | Fill and border of the primary button on light surfaces |
+| `on-button` | `surface` | Label on `button` |
+| `band` | `ink` | Background of dark bands (Inverse block style) in a light palette, apart from the text color |
+| `band-button` | `accent` | Fill and border of the primary button on dark bands |
+| `on-band-button` | `on-accent` | Label on `band-button` |
+
 | Other roles | Slugs | Use |
 | --- | --- | --- |
 | Font size | `meta`, `body`, `lead`, `heading-s`, `heading-m`, `heading-l`, `display` | `display` once per screen; h2 is `heading-m` or `heading-l`, except in `content-statement`, where the one sentence is the section |
@@ -46,6 +56,7 @@ Only the pairs listed in `pairs` are tested for WCAG 2.2 AA in every variation. 
 - Text on `accent`: `on-accent` only. Buttons on accent use the outline style.
 - Text on `ink`: `surface`, with `stroke` for small eyebrows.
 - `success`, `warning`, `danger` only on `surface`.
+- A token set with optional roles is also tested against `optionalPairs`: the pairs that name one of the roles it carries, with every role it leaves out on its fallback. The hover of a button stays `accent` with `on-accent`.
 - Never put `ink-muted` or `accent` text on `ink` or `accent`.
 - The focus ring is a double ring (`focus` outline, `surface` inner ring), so it stays visible on every background. Do not override it.
 
@@ -206,7 +217,7 @@ Leitvia targets WCAG 2.2 AA and BITV 2.0. Agents must keep it that way:
 - Never convey meaning by color alone. Badges, recommended plans and status messages carry words.
 - Link and button texts make sense out of context.
 - Keep the contrast pairs above; never place text straight on an image. It sits on the overlay of `hero-cover-image` or in a box with a pair from `pairs`, such as a Group with `surface` background and `ink` text inside a Cover.
-- Dark bands use the Inverse block style (`is-style-inverse` on a Group or Cover), not an `ink` background: it is `ink` with `surface` text in light palettes and `surface-alt` with `ink` text in dark ones, checked by `inversePairs` in the contract. Links inside take the band text color and stay underlined. On a Cover leave the overlay color unset, the style sets it.
+- Dark bands use the Inverse block style (`is-style-inverse` on a Group or Cover), not an `ink` background: it is `ink` (or the optional role `band` of a token set) with `surface` text in light palettes and `surface-alt` with `ink` text in dark ones, checked by `inversePairs` in the contract. Links inside take the band text color and stay underlined. On a Cover leave the overlay color unset, the style sets it.
 - Client logos are Icon blocks from the `leitvia` icon collection and take the text color. Give each one the company name as its label.
 - Every Search block is a search landmark named after its label. Give each search on a page its own label: the theme uses Site search (header), Search products (shop header), Search documentation (documentation sidebar) and Search this site (404). Searches in templates keep the default name Search.
 - On sites with more than a few pages use `header-search`, so every page can be found by search as well as by navigation (WCAG 2.4.5).

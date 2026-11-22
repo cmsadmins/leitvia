@@ -6,6 +6,18 @@
 body {
 	overflow-wrap: break-word;
 }
+/*
+ * Headings of every block hyphenate by the language of the page (lang on html): words from 12 letters, at least 5 on
+ * each side, so large type never splits off a short syllable ("bar-rierefreie") and a long compound still fits a phone.
+ * No soft hyphens by hand: they end up in titles, feeds and search results. Without specificity, so tiles and cards
+ * keep their closer limits and pages in easy language keep words whole.
+ */
+:where(h1, h2, h3, h4, h5, h6) {
+	hyphens: auto;
+	hyphenate-limit-chars: 12 5 5;
+	-webkit-hyphenate-limit-before: 5;
+	-webkit-hyphenate-limit-after: 5;
+}
 :where(:is(dt, dd, figcaption, summary, legend, label, .wp-block-post-navigation-link):not(:is(th, td) *)) {
 	overflow-wrap: anywhere;
 }
@@ -38,9 +50,9 @@ body {
  * outline on inverse (core--button.css).
  */
 :is(.has-ink-background-color, .is-style-inverse) .wp-element-button:not(.wp-block-button__link, .has-background, :hover) {
-	border-color: var(--wp--preset--color--accent);
-	background-color: var(--wp--preset--color--accent);
-	color: var(--wp--preset--color--on-accent);
+	border-color: var(--wp--preset--color--band-button, var(--wp--preset--color--accent));
+	background-color: var(--wp--preset--color--band-button, var(--wp--preset--color--accent));
+	color: var(--wp--preset--color--on-band-button, var(--wp--preset--color--on-accent));
 }
 :is(.has-ink-background-color, .has-accent-background-color) .wp-element-button:not(.wp-block-button__link, .has-background):hover {
 	border-color: var(--wp--preset--color--surface);

@@ -28,14 +28,15 @@ main:has(> .wp-block-post-content:last-child > .alignfull:last-child) {
 /*
  * Pages in easy language (template page-easy-language): the template sets the lead font size, the narrower reading
  * width and the larger gap between blocks. Text stays left aligned, whatever alignment a block sets, and words are
- * never hyphenated, so every word is read whole.
+ * never hyphenated, so every word is read whole, also in the title above the content.
  */
 .wp-block-post-content.is-easy-language {
 	line-height: 1.6;
 	text-align: start;
 	hyphens: manual;
 }
-.wp-block-post-content.is-easy-language :is(.wp-block-heading, p, li, td, th) {
+.wp-block-post-content.is-easy-language :is(.wp-block-heading, p, li, td, th),
+:has(> .is-easy-language) > .wp-block-post-title {
 	hyphens: manual;
 }
 .wp-block-post-content.is-easy-language :is(.has-text-align-center, .has-text-align-right, .has-text-align-justify) {

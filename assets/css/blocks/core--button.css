@@ -11,11 +11,12 @@
 	background-color: var(--wp--preset--color--ink);
 	color: var(--wp--preset--color--surface);
 }
-/* The ink fill button takes the accent on ink and inverse bands (checked pair); on hover the rules below take over. */
+/* The fill button takes the accent on ink and inverse bands (checked pair), or the optional roles band-button and
+   on-band-button of a token set; on hover the rules below take over. */
 :is(.has-background.has-ink-background-color, .is-style-inverse) .wp-block-button:not(.is-style-outline) > .wp-block-button__link:not(.has-text-color, .has-background, :hover) {
-	border-color: var(--wp--preset--color--accent);
-	background-color: var(--wp--preset--color--accent);
-	color: var(--wp--preset--color--on-accent);
+	border-color: var(--wp--preset--color--band-button, var(--wp--preset--color--accent));
+	background-color: var(--wp--preset--color--band-button, var(--wp--preset--color--accent));
+	color: var(--wp--preset--color--on-band-button, var(--wp--preset--color--on-accent));
 }
 /*
  * Hover on bands, for every button without a preset text color. On ink and accent bands the ink hover would vanish:

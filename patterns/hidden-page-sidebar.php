@@ -7,16 +7,19 @@
  * Keywords: sidebar, about, categories, latest posts
  * Inserter: no
  *
+ * The about text is the tagline of the site; without one the heading stays out too. No sample sentence speaks for the
+ * site.
+ *
  * @package Leitvia
  */
 
 ?>
+<?php if ( '' !== get_bloginfo( 'description' ) ) : ?>
 <!-- wp:heading {"fontSize":"lead"} -->
 <h2 class="wp-block-heading has-lead-font-size"><?php esc_html_e( 'About', 'leitvia' ); ?></h2>
 <!-- /wp:heading -->
-<!-- wp:paragraph {"textColor":"ink-muted"} -->
-<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'Essays, projects and notes on building things that last.', 'leitvia' ); ?></p>
-<!-- /wp:paragraph -->
+<!-- wp:site-tagline {"textColor":"ink-muted"} /-->
+<?php endif; ?>
 <!-- wp:heading {"fontSize":"lead"} -->
 <h2 class="wp-block-heading has-lead-font-size"><?php esc_html_e( 'Categories', 'leitvia' ); ?></h2>
 <!-- /wp:heading -->

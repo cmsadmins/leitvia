@@ -12,7 +12,7 @@
 
 // A posts page such as "Journal" names the blog. WordPress lists the posts at its address, so the featured image and
 // the content of that page show here or are gone; content that only repeats the excerpt stays out. All read when the
-// template renders.
+// template renders. Without an excerpt there is no lead: a sample sentence would speak for the site.
 $leitvia_posts_page = get_option( 'page_for_posts' ) ? get_post( (int) get_option( 'page_for_posts' ) ) : null;
 $leitvia_blog_title = $leitvia_posts_page ? get_the_title( $leitvia_posts_page ) : '';
 $leitvia_blog_lead  = $leitvia_posts_page && has_excerpt( $leitvia_posts_page ) ? get_the_excerpt( $leitvia_posts_page ) : '';
@@ -35,9 +35,9 @@ if ( $leitvia_posts_page && 'publish' === $leitvia_posts_page->post_status && ! 
 <!-- wp:heading {"level":1} -->
 <h1 class="wp-block-heading"><?php echo esc_html( '' !== $leitvia_blog_title ? $leitvia_blog_title : __( 'Latest writing', 'leitvia' ) ); ?></h1>
 <!-- /wp:heading -->
-<?php if ( '' !== $leitvia_blog_lead || '' === $leitvia_blog_intro ) : ?>
+<?php if ( '' !== $leitvia_blog_lead ) : ?>
 <!-- wp:paragraph {"textColor":"ink-muted","fontSize":"lead"} -->
-<p class="has-ink-muted-color has-text-color has-lead-font-size"><?php echo esc_html( '' !== $leitvia_blog_lead ? $leitvia_blog_lead : __( 'New essays, projects and notes, newest first.', 'leitvia' ) ); ?></p>
+<p class="has-ink-muted-color has-text-color has-lead-font-size"><?php echo esc_html( $leitvia_blog_lead ); ?></p>
 <!-- /wp:paragraph -->
 <?php endif; ?>
 <?php echo $leitvia_blog_intro; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup of a page, rendered and escaped by its blocks. ?>

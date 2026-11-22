@@ -731,21 +731,22 @@ function rtl_start_justification( array $block ): array {
 add_filter( 'render_block_data', __NAMESPACE__ . '\rtl_start_justification' );
 
 /**
- * Inverse wins over a surface ground. Stage patterns set "backgroundColor":"surface", and core writes that as a preset
+ * Inverse wins over a surface or surface-alt ground. Patterns set "backgroundColor":"surface" (stages) or
+ * "surface-alt" (tinted sections), and core writes that as a preset
  * class with !important, so a group switched to the Inverse style later (in the editor, or by an agent through
- * className) kept the light ground under the light text of the style. On render the theme drops the surface class of
+ * className) kept the light ground under the light text of the style. On render the theme drops the ground class of
  * an inverse group, so the style sets ground and text together, as on every other band.
  *
  * @param string $html  Block HTML.
  * @param array  $block Parsed block.
  */
 function inverse_over_surface( string $html, array $block ): string {
-	if ( 'surface' !== ( $block['attrs']['backgroundColor'] ?? '' ) || ! in_array( 'is-style-inverse', explode( ' ', (string) ( $block['attrs']['className'] ?? '' ) ), true ) ) {
+	if ( ! in_array( $block['attrs']['backgroundColor'] ?? '', array( 'surface', 'surface-alt' ), true ) || ! in_array( 'is-style-inverse', explode( ' ', (string) ( $block['attrs']['className'] ?? '' ) ), true ) ) {
 		return $html;
 	}
 	$tags = new \WP_HTML_Tag_Processor( $html );
 	if ( $tags->next_tag() ) {
-		$tags->remove_class( 'has-surface-background-color' );
+		$tags->remove_class( 'has-' . $block['attrs']['backgroundColor'] . '-background-color' );
 		$tags->remove_class( 'has-background' );
 	}
 	return $tags->get_updated_html();
@@ -859,6 +860,71 @@ function page_list_items_in_navigation( string $html, array $block, \WP_Block $i
 add_filter( 'render_block_core/page-list', __NAMESPACE__ . '\page_list_items_in_navigation', 10, 3 );
 
 /**
+ * Entry that leads to the page of a submenu parent, see submenu_parent_link().
+ *
+ * @param string $url     Address of the parent.
+ * @param string $label   Label of the parent, safe markup as core printed it.
+ * @param bool   $current Whether the parent is the current page.
+ */
+function submenu_parent_item( string $url, string $label, bool $current ): string {
+	return sprintf(
+		'<li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content" href="%s"%s><span class="wp-block-navigation-item__label">%s</span></a></li>',
+		esc_url( $url ),
+		$current ? ' aria-current="page"' : '',
+		$label
+	);
+}
+
+/**
+ * Where submenus open on click (submenuVisibility click, as in the header patterns), core prints the parent as a button
+ * and drops its link: the page of the parent could not be reached with pointer or keyboard. The page becomes the first
+ * entry of its own submenu, under the label of the parent. It lies in the closed submenu, so the menu bar gains no tab
+ * stop, and screen readers hear the button first and the link once the submenu is open. Parents without an address of
+ * their own (none, or an anchor) stay as they are.
+ *
+ * @param string $html  Rendered block.
+ * @param array  $block Parsed block.
+ */
+function submenu_parent_link( string $html, array $block ): string {
+	$url = trim( (string) ( $block['attrs']['url'] ?? '' ) );
+	if ( '' === $url || '#' === $url[0] || ! preg_match( '#^\s*<li\b[^>]*\bclass="([^"]*\bopen-on-click\b[^"]*)"#', $html, $item ) ) {
+		return $html;
+	}
+	$entry = submenu_parent_item( $url, wp_kses_post( (string) ( $block['attrs']['label'] ?? '' ) ), str_contains( $item[1], 'current-menu-item' ) );
+	return preg_replace_callback( '#<ul\b[^>]*\bwp-block-navigation__submenu-container\b[^>]*>#', static fn( array $open ): string => $open[0] . $entry, $html, 1 ) ?? $html;
+}
+add_filter( 'render_block_core/navigation-submenu', __NAMESPACE__ . '\submenu_parent_link', 10, 2 );
+
+/**
+ * The same for a page list in a navigation, the fallback of a site without a menu: a page with child pages is a button
+ * there too. The markup of core names no ID, so the page is found by its title among the pages that have children.
+ * ponytail: two parent pages with the same title stay without the entry; match by position if that ever matters.
+ *
+ * @param string $html Rendered block.
+ */
+function page_list_parent_links( string $html ): string {
+	if ( ! str_contains( $html, 'open-on-click' ) ) {
+		return $html;
+	}
+	$pages   = get_pages();
+	$parents = array_flip( wp_list_pluck( $pages, 'post_parent' ) );
+	$links   = array();
+	foreach ( $pages as $page ) {
+		if ( isset( $parents[ $page->ID ] ) ) {
+			// The title as core prints it in the list: the stored one, without the filter the_title.
+			$title           = wp_kses_post( $page->post_title );
+			$links[ $title ] = isset( $links[ $title ] ) ? '' : (string) get_permalink( $page );
+		}
+	}
+	return preg_replace_callback(
+		'#<li class="wp-block-pages-list__item([^"]*)"[^>]*><button\b[^>]*>(.*?)</button><span\b[^>]*>.*?</span><ul class="wp-block-navigation__submenu-container">#s',
+		static fn( array $item ): string => $item[0] . ( empty( $links[ $item[2] ] ) ? '' : submenu_parent_item( $links[ $item[2] ], $item[2], str_contains( $item[1], 'current-menu-item' ) ) ),
+		$html
+	) ?? $html;
+}
+add_filter( 'render_block_core/page-list', __NAMESPACE__ . '\page_list_parent_links' );
+
+/**
  * Polylang translates posts and pages but not template parts. While Polylang shows a language other than its default
  * one, the template part <slug>-<language> (for example header-de) stands in for <slug>, if the theme or the Site
  * Editor has one. Without Polylang nothing changes.
@@ -907,6 +973,35 @@ function translated_breadcrumb_home( array $items ): array {
 add_filter( 'block_core_breadcrumbs_items', __NAMESPACE__ . '\translated_breadcrumb_home' );
 
 /**
+ * Soft hyphens help a heading on the page and nowhere else: in the title of the document, in feeds and in breadcrumbs
+ * they end up in search results, bookmarks and readers as stray characters or broken words. Headings hyphenate by
+ * themselves (core--group.css), so nobody needs to set them; titles that still carry some lose them here.
+ *
+ * @param mixed $text Title or label.
+ * @return mixed
+ */
+function without_soft_hyphens( $text ) {
+	return is_string( $text ) ? str_replace( array( '&shy;', '&#173;', '&#xAD;', '&#xad;', "\u{AD}" ), '', $text ) : $text;
+}
+add_filter( 'document_title', __NAMESPACE__ . '\without_soft_hyphens' );
+add_filter( 'the_title_rss', __NAMESPACE__ . '\without_soft_hyphens' );
+
+/**
+ * Breadcrumb labels without soft hyphens, see without_soft_hyphens().
+ *
+ * @param array $items Breadcrumb items, each with label and url.
+ */
+function plain_breadcrumbs( array $items ): array {
+	foreach ( $items as $index => $item ) {
+		if ( is_array( $item ) && isset( $item['label'] ) ) {
+			$items[ $index ]['label'] = without_soft_hyphens( $item['label'] );
+		}
+	}
+	return $items;
+}
+add_filter( 'block_core_breadcrumbs_items', __NAMESPACE__ . '\plain_breadcrumbs' );
+
+/**
  * A posts page named like the category of a post ("News" and the category News) gives two neighbouring crumbs with the
  * same label. One goes: the earlier one stays (it leads to the posts page), unless the later one is the current page.
  *
@@ -944,8 +1039,15 @@ function theme_image_size( string $html ): string {
 		}
 		$file = basename( (string) wp_parse_url( $src, PHP_URL_PATH ) );
 		if ( ! array_key_exists( $file, $sizes ) ) {
-			$path           = get_theme_file_path( 'assets/images/' . $file );
-			$sizes[ $file ] = is_readable( $path ) ? wp_getimagesize( $path ) : false;
+			$path = get_theme_file_path( 'assets/images/' . $file );
+			if ( ! is_readable( $path ) ) {
+				$sizes[ $file ] = false;
+			} elseif ( str_ends_with( $file, '.svg' ) ) {
+				// An SVG has no pixel size for wp_getimagesize(); the drawings of the theme state theirs on the root element.
+				$sizes[ $file ] = preg_match( '/<svg[^>]*?\swidth="(\d+)"[^>]*?\sheight="(\d+)"/', (string) file_get_contents( $path ), $size ) ? array( (int) $size[1], (int) $size[2] ) : false; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Local theme file.
+			} else {
+				$sizes[ $file ] = wp_getimagesize( $path );
+			}
 		}
 		if ( $sizes[ $file ] ) {
 			$tags->set_attribute( 'width', (string) $sizes[ $file ][0] );

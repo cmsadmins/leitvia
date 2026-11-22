@@ -3,7 +3,7 @@
  * Title: Team
  * Slug: leitvia/proof-team
  * Categories: team, about
- * Description: Heading and intro above four people with portrait, name and role on one line, four across on wide screens and two by two on narrower ones, never three and one. Use on about or company pages to introduce the people behind the work.
+ * Description: Heading and intro above four people with portrait, name and role on one line, four across on wide screens and two by two on narrower ones, never three and one, and a line with a link below them. Use on about or company pages to introduce the people behind the work.
  * Keywords: team, people, staff, about, studio, portraits
  * Viewport Width: 1400
  *
@@ -98,5 +98,8 @@
 		<!-- /wp:group -->
 	</div>
 	<!-- /wp:group -->
+	<!-- wp:paragraph {"align":"wide","textColor":"ink-muted"} -->
+	<p class="alignwide has-ink-muted-color has-text-color"><?php esc_html_e( 'Want to know how we got here?', 'leitvia' ); ?> <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Read our story', 'leitvia' ); ?></a></p>
+	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

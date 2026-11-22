@@ -77,3 +77,23 @@
 		}
 	}
 }
+
+/*
+ * Captions sit below the photo, in the text color of the section. Core lays them over the image in white on a
+ * gradient, where a longer line hides the motif and the contrast depends on the photo. The collage keeps core's
+ * overlay: its images overlap, a line below would run into the next one.
+ */
+.wp-block-gallery.has-nested-images:not(.is-style-collage) figure.wp-block-image {
+	& figcaption {
+		position: relative;
+		flex: initial;
+		padding: var(--wp--preset--spacing--xs) 0 0;
+		background: none;
+		color: inherit;
+		font-size: var(--wp--preset--font-size--meta);
+		text-shadow: none;
+	}
+	&:has(figcaption)::before {
+		content: none;
+	}
+}

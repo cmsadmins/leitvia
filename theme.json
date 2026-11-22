@@ -239,11 +239,11 @@
 			},
 			"button": {
 				"color": {
-					"background": "var:preset|color|ink",
-					"text": "var:preset|color|surface"
+					"background": "var(--wp--preset--color--button, var(--wp--preset--color--ink))",
+					"text": "var(--wp--preset--color--on-button, var(--wp--preset--color--surface))"
 				},
 				"border": {
-					"color": "var:preset|color|ink",
+					"color": "var(--wp--preset--color--button, var(--wp--preset--color--ink))",
 					"radius": "var:preset|border-radius|s",
 					"style": "solid",
 					"width": "1px"

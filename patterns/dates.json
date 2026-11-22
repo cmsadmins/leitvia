@@ -23,6 +23,10 @@
 		"added": "2026-11-01",
 		"updated": "2026-11-01"
 	},
+	"leitvia/content-divider": {
+		"added": "2026-11-22",
+		"updated": "2026-11-22"
+	},
 	"leitvia/content-downloads": {
 		"added": "2026-10-24",
 		"updated": "2026-10-24"
@@ -46,6 +50,10 @@
 	"leitvia/content-media-pair": {
 		"added": "2026-10-18",
 		"updated": "2026-11-05"
+	},
+	"leitvia/content-ornament": {
+		"added": "2026-11-22",
+		"updated": "2026-11-22"
 	},
 	"leitvia/content-overlap": {
 		"added": "2026-10-18",
@@ -83,6 +91,18 @@
 		"added": "2026-11-17",
 		"updated": "2026-11-17"
 	},
+	"leitvia/content-text": {
+		"added": "2026-11-22",
+		"updated": "2026-11-22"
+	},
+	"leitvia/content-text-figures": {
+		"added": "2026-11-22",
+		"updated": "2026-11-22"
+	},
+	"leitvia/content-text-illustration": {
+		"added": "2026-11-22",
+		"updated": "2026-11-22"
+	},
 	"leitvia/content-text-media": {
 		"added": "2026-10-15",
 		"updated": "2026-11-05"
@@ -93,7 +113,15 @@
 	},
 	"leitvia/content-video": {
 		"added": "2026-10-28",
-		"updated": "2026-10-28"
+		"updated": "2026-11-22"
+	},
+	"leitvia/content-video-split": {
+		"added": "2026-11-22",
+		"updated": "2026-11-22"
+	},
+	"leitvia/content-video-wide": {
+		"added": "2026-11-22",
+		"updated": "2026-11-22"
 	},
 	"leitvia/cta-banner": {
 		"added": "2026-10-15",
@@ -102,6 +130,10 @@
 	"leitvia/cta-contact": {
 		"added": "2026-10-15",
 		"updated": "2026-11-11"
+	},
+	"leitvia/cta-contact-buttons": {
+		"added": "2026-11-22",
+		"updated": "2026-11-22"
 	},
 	"leitvia/cta-newsletter": {
 		"added": "2026-10-15",
@@ -201,7 +233,7 @@
 	},
 	"leitvia/hidden-page-blog-heading": {
 		"added": "2026-10-15",
-		"updated": "2026-11-06"
+		"updated": "2026-11-22"
 	},
 	"leitvia/hidden-page-category-chips": {
 		"added": "2026-11-02",
@@ -209,7 +241,7 @@
 	},
 	"leitvia/hidden-page-checkout-footer": {
 		"added": "2026-10-19",
-		"updated": "2026-10-19"
+		"updated": "2026-11-22"
 	},
 	"leitvia/hidden-page-checkout-header": {
 		"added": "2026-10-18",
@@ -218,6 +250,10 @@
 	"leitvia/hidden-page-docs-sidebar": {
 		"added": "2026-10-15",
 		"updated": "2026-10-16"
+	},
+	"leitvia/hidden-page-footer": {
+		"added": "2026-11-22",
+		"updated": "2026-11-22"
 	},
 	"leitvia/hidden-page-no-results": {
 		"added": "2026-10-15",
@@ -261,7 +297,7 @@
 	},
 	"leitvia/hidden-page-sidebar": {
 		"added": "2026-10-15",
-		"updated": "2026-10-15"
+		"updated": "2026-11-22"
 	},
 	"leitvia/offer-pricing-3": {
 		"added": "2026-10-15",
@@ -277,7 +313,7 @@
 	},
 	"leitvia/proof-team": {
 		"added": "2026-10-15",
-		"updated": "2026-11-06"
+		"updated": "2026-11-22"
 	},
 	"leitvia/proof-testimonial": {
 		"added": "2026-10-15",
@@ -342,6 +378,10 @@
 	"leitvia/teaser-icon-tiles": {
 		"added": "2026-11-08",
 		"updated": "2026-11-08"
+	},
+	"leitvia/teaser-pictogram-list": {
+		"added": "2026-11-22",
+		"updated": "2026-11-22"
 	},
 	"leitvia/teaser-posts-badge": {
 		"added": "2026-10-15",

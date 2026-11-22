@@ -67,3 +67,12 @@
 .wp-block-image.is-style-illustration:not(.alignwide, .alignfull) {
 	max-width: var(--leitvia-illustration-max, 20rem);
 }
+
+/* Phones: a cropped image at the top of a card (a group with a background or a border in a grid) is at most 10rem
+   high, so stacked cards stay short. An image shown whole (contain) keeps its ratio. */
+@media (max-width: 37.5rem) {
+	.is-layout-grid > .wp-block-group:is(.has-background, .has-border-color) > .wp-block-image img[style*="cover"] {
+		width: 100%;
+		max-height: 10rem;
+	}
+}

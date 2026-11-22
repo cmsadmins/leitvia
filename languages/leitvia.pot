@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Leitvia 1.2.55\n"
+"Project-Id-Version: Leitvia 1.2.56\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/leitvia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -234,7 +234,7 @@ msgstr ""
 msgid "The result is calmer to read and easier to keep up to date, because each part has a reason to be there."
 msgstr ""
 
-#: patterns/content-asymmetric.php patterns/content-gallery.php patterns/content-photo-collage.php patterns/content-steps-images.php patterns/hero-split-image.php patterns/hero-teaser-trio.php
+#: patterns/content-asymmetric.php patterns/content-gallery.php patterns/content-photo-collage.php patterns/content-steps-images.php patterns/content-text-figures.php patterns/hero-split-image.php patterns/hero-teaser-trio.php
 msgid "Illustration of a green arched doorway beneath a terracotta sun"
 msgstr ""
 
@@ -562,6 +562,16 @@ msgctxt "Pattern description"
 msgid "Eyebrow, heading and short intro above a wide comparison table with a header row of options, one row per feature, a last row linking to each option and a caption with source and date. Use on product and comparison pages when three or four options differ feature by feature."
 msgstr ""
 
+#: patterns/content-divider.php
+msgctxt "Pattern title"
+msgid "Line divider"
+msgstr ""
+
+#: patterns/content-divider.php
+msgctxt "Pattern description"
+msgid "One fine line in the accent color of the brand between two sections, on the page background with little space above and below. Use as a quiet divider when the brand has no drawn motif, at most twice per page."
+msgstr ""
+
 #: patterns/content-downloads.php
 msgid "Documents to download"
 msgstr ""
@@ -870,15 +880,15 @@ msgstr ""
 msgid "A selection of finished jobs, from the first sketch to the handover. Select a photo to see it whole."
 msgstr ""
 
-#: patterns/content-gallery.php patterns/content-media-pair.php patterns/content-photo-collage.php patterns/content-steps-images.php patterns/hero-overlap.php patterns/teaser-cards-3.php
+#: patterns/content-gallery.php patterns/content-media-pair.php patterns/content-photo-collage.php patterns/content-steps-images.php patterns/content-text-figures.php patterns/hero-overlap.php patterns/teaser-cards-3.php
 msgid "Illustration of layered green hills below a terracotta sun"
 msgstr ""
 
-#: patterns/content-gallery.php patterns/content-media-pair.php patterns/content-photo-collage.php patterns/content-steps-images.php patterns/content-text-media.php patterns/hero-teaser-trio.php patterns/teaser-cards-3.php
+#: patterns/content-gallery.php patterns/content-media-pair.php patterns/content-photo-collage.php patterns/content-steps-images.php patterns/content-text-figures.php patterns/content-text-media.php patterns/hero-teaser-trio.php patterns/teaser-cards-3.php
 msgid "Still life of a green block, a terracotta circle and a grey triangle on a shelf"
 msgstr ""
 
-#: patterns/content-gallery.php patterns/content-overlap.php patterns/content-photo-collage.php patterns/content-steps-images.php patterns/cta-split.php patterns/hero-teaser-trio.php
+#: patterns/content-gallery.php patterns/content-overlap.php patterns/content-photo-collage.php patterns/content-steps-images.php patterns/content-text-figures.php patterns/cta-split.php patterns/hero-teaser-trio.php
 msgid "Overlapping green, terracotta and grey rectangles on a fine paper grid"
 msgstr ""
 
@@ -916,6 +926,16 @@ msgstr ""
 #: patterns/content-media-pair.php
 msgctxt "Pattern description"
 msgid "Heading and short introduction above two images of different size, the smaller one set lower, each with a caption. Use to show two sides of a project, a before and after or a detail next to the whole."
+msgstr ""
+
+#: patterns/content-ornament.php
+msgctxt "Pattern title"
+msgid "Ornament divider"
+msgstr ""
+
+#: patterns/content-ornament.php
+msgctxt "Pattern description"
+msgid "One small decorative drawing centered between two sections, shown whole on the page background with little space above and below. Use to repeat a motif of the brand as a quiet divider, at most twice per page."
 msgstr ""
 
 #: patterns/content-overlap.php
@@ -1260,6 +1280,70 @@ msgctxt "Pattern description"
 msgid "Heading above four numbered steps, each with a title and a short description, four across on wide screens and two by two on narrower ones, never three and one. Use to explain a process, an onboarding path or how a service works."
 msgstr ""
 
+#: patterns/content-text-figures.php
+msgid "Figure 1: the structure in section, from the base to the top layer."
+msgstr ""
+
+#: patterns/content-text-figures.php
+msgid "Figure 2: the joint in detail."
+msgstr ""
+
+#: patterns/content-text-figures.php
+msgid "How the structure is built up, layer by layer"
+msgstr ""
+
+#: patterns/content-text-figures.php
+msgid "The base carries the load and keeps moisture out. It is checked and levelled before anything else is placed on it, because every later layer follows its line."
+msgstr ""
+
+#: patterns/content-text-figures.php
+msgid "On top of it lies the middle layer, shown in figure 1. It takes up movement, so the surface stays free of cracks when the temperature changes."
+msgstr ""
+
+#: patterns/content-text-figures.php
+msgid "The joint decides how long it lasts"
+msgstr ""
+
+#: patterns/content-text-figures.php
+msgid "Where two parts meet, water finds its way in first. Figure 2 shows how the joint is closed in two steps and why the second seal sits behind the first."
+msgstr ""
+
+#: patterns/content-text-figures.php
+msgctxt "Pattern title"
+msgid "Text beside figures"
+msgstr ""
+
+#: patterns/content-text-figures.php
+msgctxt "Pattern description"
+msgid "A longer text with a subheading in a readable column beside two figures that are shown whole with a caption each, and a row of further figures below, also uncropped. Use for a technical section whose plans, diagrams or drawings must be seen complete."
+msgstr ""
+
+#: patterns/content-text-illustration.php
+msgid "A plant on every desk, because a calm room makes better work."
+msgstr ""
+
+#: patterns/content-text-illustration.php
+msgid "Small things set the tone of a place. We keep the rooms bright, the desks clear and the meetings short, so there is time left for the work itself."
+msgstr ""
+
+#: patterns/content-text-illustration.php
+msgid "Visitors notice it within a minute, and most of them stay for a second coffee."
+msgstr ""
+
+#: patterns/content-text-illustration.php
+msgid "See how we set up our rooms"
+msgstr ""
+
+#: patterns/content-text-illustration.php
+msgctxt "Pattern title"
+msgid "Text with illustration"
+msgstr ""
+
+#: patterns/content-text-illustration.php
+msgctxt "Pattern description"
+msgid "Heading, two short paragraphs and a link next to a small drawing that is shown whole and never cropped. Use to loosen a text section with a line drawing or a cut-out illustration that only decorates."
+msgstr ""
+
 #: patterns/content-text-media.php patterns/footer-columns.php patterns/hidden-page-post-author.php
 msgid "How we work"
 msgstr ""
@@ -1288,6 +1372,32 @@ msgstr ""
 #: patterns/content-text-media.php
 msgctxt "Pattern description"
 msgid "Square image next to a heading, two short paragraphs and a link. Use to explain one idea with a picture; switch the block style to Media right to swap the sides."
+msgstr ""
+
+#: patterns/content-text.php
+msgid "What happens between the first call and the finished work"
+msgstr ""
+
+#: patterns/content-text.php
+msgid "Every job starts with a visit. We look at what is there, measure, and ask how the place is used from day to day. Only then do we write an offer, so the price holds and nothing has to be added later."
+msgstr ""
+
+#: patterns/content-text.php
+msgid "Planning before building"
+msgstr ""
+
+#: patterns/content-text.php
+msgid "A plan on paper costs an afternoon, a change on site costs a week. You see every detail as a drawing and agree to it before the first part is made."
+msgstr ""
+
+#: patterns/content-text.php
+msgctxt "Pattern title"
+msgid "Text section"
+msgstr ""
+
+#: patterns/content-text.php
+msgctxt "Pattern description"
+msgid "Heading, paragraphs and a subheading in the reading width, without an image. Use for a longer explanation that needs nothing beside it, between sections with images."
 msgstr ""
 
 #: patterns/content-two-columns.php
@@ -1320,6 +1430,62 @@ msgctxt "Pattern description"
 msgid "Full-width heading above two columns of running text. Use for an introduction or statement that is too long for a single narrow column."
 msgstr ""
 
+#: patterns/content-video-split.php
+msgid "A short look at how the work is done"
+msgstr ""
+
+#: patterns/content-video-split.php
+msgid "The video shows the three steps that matter most. It plays only when you start it, and the transcript below holds the same content as text."
+msgstr ""
+
+#: patterns/content-video-split.php patterns/content-video-wide.php patterns/content-video.php
+msgid "The process in five steps. Upload the video file here and choose a still of it as the poster."
+msgstr ""
+
+#: patterns/content-video-split.php patterns/content-video-wide.php patterns/content-video.php
+msgid "Transcript of the video"
+msgstr ""
+
+#: patterns/content-video-split.php patterns/content-video-wide.php patterns/content-video.php
+msgid "The first scene: what the viewer sees and what the caption says."
+msgstr ""
+
+#: patterns/content-video-split.php patterns/content-video-wide.php patterns/content-video.php
+msgid "The next scene, in the same words as on screen."
+msgstr ""
+
+#: patterns/content-video-split.php patterns/content-video-wide.php patterns/content-video.php
+msgid "A label or the source of the video, such as: AI-generated content, AI voice."
+msgstr ""
+
+#: patterns/content-video-split.php
+msgctxt "Pattern title"
+msgid "Text beside video"
+msgstr ""
+
+#: patterns/content-video-split.php
+msgctxt "Pattern description"
+msgid "Heading and a short text on the left, a video on the right, and below both a folded transcript and a small note in the reading width. Use when a short video supports a text and neither should push the other down the page."
+msgstr ""
+
+#: patterns/content-video-wide.php
+msgid "Watch the whole process from start to finish"
+msgstr ""
+
+#: patterns/content-video-wide.php
+msgid "Two minutes of video show every step. The transcript below holds the same content as text."
+msgstr ""
+
+#: patterns/content-video-wide.php
+msgctxt "Pattern title"
+msgid "Wide video with transcript"
+msgstr ""
+
+#: patterns/content-video-wide.php
+msgctxt "Pattern description"
+msgid "Heading and short introduction on the left above a video in the wide width, followed by a folded transcript and a small note in the reading width. Use when the video is the main content of the section and needs room."
+msgstr ""
+
 #: patterns/content-video.php
 msgid "See how it works in under a minute"
 msgstr ""
@@ -1329,29 +1495,13 @@ msgid "A short video walks through the steps one by one. It has no sound, and th
 msgstr ""
 
 #: patterns/content-video.php
-msgid "The process in five steps. Upload the video file here and choose a still of it as the poster."
-msgstr ""
-
-#: patterns/content-video.php
-msgid "Transcript of the video"
-msgstr ""
-
-#: patterns/content-video.php
-msgid "The first scene: what the viewer sees and what the caption says."
-msgstr ""
-
-#: patterns/content-video.php
-msgid "The next scene, in the same words as on screen."
-msgstr ""
-
-#: patterns/content-video.php
 msgctxt "Pattern title"
 msgid "Video with transcript"
 msgstr ""
 
 #: patterns/content-video.php
 msgctxt "Pattern description"
-msgid "Heading and short introduction above a video with a poster image and a caption, followed by a folded transcript with the text of every scene. Use to explain a process in a short video that stays accessible without sound."
+msgid "Heading and short introduction above a video with a poster image and a caption, followed by a folded transcript with the text of every scene and a small note for a label or the source. Use to explain a process in a short video that stays accessible without sound."
 msgstr ""
 
 #: patterns/cta-banner.php
@@ -1380,6 +1530,40 @@ msgctxt "Pattern description"
 msgid "Full-width accent band with a large heading, a short note and one outline button. Use once near the end of a page to ask for the main action."
 msgstr ""
 
+#: patterns/cta-contact-buttons.php
+msgid "Call or write, we answer within a working day."
+msgstr ""
+
+#: patterns/cta-contact-buttons.php
+msgid "On the phone Monday to Thursday, 9:00 to 17:00. An email reaches us at any time."
+msgstr ""
+
+#: patterns/cta-contact-buttons.php patterns/cta-contact.php patterns/footer-mega.php
+msgid "+442079460958"
+msgstr ""
+
+#: patterns/cta-contact-buttons.php
+msgid "Call +44 20 7946 0958"
+msgstr ""
+
+#: patterns/cta-contact-buttons.php patterns/cta-contact.php patterns/footer-mega.php
+msgid "hello@example.com"
+msgstr ""
+
+#: patterns/cta-contact-buttons.php
+msgid "Write an email"
+msgstr ""
+
+#: patterns/cta-contact-buttons.php
+msgctxt "Pattern title"
+msgid "Contact buttons"
+msgstr ""
+
+#: patterns/cta-contact-buttons.php
+msgctxt "Pattern description"
+msgid "Tinted band with a centered heading, one sentence and two buttons that start a phone call and an email. Use as the closing section of a page whose visitors should call or write right away."
+msgstr ""
+
 #: patterns/cta-contact.php patterns/footer-columns.php patterns/footer-mega.php patterns/footer-minimal.php
 msgid "Contact"
 msgstr ""
@@ -1396,16 +1580,8 @@ msgstr ""
 msgid "Write to"
 msgstr ""
 
-#: patterns/cta-contact.php patterns/footer-mega.php
-msgid "hello@example.com"
-msgstr ""
-
 #: patterns/cta-contact.php
 msgid "Call"
-msgstr ""
-
-#: patterns/cta-contact.php patterns/footer-mega.php
-msgid "+442079460958"
 msgstr ""
 
 #: patterns/cta-contact.php patterns/footer-mega.php
@@ -1538,19 +1714,19 @@ msgstr ""
 msgid "Reading list"
 msgstr ""
 
-#: patterns/footer-columns.php patterns/footer-mega.php patterns/hidden-page-checkout-footer.php
+#: patterns/footer-columns.php patterns/footer-mega.php patterns/hidden-page-checkout-footer.php patterns/hidden-page-footer.php
 msgid "Legal"
 msgstr ""
 
-#: patterns/footer-columns.php patterns/footer-mega.php patterns/footer-minimal.php patterns/footer-newsletter.php patterns/hidden-page-checkout-footer.php
+#: patterns/footer-columns.php patterns/footer-mega.php patterns/footer-minimal.php patterns/footer-newsletter.php patterns/hidden-page-footer.php
 msgid "Imprint"
 msgstr ""
 
-#: patterns/footer-columns.php patterns/footer-mega.php patterns/footer-minimal.php patterns/footer-newsletter.php patterns/hidden-page-checkout-footer.php
+#: patterns/footer-columns.php patterns/footer-mega.php patterns/footer-minimal.php patterns/footer-newsletter.php patterns/hidden-page-checkout-footer.php patterns/hidden-page-footer.php
 msgid "Privacy policy"
 msgstr ""
 
-#: patterns/footer-columns.php
+#: patterns/footer-columns.php patterns/hidden-page-footer.php
 msgid "Accessibility"
 msgstr ""
 
@@ -2131,10 +2307,6 @@ msgid "Latest writing"
 msgstr ""
 
 #: patterns/hidden-page-blog-heading.php
-msgid "New essays, projects and notes, newest first."
-msgstr ""
-
-#: patterns/hidden-page-blog-heading.php
 msgctxt "Pattern title"
 msgid "Blog heading"
 msgstr ""
@@ -2159,11 +2331,11 @@ msgid "The categories that have posts as a row of pill links in a named navigati
 msgstr ""
 
 #: patterns/hidden-page-checkout-footer.php
-msgid "Payments are encrypted. Your data is used only for this order."
+msgid "Terms"
 msgstr ""
 
 #: patterns/hidden-page-checkout-footer.php
-msgid "Terms"
+msgid "Payments are encrypted. Your data is used only for this order."
 msgstr ""
 
 #: patterns/hidden-page-checkout-footer.php
@@ -2210,6 +2382,20 @@ msgstr ""
 #: patterns/hidden-page-docs-sidebar.php
 msgctxt "Pattern description"
 msgid "Collapsible documentation menu with a labelled search field and the page tree. Opens beside the content from tablet width on."
+msgstr ""
+
+#: patterns/hidden-page-footer.php
+msgid "Theme: %s"
+msgstr ""
+
+#: patterns/hidden-page-footer.php
+msgctxt "Pattern title"
+msgid "Default footer"
+msgstr ""
+
+#: patterns/hidden-page-footer.php
+msgctxt "Pattern description"
+msgid "Footer of the default templates: site title, the copyright line, the legal links the site has and a link to the theme."
 msgstr ""
 
 #: patterns/hidden-page-no-results.php
@@ -2406,10 +2592,6 @@ msgid "WooCommerce product filters for the shop and its archives: active filters
 msgstr ""
 
 #: patterns/hidden-page-sidebar.php
-msgid "Essays, projects and notes on building things that last."
-msgstr ""
-
-#: patterns/hidden-page-sidebar.php
 msgid "Latest posts"
 msgstr ""
 
@@ -2435,7 +2617,7 @@ msgstr ""
 msgid "For small teams"
 msgstr ""
 
-#: patterns/offer-pricing-3.php
+#: patterns/offer-pricing-3.php patterns/teaser-pictogram-list.php
 msgid "Care"
 msgstr ""
 
@@ -2682,13 +2864,21 @@ msgid "Content and accessibility"
 msgstr ""
 
 #: patterns/proof-team.php
+msgid "Want to know how we got here?"
+msgstr ""
+
+#: patterns/proof-team.php
+msgid "Read our story"
+msgstr ""
+
+#: patterns/proof-team.php
 msgctxt "Pattern title"
 msgid "Team"
 msgstr ""
 
 #: patterns/proof-team.php
 msgctxt "Pattern description"
-msgid "Heading and intro above four people with portrait, name and role on one line, four across on wide screens and two by two on narrower ones, never three and one. Use on about or company pages to introduce the people behind the work."
+msgid "Heading and intro above four people with portrait, name and role on one line, four across on wide screens and two by two on narrower ones, never three and one, and a line with a link below them. Use on about or company pages to introduce the people behind the work."
 msgstr ""
 
 #: patterns/proof-testimonial.php
@@ -3137,6 +3327,52 @@ msgstr ""
 #: patterns/teaser-icon-tiles.php
 msgctxt "Pattern description"
 msgid "Heading and a short intro above four tiles, each with an icon and a title that links to its page; the whole tile is one link. Two across on phones, up to four across on wide screens. Use for a short menu of topics or services, such as the ways to plan a visit."
+msgstr ""
+
+#: patterns/teaser-pictogram-list.php
+msgid "What we do for you"
+msgstr ""
+
+#: patterns/teaser-pictogram-list.php
+msgid "Four services from one workshop, each with a page of its own."
+msgstr ""
+
+#: patterns/teaser-pictogram-list.php
+msgid "Planning"
+msgstr ""
+
+#: patterns/teaser-pictogram-list.php
+msgid "A plan with every measure and a fixed price before any work starts."
+msgstr ""
+
+#: patterns/teaser-pictogram-list.php
+msgid "Building"
+msgstr ""
+
+#: patterns/teaser-pictogram-list.php
+msgid "Made in our own workshop and fitted by the people who built it."
+msgstr ""
+
+#: patterns/teaser-pictogram-list.php
+msgid "Repair"
+msgstr ""
+
+#: patterns/teaser-pictogram-list.php
+msgid "Worn or damaged parts restored, so the piece stays in use."
+msgstr ""
+
+#: patterns/teaser-pictogram-list.php
+msgid "A yearly check that finds small faults before they grow."
+msgstr ""
+
+#: patterns/teaser-pictogram-list.php
+msgctxt "Pattern title"
+msgid "Service cards with pictogram"
+msgstr ""
+
+#: patterns/teaser-pictogram-list.php
+msgctxt "Pattern description"
+msgid "Heading and a short intro above four cards, each with a small pictogram or drawing on the left, shown whole, and a linked title with one sentence on the right. Two across on wide screens, a compact list on phones. Use for services or topics that have a pictogram and a page each."
 msgstr ""
 
 #: patterns/teaser-posts-badge.php

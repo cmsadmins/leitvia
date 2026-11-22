@@ -10,6 +10,19 @@
 	hyphenate-limit-chars: 10 3 3;
 }
 
+/*
+ * Figures: a paragraph in heading-l at the top of a grid cell (content-stats, "4 locations") follows the width of its
+ * cell. The cell is a container and the size shrinks to 14 % of it down to 1.5rem, so a value with a word stays whole in
+ * four cells across instead of breaking inside the word. Wide cells keep the full size.
+ */
+.is-layout-grid > .wp-block-group:has(> p.has-heading-l-font-size) {
+	container-type: inline-size;
+	--leitvia-figure: var(--wp--preset--font-size--heading-l);
+}
+.is-layout-grid > .wp-block-group > p.has-heading-l-font-size {
+	--wp--preset--font-size--heading-l: clamp(1.5rem, 14cqi, var(--leitvia-figure));
+}
+
 /* Inline code in running text. The tint follows the text color, so it also reads on surface-alt, ink and accent sections. */
 :where(p) code {
 	padding: 0.1em 0.3em;

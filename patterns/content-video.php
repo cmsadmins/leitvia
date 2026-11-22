@@ -3,7 +3,7 @@
  * Title: Video with transcript
  * Slug: leitvia/content-video
  * Categories: media, text
- * Description: Heading and short introduction above a video with a poster image and a caption, followed by a folded transcript with the text of every scene. Use to explain a process in a short video that stays accessible without sound.
+ * Description: Heading and short introduction above a video with a poster image and a caption, followed by a folded transcript with the text of every scene and a small note for a label or the source. Use to explain a process in a short video that stays accessible without sound.
  * Keywords: video, transcript, explainer, media, accessible
  * Viewport Width: 1400
  *
@@ -32,5 +32,8 @@
 	<!-- /wp:list-item --></ol>
 	<!-- /wp:list --></details>
 	<!-- /wp:details -->
+	<!-- wp:paragraph {"textColor":"ink-muted","fontSize":"meta"} -->
+	<p class="has-ink-muted-color has-text-color has-meta-font-size"><?php esc_html_e( 'A label or the source of the video, such as: AI-generated content, AI voice.', 'leitvia' ); ?></p>
+	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

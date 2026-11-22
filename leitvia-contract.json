@@ -332,6 +332,64 @@
 			"ring": "surface"
 		}
 	],
+	"optionalRoles": {
+		"$comment": "Color roles a token set may add; none is a preset of theme.json or of a style variation. A set without one keeps the look of its fallback role, so sets saved before stay valid and unchanged. They split what ink and accent carry together: the fill and label of primary buttons, the ground of the Inverse band in light sets, and the button on dark bands. Never write them as a block color (backgroundColor, textColor); the theme applies them.",
+		"color": [
+			{
+				"slug": "button",
+				"fallback": "ink",
+				"purpose": "Fill and border of primary buttons on surface and surface-alt, also of the shop buttons. Hover stays accent with on-accent."
+			},
+			{
+				"slug": "on-button",
+				"fallback": "surface",
+				"purpose": "Label on button."
+			},
+			{
+				"slug": "band",
+				"fallback": "ink",
+				"purpose": "Ground of the Inverse band in a light set, with surface as text color. A dark set leaves it out: its Inverse band is surface-alt. A Group with an ink background stays ink."
+			},
+			{
+				"slug": "band-button",
+				"fallback": "accent",
+				"purpose": "Fill and border of primary buttons on Inverse and ink bands."
+			},
+			{
+				"slug": "on-band-button",
+				"fallback": "on-accent",
+				"purpose": "Label on band-button."
+			}
+		]
+	},
+	"optionalPairs": [
+		{
+			"fg": "on-button",
+			"bg": "button",
+			"min": 4.5
+		},
+		{
+			"fg": "on-band-button",
+			"bg": "band-button",
+			"min": 4.5
+		},
+		{
+			"fg": "surface",
+			"bg": "band",
+			"min": 4.5
+		},
+		{
+			"fg": "stroke",
+			"bg": "band",
+			"min": 4.5
+		},
+		{
+			"fg": "focus",
+			"bg": "band",
+			"min": 3,
+			"ring": "surface"
+		}
+	],
 	"templateParts": [
 		{
 			"name": "header",
@@ -505,7 +563,7 @@
 		{
 			"block": "core/group",
 			"name": "inverse",
-			"purpose": "Band that stays dark in every palette: ink with surface text in light palettes, surface-alt with ink text and a hairline in stroke in dark ones, so the band stands apart from the page. Use instead of an ink background; pairs in inversePairs. On a group with backgroundColor surface (the stage patterns) the style wins on render, so className is-style-inverse alone makes a stage dark.",
+			"purpose": "Band that stays dark in every palette: ink with surface text in light palettes, surface-alt with ink text and a hairline in stroke in dark ones, so the band stands apart from the page. Use instead of an ink background; pairs in inversePairs. On a group with backgroundColor surface or surface-alt (stages and tinted sections of patterns) the style wins on render, so className is-style-inverse alone makes such a section dark.",
 			"context": "Full-width section bands for calls to action or proof; at most one or two per page, never nested."
 		},
 		{
@@ -1103,6 +1161,31 @@
 			}
 		},
 		{
+			"slug": "leitvia/content-divider",
+			"title": "Line divider",
+			"description": "One fine line in the accent color of the brand between two sections, on the page background with little space above and below. Use as a quiet divider when the brand has no drawn motif, at most twice per page.",
+			"area": "content",
+			"useWhen": "A quiet break between two sections of the same tone when the brand has no drawn motif. The line takes the accent color of the token set, so it fits every brand. At most twice per page, never directly after the hero or before the footer.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "centered",
+				"weight": "light",
+				"role": "detail",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The brand has a drawn motif (use content-ornament with its file), the neighbouring sections already differ in tone, or the page has two dividers.",
+				"a11y": "The line is a separator element (hr): screen readers announce a break between two parts, so place it only where the topic changes. Accent on surface keeps a contrast of 3:1 in every token set.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/content-downloads",
 			"title": "Downloads",
 			"description": "Heading and short intro above a list of files to download, one per row with a decorative file mark: the link names the file, its format and its size, a sentence below says what is inside. Use on product, service, press or documentation pages that offer documents.",
@@ -1250,7 +1333,7 @@
 				}
 			],
 			"docs": {
-				"avoidWhen": "Three to five photos next to a text (use content-photo-collage), a product with its buy box (use a scroll gallery), or illustrations and plans that must be seen whole in the grid (the frame crops them).",
+				"avoidWhen": "Three to five photos next to a text (use content-photo-collage), a product with its buy box (use a scroll gallery), or illustrations and plans that must be seen whole in the grid (the frame crops them; use content-text-figures).",
 				"a11y": "Every photo needs an alt text that says what it shows; the order in the document is the reading order. Each photo opens whole in the lightbox, which keeps focus, Escape and the buttons Previous and Next of core.",
 				"contentLength": {
 					"heading": [
@@ -1312,6 +1395,39 @@
 			}
 		},
 		{
+			"slug": "leitvia/content-ornament",
+			"title": "Ornament divider",
+			"description": "One small decorative drawing centered between two sections, shown whole on the page background with little space above and below. Use to repeat a motif of the brand as a quiet divider, at most twice per page.",
+			"area": "content",
+			"useWhen": "A brand has a drawn motif (a sprig, a line, a mark) that should return between sections. Place it between two sections of the same tone, at most twice per page, and never directly after the hero or before the footer.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "centered",
+				"weight": "light",
+				"role": "detail",
+				"width": "reading"
+			},
+			"images": [
+				{
+					"aspectRatio": "intrinsic",
+					"displayWidth": "20rem",
+					"recommendedSize": "960x120",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "A photo (use content-break-image), a drawing that carries information (use content-text-figures), a brand without a drawn motif (use content-divider), a page that already has two dividers, or a place directly before or after another decorative drawing.",
+				"a11y": "The drawing only decorates: the alt text stays empty and leitviaDecorative is set, so screen readers skip it. Use a transparent file whose lines keep a contrast of 3:1 against the background.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/content-overlap",
 			"title": "Text card over image",
 			"description": "A tinted text card with heading, paragraph and link whose lower edge overlaps a wide image below it. Use to give one message visual depth without placing text on the picture.",
@@ -1335,7 +1451,7 @@
 				}
 			],
 			"docs": {
-				"avoidWhen": "The page already has an image break or a cover nearby; two large images in a row lose their weight, or the image is an illustration or diagram: the card covers part of it and the slot crops it.",
+				"avoidWhen": "The page already has an image break or a cover nearby; two large images in a row lose their weight, or the image is an illustration or diagram: the card covers part of it and the slot crops it. Also avoid a photo with faces near its upper edge: the card covers the top of the image.",
 				"a11y": "The card overlaps the image only with its bottom padding, never with text, also at 320 px and with larger text spacing. The card comes first in the DOM, so text is read before the image.",
 				"contentLength": {
 					"heading": [
@@ -1609,6 +1725,115 @@
 			}
 		},
 		{
+			"slug": "leitvia/content-text",
+			"title": "Text section",
+			"description": "Heading, paragraphs and a subheading in the reading width, without an image. Use for a longer explanation that needs nothing beside it, between sections with images.",
+			"area": "content",
+			"useWhen": "A longer explanation of 80 to 300 words that needs no image: an approach, a background, the answer to one question. Add paragraphs, subheadings (h3) and lists as the text needs them.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "context",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "One short claim (use content-statement), a text with an image (content-text-media) or with drawings that must be seen whole (content-text-figures), or more than 300 words without a subheading.",
+				"a11y": "One h2, subheadings as h3. The reading width keeps lines under 80 characters.",
+				"contentLength": {
+					"heading": [
+						20,
+						70
+					],
+					"text": [
+						80,
+						300
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-text-figures",
+			"title": "Text beside figures",
+			"description": "A longer text with a subheading in a readable column beside two figures that are shown whole with a caption each, and a row of further figures below, also uncropped. Use for a technical section whose plans, diagrams or drawings must be seen complete.",
+			"area": "content",
+			"useWhen": "A technical section of 150 to 400 words with one to three plans, diagrams or drawings that must be seen whole. The figures keep their own ratio and are never cropped. Remove the gallery when there are no further figures, and set the block style media-right on the columns to move the figures to the right.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "heavy",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "intrinsic",
+					"displayWidth": "32rem",
+					"recommendedSize": "1600 px wide, any ratio",
+					"count": 5,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "Photos that may be cropped (use content-text-media or content-gallery), a decorative drawing (content-text-illustration), or a text under 150 words, which leaves the figures taller than the text.",
+				"a11y": "Every figure that carries information needs an alt text that says what it shows, and the text names the figure it refers to. Lines in a drawing need a contrast of 3:1 against the background; a drawing with a transparent ground must also hold on dark token sets.",
+				"contentLength": {
+					"heading": [
+						20,
+						70
+					],
+					"text": [
+						150,
+						400
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-text-illustration",
+			"title": "Text with illustration",
+			"description": "Heading, two short paragraphs and a link next to a small drawing that is shown whole and never cropped. Use to loosen a text section with a line drawing or a cut-out illustration that only decorates.",
+			"area": "content",
+			"useWhen": "A text section that needs air and a drawing of the brand next to it: a line drawing, a cut-out illustration or a mark with a transparent background. The drawing takes a third of the width and is shown whole in a square frame, whatever its format.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "light",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "1/1",
+					"displayWidth": "24rem",
+					"recommendedSize": "800x800",
+					"count": 1,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "A photo (use content-text-media, it fills its frame), a diagram that readers must study (give it the full width and an alt text), or two of these in a row.",
+				"a11y": "The drawing only decorates: the alt text stays empty and leitviaDecorative is set. The text beside it must make sense without it.",
+				"contentLength": {
+					"heading": [
+						30,
+						70
+					],
+					"text": [
+						150,
+						300
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/content-text-media",
 			"title": "Text and media",
 			"description": "Square image next to a heading, two short paragraphs and a link. Use to explain one idea with a picture; switch the block style to Media right to swap the sides.",
@@ -1632,7 +1857,7 @@
 				}
 			],
 			"docs": {
-				"avoidWhen": "It would sit directly next to another split section on surface; alternate with Media right or another tone first.",
+				"avoidWhen": "It would sit directly next to another split section on surface; alternate with Media right or another tone first. A plan or drawing that must be seen whole, or a text over about 600 characters, belongs in content-text-figures.",
 				"a11y": "Alt text describes what the image shows for this idea, or stays empty if it is decorative.",
 				"contentLength": {
 					"heading": [
@@ -1681,7 +1906,7 @@
 		{
 			"slug": "leitvia/content-video",
 			"title": "Video with transcript",
-			"description": "Heading and short introduction above a video with a poster image and a caption, followed by a folded transcript with the text of every scene. Use to explain a process in a short video that stays accessible without sound.",
+			"description": "Heading and short introduction above a video with a poster image and a caption, followed by a folded transcript with the text of every scene and a small note for a label or the source. Use to explain a process in a short video that stays accessible without sound.",
 			"area": "content",
 			"useWhen": "Showing a process or a product step by step in a short video, with the same content as text for everyone who cannot or does not want to watch.",
 			"composition": {
@@ -1695,7 +1920,69 @@
 			"images": [],
 			"docs": {
 				"avoidWhen": "The video has spoken words; then it needs captions in a text track as well, not only a transcript. Never let it play on its own.",
-				"a11y": "The video has controls and no autoplay. The transcript in a native details element holds everything the video shows, so nothing depends on watching it. The poster is the image of the video, the caption says what it shows.",
+				"a11y": "The video has controls and no autoplay. The transcript in a native details element holds everything the video shows, so nothing depends on watching it. The note below it says who made the video and whether image or voice are AI-generated; remove it when nothing needs saying. The poster is the image of the video, the caption says what it shows.",
+				"contentLength": {
+					"heading": [
+						20,
+						70
+					],
+					"text": [
+						80,
+						200
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-video-split",
+			"title": "Text beside video",
+			"description": "Heading and a short text on the left, a video on the right, and below both a folded transcript and a small note in the reading width. Use when a short video supports a text and neither should push the other down the page.",
+			"area": "content",
+			"useWhen": "A short video that supports a text of one or two sentences, on pages where a centered video would break a run of split sections.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "medium",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The video is the main content (use content-video-wide), the text beside it is longer than 300 characters, or the video has spoken words without captions in a text track.",
+				"a11y": "The video has controls and no autoplay. Heading and text come before the video in the reading order, the transcript in a native details element follows it and holds everything the video shows. The note says who made the video and whether image or voice are AI-generated.",
+				"contentLength": {
+					"heading": [
+						20,
+						60
+					],
+					"text": [
+						80,
+						300
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/content-video-wide",
+			"title": "Wide video with transcript",
+			"description": "Heading and short introduction on the left above a video in the wide width, followed by a folded transcript and a small note in the reading width. Use when the video is the main content of the section and needs room.",
+			"area": "content",
+			"useWhen": "A video that is the main content of its section, such as a product tour or a recorded process, shown in the wide width.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "heavy",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "A small screen recording that looks blurred when enlarged (use content-video), or a video with spoken words without captions in a text track. Never let it play on its own.",
+				"a11y": "The video has controls and no autoplay. The transcript in a native details element holds everything the video shows. The note says who made the video and whether image or voice are AI-generated.",
 				"contentLength": {
 					"heading": [
 						20,
@@ -1756,7 +2043,7 @@
 			},
 			"images": [],
 			"docs": {
-				"avoidWhen": "The site wants a form only; use a form plugin block in a plain section instead.",
+				"avoidWhen": "The site wants a form only (use a form plugin block in a plain section), or visitors should call or write with one tap (use cta-contact-buttons).",
 				"a11y": "Email and phone are real mailto and tel links; keep the visible text equal to the address or number.",
 				"contentLength": {
 					"heading": [
@@ -1766,6 +2053,37 @@
 					"text": [
 						80,
 						140
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/cta-contact-buttons",
+			"title": "Contact buttons",
+			"description": "Tinted band with a centered heading, one sentence and two buttons that start a phone call and an email. Use as the closing section of a page whose visitors should call or write right away.",
+			"area": "cta",
+			"useWhen": "The close of a page whose visitors should call or write right away, such as a local service. Each button holds a tel: or mailto: link; remove one button when only one way is offered.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "centered",
+				"weight": "medium",
+				"role": "close",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The address or opening hours belong in the section (use cta-contact), a form should take the message, or the section before it is tinted as well.",
+				"a11y": "The button text names the action and the phone number, so the number can be read and dialled without a phone. Both buttons are links and reach 48 px in height.",
+				"contentLength": {
+					"heading": [
+						20,
+						60
+					],
+					"text": [
+						40,
+						120
 					]
 				},
 				"replacedBy": null
@@ -2364,7 +2682,7 @@
 				}
 			],
 			"docs": {
-				"avoidWhen": "The next section is also split or overlapping, no meaningful photo exists, or the image is an illustration or diagram: the card covers part of it and the slot crops it.",
+				"avoidWhen": "The next section is also split or overlapping, no meaningful photo exists, or the image is an illustration or diagram: the card covers part of it and the slot crops it. Also avoid a photo with faces near its upper edge: the card covers the top of the image.",
 				"a11y": "Holds the only h1, in the card, so text never sits on the image; the image needs alt text when it shows what the page offers.",
 				"contentLength": {
 					"heading": [
@@ -2569,6 +2887,31 @@
 			"docs": {
 				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
 				"a11y": "Keeps the heading level of the template it sits in.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-footer",
+			"title": "Default footer",
+			"description": "Footer of the default templates: site title, the copyright line, the legal links the site has and a link to the theme.",
+			"area": "page",
+			"useWhen": "Inserted by the template part footer on every default template.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "light",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template part. For a footer with columns use leitvia/footer-columns.",
+				"a11y": "The legal links form a navigation named Legal; only pages that exist are linked.",
 				"contentLength": {
 					"heading": null,
 					"text": null
@@ -2991,7 +3334,7 @@
 		{
 			"slug": "leitvia/proof-team",
 			"title": "Team",
-			"description": "Heading and intro above four people with portrait, name and role on one line, four across on wide screens and two by two on narrower ones, never three and one. Use on about or company pages to introduce the people behind the work.",
+			"description": "Heading and intro above four people with portrait, name and role on one line, four across on wide screens and two by two on narrower ones, never three and one, and a line with a link below them. Use on about or company pages to introduce the people behind the work.",
 			"area": "proof",
 			"useWhen": "About and company pages introducing the people behind the work.",
 			"composition": {
@@ -3146,7 +3489,7 @@
 				}
 			],
 			"docs": {
-				"avoidWhen": "The targets are blog posts (use a teaser-posts pattern) or there are no images.",
+				"avoidWhen": "The targets are blog posts (use a teaser-posts pattern) the targets have pictograms or drawings in place of photos (use teaser-pictogram-list), or there are no images.",
 				"a11y": "Card titles are h3; the link text must name its target, not read more.",
 				"contentLength": {
 					"heading": [
@@ -3398,7 +3741,7 @@
 			},
 			"images": [],
 			"docs": {
-				"avoidWhen": "A topic needs a sentence of explanation or there is no page to link to; use teaser-services or content-feature-grid instead.",
+				"avoidWhen": "A topic needs a sentence of explanation or there is no page to link to; use teaser-pictogram-list, teaser-services or content-feature-grid instead.",
 				"a11y": "Titles are h3 links that name their target; the whole tile clicks through the title link, so each tile is one tab stop with the focus ring on the tile. Icons are decorative.",
 				"contentLength": {
 					"heading": [
@@ -3406,6 +3749,45 @@
 						40
 					],
 					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/teaser-pictogram-list",
+			"title": "Service cards with pictogram",
+			"description": "Heading and a short intro above four cards, each with a small pictogram or drawing on the left, shown whole, and a linked title with one sentence on the right. Two across on wide screens, a compact list on phones. Use for services or topics that have a pictogram and a page each.",
+			"area": "teaser",
+			"useWhen": "Two to six services or topics that each have a pictogram or a small drawing, one sentence and a page. The pictogram is shown whole at 4rem, so the cards stay compact on phones. Titles up to 30 characters, the sentence up to 90.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "1/1",
+					"displayWidth": "4rem",
+					"recommendedSize": "256x256",
+					"count": 4,
+					"source": "inline"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The targets have photos (use teaser-cards-3), a title says enough (teaser-icon-tiles), or there is no page to link to (content-feature-grid).",
+				"a11y": "Titles are h3 links that name their target. The pictograms only decorate: empty alt and leitviaDecorative. A pictogram with a transparent ground needs lines with a contrast of 3:1 on surface-alt.",
+				"contentLength": {
+					"heading": [
+						10,
+						40
+					],
+					"text": [
+						40,
+						90
+					]
 				},
 				"replacedBy": null
 			}
@@ -3817,7 +4199,7 @@
 		{
 			"slug": "leitvia-studio/content-timeline",
 			"title": "Timeline with introduction",
-			"description": "Heading, short introduction and a link on the left, five dated entries of a timeline on the right. Use to tell how a project, a decision or a story developed over time.",
+			"description": "Eyebrow, heading, short introduction and a link on the left, five dated entries of a timeline on the right. Use to tell how a project, a decision or a story developed over time.",
 			"area": "content",
 			"useWhen": "Background to a news story, the history of a project or an organization, any sequence of dated steps that a reader should follow in order.",
 			"composition": {

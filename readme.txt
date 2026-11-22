@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.55
+Stable tag: 1.2.56
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, translation-ready, threaded-comments
@@ -107,6 +107,19 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.56 =
+* Two patterns for drawings that only decorate: Text with illustration sets a small drawing beside a text and shows it whole, Ornament divider centers one small motif between two sections. Both keep the alt text empty.
+* The team pattern ends with a line and a link below the cards, for the way on to the story of the business.
+* Seven patterns: Text section, Text beside figures, Service cards with pictogram, Contact buttons, Line divider, Text beside video and Wide video with transcript.
+* A token set may add the optional color roles of the contract, such as button and on-button; a set without them keeps the look of the fallback role, and the contrast check covers the new pairs.
+* Captions of a gallery stand below the photo in the text color of the section instead of over the image. The collage keeps the overlay.
+* Headings hyphenate by the language of the page, words from 12 letters with at least 5 on each side. Soft hyphens set by hand stay out of the document title, feeds and breadcrumbs.
+* A submenu that opens on click lists the parent page as its first entry, also in the page list.
+* The default footer holds the site title, the copyright line, a link to the theme and the legal links the site has (privacy policy, and imprint and accessibility statement by their usual slugs), never a sample link. The checkout footer and the sidebar no longer carry dead links or a sample sentence, and the blog heading shows a lead only when the posts page has an excerpt.
+* Figures in a grid follow the width of their cell; a value with a word no longer breaks inside the word.
+* On phones a cropped image at the top of a card is at most 10rem high.
+* The theme CSS stays under 47 KB as shipped (46 KB before).
 
 = 1.2.55 =
 * Pages show their comments and the comment form the way posts do; the directory requires it and the template had no comments block.
