@@ -72,22 +72,22 @@
 						<!-- wp:list {"className":"is-style-divided","fontSize":"meta"} -->
 						<ul class="wp-block-list is-style-divided has-meta-font-size">
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Overview', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Overview', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Features', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Features', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Pricing', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Pricing', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Integrations', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Integrations', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Changelog', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Changelog', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'System status', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'System status', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 						</ul>
 						<!-- /wp:list -->
@@ -101,16 +101,16 @@
 						<!-- wp:list {"className":"is-style-divided","fontSize":"meta"} -->
 						<ul class="wp-block-list is-style-divided has-meta-font-size">
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'For agencies', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'For agencies', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'For publishers', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'For publishers', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'For online shops', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'For online shops', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'For the public sector', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'For the public sector', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 						</ul>
 						<!-- /wp:list -->
@@ -128,19 +128,19 @@
 						<!-- wp:list {"className":"is-style-divided","fontSize":"meta"} -->
 						<ul class="wp-block-list is-style-divided has-meta-font-size">
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Documentation', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Documentation', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Guides', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Guides', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Blog', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Blog', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Webinars', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Webinars', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Help center', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Help center', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 						</ul>
 						<!-- /wp:list -->
@@ -154,19 +154,19 @@
 						<!-- wp:list {"className":"is-style-divided","fontSize":"meta"} -->
 						<ul class="wp-block-list is-style-divided has-meta-font-size">
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'About us', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'About us', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Careers', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Careers', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Press', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Press', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Partners', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Partners', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 							<!-- wp:list-item -->
-							<li><a href="#"><?php esc_html_e( 'Contact', 'leitvia' ); ?></a></li>
+							<li><a><?php esc_html_e( 'Contact', 'leitvia' ); ?></a></li>
 							<!-- /wp:list-item -->
 						</ul>
 						<!-- /wp:list -->
@@ -185,18 +185,18 @@
 		<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|m"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 		<div class="wp-block-group">
 			<!-- wp:navigation {"overlayMenu":"never","style":{"spacing":{"blockGap":"var:preset|spacing|m"}},"fontSize":"meta","ariaLabel":"<?php echo esc_attr__( 'Legal', 'leitvia' ); ?>"} -->
-				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Imprint', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
-				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Privacy policy', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
-				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Terms of service', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
-				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Cancellation policy', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
-				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Data processing agreement', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
+				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Imprint', 'leitvia' ); ?>","kind":"custom"} /-->
+				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Privacy policy', 'leitvia' ); ?>","kind":"custom"} /-->
+				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Terms of service', 'leitvia' ); ?>","kind":"custom"} /-->
+				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Cancellation policy', 'leitvia' ); ?>","kind":"custom"} /-->
+				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Data processing agreement', 'leitvia' ); ?>","kind":"custom"} /-->
 				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Cookie settings', 'leitvia' ); ?>","url":"#leitvia-consent","kind":"custom","className":"leitvia-consent-link"} /-->
 			<!-- /wp:navigation -->
 			<!-- wp:social-links {"showLabels":true,"className":"is-style-logos-only","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|m"}}}} -->
 			<ul class="wp-block-social-links has-visible-labels is-style-logos-only">
-				<!-- wp:social-link {"url":"#","service":"linkedin"} /-->
-				<!-- wp:social-link {"url":"#","service":"mastodon"} /-->
-				<!-- wp:social-link {"url":"#","service":"bluesky"} /-->
+				<!-- wp:social-link {"service":"linkedin"} /-->
+				<!-- wp:social-link {"service":"mastodon"} /-->
+				<!-- wp:social-link {"service":"bluesky"} /-->
 			</ul>
 			<!-- /wp:social-links -->
 		</div>

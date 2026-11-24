@@ -26,7 +26,7 @@
 		</div>
 		<!-- /wp:group -->
 		<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
-		<p style="font-weight:600"><a href="#"><?php esc_html_e( 'See all new products', 'leitvia' ); ?></a></p>
+		<p style="font-weight:600"><a><?php esc_html_e( 'See all new products', 'leitvia' ); ?></a></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->

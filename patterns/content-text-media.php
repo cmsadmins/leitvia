@@ -37,7 +37,7 @@
 			<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'The result is a site your team can keep editing without calling us for every change.', 'leitvia' ); ?></p>
 			<!-- /wp:paragraph -->
 			<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
-			<p style="font-weight:600"><a href="#"><?php esc_html_e( 'Read about our writing sprint', 'leitvia' ); ?></a></p>
+			<p style="font-weight:600"><a><?php esc_html_e( 'Read about our writing sprint', 'leitvia' ); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->

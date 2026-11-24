@@ -39,7 +39,7 @@
 				<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'We read every page you have, count what gets used and tell you what to keep, merge or retire.', 'leitvia' ); ?></p>
 				<!-- /wp:paragraph -->
 				<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
-				<p style="font-weight:600"><a href="#"><?php esc_html_e( 'Learn more about content audits', 'leitvia' ); ?></a></p>
+				<p style="font-weight:600"><a><?php esc_html_e( 'Learn more about content audits', 'leitvia' ); ?></a></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
@@ -55,7 +55,7 @@
 				<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'Navigation, page types and URLs planned around the questions your readers arrive with.', 'leitvia' ); ?></p>
 				<!-- /wp:paragraph -->
 				<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
-				<p style="font-weight:600"><a href="#"><?php esc_html_e( 'Learn more about site structure', 'leitvia' ); ?></a></p>
+				<p style="font-weight:600"><a><?php esc_html_e( 'Learn more about site structure', 'leitvia' ); ?></a></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
@@ -75,7 +75,7 @@
 				<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'A block theme built on core features, so your editors change layouts without touching code.', 'leitvia' ); ?></p>
 				<!-- /wp:paragraph -->
 				<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
-				<p style="font-weight:600"><a href="#"><?php esc_html_e( 'Learn more about theme development', 'leitvia' ); ?></a></p>
+				<p style="font-weight:600"><a><?php esc_html_e( 'Learn more about theme development', 'leitvia' ); ?></a></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
@@ -91,7 +91,7 @@
 				<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'Half-day sessions for the people who publish, using your own pages instead of a demo site.', 'leitvia' ); ?></p>
 				<!-- /wp:paragraph -->
 				<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
-				<p style="font-weight:600"><a href="#"><?php esc_html_e( 'Learn more about editor training', 'leitvia' ); ?></a></p>
+				<p style="font-weight:600"><a><?php esc_html_e( 'Learn more about editor training', 'leitvia' ); ?></a></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->

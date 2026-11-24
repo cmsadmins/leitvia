@@ -25,10 +25,10 @@
 	<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
 	<div class="wp-block-buttons">
 		<!-- wp:button -->
-		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'Read the latest essay', 'leitvia' ); ?></a></div>
+		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button"><?php esc_html_e( 'Read the latest essay', 'leitvia' ); ?></a></div>
 		<!-- /wp:button -->
 		<!-- wp:button {"className":"is-style-outline"} -->
-		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'About the studio', 'leitvia' ); ?></a></div>
+		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button"><?php esc_html_e( 'About the studio', 'leitvia' ); ?></a></div>
 		<!-- /wp:button -->
 	</div>
 	<!-- /wp:buttons -->

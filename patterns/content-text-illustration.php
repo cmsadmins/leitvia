@@ -27,7 +27,7 @@
 			<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'Visitors notice it within a minute, and most of them stay for a second coffee.', 'leitvia' ); ?></p>
 			<!-- /wp:paragraph -->
 			<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
-			<p style="font-weight:600"><a href="#"><?php esc_html_e( 'See how we set up our rooms', 'leitvia' ); ?></a></p>
+			<p style="font-weight:600"><a><?php esc_html_e( 'See how we set up our rooms', 'leitvia' ); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->

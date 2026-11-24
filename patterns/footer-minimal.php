@@ -28,11 +28,11 @@
 		</div>
 		<!-- /wp:group -->
 		<!-- wp:navigation {"overlayMenu":"never","style":{"spacing":{"blockGap":"var:preset|spacing|m"}},"fontSize":"meta","ariaLabel":"<?php echo esc_attr__( 'Footer', 'leitvia' ); ?>"} -->
-			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Journal', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
-			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'About', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
-			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Contact', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
-			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Imprint', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
-			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Privacy policy', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
+			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Journal', 'leitvia' ); ?>","kind":"custom"} /-->
+			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'About', 'leitvia' ); ?>","kind":"custom"} /-->
+			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Contact', 'leitvia' ); ?>","kind":"custom"} /-->
+			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Imprint', 'leitvia' ); ?>","kind":"custom"} /-->
+			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Privacy policy', 'leitvia' ); ?>","kind":"custom"} /-->
 			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Cookie settings', 'leitvia' ); ?>","url":"#leitvia-consent","kind":"custom","className":"leitvia-consent-link"} /-->
 		<!-- /wp:navigation -->
 	</div>

@@ -71,7 +71,7 @@
 	</details>
 	<!-- /wp:details -->
 	<!-- wp:paragraph -->
-	<p><a href="#"><?php esc_html_e( 'Read the full changelog', 'leitvia' ); ?></a></p>
+	<p><a><?php esc_html_e( 'Read the full changelog', 'leitvia' ); ?></a></p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

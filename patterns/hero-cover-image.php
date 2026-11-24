@@ -24,7 +24,7 @@
 		<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|l"}}}} -->
 		<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--l)">
 			<!-- wp:button -->
-			<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'Start reading the journal', 'leitvia' ); ?></a></div>
+			<div class="wp-block-button"><a class="wp-block-button__link wp-element-button"><?php esc_html_e( 'Start reading the journal', 'leitvia' ); ?></a></div>
 			<!-- /wp:button -->
 		</div>
 		<!-- /wp:buttons -->

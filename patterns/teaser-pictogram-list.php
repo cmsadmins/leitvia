@@ -33,7 +33,7 @@
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs"},"layout":{"selfStretch":"fill","flexSize":null}},"layout":{"type":"default"}} -->
 			<div class="wp-block-group">
 				<!-- wp:heading {"level":3,"fontSize":"heading-s"} -->
-				<h3 class="wp-block-heading has-heading-s-font-size"><a href="#"><?php esc_html_e( 'Planning', 'leitvia' ); ?></a></h3>
+				<h3 class="wp-block-heading has-heading-s-font-size"><a><?php esc_html_e( 'Planning', 'leitvia' ); ?></a></h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"textColor":"ink-muted"} -->
 				<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'A plan with every measure and a fixed price before any work starts.', 'leitvia' ); ?></p>
@@ -50,7 +50,7 @@
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs"},"layout":{"selfStretch":"fill","flexSize":null}},"layout":{"type":"default"}} -->
 			<div class="wp-block-group">
 				<!-- wp:heading {"level":3,"fontSize":"heading-s"} -->
-				<h3 class="wp-block-heading has-heading-s-font-size"><a href="#"><?php esc_html_e( 'Building', 'leitvia' ); ?></a></h3>
+				<h3 class="wp-block-heading has-heading-s-font-size"><a><?php esc_html_e( 'Building', 'leitvia' ); ?></a></h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"textColor":"ink-muted"} -->
 				<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'Made in our own workshop and fitted by the people who built it.', 'leitvia' ); ?></p>
@@ -67,7 +67,7 @@
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs"},"layout":{"selfStretch":"fill","flexSize":null}},"layout":{"type":"default"}} -->
 			<div class="wp-block-group">
 				<!-- wp:heading {"level":3,"fontSize":"heading-s"} -->
-				<h3 class="wp-block-heading has-heading-s-font-size"><a href="#"><?php esc_html_e( 'Repair', 'leitvia' ); ?></a></h3>
+				<h3 class="wp-block-heading has-heading-s-font-size"><a><?php esc_html_e( 'Repair', 'leitvia' ); ?></a></h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"textColor":"ink-muted"} -->
 				<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'Worn or damaged parts restored, so the piece stays in use.', 'leitvia' ); ?></p>
@@ -84,7 +84,7 @@
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs"},"layout":{"selfStretch":"fill","flexSize":null}},"layout":{"type":"default"}} -->
 			<div class="wp-block-group">
 				<!-- wp:heading {"level":3,"fontSize":"heading-s"} -->
-				<h3 class="wp-block-heading has-heading-s-font-size"><a href="#"><?php esc_html_e( 'Care', 'leitvia' ); ?></a></h3>
+				<h3 class="wp-block-heading has-heading-s-font-size"><a><?php esc_html_e( 'Care', 'leitvia' ); ?></a></h3>
 				<!-- /wp:heading -->
 				<!-- wp:paragraph {"textColor":"ink-muted"} -->
 				<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'A yearly check that finds small faults before they grow.', 'leitvia' ); ?></p>

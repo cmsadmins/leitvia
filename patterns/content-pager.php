@@ -21,7 +21,7 @@
 			<p class="is-style-eyebrow"><?php esc_html_e( 'Previous', 'leitvia' ); ?></p>
 			<!-- /wp:paragraph -->
 			<!-- wp:paragraph {"fontSize":"lead"} -->
-			<p class="has-lead-font-size"><a href="#"><?php esc_html_e( 'Plan the content before the design', 'leitvia' ); ?></a></p>
+			<p class="has-lead-font-size"><a><?php esc_html_e( 'Plan the content before the design', 'leitvia' ); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
@@ -31,7 +31,7 @@
 			<p class="is-style-eyebrow"><?php esc_html_e( 'Overview', 'leitvia' ); ?></p>
 			<!-- /wp:paragraph -->
 			<!-- wp:paragraph {"fontSize":"lead"} -->
-			<p class="has-lead-font-size"><a href="#"><?php esc_html_e( 'All chapters of the guide', 'leitvia' ); ?></a></p>
+			<p class="has-lead-font-size"><a><?php esc_html_e( 'All chapters of the guide', 'leitvia' ); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->
@@ -41,7 +41,7 @@
 			<p class="is-style-eyebrow"><?php esc_html_e( 'Next', 'leitvia' ); ?></p>
 			<!-- /wp:paragraph -->
 			<!-- wp:paragraph {"fontSize":"lead"} -->
-			<p class="has-lead-font-size"><a href="#"><?php esc_html_e( 'Test every page before launch', 'leitvia' ); ?></a></p>
+			<p class="has-lead-font-size"><a><?php esc_html_e( 'Test every page before launch', 'leitvia' ); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->

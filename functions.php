@@ -1517,6 +1517,25 @@ function register_shop_patterns(): void {
 add_action( 'init', __NAMESPACE__ . '\register_shop_patterns', 20 );
 
 /**
+ * The shop templates are offered only while WooCommerce runs, like the shop patterns. Without it WordPress would list
+ * them as custom templates named by their slug, and a template assigned from that list renders WooCommerce blocks that
+ * are not registered (WordPress.org theme review, ticket #300777, recommendation 1).
+ *
+ * @param \WP_Block_Template[] $templates     Templates found.
+ * @param array                $query         Query arguments.
+ * @param string               $template_type wp_template or wp_template_part.
+ * @return \WP_Block_Template[]
+ */
+function hide_shop_templates_without_woocommerce( array $templates, array $query, string $template_type ): array {
+	if ( 'wp_template' !== $template_type || function_exists( 'WC' ) ) {
+		return $templates;
+	}
+	$shop = array( 'archive-product', 'single-product', 'product-search-results', 'order-confirmation', 'page-cart', 'page-checkout' );
+	return array_values( array_filter( $templates, fn( \WP_Block_Template $template ): bool => ! in_array( $template->slug, $shop, true ) ) );
+}
+add_filter( 'get_block_templates', __NAMESPACE__ . '\hide_shop_templates_without_woocommerce', 10, 3 );
+
+/**
  * Upsells as a block: where the product template shows the upsells as a product collection (the pattern
  * leitvia/hidden-page-product-details or the collection woocommerce/product-collection/upsells itself), the classic
  * upsell list that WooCommerce's compatibility layer prints after the last product block leaves, so the upsells stand

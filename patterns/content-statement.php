@@ -28,7 +28,7 @@
 		<!-- wp:column {"verticalAlignment":"bottom","width":"40%"} -->
 		<div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:40%">
 			<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
-			<p style="font-weight:600"><a href="#"><?php esc_html_e( 'Read the principles behind our work', 'leitvia' ); ?></a></p>
+			<p style="font-weight:600"><a><?php esc_html_e( 'Read the principles behind our work', 'leitvia' ); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:column -->

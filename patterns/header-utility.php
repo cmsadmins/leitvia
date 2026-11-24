@@ -24,10 +24,10 @@
 			<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|m"}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
 			<div class="wp-block-group">
 				<!-- wp:paragraph -->
-				<p><a href="#"><?php esc_html_e( 'Call +44 20 7946 0000', 'leitvia' ); ?></a></p>
+				<p><a><?php esc_html_e( 'Call +44 20 7946 0000', 'leitvia' ); ?></a></p>
 				<!-- /wp:paragraph -->
 				<!-- wp:paragraph -->
-				<p><a href="#"><?php esc_html_e( 'Directions', 'leitvia' ); ?></a></p>
+				<p><a><?php esc_html_e( 'Directions', 'leitvia' ); ?></a></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
@@ -51,7 +51,7 @@
 				<!-- wp:buttons {"className":"is-style-header-action"} -->
 				<div class="wp-block-buttons is-style-header-action">
 					<!-- wp:button -->
-					<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'Book an appointment', 'leitvia' ); ?></a></div>
+					<div class="wp-block-button"><a class="wp-block-button__link wp-element-button"><?php esc_html_e( 'Book an appointment', 'leitvia' ); ?></a></div>
 					<!-- /wp:button -->
 				</div>
 				<!-- /wp:buttons -->

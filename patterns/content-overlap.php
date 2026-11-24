@@ -27,7 +27,7 @@
 			<p><?php esc_html_e( 'A site is more than its pages. Tone, structure and pictures work together, and each of them can be changed without breaking the others. That is how a site stays useful for years instead of months.', 'leitvia' ); ?></p>
 			<!-- /wp:paragraph -->
 			<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
-			<p style="font-weight:600"><a href="#"><?php esc_html_e( 'See how we plan a site', 'leitvia' ); ?></a></p>
+			<p style="font-weight:600"><a><?php esc_html_e( 'See how we plan a site', 'leitvia' ); ?></a></p>
 			<!-- /wp:paragraph -->
 		</div>
 		<!-- /wp:group -->

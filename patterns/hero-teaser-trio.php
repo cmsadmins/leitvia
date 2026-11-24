@@ -42,7 +42,7 @@
 			<p class="is-style-eyebrow has-accent-color has-text-color" style="margin-top:var(--wp--preset--spacing--s)">01</p>
 			<!-- /wp:paragraph -->
 			<!-- wp:heading {"fontSize":"heading-m"} -->
-			<h2 class="wp-block-heading has-heading-m-font-size"><a href="#"><?php esc_html_e( 'Brand and identity', 'leitvia' ); ?></a></h2>
+			<h2 class="wp-block-heading has-heading-m-font-size"><a><?php esc_html_e( 'Brand and identity', 'leitvia' ); ?></a></h2>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"textColor":"ink-muted"} -->
 			<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'Names, logos and type that work from the sign on the door to the smallest icon.', 'leitvia' ); ?></p>
@@ -58,7 +58,7 @@
 			<p class="is-style-eyebrow has-accent-color has-text-color" style="margin-top:var(--wp--preset--spacing--s)">02</p>
 			<!-- /wp:paragraph -->
 			<!-- wp:heading {"fontSize":"heading-m"} -->
-			<h2 class="wp-block-heading has-heading-m-font-size"><a href="#"><?php esc_html_e( 'Websites', 'leitvia' ); ?></a></h2>
+			<h2 class="wp-block-heading has-heading-m-font-size"><a><?php esc_html_e( 'Websites', 'leitvia' ); ?></a></h2>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"textColor":"ink-muted"} -->
 			<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'Sites that load fast, read well and stay easy to change for years.', 'leitvia' ); ?></p>
@@ -74,7 +74,7 @@
 			<p class="is-style-eyebrow has-accent-color has-text-color" style="margin-top:var(--wp--preset--spacing--s)">03</p>
 			<!-- /wp:paragraph -->
 			<!-- wp:heading {"fontSize":"heading-m"} -->
-			<h2 class="wp-block-heading has-heading-m-font-size"><a href="#"><?php esc_html_e( 'Care and hosting', 'leitvia' ); ?></a></h2>
+			<h2 class="wp-block-heading has-heading-m-font-size"><a><?php esc_html_e( 'Care and hosting', 'leitvia' ); ?></a></h2>
 			<!-- /wp:heading -->
 			<!-- wp:paragraph {"textColor":"ink-muted"} -->
 			<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'Updates, backups and small changes, handled by the people who built the site.', 'leitvia' ); ?></p>

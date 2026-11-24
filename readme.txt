@@ -3,16 +3,25 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.58
+Stable tag: 1.2.59
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, translation-ready, threaded-comments
+Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, full-width-template, sticky-post, style-variations, template-editing, translation-ready, threaded-comments, wide-blocks
 
-An AI-first block theme built on semantic design tokens.
+Accessible block theme for full site editing: 83 patterns, WooCommerce templates, WCAG 2.2 AA, no external requests.
 
 == Description ==
 
-Leitvia is an AI-first block theme built on semantic design tokens. Every pattern uses roles instead of values, so style variations, AI agents and editors can change the whole design without breaking layout or accessibility. Warm editorial by default, flexible from personal blogs to large corporate sites and online shops built with WooCommerce.
+Leitvia is an accessible block theme for full site editing, built on semantic design tokens. 83 patterns, 18 templates and 6 style variations cover blogs, magazines, company sites and WooCommerce shops. Built to meet WCAG 2.2 AA, and it loads nothing from other servers: fonts and images ship with the theme. Patterns use roles instead of fixed values, so editors and AI agents can change the whole design without breaking layout or contrast.
+
+What you get with the theme alone, without any plugin:
+
+* 83 block patterns in nine areas: hero, content, teaser, proof, call to action, offer, header, footer and page sections. Every pattern passes the same contrast and keyboard tests in every style variation.
+* 18 templates, among them a landing page without title, a docs page, an article page, a page in easy language (Leichte Sprache) and the templates WooCommerce needs for shop, product, cart, checkout and order confirmation.
+* 6 style variations (Warm editorial, Swiss editorial and Corporate, each light and dark), 3 color palettes and 2 font pairings. Fonts ship with the theme as WOFF2 files.
+* Accessibility built in: skip link, landmarks, one h1 per page, submenus on click and keyboard, a focus ring that stays visible on every background, and a pattern for the accessibility statement.
+* Privacy by default: no Google Fonts, no CDN, no Gravatar, no cookies set by the theme.
+* A design contract for AI agents (leitvia-contract.json and design.md), so agents use the roles of the theme instead of guessing colors and sizes.
 
 [Leitvia Studio](https://wordpress.org/plugins/leitvia-studio/) is an optional companion plugin from the plugin directory. The theme does not need it: all templates, patterns and style variations work without it. Studio adds token sets you can switch and edit, patterns that animate once as they come into view, and abilities for AI agents.
 
@@ -106,7 +115,47 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Imprint: https://leitvia.com/legal-notice/ (German original: https://leitvia.com/de/impressum/)
 * Privacy policy: https://leitvia.com/privacy-policy/
 
+== Frequently Asked Questions ==
+
+= Is Leitvia free? =
+
+Yes. Leitvia is free software under the GPL, version 2 or later, and stays free on WordPress.org. The companion plugin Leitvia Studio is free as well.
+
+= Do I need Leitvia Studio? =
+
+No. Every template, pattern and style variation works with the theme alone. Leitvia Studio adds token sets you can switch and edit, patterns that animate once as they come into view, a consent dialog and the abilities AI agents use to build pages.
+
+= Does Leitvia need WooCommerce? =
+
+No. Without WooCommerce the theme offers no shop template and no shop pattern, and its standard templates contain no WooCommerce block. Once WooCommerce is active, the shop, product, cart, checkout and order confirmation templates and the shop patterns appear.
+
+= Does the theme load anything from other servers? =
+
+No. Fonts, images, icons and styles ship with the theme, and the theme sets no cookies. WordPress core, plugins and embedded content can still send requests, see the section Privacy.
+
+= Is Leitvia accessible? =
+
+Leitvia is built to meet WCAG 2.2 level AA and BITV 2.0. Every template and pattern is tested with axe-core and a keyboard, layout, contrast and form suite in every style variation. The accessibility of a site also depends on its content and plugins, so check your own pages as well.
+
+= Which WordPress and PHP versions does Leitvia need? =
+
+WordPress 7.1 or later and PHP 8.2 or later.
+
+= How do I change colors and fonts? =
+
+In the Site Editor under Styles. Pick one of the 6 style variations, one of the 3 color palettes or one of the 2 font pairings. All patterns follow, because they use color and size roles instead of fixed values.
+
+= Can AI agents build pages with Leitvia? =
+
+Yes. The theme ships its design contract for agents, and Leitvia Studio gives agents abilities through the Abilities API and the MCP Adapter of WordPress. The section AI agents below lists the rules.
+
 == Changelog ==
+
+= 1.2.59 =
+* Shop templates (shop, product, product search results, cart, checkout, order confirmation) are offered only while WooCommerce is active, like the shop patterns. Without WooCommerce they no longer appear as custom templates with blocks that are not registered.
+* Sample links and buttons in the patterns have no address instead of "#": the editor asks for the target, and a new site no longer prints links that jump to the top of the page. Leitvia Studio and Leitvia Pro recognize these sample links when a recipe or kit sets the real targets.
+* New screenshot from a landing page built with the patterns of the theme.
+* New description, frequently asked questions and the tags full-width-template, sticky-post, template-editing and wide-blocks.
 
 = 1.2.58 =
 * Every footer pattern ends its menu with a Cookie settings link. A plugin answers the filter leitvia_consent_link with the address and attributes of the link; Leitvia Studio opens a dialog with the consent settings, or a note when the site uses no service that needs consent. Without an answer the link is left out.

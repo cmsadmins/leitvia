@@ -22,16 +22,16 @@
 	<!-- wp:list {"className":"is-style-download","style":{"spacing":{"margin":{"top":"var:preset|spacing|m"}}}} -->
 	<ul style="margin-top:var(--wp--preset--spacing--m)" class="wp-block-list is-style-download">
 		<!-- wp:list-item -->
-		<li><a href="#"><?php esc_html_e( 'Product sheet (PDF, 240 KB)', 'leitvia' ); ?></a> <?php esc_html_e( 'Features, technical data and system requirements on two pages.', 'leitvia' ); ?></li>
+		<li><a><?php esc_html_e( 'Product sheet (PDF, 240 KB)', 'leitvia' ); ?></a> <?php esc_html_e( 'Features, technical data and system requirements on two pages.', 'leitvia' ); ?></li>
 		<!-- /wp:list-item -->
 		<!-- wp:list-item -->
-		<li><a href="#"><?php esc_html_e( 'Price list 2026 (PDF, 180 KB)', 'leitvia' ); ?></a> <?php esc_html_e( 'All plans and services with prices excluding VAT.', 'leitvia' ); ?></li>
+		<li><a><?php esc_html_e( 'Price list 2026 (PDF, 180 KB)', 'leitvia' ); ?></a> <?php esc_html_e( 'All plans and services with prices excluding VAT.', 'leitvia' ); ?></li>
 		<!-- /wp:list-item -->
 		<!-- wp:list-item -->
-		<li><a href="#"><?php esc_html_e( 'Terms and conditions (PDF, 96 KB)', 'leitvia' ); ?></a> <?php esc_html_e( 'The terms that apply to every order.', 'leitvia' ); ?></li>
+		<li><a><?php esc_html_e( 'Terms and conditions (PDF, 96 KB)', 'leitvia' ); ?></a> <?php esc_html_e( 'The terms that apply to every order.', 'leitvia' ); ?></li>
 		<!-- /wp:list-item -->
 		<!-- wp:list-item -->
-		<li><a href="#"><?php esc_html_e( 'Logo package (ZIP, 1.2 MB)', 'leitvia' ); ?></a> <?php esc_html_e( 'Logos in SVG and PNG for light and dark backgrounds.', 'leitvia' ); ?></li>
+		<li><a><?php esc_html_e( 'Logo package (ZIP, 1.2 MB)', 'leitvia' ); ?></a> <?php esc_html_e( 'Logos in SVG and PNG for light and dark backgrounds.', 'leitvia' ); ?></li>
 		<!-- /wp:list-item -->
 	</ul>
 	<!-- /wp:list -->

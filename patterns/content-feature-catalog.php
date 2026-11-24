@@ -204,7 +204,7 @@
 	<!-- wp:group {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|l"}}}} -->
 	<div class="wp-block-group alignwide" style="margin-top:var(--wp--preset--spacing--l)">
 		<!-- wp:paragraph -->
-		<p><a href="#"><?php esc_html_e( 'See all 20 checks in detail', 'leitvia' ); ?></a></p>
+		<p><a><?php esc_html_e( 'See all 20 checks in detail', 'leitvia' ); ?></a></p>
 		<!-- /wp:paragraph -->
 	</div>
 	<!-- /wp:group -->

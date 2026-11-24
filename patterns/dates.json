@@ -17,7 +17,7 @@
 	},
 	"leitvia/content-changelog": {
 		"added": "2026-10-15",
-		"updated": "2026-10-20"
+		"updated": "2026-11-24"
 	},
 	"leitvia/content-compare-two": {
 		"added": "2026-10-15",
@@ -33,7 +33,7 @@
 	},
 	"leitvia/content-downloads": {
 		"added": "2026-10-24",
-		"updated": "2026-10-24"
+		"updated": "2026-11-24"
 	},
 	"leitvia/content-faq": {
 		"added": "2026-10-15",
@@ -41,7 +41,7 @@
 	},
 	"leitvia/content-feature-catalog": {
 		"added": "2026-10-15",
-		"updated": "2026-11-05"
+		"updated": "2026-11-24"
 	},
 	"leitvia/content-feature-grid": {
 		"added": "2026-10-15",
@@ -61,15 +61,15 @@
 	},
 	"leitvia/content-overlap": {
 		"added": "2026-10-18",
-		"updated": "2026-11-17"
+		"updated": "2026-11-24"
 	},
 	"leitvia/content-pager": {
 		"added": "2026-10-29",
-		"updated": "2026-10-29"
+		"updated": "2026-11-24"
 	},
 	"leitvia/content-photo-collage": {
 		"added": "2026-11-09",
-		"updated": "2026-11-09"
+		"updated": "2026-11-24"
 	},
 	"leitvia/content-price-list": {
 		"added": "2026-10-15",
@@ -81,7 +81,7 @@
 	},
 	"leitvia/content-statement": {
 		"added": "2026-10-18",
-		"updated": "2026-11-17"
+		"updated": "2026-11-24"
 	},
 	"leitvia/content-stats": {
 		"added": "2026-10-15",
@@ -105,11 +105,11 @@
 	},
 	"leitvia/content-text-illustration": {
 		"added": "2026-11-22",
-		"updated": "2026-11-22"
+		"updated": "2026-11-24"
 	},
 	"leitvia/content-text-media": {
 		"added": "2026-10-15",
-		"updated": "2026-11-05"
+		"updated": "2026-11-24"
 	},
 	"leitvia/content-two-columns": {
 		"added": "2026-10-15",
@@ -129,7 +129,7 @@
 	},
 	"leitvia/cta-banner": {
 		"added": "2026-10-15",
-		"updated": "2026-10-19"
+		"updated": "2026-11-24"
 	},
 	"leitvia/cta-contact": {
 		"added": "2026-10-15",
@@ -141,11 +141,11 @@
 	},
 	"leitvia/cta-newsletter": {
 		"added": "2026-10-15",
-		"updated": "2026-10-20"
+		"updated": "2026-11-24"
 	},
 	"leitvia/cta-split": {
 		"added": "2026-10-15",
-		"updated": "2026-11-17"
+		"updated": "2026-11-24"
 	},
 	"leitvia/footer-columns": {
 		"added": "2026-10-15",
@@ -169,7 +169,7 @@
 	},
 	"leitvia/header-cta": {
 		"added": "2026-10-15",
-		"updated": "2026-11-06"
+		"updated": "2026-11-24"
 	},
 	"leitvia/header-default": {
 		"added": "2026-10-15",
@@ -193,19 +193,19 @@
 	},
 	"leitvia/header-split": {
 		"added": "2026-10-26",
-		"updated": "2026-11-06"
+		"updated": "2026-11-24"
 	},
 	"leitvia/header-utility": {
 		"added": "2026-10-26",
-		"updated": "2026-11-17"
+		"updated": "2026-11-24"
 	},
 	"leitvia/hero-centered": {
 		"added": "2026-10-15",
-		"updated": "2026-10-20"
+		"updated": "2026-11-24"
 	},
 	"leitvia/hero-cover-image": {
 		"added": "2026-10-15",
-		"updated": "2026-10-18"
+		"updated": "2026-11-24"
 	},
 	"leitvia/hero-editorial": {
 		"added": "2026-10-15",
@@ -213,19 +213,19 @@
 	},
 	"leitvia/hero-overlap": {
 		"added": "2026-10-26",
-		"updated": "2026-10-26"
+		"updated": "2026-11-24"
 	},
 	"leitvia/hero-search": {
 		"added": "2026-10-24",
-		"updated": "2026-10-24"
+		"updated": "2026-11-24"
 	},
 	"leitvia/hero-split-image": {
 		"added": "2026-10-15",
-		"updated": "2026-10-19"
+		"updated": "2026-11-24"
 	},
 	"leitvia/hero-teaser-trio": {
 		"added": "2026-10-26",
-		"updated": "2026-10-26"
+		"updated": "2026-11-24"
 	},
 	"leitvia/hidden-page-404": {
 		"added": "2026-10-15",
@@ -313,7 +313,7 @@
 	},
 	"leitvia/offer-pricing-3": {
 		"added": "2026-10-15",
-		"updated": "2026-11-17"
+		"updated": "2026-11-24"
 	},
 	"leitvia/page-accessibility-statement": {
 		"added": "2026-10-15",
@@ -341,7 +341,7 @@
 	},
 	"leitvia/shop-bestsellers": {
 		"added": "2026-10-19",
-		"updated": "2026-11-04"
+		"updated": "2026-11-24"
 	},
 	"leitvia/shop-category-tiles": {
 		"added": "2026-10-19",
@@ -357,11 +357,11 @@
 	},
 	"leitvia/shop-new-arrivals": {
 		"added": "2026-10-19",
-		"updated": "2026-11-04"
+		"updated": "2026-11-24"
 	},
 	"leitvia/shop-product-hero": {
 		"added": "2026-10-19",
-		"updated": "2026-10-19"
+		"updated": "2026-11-24"
 	},
 	"leitvia/shop-trust-badges": {
 		"added": "2026-10-19",
@@ -373,7 +373,7 @@
 	},
 	"leitvia/teaser-cards-3": {
 		"added": "2026-10-15",
-		"updated": "2026-11-04"
+		"updated": "2026-11-24"
 	},
 	"leitvia/teaser-editorial-grid": {
 		"added": "2026-10-18",
@@ -389,11 +389,11 @@
 	},
 	"leitvia/teaser-icon-tiles": {
 		"added": "2026-11-08",
-		"updated": "2026-11-08"
+		"updated": "2026-11-24"
 	},
 	"leitvia/teaser-pictogram-list": {
 		"added": "2026-11-22",
-		"updated": "2026-11-22"
+		"updated": "2026-11-24"
 	},
 	"leitvia/teaser-posts-badge": {
 		"added": "2026-10-15",
@@ -413,6 +413,6 @@
 	},
 	"leitvia/teaser-services": {
 		"added": "2026-10-15",
-		"updated": "2026-11-05"
+		"updated": "2026-11-24"
 	}
 }

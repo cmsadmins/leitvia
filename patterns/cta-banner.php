@@ -33,7 +33,7 @@
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
 				<!-- wp:button {"textColor":"on-accent","className":"is-style-outline"} -->
-				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-on-accent-color has-text-color wp-element-button" href="#"><?php esc_html_e( 'Book an introductory call', 'leitvia' ); ?></a></div>
+				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link has-on-accent-color has-text-color wp-element-button"><?php esc_html_e( 'Book an introductory call', 'leitvia' ); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->

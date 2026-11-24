@@ -38,13 +38,13 @@
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
 				<!-- wp:button {"className":"is-style-outline"} -->
-				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'First steps', 'leitvia' ); ?></a></div>
+				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button"><?php esc_html_e( 'First steps', 'leitvia' ); ?></a></div>
 				<!-- /wp:button -->
 				<!-- wp:button {"className":"is-style-outline"} -->
-				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'Account and billing', 'leitvia' ); ?></a></div>
+				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button"><?php esc_html_e( 'Account and billing', 'leitvia' ); ?></a></div>
 				<!-- /wp:button -->
 				<!-- wp:button {"className":"is-style-outline"} -->
-				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'Troubleshooting', 'leitvia' ); ?></a></div>
+				<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button"><?php esc_html_e( 'Troubleshooting', 'leitvia' ); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->

@@ -26,7 +26,7 @@
 		<!-- wp:buttons {"className":"is-style-header-action","layout":{"type":"flex","justifyContent":"right"}} -->
 		<div class="wp-block-buttons is-style-header-action">
 			<!-- wp:button {"className":"is-style-outline"} -->
-			<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'Reserve a table', 'leitvia' ); ?></a></div>
+			<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button"><?php esc_html_e( 'Reserve a table', 'leitvia' ); ?></a></div>
 			<!-- /wp:button -->
 		</div>
 		<!-- /wp:buttons -->

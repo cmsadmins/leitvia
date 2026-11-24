@@ -39,7 +39,7 @@
 				<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'Four hundred pages of timetable and ticket help, rebuilt as one guide with search that understands station names.', 'leitvia' ); ?></p>
 				<!-- /wp:paragraph -->
 				<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
-				<p style="font-weight:600"><a href="#"><?php esc_html_e( 'Read the case study on the rail help centre', 'leitvia' ); ?></a></p>
+				<p style="font-weight:600"><a><?php esc_html_e( 'Read the case study on the rail help centre', 'leitvia' ); ?></a></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
@@ -62,7 +62,7 @@
 				<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'Plain language, three clear charts and a print edition for the general assembly, all from the same set of pages.', 'leitvia' ); ?></p>
 				<!-- /wp:paragraph -->
 				<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
-				<p style="font-weight:600"><a href="#"><?php esc_html_e( 'Read the case study on the housing annual report', 'leitvia' ); ?></a></p>
+				<p style="font-weight:600"><a><?php esc_html_e( 'Read the case study on the housing annual report', 'leitvia' ); ?></a></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->
@@ -85,7 +85,7 @@
 				<p class="has-ink-muted-color has-text-color"><?php esc_html_e( 'Every issue since 2014 migrated and tagged, with a new issue template the editors run without outside help.', 'leitvia' ); ?></p>
 				<!-- /wp:paragraph -->
 				<!-- wp:paragraph {"style":{"typography":{"fontWeight":"600"}}} -->
-				<p style="font-weight:600"><a href="#"><?php esc_html_e( 'Read the case study on the magazine archive', 'leitvia' ); ?></a></p>
+				<p style="font-weight:600"><a><?php esc_html_e( 'Read the case study on the magazine archive', 'leitvia' ); ?></a></p>
 				<!-- /wp:paragraph -->
 			</div>
 			<!-- /wp:group -->

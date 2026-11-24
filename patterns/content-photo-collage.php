@@ -52,7 +52,7 @@
 			<!-- wp:buttons -->
 			<div class="wp-block-buttons">
 				<!-- wp:button -->
-				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'Meet the team', 'leitvia' ); ?></a></div>
+				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button"><?php esc_html_e( 'Meet the team', 'leitvia' ); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->

@@ -3,13 +3,13 @@ Theme Name: Leitvia
 Theme URI: https://leitvia.com
 Author: Patrick Schlesinger, CMS ADMINS
 Author URI: https://cms-admins.de
-Description: Leitvia is an AI-first block theme built on semantic design tokens. Every pattern uses roles instead of values, so style variations, AI agents and editors can change the whole design without breaking layout or accessibility. Warm editorial by default, flexible from personal blogs to large corporate sites.
+Description: Leitvia is an accessible block theme for full site editing, built on semantic design tokens. 83 patterns, 18 templates and 6 style variations cover blogs, magazines, company sites and WooCommerce shops. Built to meet WCAG 2.2 AA, and it loads nothing from other servers: fonts and images ship with the theme. Patterns use roles instead of fixed values, so editors and AI agents can change the whole design without breaking layout or contrast.
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Version: 1.2.58
+Version: 1.2.59
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: leitvia
-Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, translation-ready, threaded-comments
+Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, full-width-template, sticky-post, style-variations, template-editing, translation-ready, threaded-comments, wide-blocks
 */

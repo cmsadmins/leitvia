@@ -31,7 +31,7 @@
 			<div class="wp-block-group is-style-tile has-surface-alt-background-color has-background">
 				<!-- wp:icon {"icon":"core/map-marker","style":{"dimensions":{"width":"2rem"}},"textColor":"accent"} /-->
 				<!-- wp:heading {"level":3,"fontSize":"heading-s"} -->
-				<h3 class="wp-block-heading has-heading-s-font-size"><a href="#"><?php esc_html_e( 'Getting here', 'leitvia' ); ?></a></h3>
+				<h3 class="wp-block-heading has-heading-s-font-size"><a><?php esc_html_e( 'Getting here', 'leitvia' ); ?></a></h3>
 				<!-- /wp:heading -->
 			</div>
 			<!-- /wp:group -->
@@ -39,7 +39,7 @@
 			<div class="wp-block-group is-style-tile has-surface-alt-background-color has-background">
 				<!-- wp:icon {"icon":"core/calendar","style":{"dimensions":{"width":"2rem"}},"textColor":"accent"} /-->
 				<!-- wp:heading {"level":3,"fontSize":"heading-s"} -->
-				<h3 class="wp-block-heading has-heading-s-font-size"><a href="#"><?php esc_html_e( 'Opening hours', 'leitvia' ); ?></a></h3>
+				<h3 class="wp-block-heading has-heading-s-font-size"><a><?php esc_html_e( 'Opening hours', 'leitvia' ); ?></a></h3>
 				<!-- /wp:heading -->
 			</div>
 			<!-- /wp:group -->
@@ -51,7 +51,7 @@
 			<div class="wp-block-group is-style-tile has-surface-alt-background-color has-background">
 				<!-- wp:icon {"icon":"core/people","style":{"dimensions":{"width":"2rem"}},"textColor":"accent"} /-->
 				<!-- wp:heading {"level":3,"fontSize":"heading-s"} -->
-				<h3 class="wp-block-heading has-heading-s-font-size"><a href="#"><?php esc_html_e( 'Guided tours', 'leitvia' ); ?></a></h3>
+				<h3 class="wp-block-heading has-heading-s-font-size"><a><?php esc_html_e( 'Guided tours', 'leitvia' ); ?></a></h3>
 				<!-- /wp:heading -->
 			</div>
 			<!-- /wp:group -->
@@ -59,7 +59,7 @@
 			<div class="wp-block-group is-style-tile has-surface-alt-background-color has-background">
 				<!-- wp:icon {"icon":"core/envelope","style":{"dimensions":{"width":"2rem"}},"textColor":"accent"} /-->
 				<!-- wp:heading {"level":3,"fontSize":"heading-s"} -->
-				<h3 class="wp-block-heading has-heading-s-font-size"><a href="#"><?php esc_html_e( 'Contact and booking', 'leitvia' ); ?></a></h3>
+				<h3 class="wp-block-heading has-heading-s-font-size"><a><?php esc_html_e( 'Contact and booking', 'leitvia' ); ?></a></h3>
 				<!-- /wp:heading -->
 			</div>
 			<!-- /wp:group -->

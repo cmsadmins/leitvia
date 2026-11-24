@@ -28,7 +28,7 @@
 			<!-- wp:buttons {"className":"is-style-header-action"} -->
 			<div class="wp-block-buttons is-style-header-action">
 				<!-- wp:button -->
-				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="#"><?php esc_html_e( 'Get in touch', 'leitvia' ); ?></a></div>
+				<div class="wp-block-button"><a class="wp-block-button__link wp-element-button"><?php esc_html_e( 'Get in touch', 'leitvia' ); ?></a></div>
 				<!-- /wp:button -->
 			</div>
 			<!-- /wp:buttons -->
