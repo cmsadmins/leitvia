@@ -8,8 +8,9 @@
 }
 
 /*
- * Comparison: hairlines between rows, meta caps in the head, tabular figures. Columns after the first align to the
- * end so figures line up. Rows cannot carry classes, so the highlighted row is the table footer (core "Footer section").
+ * Comparison: hairlines between rows, meta caps in the head, tabular figures. Columns of figures and prices align to
+ * the end so they line up, columns of words to the start: functions.php marks the cells of a column whose body holds
+ * only figures with is-figure. Rows cannot carry classes, so the highlighted row is the table footer (core "Footer section").
  * Columns size to their content even with fixed layout on, so words never break mid-word. Tables wider than the
  * screen scroll inside the figure, which functions.php makes a focusable region so arrow keys scroll it. The first
  * column stays in place while the others scroll under it, so a table wider than the screen (or under text zoom) shows
@@ -38,7 +39,7 @@
 :where(.wp-block-table.is-style-comparison) :is(th, td) {
 	text-align: start;
 }
-:where(.wp-block-table.is-style-comparison) :is(th, td):not(:first-child) {
+:where(.wp-block-table.is-style-comparison) .is-figure {
 	text-align: end;
 }
 /* Cells wrap between words, so text fits the column; the minimum width keeps a figure and its unit on one line. */

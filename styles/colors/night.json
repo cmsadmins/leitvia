@@ -5,6 +5,10 @@
 	"slug": "night",
 	"description": "A dark palette in cool blue tones, for technology, music and evening event sites.",
 	"settings": {
+		"custom": {
+			"inverseAccent": "var(--wp--preset--color--accent)",
+			"inverseMuted": "var(--wp--preset--color--ink-muted)"
+		},
 		"color": {
 			"palette": [
 				{ "slug": "surface", "name": "Surface", "color": "#0d1420" },

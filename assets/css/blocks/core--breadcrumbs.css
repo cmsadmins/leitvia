@@ -22,3 +22,34 @@
 	color: var(--wp--preset--color--ink-muted);
 	opacity: 1;
 }
+
+/* Landing pages (page-landing, the front page shows no trail): the trail in a strip of page ground above the first section. */
+.page-template-page-landing main > .wp-block-breadcrumbs:first-child {
+	margin-block: 0;
+	padding-block: var(--wp--preset--spacing--s);
+
+	& + .wp-block-post-content {
+		margin-block-start: 0;
+	}
+}
+
+/* Over a first cover below an overlay-header (core--group.css): the trail in the stage text color, the cover makes room. */
+@media screen {
+	@supports (animation-timeline: scroll()) {
+		html[style*="-header-height"]:has(.wp-site-blocks > header > .is-style-overlay-header) main:has(> .wp-block-breadcrumbs:first-child + .wp-block-post-content > .wp-block-cover.alignfull:first-child) {
+			--leitvia-trail-height: calc(2 * var(--wp--preset--spacing--s) + 1.5rem);
+			position: relative;
+
+			& > .wp-block-breadcrumbs {
+				position: absolute;
+				z-index: 1;
+				inset-block-start: var(--leitvia-sticky-header-height);
+				color: var(--wp--custom--on-stage, var(--wp--preset--color--on-accent));
+			}
+			& > .wp-block-breadcrumbs li::after,
+			& > .wp-block-breadcrumbs a {
+				color: inherit;
+			}
+		}
+	}
+}

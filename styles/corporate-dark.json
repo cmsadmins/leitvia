@@ -5,6 +5,10 @@
 	"slug": "corporate-dark",
 	"description": "IBM Plex on deep navy with a light blue accent, for product, technology and B2B sites that want a confident dark look.",
 	"settings": {
+		"custom": {
+			"inverseAccent": "var(--wp--preset--color--accent)",
+			"inverseMuted": "var(--wp--preset--color--ink-muted)"
+		},
 		"color": {
 			"palette": [
 				{ "slug": "surface", "name": "Surface", "color": "#0f1f3a" },
@@ -77,8 +81,11 @@
 			}
 		},
 		"elements": {
+			"h3": {
+				"typography": { "fontWeight": "var(--wp--custom--font-weight--heading-s, var(--wp--custom--font-weight--heading, 500))" }
+			},
 			"heading": {
-				"typography": { "fontWeight": "500", "lineHeight": "1.12", "letterSpacing": "-0.012em" }
+				"typography": { "fontWeight": "var(--wp--custom--font-weight--heading, 500)", "lineHeight": "1.12", "letterSpacing": "-0.012em" }
 			},
 			"button": {
 				"border": { "radius": "var:preset|border-radius|s" }

@@ -1,6 +1,6 @@
 {
-	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore.",
-	"contractVersion": "1.13.17",
+	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore. sectionKinds: what a section does for a page (answer, facts, packages, tiles, steps, faq, related); a pattern names the kinds it fills in provides, a page frame names the kinds it needs in requires (a finding missingSection) and those it advises in recommends (a finding recommendedSection without points). A kind that is a composition role (hook, context, proof, detail, offer, close) is filled by any section of that role. The frame is checked only when the page names it (compose-page, check-composition with frame), so pages without a frame keep their score. A pattern may list in continues the patterns it continues as one section, such as price cards after a row of their parts: next to one of them it repeats no layout and tone.",
+	"contractVersion": "1.13.18",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -333,17 +333,27 @@
 		}
 	],
 	"optionalRoles": {
-		"$comment": "Color roles a token set may add; none is a preset of theme.json or of a style variation. A set without one keeps the look of its fallback role, so sets saved before stay valid and unchanged. They split what ink and accent carry together: the fill and label of primary buttons, the ground of the Inverse band in light sets, and the button on dark bands. Never write them as a block color (backgroundColor, textColor); the theme applies them.",
+		"$comment": "Roles a token set may add; none is a preset of theme.json or of a style variation. A set without one keeps the look of its fallback role (color) or the weight of the theme and its style variation (fontWeight), so sets saved before stay valid and unchanged. The color roles split what ink and accent carry together: the fill and label of primary buttons and their hover, the ground of the Inverse band in light sets, and the button on dark bands. Never write them as a block color (backgroundColor, textColor); the theme applies them. The fontWeight roles are numbers from 100 to 900 (DTCG fontWeight); Leitvia Studio writes them as settings.custom.fontWeight.",
 		"color": [
 			{
 				"slug": "button",
 				"fallback": "ink",
-				"purpose": "Fill and border of primary buttons on surface and surface-alt, also of the shop buttons. Hover stays accent with on-accent."
+				"purpose": "Fill and border of primary buttons on surface and surface-alt, also of the shop buttons. Hover takes button-hover with on-button-hover, accent with on-accent without them."
 			},
 			{
 				"slug": "on-button",
 				"fallback": "surface",
 				"purpose": "Label on button."
+			},
+			{
+				"slug": "button-hover",
+				"fallback": "accent",
+				"purpose": "Fill and border of primary buttons on hover, on surface and surface-alt and in the shop. For a set whose button is accent already, so hover stays visible: a lighter or darker shade of it."
+			},
+			{
+				"slug": "on-button-hover",
+				"fallback": "on-accent",
+				"purpose": "Label on button-hover."
 			},
 			{
 				"slug": "band",
@@ -360,12 +370,31 @@
 				"fallback": "on-accent",
 				"purpose": "Label on band-button."
 			}
+		],
+		"fontWeight": [
+			{
+				"slug": "heading",
+				"purpose": "Weight of h1, h2, h4, h5 and h6, and of h3 without heading-s, such as 300 for light, large headings. Without it the weight of the theme (400, h6 500) or of the style variation stays."
+			},
+			{
+				"slug": "heading-s",
+				"purpose": "Weight of h3, the titles of cards and features, such as 600 under light large headings. Without it h3 takes the weight of heading."
+			},
+			{
+				"slug": "eyebrow",
+				"purpose": "Weight of the block style eyebrow (and so of the footer column heads and price hints written as eyebrows), such as 700. Without it 500."
+			}
 		]
 	},
 	"optionalPairs": [
 		{
 			"fg": "on-button",
 			"bg": "button",
+			"min": 4.5
+		},
+		{
+			"fg": "on-button-hover",
+			"bg": "button-hover",
 			"min": 4.5
 		},
 		{
@@ -448,7 +477,7 @@
 		},
 		{
 			"slug": "home",
-			"purpose": "Posts index with blog heading (title and excerpt of the posts page when one is set), category chips and the posts of the main query (posts per page from the reading settings, sticky posts first) as a grid of post cards, three columns on wide screens, one on phones. On the first page the first post leads across the grid with image and text side by side. Each card has one link, its title; pagination leads to /page/2/ and on."
+			"purpose": "Posts index with breadcrumbs, blog heading (title and excerpt of the posts page when one is set), category chips and the posts of the main query (posts per page from the reading settings, sticky posts first) as a grid of post cards, three columns on wide screens, one on phones. On the first page the first post leads across the grid with image and text side by side. Each card has one link, its title; pagination leads to /page/2/ and on."
 		},
 		{
 			"slug": "single",
@@ -471,12 +500,16 @@
 			"purpose": "Custom template for a page in easy language: narrower reading width, lead font size, line height 1.6, left aligned, no hyphenation, more space between paragraphs."
 		},
 		{
+			"slug": "page-article",
+			"purpose": "Custom template for a guide or long read under a page address, laid out like a post: breadcrumbs, the one h1, excerpt, byline (author, publish and update dates, reading time), 16:9 featured image, content, the author box and comments. compose-page gives it to a page with the frame article; Leitvia Studio prints an Article with author and dates for it."
+		},
+		{
 			"slug": "archive",
 			"purpose": "Category, tag and date archives with breadcrumbs, title, category chips with the current category marked, description and the posts as a grid of post cards with one link each, paginated (/page/2/)."
 		},
 		{
 			"slug": "author",
-			"purpose": "Author profile with bio and their posts as a grid of post cards with one link each, paginated (/page/2/)."
+			"purpose": "Author profile with breadcrumbs, bio and their posts as a grid of post cards with one link each, paginated (/page/2/)."
 		},
 		{
 			"slug": "search",
@@ -532,7 +565,7 @@
 	"blocks": {
 		"styles": "Theme block styles are listed in blockStyles with purpose and allowed context. Pick a block style before adding a class, a color or custom CSS; set it as is-style-<name> in className.",
 		"search": "Every Search block is a search landmark named after its label. Give each search on a page its own label (theme patterns: Site search, Search products, Search documentation, Search this site); two searches with the same name cannot be told apart by screen reader users.",
-		"bindings": "The copyright line of the footer patterns binds its content to the source leitvia/site-meta (key copyright) and always shows the current year. Keep the binding; a typed year goes stale. The image of a tile in leitvia/shop-category-tiles binds its url to leitvia/term-image, the image of the term; set the image on the category, not in the markup.",
+		"bindings": "The copyright line of the footer patterns binds its content to the source leitvia/site-meta (key copyright) and always shows the current year. Keep the binding; a typed year goes stale. The first year and the holder after the years (© 2009–2026 Holder) come from copyright_since and copyright_holder of leitvia/set-organization (Leitvia Studio, filter leitvia_copyright), never typed into the line. The image of a tile in leitvia/shop-category-tiles binds its url to leitvia/term-image, the image of the term; set the image on the category, not in the markup.",
 		"catalog": "Leitvia Studio, when active, publishes every block of Studio and its add-ons with attribute schema and usage rules at GET /wp-json/leitvia-studio/v1/blocks (users who can edit posts). Without Studio only core blocks and the theme block styles are available."
 	},
 	"blockStyles": [
@@ -597,6 +630,18 @@
 			"context": "Groups in a grid with an icon and a linked title, on surface-alt or a surface-extra (see teaser-icon-tiles); one link per tile."
 		},
 		{
+			"block": "core/group",
+			"name": "card",
+			"purpose": "One card: surface-alt ground, a 1 px border in stroke, square corners and padding l all round. In a vertical layout a last Buttons block sits at the foot, so the buttons of a row line up.",
+			"context": "Groups in a grid of cards, such as services with an icon beside the title or plans of a price list; never a whole section. For a clickable card with one link use tile."
+		},
+		{
+			"block": "core/group",
+			"name": "card-accent",
+			"purpose": "A card with its border in accent, the one that stands out, such as the plan most people take; otherwise like card.",
+			"context": "At most one card per row, next to cards with the style card; its button is the primary one, the others take the outline style."
+		},
+		{
 			"block": "core/gallery",
 			"name": "collage",
 			"purpose": "Three to five photos set off against each other on a grid of 6 by 6 cells, each reaching at most a sixth into its neighbour, media radius and the subtle shadow; on phones two offset columns without overlap.",
@@ -645,6 +690,18 @@
 			"context": "On an Inverse band only. A logo with its own light file in several colors is an Image block instead."
 		},
 		{
+			"block": "core/site-logo",
+			"name": "large-on-desktop",
+			"purpose": "The width of the logo block is its size from 1024 px up; on smaller screens the logo shows at 70 % of it.",
+			"context": "The site logo of a header whose logo carries a line of small text, such as a name with a subline, that is hard to read at the width that fits a phone. Set the width for large screens, about 1.4 times the phone width; with on-dark both classes go on the block."
+		},
+		{
+			"block": "core/navigation",
+			"name": "uppercase",
+			"purpose": "The items of the main menu in capitals by CSS, 13 px in the ui font, weight 600, letter spacing 0.08 em; submenus and the open mobile menu keep normal case.",
+			"context": "The main navigation of a header, for a sober technical or corporate site whose menu should stay one quiet line. Type the items in normal case."
+		},
+		{
 			"block": "core/paragraph",
 			"name": "badge",
 			"purpose": "Small square label in caps on a tint, such as a plan highlight or a status.",
@@ -653,8 +710,8 @@
 		{
 			"block": "core/paragraph",
 			"name": "eyebrow",
-			"purpose": "Short uppercase label above a heading.",
-			"context": "Directly above a section heading, two to four words."
+			"purpose": "Short label in capitals by CSS (text-transform, so type it in normal case), 12 px in the ui font, in accent; its weight follows fontWeight.eyebrow of the token set.",
+			"context": "Directly above a section heading, two to four words; also the hint of a price card (Save 19 %) and the heads of footer link columns. Never type capitals: the style sets them, and screen readers read typed capitals letter by letter."
 		},
 		{
 			"block": "core/paragraph",
@@ -694,9 +751,15 @@
 		},
 		{
 			"block": "core/group",
+			"name": "scrolling-header",
+			"purpose": "Lets the header template part scroll away with the page on every screen size. Without a style the header sticks, so this is the way to switch the sticky header off.",
+			"context": "Only the outermost group of a header template part (named Header in the theme patterns), never content. For a header whose height would cover too much of the page, or when the person asks for a header in the flow."
+		},
+		{
+			"block": "core/group",
 			"name": "sticky-header",
-			"purpose": "Keeps the whole header template part at the top of the screen while the page scrolls, on all screen sizes; pure CSS. It sticks only where it leaves room: in windows at least 500 px high and wider than 320 px, so at 200 % zoom, on a phone held sideways and in print it scrolls away. Focused elements and jump targets stop below it.",
-			"context": "Only the outermost group of a header template part (named Header in the theme patterns), never content. Off by default: choose it for shops, products and long reading where the navigation, search or cart should stay at hand; a calm site keeps the header in the flow."
+			"purpose": "Keeps the whole header template part at the top of the screen while the page scrolls, on all screen sizes, as the header does without a style; pure CSS. It sticks only where it leaves room: in windows at least 500 px high and wider than 320 px, so at 200 % zoom, on a phone held sideways and in print it scrolls away. Focused elements and jump targets stop below it.",
+			"context": "Only the outermost group of a header template part (named Header in the theme patterns), never content. The default: a header without a style sticks the same way. scrolling-header switches it off."
 		},
 		{
 			"block": "core/group",
@@ -709,6 +772,12 @@
 			"name": "sticky-header-mobile",
 			"purpose": "As sticky-header, below 600 px wide only, where the navigation is the menu button; on larger screens the header scrolls away.",
 			"context": "Only the outermost group of a header template part. For sites read mostly on phones whose menu button and cart should stay in reach."
+		},
+		{
+			"block": "core/group",
+			"name": "overlay-header",
+			"purpose": "The header lies over a full-width cover at the top of the page, without its ground and line and in the text color of dark stages; after 4rem of scrolling it takes its ground, its line and the text color of the page again. Pure CSS, only where the browser has scroll-driven animations and Leitvia Studio measures the header; elsewhere the header keeps its ground.",
+			"context": "Only the outermost group of a header template part. It sticks as every header does without a style (no sticky-header needed); with sticky-header-desktop or sticky-header-mobile both classes go on the group. The pages that open with a full-width cover need a dark dimming of at least 60 %, so header text keeps 4.5:1 over the photo; a dark logo then needs on-dark. Pages without such a cover keep the header as it is."
 		},
 		{
 			"block": "core/buttons",
@@ -742,7 +811,7 @@
 		"heroFirstOnly": true,
 		"maxSections": 12,
 		"scoring": {
-			"$comment": "A page starts at 100 and loses these points per finding, down to 0. heroTemplate: a hero on a template that shows the title; maxSections: more sections than maxSections; unknownPattern: a section that is no listed pattern.",
+			"$comment": "A page starts at 100 and loses these points per finding, down to 0. heroTemplate: a hero on a template that shows the title; maxSections: more sections than maxSections; unknownPattern: a section that is no listed pattern. missingSection: a kind the page frame requires is on no section; recommendedSection: a kind the frame recommends is missing, named without points.",
 			"heroFirstOnly": 20,
 			"heroTemplate": 20,
 			"noAdjacentRepeat": 10,
@@ -750,7 +819,9 @@
 			"accentMinGap": 10,
 			"maxDensityRun": 5,
 			"maxSections": 10,
-			"unknownPattern": 25
+			"unknownPattern": 25,
+			"missingSection": 10,
+			"recommendedSection": 0
 		},
 		"narrative": [
 			"hook",
@@ -831,11 +902,100 @@
 						"close"
 					]
 				}
+			],
+			"recommends": [
+				"answer",
+				"facts",
+				"faq",
+				"related"
+			]
+		},
+		{
+			"type": "hub",
+			"purpose": "The overview of a topic: answer the main question, give the key facts and prices and lead to every page of the topic.",
+			"template": "page-landing",
+			"slots": [
+				{
+					"name": "intro",
+					"roles": [
+						"hook"
+					]
+				},
+				{
+					"name": "content",
+					"roles": [
+						"context",
+						"detail"
+					]
+				},
+				{
+					"name": "context",
+					"roles": [
+						"proof"
+					]
+				},
+				{
+					"name": "actions",
+					"roles": [
+						"offer",
+						"close"
+					]
+				}
+			],
+			"requires": [
+				"hook",
+				"answer",
+				"facts",
+				"packages",
+				"tiles",
+				"steps",
+				"faq",
+				"close"
+			]
+		},
+		{
+			"type": "audience",
+			"purpose": "A page for one group of people: describe their situation, link the services that fit, show how the work runs and invite them to ask.",
+			"template": "page-landing",
+			"slots": [
+				{
+					"name": "intro",
+					"roles": [
+						"hook"
+					]
+				},
+				{
+					"name": "content",
+					"roles": [
+						"context",
+						"detail"
+					]
+				},
+				{
+					"name": "context",
+					"roles": [
+						"proof"
+					]
+				},
+				{
+					"name": "actions",
+					"roles": [
+						"close"
+					]
+				}
+			],
+			"requires": [
+				"hook",
+				"context",
+				"related",
+				"steps",
+				"faq",
+				"close"
 			]
 		},
 		{
 			"type": "article",
-			"purpose": "A post or long read; the single template provides title and byline.",
+			"purpose": "A post or long read; the single template provides title and byline, under a page address (type page) the template page-article.",
 			"template": "single",
 			"slots": [
 				{
@@ -922,6 +1082,36 @@
 			]
 		}
 	],
+	"sectionKinds": [
+		{
+			"kind": "answer",
+			"purpose": "A question as heading and its answer in one or two sentences near the top, so readers and search engines find it in one place."
+		},
+		{
+			"kind": "facts",
+			"purpose": "Three to five short facts with a label and a value (price, duration, scope, area), quotable as they stand, with the date they were checked."
+		},
+		{
+			"kind": "packages",
+			"purpose": "The offers with their prices, so the page names what a visitor gets for how much."
+		},
+		{
+			"kind": "tiles",
+			"purpose": "One linked tile per page below this one, so the overview leads to every page of its topic."
+		},
+		{
+			"kind": "steps",
+			"purpose": "How the work runs, in numbered steps: the process or the collaboration."
+		},
+		{
+			"kind": "faq",
+			"purpose": "Visible questions and answers, which also give the FAQPage data of Leitvia Studio."
+		},
+		{
+			"kind": "related",
+			"purpose": "Links to related pages, such as other services or the services that fit a group of people."
+		}
+	],
 	"examples": [
 		{
 			"name": "home",
@@ -953,6 +1143,41 @@
 		}
 	],
 	"patterns": [
+		{
+			"slug": "leitvia/content-answer-facts",
+			"title": "Answer and key facts",
+			"description": "A question as heading, the answer in one or two sentences and four short facts with a label and a value, two by two or four across, with a line for the date the facts were checked. Use near the top of a service or overview page so readers and search engines find the answer in one place.",
+			"area": "content",
+			"useWhen": "Right after the hero of a service, overview or price page: the main question, a quotable answer and three to five facts such as price, duration and scope.",
+			"composition": {
+				"tone": "surface",
+				"density": "dense",
+				"layout": "grid",
+				"weight": "light",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Facts you cannot source or that need a paragraph each; use content-feature-grid. Never invent prices or durations; leave a fact out instead.",
+				"a11y": "The question is the h2, the answer a paragraph right below it; each fact is a label paragraph above its value in reading order, no table and no icon carries meaning. Remove facts with remove, keep the date line current or remove it.",
+				"contentLength": {
+					"heading": [
+						20,
+						70
+					],
+					"text": [
+						60,
+						220
+					]
+				},
+				"replacedBy": null
+			},
+			"provides": [
+				"answer",
+				"facts"
+			]
+		},
 		{
 			"slug": "leitvia/content-asymmetric",
 			"title": "Asymmetric feature",
@@ -1245,7 +1470,10 @@
 					]
 				},
 				"replacedBy": null
-			}
+			},
+			"provides": [
+				"faq"
+			]
 		},
 		{
 			"slug": "leitvia/content-feature-catalog",
@@ -1562,7 +1790,10 @@
 					]
 				},
 				"replacedBy": null
-			}
+			},
+			"provides": [
+				"packages"
+			]
 		},
 		{
 			"slug": "leitvia/content-quote",
@@ -1652,7 +1883,10 @@
 					]
 				},
 				"replacedBy": null
-			}
+			},
+			"provides": [
+				"facts"
+			]
 		},
 		{
 			"slug": "leitvia/content-steps",
@@ -1683,7 +1917,10 @@
 					]
 				},
 				"replacedBy": null
-			}
+			},
+			"provides": [
+				"steps"
+			]
 		},
 		{
 			"slug": "leitvia/content-steps-images",
@@ -1722,7 +1959,10 @@
 					]
 				},
 				"replacedBy": null
-			}
+			},
+			"provides": [
+				"steps"
+			]
 		},
 		{
 			"slug": "leitvia/content-text",
@@ -1732,7 +1972,7 @@
 			"useWhen": "A longer explanation of 80 to 300 words that needs no image: an approach, a background, the answer to one question. Add paragraphs, subheadings (h3) and lists as the text needs them.",
 			"composition": {
 				"tone": "surface",
-				"density": "regular",
+				"density": "airy",
 				"layout": "list",
 				"weight": "light",
 				"role": "context",
@@ -3301,7 +3541,10 @@
 					]
 				},
 				"replacedBy": null
-			}
+			},
+			"provides": [
+				"packages"
+			]
 		},
 		{
 			"slug": "leitvia/proof-logos",
@@ -3502,7 +3745,11 @@
 					]
 				},
 				"replacedBy": null
-			}
+			},
+			"provides": [
+				"tiles",
+				"related"
+			]
 		},
 		{
 			"slug": "leitvia/teaser-editorial-grid",
@@ -3751,7 +3998,11 @@
 					"text": null
 				},
 				"replacedBy": null
-			}
+			},
+			"provides": [
+				"tiles",
+				"related"
+			]
 		},
 		{
 			"slug": "leitvia/teaser-pictogram-list",
@@ -3790,7 +4041,11 @@
 					]
 				},
 				"replacedBy": null
-			}
+			},
+			"provides": [
+				"tiles",
+				"related"
+			]
 		},
 		{
 			"slug": "leitvia/teaser-services",
@@ -3821,7 +4076,11 @@
 					]
 				},
 				"replacedBy": null
-			}
+			},
+			"provides": [
+				"tiles",
+				"related"
+			]
 		},
 		{
 			"slug": "leitvia/shop-product-hero",
@@ -4431,7 +4690,7 @@
 			},
 			"images": [],
 			"docs": {
-				"avoidWhen": "Questions the site does not answer itself, such as answers quoted from others, or content everyone must read; then use leitvia/content-faq or headings. Fewer than three real questions. Needs Leitvia Studio for the FAQ block.",
+				"avoidWhen": "Questions the site does not answer itself, such as answers quoted from others, or content everyone must read; then use headings and paragraphs. Fewer than three real questions. Needs Leitvia Studio for the FAQ block; leitvia/content-faq gives the same data from its questions while Studio is active.",
 				"a11y": "Each question is the summary of a native details element, so it works with keyboard and screen readers without scripting; opening one closes the others. Write questions as full sentences.",
 				"contentLength": {
 					"heading": [
@@ -4444,7 +4703,10 @@
 					]
 				},
 				"replacedBy": null
-			}
+			},
+			"provides": [
+				"faq"
+			]
 		},
 		{
 			"slug": "leitvia-studio/content-icon-benefits",

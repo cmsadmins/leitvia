@@ -77,8 +77,11 @@
 			}
 		},
 		"elements": {
+			"h3": {
+				"typography": { "fontWeight": "var(--wp--custom--font-weight--heading-s, var(--wp--custom--font-weight--heading, 500))" }
+			},
 			"heading": {
-				"typography": { "fontWeight": "500", "lineHeight": "1.12", "letterSpacing": "-0.012em" }
+				"typography": { "fontWeight": "var(--wp--custom--font-weight--heading, 500)", "lineHeight": "1.12", "letterSpacing": "-0.012em" }
 			},
 			"button": {
 				"border": { "radius": "var:preset|border-radius|s" }

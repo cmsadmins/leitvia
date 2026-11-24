@@ -5,6 +5,10 @@
 	"slug": "swiss-editorial-dark",
 	"description": "Tight grotesk type, square corners and a coral red accent on near black, for studios and portfolios that put images first.",
 	"settings": {
+		"custom": {
+			"inverseAccent": "var(--wp--preset--color--accent)",
+			"inverseMuted": "var(--wp--preset--color--ink-muted)"
+		},
 		"color": {
 			"palette": [
 				{ "slug": "surface", "name": "Surface", "color": "#0e0e0e" },
@@ -78,8 +82,11 @@
 			}
 		},
 		"elements": {
+			"h3": {
+				"typography": { "fontWeight": "var(--wp--custom--font-weight--heading-s, var(--wp--custom--font-weight--heading, 500))" }
+			},
 			"heading": {
-				"typography": { "fontWeight": "500", "lineHeight": "1.08", "letterSpacing": "-0.022em" }
+				"typography": { "fontWeight": "var(--wp--custom--font-weight--heading, 500)", "lineHeight": "1.08", "letterSpacing": "-0.022em" }
 			},
 			"button": {
 				"border": { "radius": "var:preset|border-radius|none" }

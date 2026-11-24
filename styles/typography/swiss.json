@@ -51,8 +51,11 @@
 	"styles": {
 		"typography": { "letterSpacing": "0.005em" },
 		"elements": {
+			"h3": {
+				"typography": { "fontWeight": "var(--wp--custom--font-weight--heading-s, var(--wp--custom--font-weight--heading, 500))" }
+			},
 			"heading": {
-				"typography": { "fontWeight": "500", "lineHeight": "1.08", "letterSpacing": "-0.022em" }
+				"typography": { "fontWeight": "var(--wp--custom--font-weight--heading, 500)", "lineHeight": "1.08", "letterSpacing": "-0.022em" }
 			}
 		}
 	}

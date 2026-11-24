@@ -6,3 +6,15 @@
 .wp-block-site-logo.is-style-on-dark img {
 	filter: brightness(0) invert(1);
 }
+
+/*
+ * Block style Larger on large screens: the width of the block is the size from 1024 px up; below that the logo shows at
+ * 70 %, so a wide logo with a line of small text stays readable on desktops and still fits beside the menu button on a
+ * phone. zoom scales the box itself, so nothing overlaps, and the image only ever shrinks: srcset picks the file for
+ * the large width. Combine it with On dark band through both classes.
+ */
+@media (width < 64rem) {
+	.wp-block-site-logo.is-style-large-on-desktop img {
+		zoom: 0.7;
+	}
+}

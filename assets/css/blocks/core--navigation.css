@@ -218,3 +218,17 @@
 	width: 1.5rem;
 	height: 1.5rem;
 }
+
+/* Capitals (uppercase): top-level items in capitals by CSS; submenus and the open menu keep their case. */
+.wp-block-navigation.is-style-uppercase .wp-block-navigation__container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+	font-family: var(--wp--preset--font-family--ui);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+.wp-block-navigation.is-style-uppercase .is-menu-open .wp-block-navigation-item__content {
+	font-size: inherit;
+	letter-spacing: normal;
+	text-transform: none;
+}

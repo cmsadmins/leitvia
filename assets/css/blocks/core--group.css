@@ -207,9 +207,10 @@ body {
 }
 
 /*
- * Sticky header: the block styles Sticky header (every screen), Sticky header on large screens (600 px and wider, where
- * the navigation shows its items) and Sticky header on small screens (below 600 px, where the navigation is the menu
- * button), chosen on the outermost group of a header template part. Off by default. The template part element sticks,
+ * Sticky header: the header template part sticks on every screen by default. The block styles on its outermost group
+ * change that: Header scrolls with the page (scrolling-header) switches it off, Sticky header on large screens (600 px
+ * and wider, where the navigation shows its items) and Sticky header on small screens (below 600 px, where the
+ * navigation is the menu button) limit it to one width, Sticky header is the default. The template part element sticks,
  * not the group: its containing block is the page, and a service bar, announcement or accessibility band above the
  * group stays with it. Pure CSS.
  *
@@ -262,23 +263,23 @@ html {
 	html:not(:has(.leitvia-service-bar :focus)):has(.wp-site-blocks > header > * > .leitvia-service-bar:first-child ~ * .wp-block-navigation__responsive-container-open) {
 		--leitvia-sticky-hidden: var(--leitvia-service-bar-height, calc(2 * var(--wp--preset--spacing--xs) + 1.6 * var(--wp--preset--font-size--meta)));
 	}
-	html:not([style*="font-size"], [data-leitvia-header-tall]) .wp-site-blocks > header:has(> :is(.is-style-sticky-header, .is-style-sticky-header-mobile)) {
+	html:not([style*="font-size"], [data-leitvia-header-tall]) .wp-site-blocks > header:not(:has(> :is(.is-style-scrolling-header, .is-style-sticky-header-desktop))) {
 		position: sticky;
 		top: calc(0px - var(--leitvia-sticky-hidden, 0px));
 		z-index: 60;
 	}
-	html:not([style*="font-size"], [data-leitvia-header-tall]):has(.wp-site-blocks > header > :is(.is-style-sticky-header, .is-style-sticky-header-mobile)) {
+	html:not([style*="font-size"], [data-leitvia-header-tall], :has(.wp-site-blocks > header > :is(.is-style-scrolling-header, .is-style-sticky-header-desktop))):has(.wp-site-blocks > header) {
 		--leitvia-sticky-offset: calc(var(--leitvia-sticky-header-height, max(25vh, 13rem)) - var(--leitvia-sticky-hidden, 0px));
 		scroll-padding-top: calc(var(--leitvia-sticky-offset) + var(--wp--preset--spacing--xs));
 	}
 }
 @media screen and (height >= 31.25rem) and (width >= 37.5rem) {
-	html:not([style*="font-size"], [data-leitvia-header-tall]) .wp-site-blocks > header:has(> :is(.is-style-sticky-header, .is-style-sticky-header-desktop)) {
+	html:not([style*="font-size"], [data-leitvia-header-tall]) .wp-site-blocks > header:not(:has(> :is(.is-style-scrolling-header, .is-style-sticky-header-mobile))) {
 		position: sticky;
 		top: var(--wp-admin--admin-bar--height, 0px);
 		z-index: 60;
 	}
-	html:not([style*="font-size"], [data-leitvia-header-tall]):has(.wp-site-blocks > header > :is(.is-style-sticky-header, .is-style-sticky-header-desktop)) {
+	html:not([style*="font-size"], [data-leitvia-header-tall], :has(.wp-site-blocks > header > :is(.is-style-scrolling-header, .is-style-sticky-header-mobile))):has(.wp-site-blocks > header) {
 		--leitvia-sticky-offset: calc(var(--wp-admin--admin-bar--height, 0px) + var(--leitvia-sticky-header-height, max(25vh, 13rem)));
 		scroll-padding-top: calc(var(--leitvia-sticky-offset) + var(--wp--preset--spacing--xs));
 	}
@@ -291,7 +292,7 @@ html {
  */
 @media screen and (prefers-reduced-motion: no-preference) {
 	@supports (animation-timeline: scroll()) {
-		.wp-site-blocks > header:has(> :is(.is-style-sticky-header, .is-style-sticky-header-mobile, .is-style-sticky-header-desktop)) {
+		.wp-site-blocks > header:not(:has(> .is-style-scrolling-header)) {
 			animation: leitvia-sticky-header-shadow linear both;
 			animation-timeline: scroll(root);
 			animation-range: 0 4rem;
@@ -378,5 +379,92 @@ html {
 	:root:not(.leitvia-motion-off) body:not(.leitvia-motion-off) :is(.is-layout-grid, .wp-block-column) > .wp-block-group:is(.has-background, .has-border-color):has(a[href]):hover {
 		translate: 0 -2px;
 		box-shadow: var(--wp--preset--shadow--raised);
+	}
+}
+
+/*
+ * Card and card-accent (contract blockStyles): tinted ground, fine border, square corners. In a vertical layout the
+ * last Buttons block sits at the foot, so the buttons of a row line up.
+ */
+.wp-block-group:is(.is-style-card, .is-style-card-accent) {
+	padding: var(--wp--preset--spacing--l);
+	border: 1px solid var(--wp--preset--color--stroke);
+	border-radius: 0;
+	background-color: var(--wp--preset--color--surface-alt);
+}
+.wp-block-group.is-style-card-accent {
+	border-color: var(--wp--preset--color--accent);
+}
+.wp-block-group.is-vertical:is(.is-style-card, .is-style-card-accent) > .wp-block-buttons:last-child {
+	margin-block-start: auto;
+}
+/* A card in a grid measures its width: below 22rem an icon beside the title goes above it, so titles keep two lines. */
+:is(.is-layout-grid, .wp-block-column) > .wp-block-group:is(.is-style-card, .is-style-card-accent) {
+	container-type: inline-size;
+}
+@container (width < 22rem) {
+	.wp-block-group:is(.is-style-card, .is-style-card-accent) > .is-layout-flex.is-nowrap:has(> .wp-block-leitvia-icon) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+
+/*
+ * Header over the stage (overlay-header): over a full-width cover that opens main, without ground and line and in
+ * --wp--custom--on-stage (a dark token set of Studio: ink), else on-accent, white as core covers, until the page moved 4rem.
+ * Needs scroll-driven animations and the height Studio measures. The breadcrumbs of a landing page may open main
+ * before the content; they lie over the cover then (core--breadcrumbs.css) and give their height as --leitvia-trail-height.
+ * Ground and line come from presets (has-surface-background-color, a border in stroke), so the header redefines those
+ * presets to its animated ground and line and its children get the colors of the page back (--leitvia-stage-*); the
+ * cover makes room with its inner container, since its padding stands in its style attribute.
+ */
+@property --leitvia-header-ground {
+	syntax: "<color>";
+	inherits: false;
+	initial-value: transparent;
+}
+@property --leitvia-header-line {
+	syntax: "<color>";
+	inherits: false;
+	initial-value: transparent;
+}
+@media screen {
+	@supports (animation-timeline: scroll()) {
+		html[style*="-header-height"]:has(main > :is(.wp-block-post-content:first-child, .wp-block-breadcrumbs:first-child + .wp-block-post-content) > .wp-block-cover.alignfull:first-child) {
+			.wp-site-blocks > header:has(> .is-style-overlay-header) {
+				margin-block-end: calc(0px - var(--leitvia-sticky-header-height));
+				--leitvia-stage-surface: var(--wp--preset--color--surface);
+				--leitvia-stage-surface-alt: var(--wp--preset--color--surface-alt);
+				--leitvia-stage-stroke: var(--wp--preset--color--stroke);
+			}
+			.wp-site-blocks > header > .is-style-overlay-header {
+				border-bottom-color: var(--leitvia-header-line);
+				background-color: var(--leitvia-header-ground);
+				color: var(--leitvia-header-text);
+				animation: leitvia-overlay-header linear both;
+				animation-timeline: scroll(root);
+				animation-range: 0 4rem;
+				--leitvia-header-text: var(--wp--custom--on-stage, var(--wp--preset--color--on-accent));
+				--wp--preset--color--surface: var(--leitvia-header-ground);
+				--wp--preset--color--surface-alt: var(--leitvia-header-ground);
+				--wp--preset--color--stroke: var(--leitvia-header-line);
+
+				& > * {
+					--wp--preset--color--surface: var(--leitvia-stage-surface);
+					--wp--preset--color--surface-alt: var(--leitvia-stage-surface-alt);
+					--wp--preset--color--stroke: var(--leitvia-stage-stroke);
+				}
+			}
+			&:has(.is-style-overlay-header) main > .wp-block-post-content > .wp-block-cover:first-child > .wp-block-cover__inner-container {
+				margin-block-start: calc(var(--leitvia-sticky-header-height) + var(--leitvia-trail-height, 0px));
+			}
+		}
+	}
+}
+@keyframes leitvia-overlay-header {
+	to {
+		--leitvia-header-ground: var(--leitvia-stage-surface);
+		--leitvia-header-line: var(--leitvia-stage-stroke);
+		--leitvia-header-text: var(--wp--preset--color--ink);
 	}
 }

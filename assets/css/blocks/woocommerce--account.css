@@ -28,9 +28,9 @@ body.woocommerce-account .woocommerce {
 		font: 500 0.9375rem/1.2 var(--wp--preset--font-family--ui);
 	}
 	& .button:hover {
-		border-color: var(--wp--preset--color--accent);
-		background-color: var(--wp--preset--color--accent);
-		color: var(--wp--preset--color--on-accent);
+		border-color: var(--wp--preset--color--button-hover, var(--wp--preset--color--accent));
+		background-color: var(--wp--preset--color--button-hover, var(--wp--preset--color--accent));
+		color: var(--wp--preset--color--on-button-hover, var(--wp--preset--color--on-accent));
 	}
 	& .woocommerce-MyAccount-navigation ul {
 		margin: 0;

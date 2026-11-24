@@ -9,6 +9,11 @@
 	color: inherit;
 }
 
+/* In a card the citation is the proof, so it keeps the size of the text instead of meta. */
+:is(.is-style-card, .is-style-card-accent) .wp-block-quote cite {
+	font-size: var(--wp--preset--font-size--body);
+}
+
 /*
  * Compact: a long quote one step smaller, the look stays. Without a size of its own the quote takes body instead of
  * lead; the sizes heading-l and heading-m of the patterns move down one step. Their preset class is important, so the

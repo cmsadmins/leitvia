@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.56
+Stable tag: 1.2.57
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, translation-ready, threaded-comments
@@ -108,6 +108,25 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 
 == Changelog ==
 
+= 1.2.57 =
+* The header stays at the top of the screen by default, on every screen, also on sites whose header part is saved. The new block style Header scrolls with the page on the outermost group of the header part switches it off; Sticky header on large screens and on small screens keep it at one width. The safeguards stay: in low or narrow windows, at 200 % zoom, with enlarged text and in print the header scrolls away, and focused elements stop below it.
+* New block style Larger on large screens for the site logo: the width of the block applies from 1024 px up, smaller screens show the logo at 70 %, so a logo with a line of small text stays readable on desktops and fits beside the menu button on phones.
+* New block styles for a sober company site: Card and Card with accent border on a group (tinted ground, fine border, square corners, buttons at the foot of a row), Capitals on the navigation (main menu in capitals, 13 px), and Header over the stage on the header group: over a full-width cover that opens the page the header is transparent in the text color of dark stages and takes its ground once the page moves.
+* The hover of the primary button takes the optional roles button-hover and on-button-hover of a token set, for sets whose button is accent; also the shop buttons. The eyebrow takes its weight from fontWeight.eyebrow of a token set (Leitvia Studio).
+* The copyright line of the footers shows a first year and a holder when a plugin hands them over (filter leitvia_copyright, with Leitvia Studio from the organization details): © 2009–2026 Holder.
+* Every heading level follows the weights of a token set: heading for h1, h2, h4, h5 and h6, heading-s for h3.
+* New pattern Answer and key facts: a question, its answer in one or two sentences and four short facts with a date line, quotable for readers and search engines.
+* In narrow cards an icon beside the title goes above it, and the citation in a card keeps the size of the text.
+* The theme CSS stays under 51 KB as shipped (47 KB before).
+* Contract 1.13.18: block styles scrolling-header, large-on-desktop, card, card-accent, overlay-header and uppercase, sticky-header as the default; optional roles button-hover and on-button-hover; optional weights heading, heading-s and eyebrow; eyebrow and copyright line described; page frames hub and audience with required sections, service with recommended ones, section kinds and the pattern fields provides and continues.
+
+* Landing pages show the breadcrumbs below the header, also over the cover below a header over the stage.
+* Inverse bands of dark palettes keep accent prices, check marks and eyebrows in the accent colour.
+* The text section and the video section start at the left edge of the sections around them; the text section is airy, the answer with key facts dense, so a page varies its density.
+* The FAQ with structured data counts as a FAQ section of a page frame.
+* New template Article page (page-article): a guide or long read under a page address laid out like a post, with breadcrumbs, title, excerpt, byline, featured image, author box and comments.
+* The posts page and the author archive show the breadcrumbs above their title, as the other archives do.
+* Comparison tables align only columns of figures and prices to the end; columns of words stay at the start.
 = 1.2.56 =
 * Two patterns for drawings that only decorate: Text with illustration sets a small drawing beside a text and shows it whole, Ornament divider centers one small motif between two sections. Both keep the alt text empty.
 * The team pattern ends with a line and a link below the cards, for the way on to the story of the business.

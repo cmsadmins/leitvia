@@ -5,6 +5,10 @@
 	"slug": "warm-editorial-dark",
 	"description": "Serif headlines on deep umber with a soft jade accent, for magazines, journals and long reads that should stay calm after dark.",
 	"settings": {
+		"custom": {
+			"inverseAccent": "var(--wp--preset--color--accent)",
+			"inverseMuted": "var(--wp--preset--color--ink-muted)"
+		},
 		"color": {
 			"palette": [
 				{ "slug": "surface", "name": "Surface", "color": "#171512" },
@@ -35,8 +39,11 @@
 			}
 		},
 		"elements": {
+			"h3": {
+				"typography": { "fontWeight": "var(--wp--custom--font-weight--heading-s, var(--wp--custom--font-weight--heading, 400))" }
+			},
 			"heading": {
-				"typography": { "fontWeight": "400", "letterSpacing": "-0.01em" }
+				"typography": { "fontWeight": "var(--wp--custom--font-weight--heading, 400)", "letterSpacing": "-0.01em" }
 			}
 		}
 	}

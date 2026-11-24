@@ -32,9 +32,12 @@ add_action( 'after_setup_theme', __NAMESPACE__ . '\load_translations' );
  * #296762, point 4). WooCommerce treats every block theme as supported anyway; the declaration only makes it explicit
  * and keeps its "theme does not declare support" notice away on classic checks. The gallery features zoom, lightbox
  * and slider stay unregistered: they act on the classic gallery, the theme uses the block woocommerce/product-gallery.
+ * leitvia-sticky-header tells Leitvia Studio that the header sticks without a block style (core--group.css), so it
+ * measures every header that does not scroll with the page.
  */
 function setup(): void {
 	add_theme_support( 'woocommerce' );
+	add_theme_support( 'leitvia-sticky-header' );
 }
 add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );
 
@@ -305,7 +308,8 @@ function register_block_style_variations(): void {
 			'compact' => __( 'Compact', 'leitvia' ),
 		),
 		'core/site-logo'  => array(
-			'on-dark' => __( 'On dark band', 'leitvia' ),
+			'on-dark'          => __( 'On dark band', 'leitvia' ),
+			'large-on-desktop' => __( 'Larger on large screens', 'leitvia' ),
 		),
 		'core/group'      => array(
 			'note'                  => __( 'Note', 'leitvia' ),
@@ -313,12 +317,19 @@ function register_block_style_variations(): void {
 			'warning'               => __( 'Warning', 'leitvia' ),
 			'tip'                   => __( 'Tip', 'leitvia' ),
 			'tile'                  => __( 'Tile', 'leitvia' ),
+			'card'                  => __( 'Card', 'leitvia' ),
+			'card-accent'           => __( 'Card with accent border', 'leitvia' ),
 			'inverse'               => __( 'Inverse', 'leitvia' ),
 			'header-split'          => __( 'Header split', 'leitvia' ),
-			// For the outermost group of a header template part, see "Sticky header" in core--group.css.
+			// For the outermost group of a header template part, which sticks by default, see "Sticky header" in core--group.css.
+			'scrolling-header'      => __( 'Header scrolls with the page', 'leitvia' ),
 			'sticky-header'         => __( 'Sticky header', 'leitvia' ),
 			'sticky-header-desktop' => __( 'Sticky header on large screens', 'leitvia' ),
 			'sticky-header-mobile'  => __( 'Sticky header on small screens', 'leitvia' ),
+			'overlay-header'        => __( 'Header over the stage', 'leitvia' ),
+		),
+		'core/navigation' => array(
+			'uppercase' => __( 'Capitals', 'leitvia' ),
 		),
 		'core/cover'      => array(
 			'inverse' => __( 'Inverse', 'leitvia' ),
@@ -423,12 +434,31 @@ function register_site_meta_binding(): void {
 add_action( 'init', __NAMESPACE__ . '\register_site_meta_binding' );
 
 /**
- * Value of a leitvia/site-meta binding, null for an unknown key so the block keeps its saved content.
+ * Value of a leitvia/site-meta binding, null for an unknown key so the block keeps its saved content. The copyright
+ * line is the current year, or the years from since to now, followed by a holder: since (YYYY) and holder come from
+ * the binding arguments and from the filter leitvia_copyright, where a plugin adds them from its settings.
  *
- * @param array $args Binding arguments, key names the value.
+ * @param array $args Binding arguments, key names the value; since and holder for the copyright line.
  */
 function site_meta_value( array $args ): ?string {
-	return 'copyright' === ( $args['key'] ?? '' ) ? '© ' . wp_date( 'Y' ) : null;
+	if ( 'copyright' !== ( $args['key'] ?? '' ) ) {
+		return null;
+	}
+	$copyright = array(
+		'since'  => (string) ( $args['since'] ?? '' ),
+		'holder' => (string) ( $args['holder'] ?? '' ),
+	);
+	/**
+	 * Filters the start year and the holder of the copyright line in the footer.
+	 *
+	 * @param array{since: string, holder: string} $copyright since as YYYY or '', holder as plain text or ''.
+	 */
+	$copyright = (array) apply_filters( 'leitvia_copyright', $copyright );
+	$year      = wp_date( 'Y' );
+	$since     = (string) ( $copyright['since'] ?? '' );
+	$years     = preg_match( '/^\d{4}$/', $since ) && $since < $year ? $since . '–' . $year : $year;
+	$holder    = trim( (string) ( $copyright['holder'] ?? '' ) );
+	return '© ' . $years . ( '' !== $holder ? ' ' . esc_html( $holder ) : '' );
 }
 
 /**
@@ -520,6 +550,57 @@ function table_scroll_region( string $html ): string {
 	return add_scroll_region( $html, 'figure', 'wp-block-table' );
 }
 add_filter( 'render_block_core/table', __NAMESPACE__ . '\table_scroll_region' );
+
+/**
+ * Comparison tables align figures to the end, text to the start: a column after the first whose body cells (not the
+ * footer) are all numbers or prices (a short word before, a currency, percent or short unit after, "/ month" and the
+ * like; empty cells and dashes do not count) gets the class is-figure on each of its cells, head and footer too, see
+ * core--table.css.
+ * Columns with words ("Up to 5", "Unlimited") stay at the start. A table with merged cells is left as it is.
+ *
+ * @param string $html Block HTML.
+ */
+function table_figure_columns( string $html ): string {
+	if ( ! str_contains( $html, 'is-style-comparison' ) || str_contains( $html, 'colspan' ) ) {
+		return $html;
+	}
+	$figures = array();
+	// The body decides; the footer may sum up in words ("On request") and follows the column.
+	preg_match_all( '#<tbody\b.*?</tbody>#is', $html, $sections );
+	foreach ( $sections[0] as $section ) {
+		preg_match_all( '#<tr\b[^>]*>(.*?)</tr>#is', $section, $rows );
+		foreach ( $rows[1] as $row ) {
+			preg_match_all( '#<t[hd]\b[^>]*>(.*?)</t[hd]>#is', $row, $cells );
+			foreach ( $cells[1] as $column => $cell ) {
+				$text = trim( (string) preg_replace( '/\s+/u', ' ', html_entity_decode( wp_strip_all_tags( $cell ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) ) );
+				if ( 0 === $column || preg_match( '/^[\-\x{2013}\x{2014}]?$/u', $text ) ) {
+					continue;
+				}
+				$figure             = 1 === preg_match( '/^(?:\p{L}{1,4}\.? )?[+\-\x{2212}~<>\p{Sc}]* ?\d[\d.,\x{2009}\x{202F} ]*(?: ?(?:\p{Sc}|%|\p{L}{1,4}\.?))?(?: ?\/ ?\p{L}{1,8}\.?)?$/u', $text );
+				$figures[ $column ] = ( $figures[ $column ] ?? true ) && $figure;
+			}
+		}
+	}
+	$figures = array_filter( $figures );
+	if ( ! $figures ) {
+		return $html;
+	}
+	$tags   = new \WP_HTML_Tag_Processor( $html );
+	$column = -1;
+	while ( $tags->next_tag() ) {
+		$name = $tags->get_tag();
+		if ( 'TR' === $name && ! $tags->is_tag_closer() ) {
+			$column = -1;
+		} elseif ( in_array( $name, array( 'TH', 'TD' ), true ) && ! $tags->is_tag_closer() ) {
+			++$column;
+			if ( isset( $figures[ $column ] ) ) {
+				$tags->add_class( 'is-figure' );
+			}
+		}
+	}
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block_core/table', __NAMESPACE__ . '\table_figure_columns' );
 
 /**
  * Only the terminal style scrolls sideways, see core--code.css; plain code blocks wrap.

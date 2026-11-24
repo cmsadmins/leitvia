@@ -11,7 +11,7 @@
  */
 
 ?>
-<!-- wp:group {"metadata":{"name":"Video with transcript"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|xl","bottom":"var:preset|spacing|xl"}}},"backgroundColor":"surface","layout":{"type":"constrained"}} -->
+<!-- wp:group {"metadata":{"name":"Video with transcript"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|xl","bottom":"var:preset|spacing|xl"}}},"backgroundColor":"surface","layout":{"type":"constrained","justifyContent":"left"}} -->
 <div class="wp-block-group alignfull has-surface-background-color has-background" style="padding-top:var(--wp--preset--spacing--xl);padding-bottom:var(--wp--preset--spacing--xl)">
 	<!-- wp:heading {"fontSize":"heading-l"} -->
 	<h2 class="wp-block-heading has-heading-l-font-size"><?php esc_html_e( 'See how it works in under a minute', 'leitvia' ); ?></h2>

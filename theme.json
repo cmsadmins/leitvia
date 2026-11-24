@@ -165,7 +165,7 @@
 			"heading": {
 				"typography": {
 					"fontFamily": "var:preset|font-family|heading",
-					"fontWeight": "400",
+					"fontWeight": "var(--wp--custom--font-weight--heading, 400)",
 					"lineHeight": "1.1",
 					"letterSpacing": "-0.015em"
 				}
@@ -187,6 +187,7 @@
 			"h3": {
 				"typography": {
 					"fontSize": "var:preset|font-size|heading-s",
+					"fontWeight": "var(--wp--custom--font-weight--heading-s, var(--wp--custom--font-weight--heading, 400))",
 					"lineHeight": "1.25",
 					"letterSpacing": "-0.005em"
 				}
@@ -209,7 +210,7 @@
 				"typography": {
 					"fontFamily": "var:preset|font-family|ui",
 					"fontSize": "var:preset|font-size|meta",
-					"fontWeight": "500",
+					"fontWeight": "var(--wp--custom--font-weight--heading, 500)",
 					"lineHeight": "1.4",
 					"textTransform": "uppercase",
 					"letterSpacing": "0.1em"
@@ -265,11 +266,11 @@
 				},
 				":hover": {
 					"border": {
-						"color": "var:preset|color|accent"
+						"color": "var(--wp--preset--color--button-hover, var(--wp--preset--color--accent))"
 					},
 					"color": {
-						"background": "var:preset|color|accent",
-						"text": "var:preset|color|on-accent"
+						"background": "var(--wp--preset--color--button-hover, var(--wp--preset--color--accent))",
+						"text": "var(--wp--preset--color--on-button-hover, var(--wp--preset--color--on-accent))"
 					}
 				},
 				":focus": {
@@ -522,6 +523,7 @@
 	"customTemplates": [
 		{ "name": "page-landing", "title": "Landing page (no title)", "postTypes": [ "page" ] },
 		{ "name": "page-docs", "title": "Documentation page", "postTypes": [ "page" ] },
-		{ "name": "page-easy-language", "title": "Page in easy language", "postTypes": [ "page" ] }
+		{ "name": "page-easy-language", "title": "Page in easy language", "postTypes": [ "page" ] },
+		{ "name": "page-article", "title": "Article page (author and date)", "postTypes": [ "page" ] }
 	]
 }

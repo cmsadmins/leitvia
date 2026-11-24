@@ -1,4 +1,8 @@
 {
+	"leitvia/content-answer-facts": {
+		"added": "2026-11-24",
+		"updated": "2026-11-24"
+	},
 	"leitvia/content-asymmetric": {
 		"added": "2026-10-18",
 		"updated": "2026-11-05"
@@ -93,7 +97,7 @@
 	},
 	"leitvia/content-text": {
 		"added": "2026-11-22",
-		"updated": "2026-11-22"
+		"updated": "2026-11-24"
 	},
 	"leitvia/content-text-figures": {
 		"added": "2026-11-22",
@@ -113,7 +117,7 @@
 	},
 	"leitvia/content-video": {
 		"added": "2026-10-28",
-		"updated": "2026-11-22"
+		"updated": "2026-11-24"
 	},
 	"leitvia/content-video-split": {
 		"added": "2026-11-22",

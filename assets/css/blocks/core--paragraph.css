@@ -43,14 +43,22 @@
 	text-transform: uppercase;
 }
 
+/* The weight of the eyebrow comes from fontWeight.eyebrow of a token set (Leitvia Studio), else 500 as the badge. */
 .is-style-eyebrow {
 	color: var(--wp--preset--color--accent);
+	font-weight: var(--wp--custom--font-weight--eyebrow, 500);
 }
 
 /* Accent and ink-muted text fall below 4.5:1 on ink, accent and inverse sections (an accent eyebrow on a dark stage
    3.2:1), so the eyebrow and text in either color take the section text color there; the preset color classes are
-   important, so the variables they read become currentcolor. Blocks with a ground of their own keep their colors. */
-:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) :is(.is-style-eyebrow, .has-ink-muted-color, .has-accent-color:not(.has-background)) {
+   important, so the variables they read become currentcolor. Blocks with a ground of their own keep their colors.
+   A dark palette lays inverse on surface-alt, where both pass by contract: it names them in --wp--custom--inverse-accent
+   and -muted (dark style variations, dark token sets of Studio), so prices, marks and eyebrows keep their colors. */
+.is-style-inverse :is(.is-style-eyebrow, .has-ink-muted-color, .has-accent-color:not(.has-background)) {
+	--wp--preset--color--ink-muted: var(--wp--custom--inverse-muted, currentcolor);
+	--wp--preset--color--accent: var(--wp--custom--inverse-accent, currentcolor);
+}
+.has-background:is(.has-ink-background-color, .has-accent-background-color) :is(.is-style-eyebrow, .has-ink-muted-color, .has-accent-color:not(.has-background)) {
 	--wp--preset--color--ink-muted: currentcolor;
 	--wp--preset--color--accent: currentcolor;
 	color: inherit;

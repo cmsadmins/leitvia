@@ -59,8 +59,12 @@
 	color: var(--wp--preset--color--accent);
 	font-weight: 600;
 }
-/* Accent marks fall below 3:1 on ink and accent bands, so they take the band text color there. */
-:is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) .wp-block-list > li::before {
+/* Accent marks fall below 3:1 on ink and accent bands, so they take the band text color there; inverse keeps the accent
+   of a dark palette (--wp--custom--inverse-accent, see core--paragraph.css). */
+.is-style-inverse .wp-block-list > li::before {
+	color: var(--wp--custom--inverse-accent, currentcolor);
+}
+.has-background:is(.has-ink-background-color, .has-accent-background-color) .wp-block-list > li::before {
 	color: inherit;
 }
 :is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) .is-style-download > li::before {
