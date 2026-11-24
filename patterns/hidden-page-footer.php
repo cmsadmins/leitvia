@@ -8,8 +8,9 @@
  * Inserter: no
  *
  * Only links that lead somewhere: the privacy policy page of the site, and an imprint and an accessibility statement
- * when a published page has one of their usual slugs. A fresh site shows none of them and no dead link. The copyright
- * line binds to leitvia/site-meta, so it shows the current year also after the footer is saved in the Site Editor.
+ * when a published page has one of their usual slugs. A fresh site shows none of them and no dead link; the Cookie
+ * settings link only where a plugin answers the filter leitvia_consent_link (functions.php). The copyright line binds
+ * to leitvia/site-meta, so it shows the current year also after the footer is saved in the Site Editor.
  *
  * @package Leitvia
  */
@@ -45,11 +46,12 @@ $leitvia_theme = wp_get_theme( 'leitvia' );
 	<!-- /wp:group -->
 	<!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|s"},"blockGap":{"top":"var:preset|spacing|xs","left":"var:preset|spacing|m"}}},"fontFamily":"ui","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 	<div class="wp-block-group alignwide has-ui-font-family" style="padding-top:var(--wp--preset--spacing--s)">
-		<?php if ( $leitvia_legal ) : ?>
+		<?php if ( $leitvia_legal || has_filter( 'leitvia_consent_link' ) ) : ?>
 		<!-- wp:navigation {"overlayMenu":"never","style":{"spacing":{"blockGap":"var:preset|spacing|m"}},"fontSize":"meta","ariaLabel":"<?php echo esc_attr__( 'Legal', 'leitvia' ); ?>"} -->
 			<?php foreach ( $leitvia_legal as $leitvia_label => $leitvia_url ) : ?>
 			<!-- wp:navigation-link {"label":"<?php echo esc_attr( $leitvia_label ); ?>","url":"<?php echo esc_url( $leitvia_url ); ?>","kind":"custom"} /-->
 			<?php endforeach; ?>
+			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Cookie settings', 'leitvia' ); ?>","url":"#leitvia-consent","kind":"custom","className":"leitvia-consent-link"} /-->
 		<!-- /wp:navigation -->
 		<?php endif; ?>
 		<!-- wp:paragraph {"textColor":"ink-muted","fontSize":"meta"} -->

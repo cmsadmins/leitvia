@@ -468,3 +468,37 @@ html {
 		--leitvia-header-text: var(--wp--preset--color--ink);
 	}
 }
+
+/*
+ * Post with sidebar (single): a flex group with the sidebar first, so its table of contents renders before the text.
+ * Below 64rem both take the full width, sidebar on top; from 64rem the sidebar moves right at 20rem and sticks below
+ * the header. leitvia-wide-only and leitvia-narrow-only show a block on one side of 64rem only (groups without a flex
+ * layout), such as the byline under the title or in the sidebar. A sidebar with nothing but such blocks (no table of
+ * contents) leaves the small screens too, so no empty gap stays above the text.
+ */
+.leitvia-post-columns > * {
+	flex-basis: 100%;
+}
+@media (width < 64rem) {
+	.leitvia-wide-only,
+	.leitvia-post-columns > .leitvia-post-aside:not(:has(> :not(.leitvia-wide-only))) {
+		display: none;
+	}
+}
+@media (width >= 64rem) {
+	.wp-block-group.leitvia-post-columns {
+		flex-flow: row-reverse nowrap;
+	}
+	.leitvia-post-columns > * {
+		flex: 1 1 0;
+		min-width: 0;
+	}
+	.leitvia-post-columns > .leitvia-post-aside {
+		flex: 0 0 20rem;
+		position: sticky;
+		top: calc(var(--leitvia-sticky-offset, 0px) + var(--wp--preset--spacing--m));
+	}
+	.leitvia-narrow-only {
+		display: none;
+	}
+}

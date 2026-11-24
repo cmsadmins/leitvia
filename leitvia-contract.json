@@ -1,6 +1,6 @@
 {
 	"$comment": "Machine-readable design contract of the Leitvia theme. Agents read this instead of guessing. Semver: major = removed or renamed role/pattern, minor = added, patch = descriptions. Explained for humans in design.md. A reference checker for compositionRules lives in the Leitvia monorepo and is not shipped with the theme. pageFrames: slots are unordered and may repeat; a page fills them with any number of patterns whose role the slot allows. Patterns with role frame (header, footer, hidden page parts) carry placeholder composition metadata that checks ignore. sectionKinds: what a section does for a page (answer, facts, packages, tiles, steps, faq, related); a pattern names the kinds it fills in provides, a page frame names the kinds it needs in requires (a finding missingSection) and those it advises in recommends (a finding recommendedSection without points). A kind that is a composition role (hook, context, proof, detail, offer, close) is filled by any section of that role. The frame is checked only when the page names it (compose-page, check-composition with frame), so pages without a frame keep their score. A pattern may list in continues the patterns it continues as one section, such as price cards after a row of their parts: next to one of them it repeats no layout and tone.",
-	"contractVersion": "1.13.18",
+	"contractVersion": "1.13.19",
 	"theme": "leitvia",
 	"rules": [
 		"Use only role presets. Never hex, px, custom CSS or !important.",
@@ -383,6 +383,12 @@
 			{
 				"slug": "eyebrow",
 				"purpose": "Weight of the block style eyebrow (and so of the footer column heads and price hints written as eyebrows), such as 700. Without it 500."
+			}
+		],
+		"iconStroke": [
+			{
+				"slug": "iconStroke",
+				"purpose": "Line width of the stroke icons of Leitvia Studio (icon and icon list) on the 24 grid of Lucide, a top-level number token from 1 to 3, such as 1.5 for a lighter line. Leitvia Studio writes it as settings.custom.iconStroke; without it the width stays 2."
 			}
 		]
 	},
@@ -3291,6 +3297,56 @@
 			}
 		},
 		{
+			"slug": "leitvia/hidden-page-post-aside",
+			"title": "Post sidebar",
+			"description": "Sidebar of a single post, beside the text on large screens and sticky while it scrolls: what plugins add (such as a table of contents), the author with labelled publish and update dates and the category, then what plugins add at the end (such as the service the post is about).",
+			"area": "page",
+			"useWhen": "Inserted by the single template in the column beside the text.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "A complementary landmark named About this post. It comes before the text in the markup, so a table of contents in it is read first; the details repeat the byline and show on large screens only, the byline under the title on small ones.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/hidden-page-post-end",
+			"title": "Post end",
+			"description": "What plugins add at the end of a single post, above the author box, such as the service the post is about on small screens. Empty without such a plugin.",
+			"area": "page",
+			"useWhen": "Inserted by the single template above the author box.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Never insert manually; it is hidden from the inserter and owned by a template.",
+				"a11y": "Holds only what plugins add through the filter leitvia_post_end, with their own headings and labels.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/hidden-page-post-byline",
 			"title": "Post byline",
 			"description": "Byline for single posts with linked author, labelled publish and update dates and reading time, on one line where it fits, the parts divided by middle dots.",
@@ -3971,6 +4027,45 @@
 				},
 				"replacedBy": null
 			}
+		},
+		{
+			"slug": "leitvia/teaser-related-news",
+			"title": "Related news",
+			"description": "Heading above the three latest posts on the topic of the current page, as cards with image, category, title, short excerpt and date. The topic comes from the categories and tags the page names, else from the categories of a post; without matching posts it shows the latest posts, and without any other post it renders nothing. Use on service and topic pages to point to news on that topic.",
+			"area": "teaser",
+			"useWhen": "Service, product or topic pages that point to news on their topic. Name the categories or tags of the page with the field news of leitvia/set-page-structure; without them the section shows the latest posts.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "3/2",
+					"displayWidth": "25rem",
+					"recommendedSize": "900x600",
+					"count": 3,
+					"source": "featured-image"
+				}
+			],
+			"docs": {
+				"avoidWhen": "The site has no posts yet, or a posts grid stands on the same page.",
+				"a11y": "Titles are h3 links under the section h2; dates are time elements. The section with its heading is left out while there is no other post; the current post never shows.",
+				"contentLength": {
+					"heading": [
+						10,
+						40
+					],
+					"text": null
+				},
+				"replacedBy": null
+			},
+			"provides": [
+				"related"
+			]
 		},
 		{
 			"slug": "leitvia/teaser-icon-tiles",

@@ -118,6 +118,7 @@
 			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Imprint', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
 			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Privacy policy', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
 			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Accessibility', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
+			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Cookie settings', 'leitvia' ); ?>","url":"#leitvia-consent","kind":"custom","className":"leitvia-consent-link"} /-->
 		<!-- /wp:navigation -->
 	</div>
 	<!-- /wp:group -->

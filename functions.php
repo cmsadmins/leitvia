@@ -755,7 +755,9 @@ add_filter( 'render_block_core/post-terms', __NAMESPACE__ . '\sticky_label', 11,
 
 /**
  * The lead under the title of a post (post-excerpt with the class leitvia-own-excerpt) only shows an excerpt the author
- * wrote. WordPress otherwise cuts one from the text, and the same words would stand right below in the content.
+ * wrote. WordPress otherwise cuts one from the text, and the same words would stand right below in the content. A lead
+ * is short: an excerpt of more than two sentences, or one whose text the post repeats near its start (a summary
+ * copied from the first paragraph), stays out of it and keeps serving search results and cards.
  *
  * @param string         $html     Block HTML.
  * @param array          $block    Parsed block.
@@ -766,7 +768,17 @@ function own_excerpt_only( string $html, array $block, $instance = null ): strin
 		return $html;
 	}
 	$post_id = $instance instanceof \WP_Block ? (int) ( $instance->context['postId'] ?? 0 ) : 0;
-	return $post_id && has_excerpt( $post_id ) ? $html : '';
+	if ( ! $post_id || ! has_excerpt( $post_id ) ) {
+		return '';
+	}
+	$plain   = static fn( string $text ): string => trim( (string) preg_replace( '/\s+/u', ' ', html_entity_decode( wp_strip_all_tags( $text ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) ) );
+	$excerpt = $plain( (string) get_post_field( 'post_excerpt', $post_id ) );
+	// ponytail: a sentence ends with . ! ? or … before a space and a capital letter, not after a single letter, so
+	// "z. B. Server" and "Nr. 5" do not count; a longer abbreviation before a capitalized noun does. A list of
+	// abbreviations if it bites.
+	$sentences = preg_match_all( '/(?<!^\p{L}|[\s.(]\p{L})[.!?…](?=\s+\p{Lu})/u', $excerpt ) + 1;
+	$start     = mb_substr( $plain( (string) get_post_field( 'post_content', $post_id ) ), 0, 600 );
+	return $sentences > 2 || ( '' !== $excerpt && str_contains( $start, mb_substr( $excerpt, 0, 120 ) ) ) ? '' : $html;
 }
 add_filter( 'render_block_core/post-excerpt', __NAMESPACE__ . '\own_excerpt_only', 10, 3 );
 
@@ -792,6 +804,123 @@ function related_posts_query( array $block ): array {
 	return $block;
 }
 add_filter( 'render_block_data', __NAMESPACE__ . '\related_posts_query' );
+
+/**
+ * Namespace of the query of patterns/teaser-related-news.php.
+ */
+const RELATED_NEWS = 'leitvia/related-news';
+
+/**
+ * Marks the related news query, so related_news_vars() finds it: the query attribute reaches the post template as
+ * block context.
+ *
+ * @param array $block Parsed block.
+ */
+function related_news_mark( array $block ): array {
+	if ( 'core/query' === $block['blockName'] && RELATED_NEWS === ( $block['attrs']['namespace'] ?? '' ) && is_array( $block['attrs']['query'] ?? null ) ) {
+		$block['attrs']['query']['leitviaRelatedNews'] = true;
+	}
+	return $block;
+}
+add_filter( 'render_block_data', __NAMESPACE__ . '\related_news_mark' );
+
+/**
+ * The related news query lists posts with any of the terms of the current page or post: the filter
+ * leitvia_related_terms names them (a plugin reads them from the page), else the categories of a post. When no other
+ * post has one of them, it lists the latest posts. Core leaves the current post out (excludeCurrent).
+ *
+ * @param array     $query Query vars.
+ * @param \WP_Block $block Post template block.
+ */
+function related_news_vars( array $query, $block ): array {
+	if ( empty( $block->context['query']['leitviaRelatedNews'] ) ) {
+		return $query;
+	}
+	$post = (int) get_queried_object_id();
+	/**
+	 * Filters the terms related news looks for, by taxonomy: array( 'category' => array( 3 ), 'post_tag' => array( 7 ) ).
+	 *
+	 * @param array<string, int[]> $terms Terms by taxonomy, the categories of a post by default.
+	 * @param int                  $post  ID of the current page or post.
+	 */
+	$terms = (array) apply_filters( 'leitvia_related_terms', 'post' === get_post_type( $post ) ? array( 'category' => wp_get_post_categories( $post ) ) : array(), $post );
+	$tax   = array( 'relation' => 'OR' );
+	foreach ( $terms as $taxonomy => $ids ) {
+		$ids = array_filter( array_map( 'intval', (array) $ids ) );
+		if ( $ids && taxonomy_exists( (string) $taxonomy ) ) {
+			$tax[] = array(
+				'taxonomy' => (string) $taxonomy,
+				'terms'    => $ids,
+			);
+		}
+	}
+	if ( count( $tax ) < 2 ) {
+		return $query;
+	}
+	$found = get_posts(
+		array(
+			'post_type'      => 'post',
+			'posts_per_page' => 1,
+			'fields'         => 'ids',
+			'post__not_in'   => array( $post ),
+			'tax_query'      => $tax, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- One small query per related news section.
+		)
+	);
+	if ( $found ) {
+		$query['tax_query'] = $tax; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- See above.
+	}
+	return $query;
+}
+add_filter( 'query_loop_block_query_vars', __NAMESPACE__ . '\related_news_vars', 10, 2 );
+
+/**
+ * The section of patterns/teaser-related-news.php (class leitvia-related-news) is left out with its heading while its
+ * query finds no post: core renders no post template then.
+ *
+ * @param string $html  Block HTML.
+ * @param array  $block Parsed block.
+ */
+function related_news_empty( string $html, array $block ): string {
+	return in_array( 'leitvia-related-news', explode( ' ', $block['attrs']['className'] ?? '' ), true ) && ! str_contains( $html, 'wp-block-post-template' ) ? '' : $html;
+}
+add_filter( 'render_block_core/group', __NAMESPACE__ . '\related_news_empty', 10, 2 );
+
+/**
+ * Class of the Cookie settings link of the footer patterns.
+ */
+const CONSENT_LINK_CLASS = 'leitvia-consent-link';
+
+/**
+ * The Cookie settings link of the footers leads where a plugin that keeps consent says: the filter leitvia_consent_link
+ * returns the attributes of the link (href and any others, such as aria-haspopup). Without an answer the site has no
+ * consent settings, and the item is left out, so the footer shows no dead link.
+ *
+ * @param string $html  Block HTML.
+ * @param array  $block Parsed block.
+ */
+function consent_link( string $html, array $block ): string {
+	if ( ! in_array( CONSENT_LINK_CLASS, explode( ' ', $block['attrs']['className'] ?? '' ), true ) ) {
+		return $html;
+	}
+	/**
+	 * Filters the attributes of the Cookie settings link in the footer: array( 'href' => …, 'aria-haspopup' => 'dialog' ).
+	 * An empty array or no href leaves the link out.
+	 *
+	 * @param array<string, string> $attributes Attributes of the link.
+	 */
+	$attributes = (array) apply_filters( 'leitvia_consent_link', array() );
+	if ( empty( $attributes['href'] ) ) {
+		return '';
+	}
+	$tags = new \WP_HTML_Tag_Processor( $html );
+	if ( $tags->next_tag( 'a' ) ) {
+		foreach ( $attributes as $name => $value ) {
+			$tags->set_attribute( (string) $name, 'href' === $name ? esc_url_raw( (string) $value ) : (string) $value );
+		}
+	}
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block_core/navigation-link', __NAMESPACE__ . '\consent_link', 10, 2 );
 
 /**
  * Start-aligned content in right-to-left languages. Templates and patterns align their constrained content to the

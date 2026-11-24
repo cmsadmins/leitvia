@@ -149,19 +149,19 @@
 	},
 	"leitvia/footer-columns": {
 		"added": "2026-10-15",
-		"updated": "2026-11-11"
+		"updated": "2026-11-24"
 	},
 	"leitvia/footer-mega": {
 		"added": "2026-10-15",
-		"updated": "2026-11-11"
+		"updated": "2026-11-24"
 	},
 	"leitvia/footer-minimal": {
 		"added": "2026-10-15",
-		"updated": "2026-11-11"
+		"updated": "2026-11-24"
 	},
 	"leitvia/footer-newsletter": {
 		"added": "2026-10-15",
-		"updated": "2026-11-11"
+		"updated": "2026-11-24"
 	},
 	"leitvia/header-centered": {
 		"added": "2026-10-15",
@@ -245,7 +245,7 @@
 	},
 	"leitvia/hidden-page-checkout-footer": {
 		"added": "2026-10-19",
-		"updated": "2026-11-22"
+		"updated": "2026-11-24"
 	},
 	"leitvia/hidden-page-checkout-header": {
 		"added": "2026-10-18",
@@ -257,7 +257,7 @@
 	},
 	"leitvia/hidden-page-footer": {
 		"added": "2026-11-22",
-		"updated": "2026-11-22"
+		"updated": "2026-11-24"
 	},
 	"leitvia/hidden-page-no-results": {
 		"added": "2026-10-15",
@@ -266,6 +266,10 @@
 	"leitvia/hidden-page-order-details": {
 		"added": "2026-10-18",
 		"updated": "2026-10-18"
+	},
+	"leitvia/hidden-page-post-aside": {
+		"added": "2026-11-24",
+		"updated": "2026-11-24"
 	},
 	"leitvia/hidden-page-post-author": {
 		"added": "2026-10-24",
@@ -278,6 +282,10 @@
 	"leitvia/hidden-page-post-card": {
 		"added": "2026-11-02",
 		"updated": "2026-11-19"
+	},
+	"leitvia/hidden-page-post-end": {
+		"added": "2026-11-24",
+		"updated": "2026-11-24"
 	},
 	"leitvia/hidden-page-post-navigation": {
 		"added": "2026-10-24",
@@ -293,7 +301,7 @@
 	},
 	"leitvia/hidden-page-related-posts": {
 		"added": "2026-10-24",
-		"updated": "2026-11-19"
+		"updated": "2026-11-24"
 	},
 	"leitvia/hidden-page-shop-filters": {
 		"added": "2026-10-18",
@@ -397,7 +405,11 @@
 	},
 	"leitvia/teaser-posts-list": {
 		"added": "2026-10-15",
-		"updated": "2026-11-06"
+		"updated": "2026-11-24"
+	},
+	"leitvia/teaser-related-news": {
+		"added": "2026-10-15",
+		"updated": "2026-11-24"
 	},
 	"leitvia/teaser-services": {
 		"added": "2026-10-15",

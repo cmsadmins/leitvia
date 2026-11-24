@@ -29,11 +29,12 @@ $leitvia_legal = array_filter(
 		<!-- wp:paragraph {"textColor":"ink-muted","fontSize":"meta"} -->
 		<p class="has-ink-muted-color has-text-color has-meta-font-size"><?php esc_html_e( 'Payments are encrypted. Your data is used only for this order.', 'leitvia' ); ?></p>
 		<!-- /wp:paragraph -->
-		<?php if ( $leitvia_legal ) : ?>
+		<?php if ( $leitvia_legal || has_filter( 'leitvia_consent_link' ) ) : ?>
 		<!-- wp:navigation {"overlayMenu":"never","style":{"spacing":{"blockGap":"var:preset|spacing|m"}},"fontSize":"meta","ariaLabel":"<?php echo esc_attr__( 'Legal', 'leitvia' ); ?>"} -->
 			<?php foreach ( $leitvia_legal as $leitvia_label => $leitvia_url ) : ?>
 			<!-- wp:navigation-link {"label":"<?php echo esc_attr( $leitvia_label ); ?>","url":"<?php echo esc_url( $leitvia_url ); ?>","kind":"custom"} /-->
 			<?php endforeach; ?>
+			<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Cookie settings', 'leitvia' ); ?>","url":"#leitvia-consent","kind":"custom","className":"leitvia-consent-link"} /-->
 		<!-- /wp:navigation -->
 		<?php endif; ?>
 	</div>

@@ -190,6 +190,7 @@
 				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Terms of service', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
 				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Cancellation policy', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
 				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Data processing agreement', 'leitvia' ); ?>","url":"#","kind":"custom"} /-->
+				<!-- wp:navigation-link {"label":"<?php echo esc_attr__( 'Cookie settings', 'leitvia' ); ?>","url":"#leitvia-consent","kind":"custom","className":"leitvia-consent-link"} /-->
 			<!-- /wp:navigation -->
 			<!-- wp:social-links {"showLabels":true,"className":"is-style-logos-only","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|m"}}}} -->
 			<ul class="wp-block-social-links has-visible-labels is-style-logos-only">

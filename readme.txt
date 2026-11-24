@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.57
+Stable tag: 1.2.58
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, style-variations, translation-ready, threaded-comments
@@ -107,6 +107,15 @@ Disclaimer: Leitvia is free software under the GNU GPL, version 2 or later. It i
 * Privacy policy: https://leitvia.com/privacy-policy/
 
 == Changelog ==
+
+= 1.2.58 =
+* Every footer pattern ends its menu with a Cookie settings link. A plugin answers the filter leitvia_consent_link with the address and attributes of the link; Leitvia Studio opens a dialog with the consent settings, or a note when the site uses no service that needs consent. Without an answer the link is left out.
+* New pattern Related news: a heading above the three latest posts on the topic of the current page, from the categories and tags the page names (filter leitvia_related_terms), else the latest posts; without another post it renders nothing.
+* A single post shows its text at reading width with a sidebar on the right from 64rem, sticky while the text scrolls: what plugins add (filters leitvia_post_aside and leitvia_post_aside_end, such as a table of contents or the service of the post), then the author with labelled publish and update dates and the category. At the end of a post plugins add blocks through leitvia_post_end. On phones the byline stays under the title, and a sidebar with nothing to show leaves no gap above the text.
+* The lead under the title of a post shows only with at most two sentences and when the text does not repeat it.
+* Related news, related posts and the list of latest posts keep sticky posts in date order, so they show the number of posts they promise.
+* Contract 1.13.19: token iconStroke (1 to 3, default 2) for the line width of icons.
+* The theme CSS stays under 53 KB as shipped (51 KB before).
 
 = 1.2.57 =
 * The header stays at the top of the screen by default, on every screen, also on sites whose header part is saved. The new block style Header scrolls with the page on the outermost group of the header part switches it off; Sticky header on large screens and on small screens keep it at one width. The safeguards stay: in low or narrow windows, at 200 % zoom, with enlarged text and in print the header scrolls away, and focused elements stop below it.
