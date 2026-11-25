@@ -155,7 +155,7 @@ The `pageFrames` section names the slots of each page type (`intro`, `toc`, `act
 | Page type | Template | Typical patterns |
 | --- | --- | --- |
 | Home | `page-landing` | Hero (split image, centered, overlap or three teasers), `proof-logos` or `proof-trust-strip`, `teaser-services`, a proof pattern, `teaser-posts-grid` or `teaser-posts-list`, `cta-banner` |
-| Service | `page-landing` | `hero-centered` or `hero-split-image`, `content-answer-facts`, `content-text-media`, `content-steps`, `content-feature-grid`, `proof-testimonials-grid` or `content-quote`, `offer-pricing-3` or `content-price-list`, `content-faq`, `teaser-services` for related services, `cta-contact` |
+| Service | `page-landing` | `hero-centered`, `hero-split-image` or, without a photo, `hero-text`, `content-answer-facts`, `content-text-media`, `content-steps`, `content-feature-grid`, `proof-testimonials-grid` or `content-quote`, `offer-pricing-3` or `content-price-list`, `content-faq`, `teaser-services` for related services, `cta-contact` |
 | Hub (overview of a topic) | `page-landing` | A hero, `content-answer-facts`, `offer-pricing-3`, `teaser-icon-tiles` or `teaser-services` with a tile for every page of the topic, `content-steps`, `content-faq`, `cta-contact` |
 | Audience (one group of people) | `page-landing` | A hero, `content-text-media` or `content-two-columns` for their situation, `teaser-services` with the services that fit, `content-steps` for the collaboration, `content-faq`, `cta-contact` or `cta-banner` |
 | Product | `page-landing` | `content-feature-catalog`, `content-compare-two`, `content-comparison`, `offer-pricing-3`, `content-changelog`, `content-downloads`, `teaser-posts-badge` |

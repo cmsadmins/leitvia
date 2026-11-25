@@ -30,15 +30,16 @@
 	font-family: var(--wp--preset--font-family--ui);
 }
 
-/* The card: a hairline in the stroke color with the radius of the theme, on the surface also on dark bands. */
-.fcal_cal_wrap .fcal_calendar_inner {
+/* The card: a hairline in the stroke color with the radius of the theme, on the surface also on dark bands. The doubled
+   class outweighs the 8px of the plugin (.fcal_wrap .fcal_calendar_inner), which comes later. */
+.fcal_cal_wrap.fcal_cal_wrap .fcal_calendar_inner {
 	border: 1px solid var(--wp--preset--color--stroke);
 	border-radius: var(--wp--preset--border-radius--m);
 	background: var(--wp--preset--color--surface);
 	box-shadow: none;
 }
 
-/* The title of the event is an h1 the plugin prints with no filter; it looks like the title of a card. */
+/* The title of the event (an h2, fluent_booking_title_tag() in functions.php) looks like the title of a card. */
 .fcal_cal_wrap .fcal_calendar_inner .fcal_side .fcal_slot_heading {
 	font-family: var(--wp--preset--font-family--heading);
 	font-size: var(--wp--preset--font-size--heading-s);
@@ -70,7 +71,12 @@
 	background: var(--wp--preset--color--button-hover, var(--wp--preset--color--accent));
 	color: var(--wp--preset--color--on-button-hover, var(--wp--preset--color--on-accent));
 }
-.fcal_cal_wrap .fcal_duration.is_selected {
+/* The durations to choose from: the radius of the theme, the chosen one in ink with surface text. The plugin writes
+   white text on it in five classes, which vanishes on the light ink of dark palettes. */
+.fcal_cal_wrap.fcal_cal_wrap .fcal_calendar_inner .fcal_multi_duration .fcal_duration {
+	border-radius: var(--wp--preset--border-radius--s);
+}
+.fcal_cal_wrap.fcal_cal_wrap .fcal_calendar_inner .fcal_multi_duration .fcal_duration.is_selected {
 	color: var(--wp--preset--color--surface);
 }
 

@@ -246,7 +246,11 @@ add_filter( 'gform_submit_button', __NAMESPACE__ . '\gravity_forms_button' );
  * @return mixed
  */
 function fluent_booking_calendar( $output, $tag ) {
-	if ( 'fluent_booking' !== $tag || ! is_string( $output ) ) {
+	if ( 'fluent_booking' !== $tag ) {
+		return $output;
+	}
+	remove_filter( 'fluent_booking/public_event_vars', __NAMESPACE__ . '\fluent_booking_title_tag' );
+	if ( ! is_string( $output ) ) {
 		return $output;
 	}
 	$file = 'assets/css/blocks/fluent-booking--calendar.css';
@@ -255,6 +259,35 @@ function fluent_booking_calendar( $output, $tag ) {
 	return str_replace( 'fcal-dark-mode', 'fcal-light-mode', $output );
 }
 add_filter( 'do_shortcode_tag', __NAMESPACE__ . '\fluent_booking_calendar', 10, 2 );
+
+/**
+ * The title of the event in a calendar of Fluent Booking on a page of the site is an h2, so the page keeps one h1, its
+ * own title. The plugin takes the level from title_tag of the data it hands its script (h2, h3 or h4) and prints an h1
+ * without it. Only while the shortcode renders (fluent_booking_title_level()): the booking pages of the plugin itself
+ * have no other title and keep their h1.
+ *
+ * @param mixed $vars Data of the calendar script.
+ * @return mixed
+ */
+function fluent_booking_title_tag( $vars ) {
+	return is_array( $vars ) && empty( $vars['title_tag'] ) ? array( 'title_tag' => 'h2' ) + $vars : $vars;
+}
+
+/**
+ * Hands the calendar of the shortcode [fluent_booking] the level of its title, see fluent_booking_title_tag();
+ * fluent_booking_calendar() takes it back once the shortcode has rendered.
+ *
+ * @param mixed  $output Short-circuit value of the shortcode, false to render it.
+ * @param string $tag    Shortcode name.
+ * @return mixed
+ */
+function fluent_booking_title_level( $output, $tag ) {
+	if ( 'fluent_booking' === $tag ) {
+		add_filter( 'fluent_booking/public_event_vars', __NAMESPACE__ . '\fluent_booking_title_tag' );
+	}
+	return $output;
+}
+add_filter( 'pre_do_shortcode_tag', __NAMESPACE__ . '\fluent_booking_title_level', 10, 2 );
 
 /**
  * The double focus ring of the theme (assets/css/focus.css), one rule for all elements that draw it, on every page
@@ -833,41 +866,37 @@ add_filter( 'render_block_core/post-excerpt', __NAMESPACE__ . '\own_excerpt_only
 const RELATED_POSTS = 'leitvia/related-posts';
 
 /**
- * The related posts query takes the categories of the current post; core leaves the post itself out (excludeCurrent).
- * Without categories it lists the latest other posts.
- *
- * @param array $block Parsed block.
- */
-function related_posts_query( array $block ): array {
-	if ( 'core/query' !== $block['blockName'] || RELATED_POSTS !== ( $block['attrs']['namespace'] ?? '' ) || ! is_array( $block['attrs']['query'] ?? null ) ) {
-		return $block;
-	}
-	$categories = array_map( 'intval', wp_get_post_categories( (int) get_the_ID() ) );
-	if ( $categories ) {
-		$block['attrs']['query']['taxQuery'] = array( 'category' => $categories );
-	}
-	return $block;
-}
-add_filter( 'render_block_data', __NAMESPACE__ . '\related_posts_query' );
-
-/**
  * Namespace of the query of patterns/teaser-related-news.php.
  */
 const RELATED_NEWS = 'leitvia/related-news';
 
 /**
- * Marks the related news query, so related_news_vars() finds it: the query attribute reaches the post template as
- * block context.
+ * The related posts query takes the categories of the current post; core leaves the post itself out (excludeCurrent).
+ * Without categories it lists the latest other posts. The related news query is marked, so related_news_vars() finds
+ * it. Both changes go into the query context of the blocks inside the query, not into its attribute: core builds that
+ * context from the attributes of a query inside another block (the group of patterns/teaser-related-news.php) before
+ * render_block_data runs on it, so a changed attribute never reached the post template there.
  *
- * @param array $block Parsed block.
+ * @param array          $context Context of a block inside the query.
+ * @param array          $parsed  Parsed block.
+ * @param \WP_Block|null $outer   Parent block, the query.
  */
-function related_news_mark( array $block ): array {
-	if ( 'core/query' === $block['blockName'] && RELATED_NEWS === ( $block['attrs']['namespace'] ?? '' ) && is_array( $block['attrs']['query'] ?? null ) ) {
-		$block['attrs']['query']['leitviaRelatedNews'] = true;
+function related_query_context( array $context, array $parsed, $outer = null ): array {
+	if ( ! $outer instanceof \WP_Block || 'core/query' !== $outer->name || ! is_array( $context['query'] ?? null ) ) {
+		return $context;
 	}
-	return $block;
+	$namespace = $outer->attributes['namespace'] ?? '';
+	if ( RELATED_NEWS === $namespace ) {
+		$context['query']['leitviaRelatedNews'] = true;
+	} elseif ( RELATED_POSTS === $namespace ) {
+		$categories = array_map( 'intval', wp_get_post_categories( (int) get_the_ID() ) );
+		if ( $categories ) {
+			$context['query']['taxQuery'] = array( 'category' => $categories );
+		}
+	}
+	return $context;
 }
-add_filter( 'render_block_data', __NAMESPACE__ . '\related_news_mark' );
+add_filter( 'render_block_context', __NAMESPACE__ . '\related_query_context', 10, 3 );
 
 /**
  * The related news query lists posts with any of the terms of the current page or post: the filter

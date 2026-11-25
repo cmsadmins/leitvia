@@ -2765,6 +2765,37 @@
 			}
 		},
 		{
+			"slug": "leitvia/hero-text",
+			"title": "Hero text",
+			"description": "Page intro without an image at the wide left edge: eyebrow, large heading, lead text and two buttons. Use at the top of a subpage, service or product page that has no photo of its own.",
+			"area": "hero",
+			"useWhen": "Top of a subpage, service or product page without a photo of its own: the heading, a short answer and up to two actions start at the wide left edge like the sections below. Pages below a hub take it instead of a stage with a symbol.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "asymmetric",
+				"weight": "medium",
+				"role": "hook",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "The page has a photo of its own (use hero-split-image or hero-overlap), a landing page with one message for everyone (use hero-centered), or the template already shows the page title (use page-landing).",
+				"a11y": "Holds the only h1 of the page; keep the eyebrow short because it is read before the heading. Lines stop at 48rem, so the lead text stays easy to read on wide screens.",
+				"contentLength": {
+					"heading": [
+						25,
+						70
+					],
+					"text": [
+						60,
+						200
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/hero-cover-image",
 			"title": "Hero cover image",
 			"description": "Full-width background image with a dark overlay, heading, lead text and a button. Use for strong visual openings on campaign or travel pages.",

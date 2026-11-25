@@ -3,20 +3,20 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.61
+Stable tag: 1.2.62
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, full-width-template, sticky-post, style-variations, template-editing, translation-ready, threaded-comments, wide-blocks
 
-Accessible block theme for full site editing: 83 patterns, WooCommerce templates, WCAG 2.2 AA, no external requests.
+Accessible block theme for full site editing: 84 patterns, WooCommerce templates, WCAG 2.2 AA, no external requests.
 
 == Description ==
 
-Leitvia is an accessible block theme for full site editing, built on semantic design tokens. 83 patterns, 18 templates and 6 style variations cover blogs, magazines, company sites and WooCommerce shops. Built to meet WCAG 2.2 AA, and it loads nothing from other servers: fonts and images ship with the theme. Patterns use roles instead of fixed values, so editors and AI agents can change the whole design without breaking layout or contrast.
+Leitvia is an accessible block theme for full site editing, built on semantic design tokens. 84 patterns, 18 templates and 6 style variations cover blogs, magazines, company sites and WooCommerce shops. Built to meet WCAG 2.2 AA, and it loads nothing from other servers: fonts and images ship with the theme. Patterns use roles instead of fixed values, so editors and AI agents can change the whole design without breaking layout or contrast.
 
 What you get with the theme alone, without any plugin:
 
-* 83 block patterns in nine areas: hero, content, teaser, proof, call to action, offer, header, footer and page sections. Every pattern passes the same contrast and keyboard tests in every style variation.
+* 84 block patterns in nine areas: hero, content, teaser, proof, call to action, offer, header, footer and page sections. Every pattern passes the same contrast and keyboard tests in every style variation.
 * 18 templates, among them a landing page without title, a docs page, an article page, a page in easy language (Leichte Sprache) and the templates WooCommerce needs for shop, product, cart, checkout and order confirmation.
 * 6 style variations (Warm editorial, Swiss editorial and Corporate, each light and dark), 3 color palettes and 2 font pairings. Fonts ship with the theme as WOFF2 files.
 * Accessibility built in: skip link, landmarks, one h1 per page, submenus on click and keyboard, a focus ring that stays visible on every background, and a pattern for the accessibility statement.
@@ -150,6 +150,11 @@ In the Site Editor under Styles. Pick one of the 6 style variations, one of the 
 Yes. The theme ships its design contract for agents, and Leitvia Studio gives agents abilities through the Abilities API and the MCP Adapter of WordPress. The section AI agents below lists the rules.
 
 == Changelog ==
+
+= 1.2.62 =
+* New: Pattern hero-text, a page intro without an image at the wide left edge with eyebrow, heading, lead text and two buttons, for subpages, services and products without a photo of their own.
+* Fix: Related news follows the topic of the page again. Its query sits inside the group of the pattern, and a query inside another block got its marks too late, so every page listed the latest posts; the related posts below a post take their categories the same way.
+* Fix: Fluent Booking: the chosen duration keeps surface text on its ink fill, also in dark palettes; the card and the durations take the radius of the tokens instead of the rounding of the plugin; the title of the event is an h2, so the page keeps its one h1.
 
 = 1.2.61 =
 * New: Calendars of Fluent Booking follow the design tokens: the card and its buttons like the theme buttons, the days in the accent pair, fields with a 3:1 border, the focus ring of the theme and the title of the appointment in the size of a card title. The stylesheet loads only on pages with a calendar, and the dark mode of the plugin follows the token set of the site.
