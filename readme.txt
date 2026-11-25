@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.60
+Stable tag: 1.2.61
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, full-width-template, sticky-post, style-variations, template-editing, translation-ready, threaded-comments, wide-blocks
@@ -150,6 +150,11 @@ In the Site Editor under Styles. Pick one of the 6 style variations, one of the 
 Yes. The theme ships its design contract for agents, and Leitvia Studio gives agents abilities through the Abilities API and the MCP Adapter of WordPress. The section AI agents below lists the rules.
 
 == Changelog ==
+
+= 1.2.61 =
+* New: Calendars of Fluent Booking follow the design tokens: the card and its buttons like the theme buttons, the days in the accent pair, fields with a 3:1 border, the focus ring of the theme and the title of the appointment in the size of a card title. The stylesheet loads only on pages with a calendar, and the dark mode of the plugin follows the token set of the site.
+* New: Filter leitvia_related_fallback: when no post shares a topic with the page, Related news lists the posts a plugin names for it (Leitvia Studio names the posts about the page) before it falls back to the latest posts.
+* Change: The contract tells agents how hero-split-image takes a landscape photo (aspectRatio 3/2 or 16/9 with scale cover on its image).
 
 = 1.2.60 =
 * Fix: Options of a select keep the surface and text colours of the style, so an open list stays readable on dark sections (contrast at least 4.5:1). New file elements.css, appended to the global styles.

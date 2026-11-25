@@ -3,7 +3,7 @@
  * Title: Related news
  * Slug: leitvia/teaser-related-news
  * Categories: posts
- * Description: Heading above the three latest posts on the topic of the current page, as cards with image, category, title, short excerpt and date. The topic comes from the categories and tags the page names, else from the categories of a post; without matching posts it shows the latest posts, and without any other post it renders nothing. Use on service and topic pages to point to news on that topic.
+ * Description: Heading above the three latest posts on the topic of the current page, as cards with image, category, title, short excerpt and date. The topic comes from the categories and tags the page names, else from the categories of a post; without matching posts it shows the posts a plugin picks for the page, such as posts about it, else the latest posts, and without any other post it renders nothing. Use on service and topic pages to point to news on that topic.
  * Keywords: related news, posts, topic, category, tag, query
  * Block Types: core/query
  * Viewport Width: 1400

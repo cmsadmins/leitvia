@@ -2889,7 +2889,7 @@
 				}
 			],
 			"docs": {
-				"avoidWhen": "The next section is also split on surface, or no meaningful image exists.",
+				"avoidWhen": "The next section is also split on surface, or no meaningful image exists. A landscape photo needs no other pattern: set aspectRatio 3/2 or 16/9 with scale cover on its image (leitvia/update-block).",
 				"a11y": "Holds the only h1; the image needs alt text when it shows what the page offers, empty alt when it is mood only.",
 				"contentLength": {
 					"heading": [
@@ -4031,7 +4031,7 @@
 		{
 			"slug": "leitvia/teaser-related-news",
 			"title": "Related news",
-			"description": "Heading above the three latest posts on the topic of the current page, as cards with image, category, title, short excerpt and date. The topic comes from the categories and tags the page names, else from the categories of a post; without matching posts it shows the latest posts, and without any other post it renders nothing. Use on service and topic pages to point to news on that topic.",
+			"description": "Heading above the three latest posts on the topic of the current page, as cards with image, category, title, short excerpt and date. The topic comes from the categories and tags the page names, else from the categories of a post; without matching posts it shows the posts a plugin picks for the page, such as posts about it, else the latest posts, and without any other post it renders nothing. Use on service and topic pages to point to news on that topic.",
 			"area": "teaser",
 			"useWhen": "Service, product or topic pages that point to news on their topic. Name the categories or tags of the page with the field news of leitvia/set-page-structure; without them the section shows the latest posts.",
 			"composition": {

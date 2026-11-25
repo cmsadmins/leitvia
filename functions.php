@@ -234,6 +234,29 @@ add_filter( 'gform_previous_button', __NAMESPACE__ . '\gravity_forms_button' );
 add_filter( 'gform_submit_button', __NAMESPACE__ . '\gravity_forms_button' );
 
 /**
+ * Fluent Booking in the tokens of the theme (assets/css/blocks/fluent-booking--calendar.css). Every calendar of the
+ * plugin, from the shortcode [fluent_booking] or from its block fluent-booking/calendar, which renders that shortcode,
+ * passes do_shortcode_tag: the stylesheet loads here (a block theme renders the content before wp_head, so it lands in
+ * the head), and the dark theme of the plugin becomes its light one. Its dark rules write fixed colors such as white
+ * day numbers, which would sit on the surface of the card; the token set of the site decides light or dark instead.
+ * Without Fluent Booking the shortcode never renders.
+ *
+ * @param mixed  $output Output of the shortcode; another filter may have returned something else.
+ * @param string $tag    Shortcode name.
+ * @return mixed
+ */
+function fluent_booking_calendar( $output, $tag ) {
+	if ( 'fluent_booking' !== $tag || ! is_string( $output ) ) {
+		return $output;
+	}
+	$file = 'assets/css/blocks/fluent-booking--calendar.css';
+	wp_enqueue_style( 'leitvia-fluent-booking--calendar', get_theme_file_uri( $file ), array(), wp_get_theme()->get( 'Version' ) );
+	wp_style_add_data( 'leitvia-fluent-booking--calendar', 'path', get_theme_file_path( $file ) );
+	return str_replace( 'fcal-dark-mode', 'fcal-light-mode', $output );
+}
+add_filter( 'do_shortcode_tag', __NAMESPACE__ . '\fluent_booking_calendar', 10, 2 );
+
+/**
  * The double focus ring of the theme (assets/css/focus.css), one rule for all elements that draw it, on every page
  * and in the editor. Enqueued once the blocks of the template are rendered, so it comes after their styles and holds
  * against block CSS of equal specificity. Printed inline like the block styles (path data).
@@ -849,7 +872,9 @@ add_filter( 'render_block_data', __NAMESPACE__ . '\related_news_mark' );
 /**
  * The related news query lists posts with any of the terms of the current page or post: the filter
  * leitvia_related_terms names them (a plugin reads them from the page), else the categories of a post. When no other
- * post has one of them, it lists the latest posts. Core leaves the current post out (excludeCurrent).
+ * post has one of them, the filter leitvia_related_fallback may name the posts to list instead (a plugin picks the
+ * posts that point to the page); without those it lists the latest posts. Core leaves the current post out
+ * (excludeCurrent).
  *
  * @param array     $query Query vars.
  * @param \WP_Block $block Post template block.
@@ -876,10 +901,7 @@ function related_news_vars( array $query, $block ): array {
 			);
 		}
 	}
-	if ( count( $tax ) < 2 ) {
-		return $query;
-	}
-	$found = get_posts(
+	$found = count( $tax ) > 1 && get_posts(
 		array(
 			'post_type'      => 'post',
 			'posts_per_page' => 1,
@@ -890,6 +912,17 @@ function related_news_vars( array $query, $block ): array {
 	);
 	if ( $found ) {
 		$query['tax_query'] = $tax; // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- See above.
+		return $query;
+	}
+	/**
+	 * Filters the posts related news lists when no post has one of the terms, newest first; none lists the latest posts.
+	 *
+	 * @param int[] $posts Post IDs, none by default.
+	 * @param int   $post  ID of the current page or post.
+	 */
+	$fallback = array_diff( array_filter( array_map( 'intval', (array) apply_filters( 'leitvia_related_fallback', array(), $post ) ) ), array( $post ) );
+	if ( $fallback ) {
+		$query['post__in'] = array_values( $fallback );
 	}
 	return $query;
 }

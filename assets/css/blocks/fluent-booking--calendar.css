@@ -1,0 +1,100 @@
+/*
+ * Fluent Booking in the tokens of the theme. Loads only with a booking calendar on the page: when the shortcode
+ * renders one, also inside the block fluent-booking/calendar (fluent_booking_calendar() in functions.php, which also
+ * turns the dark theme of the plugin into its light one).
+ * The plugin draws its calendar with custom properties on :root and .fcal-dark-mode; they are set here on two classes
+ * of the wrapper, which win over both and over the color the block prints on :root. The calendar is a card on the
+ * surface in every palette and on every band, so ink on surface carries text, fills and selected days (AA in every
+ * style variation, tests/unit/contrast.test.mjs), and the accent marks hover and the selected day with on-accent text.
+ */
+.fcal_cal_wrap.fcal_cal_wrap {
+	--fcal_primary_color: var(--wp--preset--color--ink);
+	--fcal_primaryColor: var(--wp--preset--color--ink);
+	--fcal_dark: var(--wp--preset--color--ink);
+	--fcal_gray: var(--wp--preset--color--ink-muted);
+	--fcal_whiteColor: var(--wp--preset--color--surface);
+	--fcal_cal_bg: var(--wp--preset--color--surface);
+	--fcal_input_bg: var(--wp--preset--color--surface);
+	--fcal_body_bg: var(--wp--preset--color--surface);
+	--fcal_thBG: var(--wp--preset--color--surface-alt);
+	--fcal_enable_day_bg: var(--wp--preset--color--surface-alt);
+	--fcal_input_disable_bg: var(--wp--preset--color--surface-alt);
+	--fcal_date_disabled_bg: transparent;
+	--fcal_date_disabled_color: var(--wp--preset--color--ink-muted);
+	--fcal_slot_border: var(--wp--preset--color--stroke);
+	--fcal_scroll_bar_bg: var(--wp--preset--color--ink-muted);
+	--fcal_skeleton_bg: var(--wp--preset--color--surface-alt);
+	--fcal_date_radius: var(--wp--preset--border-radius--s);
+	--fcal_avatar_radius: var(--wp--preset--border-radius--s);
+	color: var(--wp--preset--color--ink);
+	font-family: var(--wp--preset--font-family--ui);
+}
+
+/* The card: a hairline in the stroke color with the radius of the theme, on the surface also on dark bands. */
+.fcal_cal_wrap .fcal_calendar_inner {
+	border: 1px solid var(--wp--preset--color--stroke);
+	border-radius: var(--wp--preset--border-radius--m);
+	background: var(--wp--preset--color--surface);
+	box-shadow: none;
+}
+
+/* The title of the event is an h1 the plugin prints with no filter; it looks like the title of a card. */
+.fcal_cal_wrap .fcal_calendar_inner .fcal_side .fcal_slot_heading {
+	font-family: var(--wp--preset--font-family--heading);
+	font-size: var(--wp--preset--font-size--heading-s);
+	line-height: 1.3;
+}
+
+/* Fields, the time zone and the slots: their borders read --fcal_slot_border, which inside them is ink-muted (3:1 on
+   the surface), while the lines of the card stay in the stroke color. The radius of the theme, as on its buttons. */
+.fcal_cal_wrap :is(.fcal_input_content, .fcal_timezone_select, .fcal_spot_lists) {
+	--fcal_slot_border: var(--wp--preset--color--ink-muted);
+}
+.fcal_cal_wrap.fcal_cal_wrap :is(.fcal_booking_form .fcal_form_item .fcal_input_content :is(input, select, textarea), .svelte-select, .fcal_spot_lists .fcal_spot) {
+	border-radius: var(--wp--preset--border-radius--s);
+	font-family: inherit;
+}
+
+/* Buttons as the buttons of the theme (theme.json elements.button): its fill, text, radius and hover. The plugin
+   writes white text on its fills, which would vanish on the light ink of dark palettes. Its stylesheet comes after this
+   one, so the doubled class of the wrapper outweighs its rules of up to four classes. */
+.fcal_cal_wrap.fcal_cal_wrap :is(.fcal_slot_picker .fcal_spot_lists .fcal_spot .fcal_spot_confirm, .fcal_booking_form .fcal_form_item button, .fcal_btn_submit, .fcal_no_availability button) {
+	border-color: var(--wp--preset--color--button, var(--wp--preset--color--ink));
+	border-radius: var(--wp--preset--border-radius--s);
+	background: var(--wp--preset--color--button, var(--wp--preset--color--ink));
+	color: var(--wp--preset--color--on-button, var(--wp--preset--color--surface));
+	font-family: inherit;
+}
+.fcal_cal_wrap.fcal_cal_wrap :is(.fcal_slot_picker .fcal_spot_lists .fcal_spot .fcal_spot_confirm, .fcal_booking_form .fcal_form_item button, .fcal_btn_submit, .fcal_no_availability button):hover {
+	border-color: var(--wp--preset--color--button-hover, var(--wp--preset--color--accent));
+	background: var(--wp--preset--color--button-hover, var(--wp--preset--color--accent));
+	color: var(--wp--preset--color--on-button-hover, var(--wp--preset--color--on-accent));
+}
+.fcal_cal_wrap .fcal_duration.is_selected {
+	color: var(--wp--preset--color--surface);
+}
+
+/* Days that can be booked: the accent with on-accent text on hover and when selected (4.5:1 in every palette). */
+.fcal_cal_wrap.fcal_cal_wrap .fcal_calendar_inner .fcal_date_wrapper .calendar .day.day-enabled:is(:hover, .day_is_selected) span {
+	background-color: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--on-accent);
+}
+.fcal_cal_wrap .fcal_calendar_inner .fcal_date_wrapper .calendar .day.day-enabled.day_is_selected span::before {
+	background: var(--wp--preset--color--on-accent);
+}
+.fcal_cal_wrap .fcal_calendar_inner .fcal_date_wrapper .calendar-header .calendar_nav button {
+	color: var(--wp--preset--color--ink);
+}
+
+/* Focus: the double ring of the theme (focus.css) on the controls of the card, which the plugin leaves to the browser,
+   and on the field of the time zone while its input has focus. The card is the surface, so the focus color holds 3:1. */
+.fcal_cal_wrap :is(button, input, select, textarea, [tabindex]):focus-visible,
+.fcal_cal_wrap .svelte-select.focused {
+	outline: 0.125rem solid var(--wp--preset--color--focus);
+	outline-offset: 0.125rem;
+	box-shadow: 0 0 0 0.125rem var(--wp--preset--color--surface);
+}
+.fcal_cal_wrap .svelte-select input:focus-visible {
+	outline: 0;
+	box-shadow: none;
+}
