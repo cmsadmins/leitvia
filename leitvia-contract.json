@@ -783,7 +783,7 @@
 			"block": "core/group",
 			"name": "overlay-header",
 			"purpose": "The header lies over a full-width cover at the top of the page, without its ground and line and in the text color of dark stages; after 4rem of scrolling it takes its ground, its line and the text color of the page again. Pure CSS, only where the browser has scroll-driven animations and Leitvia Studio measures the header; elsewhere the header keeps its ground.",
-			"context": "Only the outermost group of a header template part. It sticks as every header does without a style (no sticky-header needed); with sticky-header-desktop or sticky-header-mobile both classes go on the group. The pages that open with a full-width cover need a dark dimming of at least 60 %, so header text keeps 4.5:1 over the photo; a dark logo then needs on-dark. Pages without such a cover keep the header as it is."
+			"context": "Only the outermost group of a header template part. It sticks as every header does without a style (no sticky-header needed); with sticky-header-desktop or sticky-header-mobile both classes go on the group. The pages that open with a full-width cover need a dark dimming of at least 60 %, so header text keeps 4.5:1 over the photo; a dark logo then needs on-dark. Pages without such a cover keep the header as it is. A service bar on top (header-utility) keeps its dark ground; only the row below it lies clear over the cover."
 		},
 		{
 			"block": "core/buttons",

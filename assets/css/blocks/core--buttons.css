@@ -17,3 +17,18 @@
 		display: none;
 	}
 }
+
+/*
+ * First screen: a stage with the h1 keeps its first button in view at 1440 x 900 and 390 x 844 (first-screen.spec).
+ * Its xxl, xl and display shrink with the window height, not below l, m and heading-l.
+ */
+.wp-block-post-content:has(> :first-child h1) {
+	--leitvia-stage-xxl: var(--wp--preset--spacing--xxl);
+	--leitvia-stage-xl: var(--wp--preset--spacing--xl);
+	--leitvia-stage-display: var(--wp--preset--font-size--display);
+}
+.wp-block-post-content > :first-child:has(h1) {
+	--wp--preset--spacing--xxl: min(var(--leitvia-stage-xxl), max(10svh, var(--wp--preset--spacing--l)));
+	--wp--preset--spacing--xl: min(var(--leitvia-stage-xl), max(5svh, var(--wp--preset--spacing--m)));
+	--wp--preset--font-size--display: min(var(--leitvia-stage-display), max(6.5svh, var(--wp--preset--font-size--heading-l)));
+}

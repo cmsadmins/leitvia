@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.62
+Stable tag: 1.2.63
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, full-width-template, sticky-post, style-variations, template-editing, translation-ready, threaded-comments, wide-blocks
@@ -150,6 +150,10 @@ In the Site Editor under Styles. Pick one of the 6 style variations, one of the 
 Yes. The theme ships its design contract for agents, and Leitvia Studio gives agents abilities through the Abilities API and the MCP Adapter of WordPress. The section AI agents below lists the rules.
 
 == Changelog ==
+
+= 1.2.63 =
+* New: Stages with an h1 (every hero of the theme and Leitvia Pro) scale their spacing and the size of the heading with the height of the window, so the main button stays in the first screen at 1440 x 900 and 390 x 844, also with breadcrumbs.
+* Fix: header-utility works with the block style overlay-header: the service bar keeps its dark ground, the row with logo and menu lies clear over the cover.
 
 = 1.2.62 =
 * New: Pattern hero-text, a page intro without an image at the wide left edge with eyebrow, heading, lead text and two buttons, for subpages, services and products without a photo of their own.
