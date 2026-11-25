@@ -3,7 +3,7 @@
  * Title: Header with service bar
  * Slug: leitvia/header-utility
  * Categories: header
- * Description: A slim dark bar above the header with opening hours on the left and a phone number and one more link on the right, then site logo and title, the main navigation and one button for the main action. Below 1024 px the menu items collapse behind the menu button; the button stays in the header and moves into the menu below 600 px. Below 600 px the bar keeps one line with the first link on its right, the phone number; the whole bar repeats at the end of the menu. Use for practices, trades and services that people call before they visit.
+ * Description: A slim dark bar above the header with opening hours, a phone number and one more link, right-aligned at the width of the header and underlined only on hover and focus (paragraph style Highlight marks one link, such as an emergency line), then site logo and title, the main navigation and one button for the main action. Below 1024 px the menu items collapse behind the menu button; the button stays in the header and moves into the menu below 600 px. Below 600 px the bar keeps one line with the first link on its right, the phone number; the whole bar repeats at the end of the menu. Use for practices, trades and services that people call before they visit.
  * Keywords: header, top bar, service bar, opening hours, phone, contact, button
  * Block Types: core/template-part/header
  * Viewport Width: 1400
@@ -16,7 +16,7 @@
 <div class="wp-block-group alignfull has-surface-background-color has-background" style="border-bottom-color:var(--wp--preset--color--stroke);border-bottom-width:0.0625rem">
 	<!-- wp:group {"metadata":{"name":"Service bar"},"align":"full","className":"is-style-inverse leitvia-service-bar","style":{"spacing":{"padding":{"top":"var:preset|spacing|xs","bottom":"var:preset|spacing|xs"}}},"fontSize":"meta","layout":{"type":"constrained"}} -->
 	<div class="wp-block-group alignfull is-style-inverse leitvia-service-bar has-meta-font-size" style="padding-top:var(--wp--preset--spacing--xs);padding-bottom:var(--wp--preset--spacing--xs)">
-		<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|xxs","left":"var:preset|spacing|m"}}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
+		<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|xxs","left":"var:preset|spacing|m"}}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"right"}} -->
 		<div class="wp-block-group alignwide">
 			<!-- wp:paragraph -->
 			<p><?php esc_html_e( 'Open Monday to Friday, 8:00 to 18:00', 'leitvia' ); ?></p>

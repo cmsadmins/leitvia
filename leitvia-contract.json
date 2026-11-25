@@ -726,6 +726,12 @@
 			"context": "One sentence per page at most, directly below the h1 of a stage or a section heading. It is no heading: a claim that names the topic of a section is an h2."
 		},
 		{
+			"block": "core/paragraph",
+			"name": "highlight",
+			"purpose": "One link or short text that stands out in a row of links, such as an emergency line in the service bar: bold, its link underlined in the accent color, also on dark bands.",
+			"context": "At most one per row, such as a paragraph of the service bar of header-utility; the text keeps the color of its band, so it passes 4.5:1 there."
+		},
+		{
 			"block": "core/post-terms",
 			"name": "badge",
 			"purpose": "Category or tag links shown as pill labels.",
@@ -2686,7 +2692,7 @@
 		{
 			"slug": "leitvia/header-utility",
 			"title": "Header with service bar",
-			"description": "A slim dark bar above the header with opening hours on the left and a phone number and one more link on the right, then site logo and title, the main navigation and one button for the main action. Below 1024 px the menu items collapse behind the menu button; the button stays in the header and moves into the menu below 600 px. Below 600 px the bar keeps one line with the first link on its right, the phone number; the whole bar repeats at the end of the menu. Use for practices, trades and services that people call before they visit.",
+			"description": "A slim dark bar above the header with opening hours, a phone number and one more link, right-aligned at the width of the header and underlined only on hover and focus (paragraph style Highlight marks one link, such as an emergency line), then site logo and title, the main navigation and one button for the main action. Below 1024 px the menu items collapse behind the menu button; the button stays in the header and moves into the menu below 600 px. Below 600 px the bar keeps one line with the first link on its right, the phone number; the whole bar repeats at the end of the menu. Use for practices, trades and services that people call before they visit.",
 			"area": "header",
 			"useWhen": "Practices, trades, offices and services that people call or visit: opening hours and phone number on every page.",
 			"composition": {
@@ -2761,6 +2767,22 @@
 						160
 					]
 				},
+				"firstScreen": {
+					"1440x900": [
+						27,
+						61,
+						75,
+						35,
+						437
+					],
+					"390x844": [
+						18,
+						43,
+						37,
+						31,
+						470
+					]
+				},
 				"replacedBy": null
 			}
 		},
@@ -2790,6 +2812,22 @@
 					"text": [
 						60,
 						200
+					]
+				},
+				"firstScreen": {
+					"1440x900": [
+						27,
+						61,
+						75,
+						35,
+						472
+					],
+					"390x844": [
+						18,
+						43,
+						37,
+						31,
+						501
 					]
 				},
 				"replacedBy": null
@@ -2829,6 +2867,22 @@
 					"text": [
 						60,
 						140
+					]
+				},
+				"firstScreen": {
+					"1440x900": [
+						27,
+						61,
+						75,
+						35,
+						437
+					],
+					"390x844": [
+						18,
+						43,
+						37,
+						31,
+						501
 					]
 				},
 				"replacedBy": null
@@ -2893,6 +2947,22 @@
 						180
 					]
 				},
+				"firstScreen": {
+					"1440x900": [
+						50,
+						61,
+						75,
+						35,
+						2000
+					],
+					"390x844": [
+						18,
+						43,
+						37,
+						31,
+						377
+					]
+				},
 				"replacedBy": null
 			}
 		},
@@ -2932,6 +3002,22 @@
 						160
 					]
 				},
+				"firstScreen": {
+					"1440x900": [
+						24,
+						61,
+						66,
+						35,
+						472
+					],
+					"390x844": [
+						18,
+						43,
+						37,
+						31,
+						501
+					]
+				},
 				"replacedBy": null
 			}
 		},
@@ -2969,6 +3055,22 @@
 					"text": [
 						60,
 						140
+					]
+				},
+				"firstScreen": {
+					"1440x900": [
+						18,
+						52,
+						54,
+						30,
+						516
+					],
+					"390x844": [
+						18,
+						35,
+						31,
+						27,
+						267
 					]
 				},
 				"replacedBy": null

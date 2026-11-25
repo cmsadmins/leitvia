@@ -378,9 +378,10 @@ function register_block_style_variations(): void {
 			'header-action' => __( 'Header action', 'leitvia' ),
 		),
 		'core/paragraph'  => array(
-			'badge'   => __( 'Badge', 'leitvia' ),
-			'eyebrow' => __( 'Eyebrow', 'leitvia' ),
-			'claim'   => __( 'Claim', 'leitvia' ),
+			'badge'     => __( 'Badge', 'leitvia' ),
+			'eyebrow'   => __( 'Eyebrow', 'leitvia' ),
+			'claim'     => __( 'Claim', 'leitvia' ),
+			'highlight' => __( 'Highlight', 'leitvia' ),
 		),
 		'core/quote'      => array(
 			'compact' => __( 'Compact', 'leitvia' ),
@@ -1839,6 +1840,8 @@ function header_action_in_overlay( string $html ): string {
 	if ( '' === $copy ) {
 		return $html;
 	}
+	// Both stay at the bottom of the open menu while it scrolls (leitvia-overlay-end, core--navigation.css).
+	$copy = '<div class="leitvia-overlay-end">' . $copy . '</div>';
 	return preg_replace_callback( '#^(.*</ul>)(?=(?:\s*</div>){4,}\s*</nav>)#s', fn( array $start ): string => $start[1] . $copy, $html, 1 ) ?? $html;
 }
 add_filter( 'render_block_core/template-part', __NAMESPACE__ . '\header_action_in_overlay' );

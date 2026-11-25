@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.63
+Stable tag: 1.2.64
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, full-width-template, sticky-post, style-variations, template-editing, translation-ready, threaded-comments, wide-blocks
@@ -150,6 +150,11 @@ In the Site Editor under Styles. Pick one of the 6 style variations, one of the 
 Yes. The theme ships its design contract for agents, and Leitvia Studio gives agents abilities through the Abilities API and the MCP Adapter of WordPress. The section AI agents below lists the rules.
 
 == Changelog ==
+
+= 1.2.64 =
+* New: header-utility puts the service bar right-aligned at the width of the header, its links underlined only on hover and focus; the paragraph style Highlight marks one link, such as an emergency line, bold and underlined in the accent. In the open menu on a phone the header button and the service bar stay at the bottom.
+* New: The stages of the theme carry a measured first-screen model (docs.firstScreen in the contract), so Leitvia Studio can tell whether the main button really ends below the first screen.
+* Change: The theme CSS stays under 54 KB as shipped (53 KB before).
 
 = 1.2.63 =
 * New: Stages with an h1 (every hero of the theme and Leitvia Pro) scale their spacing and the size of the heading with the height of the window, so the main button stays in the first screen at 1440 x 900 and 390 x 844, also with breadcrumbs.

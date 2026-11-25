@@ -64,6 +64,16 @@
 	color: inherit;
 }
 
+/* Highlight: bold, its link underlined in the accent (on dark bands the accent of the contract for them), so the text
+   keeps the color of its band and its contrast; the line is decoration, bold and underline carry the mark. */
+.is-style-highlight {
+	font-weight: 700;
+
+	& a {
+		text-decoration: underline var(--wp--custom--inverse-accent, var(--wp--preset--color--accent)) 0.125em;
+	}
+}
+
 /*
  * Claim: one statement in the heading font, large and italic, such as a motto below the h1 of a stage. Between lead and
  * h2 in size; color and weight inherit, so it reads on every band. A heading font without italic faces gets the

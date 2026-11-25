@@ -175,6 +175,13 @@
 .wp-block-navigation__responsive-container:not(.is-menu-open) :is(.leitvia-overlay-action, .leitvia-overlay-service) {
 	display: none;
 }
+/* Button, phone and the other links of the bar stay at the bottom of the open menu while a long menu scrolls. */
+.is-menu-open .leitvia-overlay-end {
+	position: sticky;
+	bottom: 0;
+	padding-block: var(--wp--preset--spacing--s);
+	background-color: var(--wp--preset--color--surface);
+}
 .leitvia-overlay-service {
 	margin-top: var(--wp--preset--spacing--m);
 	font-size: var(--wp--preset--font-size--body);

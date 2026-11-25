@@ -190,7 +190,16 @@ body {
 }
 
 /*
- * Service bar (class leitvia-service-bar, pattern header-utility): below 600 px, in a header with a menu button, the bar
+ * Service bar (class leitvia-service-bar, pattern header-utility): its links read as a row of links, underlined only on
+ * hover and focus (the focus ring stays, assets/css/focus.css); a highlighted one (paragraph style Highlight) keeps
+ * its accent line.
+ */
+.leitvia-service-bar.leitvia-service-bar a:not(:hover, :focus-visible, .is-style-highlight a) {
+	text-decoration: none;
+}
+
+/*
+ * Service bar below 600 px, in a header with a menu button, the bar
  * keeps one line with the first entry of its right group, the phone number, centred. Opening hours, mail and the other
  * links leave the bar but not the page: functions.php (header_action_in_overlay) copies the whole bar to the end of the
  * menu. Without a menu button nothing is hidden and the bar wraps as before.
