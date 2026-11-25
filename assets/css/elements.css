@@ -1,0 +1,25 @@
+/*
+ * Native elements outside any block, on every page and in the editor (functions.php enqueue_elements()).
+ *
+ * - Option lists: the browser draws the open list of a select on its own light ground, while a select on a dark band
+ *   or in a dark palette hands its light text down to the options (1.1:1). The options take the page pair surface on
+ *   ink, which every token set keeps at 4.5:1. Covers core, Studio, Pro, Gravity Forms and WooCommerce selects alike
+ *   (select-options.spec.mjs).
+ * - Element buttons in the outline style: forms render a bare button.wp-element-button.is-style-outline without
+ *   core/button around it, which the outline variation of theme.json does not reach. Same look and hover as the
+ *   outline of core/button (core--button.css); bands keep their own hover (core--group.css, which skips outlines at rest).
+ */
+option,
+optgroup {
+	background-color: var(--wp--preset--color--surface);
+	color: var(--wp--preset--color--ink);
+}
+.wp-element-button.is-style-outline {
+	border-color: currentcolor;
+	background-color: transparent;
+	color: inherit;
+}
+.wp-element-button.is-style-outline:hover {
+	background-color: var(--wp--preset--color--ink);
+	color: var(--wp--preset--color--surface);
+}

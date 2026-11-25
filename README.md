@@ -19,7 +19,7 @@ Leitvia supports the standards WordPress sets for AI agents and will keep suppor
 
 Requires WordPress 7.1 and PHP 8.2 or later.
 
-Until the theme is listed on WordPress.org, download `leitvia-<version>.zip` from the [releases](https://github.com/cmsadmins/leitvia/releases) and upload it under Appearance, Themes, Add New, Upload Theme. The zip is the same package that goes to WordPress.org; this repository holds its source.
+Install it from WordPress.org: in the admin under Appearance, Themes, Add New Theme, search for Leitvia ([Leitvia on WordPress.org](https://wordpress.org/themes/leitvia/)). The zip of every version is also in the [releases](https://github.com/cmsadmins/leitvia/releases); it is the same package that goes to WordPress.org, and this repository holds its source.
 
 ## Development
 

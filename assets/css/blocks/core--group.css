@@ -46,10 +46,10 @@ body {
 /*
  * Buttons of blocks and forms (contact form, load more, search, file) are element buttons without core/button. Ink on
  * an ink band would vanish, so they take the accent there like the fill button in core--button.css. Outline buttons
- * need nothing: their text and border inherit the band color (theme.json). Hover: surface on ink and accent, an
- * outline on inverse (core--button.css).
+ * keep their outline: text and border inherit the band color (theme.json, elements.css). Hover: surface on ink and
+ * accent, an outline on inverse (core--button.css).
  */
-:is(.has-ink-background-color, .is-style-inverse) .wp-element-button:not(.wp-block-button__link, .has-background, :hover) {
+:is(.has-ink-background-color, .is-style-inverse) .wp-element-button:not(.wp-block-button__link, .is-style-outline, .has-background, :hover) {
 	border-color: var(--wp--preset--color--band-button, var(--wp--preset--color--accent));
 	background-color: var(--wp--preset--color--band-button, var(--wp--preset--color--accent));
 	color: var(--wp--preset--color--on-band-button, var(--wp--preset--color--on-accent));
@@ -474,10 +474,12 @@ html {
  * Below 64rem both take the full width, sidebar on top; from 64rem the sidebar moves right at 20rem and sticks below
  * the header. leitvia-wide-only and leitvia-narrow-only show a block on one side of 64rem only (groups without a flex
  * layout), such as the byline under the title or in the sidebar. A sidebar with nothing but such blocks (no table of
- * contents) leaves the small screens too, so no empty gap stays above the text.
+ * contents) leaves the small screens too, so no empty gap stays above the text. Both columns may shrink below their
+ * content (min-width 0), so a wide table scrolls in its figure instead of pushing the text past the screen.
  */
 .leitvia-post-columns > * {
 	flex-basis: 100%;
+	min-width: 0;
 }
 @media (width < 64rem) {
 	.leitvia-wide-only,
@@ -491,7 +493,6 @@ html {
 	}
 	.leitvia-post-columns > * {
 		flex: 1 1 0;
-		min-width: 0;
 	}
 	.leitvia-post-columns > .leitvia-post-aside {
 		flex: 0 0 20rem;

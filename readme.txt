@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.59
+Stable tag: 1.2.60
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, full-width-template, sticky-post, style-variations, template-editing, translation-ready, threaded-comments, wide-blocks
@@ -150,6 +150,12 @@ In the Site Editor under Styles. Pick one of the 6 style variations, one of the 
 Yes. The theme ships its design contract for agents, and Leitvia Studio gives agents abilities through the Abilities API and the MCP Adapter of WordPress. The section AI agents below lists the rules.
 
 == Changelog ==
+
+= 1.2.60 =
+* Fix: Options of a select keep the surface and text colours of the style, so an open list stays readable on dark sections (contrast at least 4.5:1). New file elements.css, appended to the global styles.
+* Fix: Element buttons with the outline style (is-style-outline without a button block) show as outline, also on ink and inverse sections.
+* Fix: Both columns of the post template with sidebar may shrink below their content; a wide table scrolls in its own area instead of the page at 390 px.
+* Installation from WordPress.org in the readme of the theme and the agent skills.
 
 = 1.2.59 =
 * Shop templates (shop, product, product search results, cart, checkout, order confirmation) are offered only while WooCommerce is active, like the shop patterns. Without WooCommerce they no longer appear as custom templates with blocks that are not registered.

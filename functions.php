@@ -281,6 +281,28 @@ function inline_core_presets(): void {
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\inline_core_presets', 20 );
 
 /**
+ * Native elements outside any block (assets/css/elements.css): option lists and element buttons in the outline style.
+ * In the editor as a stylesheet; on the front end appended to the inline global styles like the core presets, so it
+ * takes nothing from the inline budget of the block styles.
+ */
+function enqueue_elements(): void {
+	if ( ! is_admin() ) {
+		return;
+	}
+	wp_enqueue_style( 'leitvia-elements', get_theme_file_uri( 'assets/css/elements.css' ), array(), wp_get_theme()->get( 'Version' ) );
+	wp_style_add_data( 'leitvia-elements', 'path', get_theme_file_path( 'assets/css/elements.css' ) );
+}
+add_action( 'enqueue_block_assets', __NAMESPACE__ . '\enqueue_elements' );
+
+/**
+ * The rules of enqueue_elements() on the front end, after core enqueued the global styles.
+ */
+function inline_elements(): void {
+	wp_add_inline_style( 'global-styles', (string) file_get_contents( get_theme_file_path( 'assets/css/elements.css' ) ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Local theme file.
+}
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\inline_elements', 20 );
+
+/**
  * Registers block style variations that need theme CSS.
  */
 function register_block_style_variations(): void {
