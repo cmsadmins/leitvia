@@ -9,6 +9,18 @@
 	text-underline-offset: 0.4em;
 }
 
+/*
+ * Menu on ink (a dark header or navigation bar): the current page keeps its line and hover draws one, both in the band
+ * accent (4.5:1 on ink by the contract, surface without it); a submenu card keeps the ink of the page.
+ */
+.has-ink-background-color.has-background .wp-block-navigation__container > li > a:is([aria-current="page"], :hover, :focus-visible):not(.is-menu-open *) {
+	color: var(--wp--preset--color--band-accent, inherit);
+	text-decoration: underline 2px;
+}
+.has-ink-background-color .wp-block-navigation__submenu-container:not(.is-menu-open *) {
+	color: var(--wp--preset--color--ink);
+}
+
 /* Desktop submenu: a card below its toggle; the overlay stays core's. Sized only while open (no overflow). */
 .wp-block-navigation .has-child > .wp-block-navigation__submenu-container:not(.is-menu-open *) {
 	margin-top: var(--wp--preset--spacing--xs);

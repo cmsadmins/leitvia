@@ -3,7 +3,7 @@
  * Title: Related posts
  * Slug: leitvia/hidden-page-related-posts
  * Categories: posts
- * Description: Up to three other posts from the categories of the current post below a single post, as cards with featured image, category, linked title, excerpt and date, in three columns from tablet width and one on phones. Renders nothing when there are none.
+ * Description: Up to three other posts from the categories of the current post (or its primary category or its tags, by the setting of the site) below a single post, as cards with featured image, category, linked title, excerpt and date, in three columns from tablet width and one on phones. Renders nothing when there are none.
  * Keywords: related posts, more articles, same category, query
  * Block Types: core/query
  * Inserter: no
@@ -11,11 +11,14 @@
  * @package Leitvia
  */
 
+// post_details(), also where the theme functions are not loaded.
+require_once get_template_directory() . '/inc/post-details.php';
+
 ?>
 <!-- wp:query {"queryId":101,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"ignore","inherit":false,"excludeCurrent":true},"namespace":"leitvia/related-posts","metadata":{"name":"Related posts"},"align":"wide","layout":{"type":"default"}} -->
 <div class="wp-block-query alignwide">
 	<!-- wp:heading {"fontSize":"heading-s"} -->
-	<h2 class="wp-block-heading has-heading-s-font-size"><?php esc_html_e( 'Related articles', 'leitvia' ); ?></h2>
+	<h2 class="wp-block-heading has-heading-s-font-size"><?php echo esc_html( Leitvia\post_details()['related_heading'] ); ?></h2>
 	<!-- /wp:heading -->
 	<!-- wp:post-template {"className":"leitvia-post-grid","style":{"spacing":{"blockGap":"var:preset|spacing|l"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":"12rem"}} -->
 		<!-- wp:group {"className":"leitvia-post-card","layout":{"type":"default"}} -->

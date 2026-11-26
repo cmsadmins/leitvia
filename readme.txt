@@ -3,21 +3,21 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.65
+Stable tag: 1.2.66
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, full-width-template, sticky-post, style-variations, template-editing, translation-ready, threaded-comments, wide-blocks
 
-Accessible block theme for full site editing: 84 patterns, WooCommerce templates, WCAG 2.2 AA, no external requests.
+Accessible block theme for full site editing: 91 patterns, WooCommerce templates, WCAG 2.2 AA, no external requests.
 
 == Description ==
 
-Leitvia is an accessible block theme for full site editing, built on semantic design tokens. 84 patterns, 18 templates and 6 style variations cover blogs, magazines, company sites and WooCommerce shops. Built to meet WCAG 2.2 AA, and it loads nothing from other servers: fonts and images ship with the theme. Patterns use roles instead of fixed values, so editors and AI agents can change the whole design without breaking layout or contrast.
+Leitvia is an accessible block theme for full site editing, built on semantic design tokens. 91 patterns, 21 templates and 6 style variations cover blogs, magazines, company sites and WooCommerce shops. Built to meet WCAG 2.2 AA, and it loads nothing from other servers: fonts and images ship with the theme. Patterns use roles instead of fixed values, so editors and AI agents can change the whole design without breaking layout or contrast.
 
 What you get with the theme alone, without any plugin:
 
 * 84 block patterns in nine areas: hero, content, teaser, proof, call to action, offer, header, footer and page sections. Every pattern passes the same contrast and keyboard tests in every style variation.
-* 18 templates, among them a landing page without title, a docs page, an article page, a page in easy language (Leichte Sprache) and the templates WooCommerce needs for shop, product, cart, checkout and order confirmation.
+* 21 templates, among them a landing page without title, a docs page, an article page, a page in easy language (Leichte Sprache) and the templates WooCommerce needs for shop, product, cart, checkout and order confirmation.
 * 6 style variations (Warm editorial, Swiss editorial and Corporate, each light and dark), 3 color palettes and 2 font pairings. Fonts ship with the theme as WOFF2 files.
 * Accessibility built in: skip link, landmarks, one h1 per page, submenus on click and keyboard, a focus ring that stays visible on every background, and a pattern for the accessibility statement.
 * Privacy by default: no Google Fonts, no CDN, no Gravatar, no cookies set by the theme.
@@ -150,6 +150,16 @@ In the Site Editor under Styles. Pick one of the 6 style variations, one of the 
 Yes. The theme ships its design contract for agents, and Leitvia Studio gives agents abilities over its own MCP server, the REST API of the Abilities API and the default server of the MCP Adapter. The section AI agents below lists the rules.
 
 == Changelog ==
+
+= 1.2.66 =
+* New: Patterns teaser-posts-trio (three tall image teasers with a button to the archive) and teaser-posts-row (a compact row of four cards with a link to all). Filter the query by a category or tag, and the button leads to the archive of that term through the new binding source leitvia/query-archive, else to the posts page.
+* New: Pattern header-two-rows: logo and search on the ground of the page, below them the menu as a dark bar at full width. Only the bar sticks, the first row scrolls away and comes back with the focus.
+* New: Dark header. A group of a header part on ink shows text and menu in surface, the current item and hover underlined in band-accent, submenus in the colors of the page.
+* New: The single template reads date labels, the heading and source of related posts (categories, primary category or tags) and the aspect ratio of the featured image from the filter leitvia_post_details. The primary category of Yoast SEO or Rank Math is respected. Two empty template parts, post-after-content and post-aside, take blocks after the text and at the end of the right column.
+* Change: Archive titles show the name of the term without a prefix such as "Category:". An h1 in a term description becomes an h2, so the archive keeps one h1.
+* Change: header-search and header-masthead keep the search in the row beside the menu. From 600 to 1023 px the menu items move behind the menu button, below 600 px the search takes the second row; the logo keeps its size next to a long site title.
+* Fix: The category chips show the twelve largest categories in archives too, and also on a static front page without a posts page.
+* Change: The theme CSS stays under 65 KB as shipped (63 KB before).
 
 = 1.2.65 =
 * New: Patterns header-grid and footer-grid, a header and a footer in cells with 1 px lines at full width, stacked on phones (the footer two by two), and the menu overlays navigation-overlay-panel and navigation-overlay-fill.

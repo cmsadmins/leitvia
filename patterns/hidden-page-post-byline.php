@@ -10,10 +10,14 @@
  * @package Leitvia
  */
 
+// post_details(), also where the theme functions are not loaded.
+require_once get_template_directory() . '/inc/post-details.php';
+
 /*
  * The post date block has no label attribute. A separate "Updated" paragraph would stay visible on posts that were
  * never changed, because core then renders nothing for the modified date. So each label goes into the block's date
  * format as escaped characters and only appears together with its date. The site's date format fills the placeholder.
+ * The labels come from post_details() of functions.php (filter leitvia_post_details), such as "As of %s".
  */
 $leitvia_labelled_date_format = static function ( string $label ): string {
 	$parts = array_map(
@@ -34,8 +38,8 @@ $leitvia_labelled_date_format = static function ( string $label ): string {
 		<!-- wp:post-author-name {"isLink":true} /-->
 	</div>
 	<!-- /wp:group -->
-	<!-- wp:post-date {"format":<?php /* translators: %s: publish date. */ echo $leitvia_labelled_date_format( __( 'Published %s', 'leitvia' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON for the block comment. ?>,"metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"date"}}}}} /-->
-	<!-- wp:post-date {"format":<?php /* translators: %s: date of the last update. */ echo $leitvia_labelled_date_format( __( 'Updated %s', 'leitvia' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON for the block comment. ?>,"metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"modified"}}}}} /-->
+	<!-- wp:post-date {"format":<?php echo $leitvia_labelled_date_format( Leitvia\post_details()['published_label'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON for the block comment. ?>,"metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"date"}}}}} /-->
+	<!-- wp:post-date {"format":<?php echo $leitvia_labelled_date_format( Leitvia\post_details()['updated_label'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON for the block comment. ?>,"metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"modified"}}}}} /-->
 	<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|xs"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 	<div class="wp-block-group">
 		<!-- wp:paragraph -->

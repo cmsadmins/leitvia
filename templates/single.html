@@ -18,7 +18,7 @@
 		</header>
 		<!-- /wp:group -->
 
-		<!-- wp:post-featured-image {"aspectRatio":"16/9","align":"wide"} /-->
+		<!-- wp:post-featured-image {"aspectRatio":"16/9","align":"wide","className":"leitvia-post-image"} /-->
 
 		<!-- wp:group {"metadata":{"name":"Text and sidebar"},"align":"wide","className":"leitvia-post-columns","style":{"spacing":{"blockGap":"var:preset|spacing|xl"}},"layout":{"type":"flex","verticalAlignment":"top"}} -->
 		<div class="wp-block-group alignwide leitvia-post-columns">
@@ -26,6 +26,8 @@
 			<!-- wp:post-content {"layout":{"type":"constrained","justifyContent":"left"}} /-->
 		</div>
 		<!-- /wp:group -->
+
+		<!-- wp:template-part {"slug":"post-after-content"} /-->
 
 		<!-- wp:post-terms {"term":"post_tag"} /-->
 	</article>

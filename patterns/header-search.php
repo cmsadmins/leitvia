@@ -3,7 +3,7 @@
  * Title: Header with search
  * Slug: leitvia/header-search
  * Categories: header
- * Description: Site logo and title on the left, main navigation and a search field with a labelled button on the right and a fine line below; on small screens the search moves to its own row. Use on sites with many pages, so visitors can search as well as browse.
+ * Description: Site logo and title on the left, main navigation and a search field with a labelled button on the right and a fine line below; below 1024 px the menu items collapse behind the menu button, and on phones the search moves to its own row. Use on sites with many pages, so visitors can search as well as browse.
  * Keywords: header, navigation, menu, search, logo, site title
  * Block Types: core/template-part/header
  * Viewport Width: 1400

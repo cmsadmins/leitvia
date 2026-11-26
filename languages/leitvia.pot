@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Leitvia 1.2.65\n"
+"Project-Id-Version: Leitvia 1.2.66\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/leitvia\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -201,7 +201,11 @@ msgstr ""
 msgid "Term image"
 msgstr ""
 
-#: functions.php patterns/header-masthead.php patterns/header-search.php patterns/header-shop.php patterns/hero-search.php patterns/hidden-page-404.php
+#: functions.php
+msgid "Archive of the query"
+msgstr ""
+
+#: functions.php patterns/header-masthead.php patterns/header-search.php patterns/header-shop.php patterns/header-two-rows.php patterns/hero-search.php patterns/hidden-page-404.php
 msgid "Search"
 msgstr ""
 
@@ -252,6 +256,18 @@ msgstr ""
 
 #: functions.php
 msgid "Next:"
+msgstr ""
+
+#: inc/post-details.php
+msgid "Published %s"
+msgstr ""
+
+#: inc/post-details.php
+msgid "Updated %s"
+msgstr ""
+
+#: inc/post-details.php
+msgid "Related articles"
 msgstr ""
 
 #: patterns/content-answer-facts.php
@@ -2030,7 +2046,7 @@ msgctxt "Pattern description"
 msgid "Accent footer that opens with a newsletter row of heading, short promise and subscribe button, then closes with the site title, copyright and a short navigation. Use on blogs and publications that live from subscribers."
 msgstr ""
 
-#: patterns/header-centered.php patterns/header-cta.php patterns/header-default.php patterns/header-grid.php patterns/header-masthead.php patterns/header-minimal.php patterns/header-search.php patterns/header-shop.php patterns/header-split.php patterns/header-utility.php
+#: patterns/header-centered.php patterns/header-cta.php patterns/header-default.php patterns/header-grid.php patterns/header-masthead.php patterns/header-minimal.php patterns/header-search.php patterns/header-shop.php patterns/header-split.php patterns/header-two-rows.php patterns/header-utility.php
 msgid "Main navigation"
 msgstr ""
 
@@ -2114,7 +2130,7 @@ msgctxt "Pattern description"
 msgid "Site title on the left and a menu button on the right that always opens the navigation as a full-screen overlay. Use on landing pages where the content should own the first screen."
 msgstr ""
 
-#: patterns/header-search.php
+#: patterns/header-search.php patterns/header-two-rows.php
 msgid "Site search"
 msgstr ""
 
@@ -2125,7 +2141,7 @@ msgstr ""
 
 #: patterns/header-search.php
 msgctxt "Pattern description"
-msgid "Site logo and title on the left, main navigation and a search field with a labelled button on the right and a fine line below; on small screens the search moves to its own row. Use on sites with many pages, so visitors can search as well as browse."
+msgid "Site logo and title on the left, main navigation and a search field with a labelled button on the right and a fine line below; below 1024 px the menu items collapse behind the menu button, and on phones the search moves to its own row. Use on sites with many pages, so visitors can search as well as browse."
 msgstr ""
 
 #: patterns/header-shop.php
@@ -2154,6 +2170,16 @@ msgstr ""
 #: patterns/header-split.php
 msgctxt "Pattern description"
 msgid "The main navigation on the left, site logo and title exactly in the middle and one button on the right, with a fine line below. Below 1024 px the menu button sits on the left and the logo stays in the middle; on phones the button moves into the menu. Use for restaurants, studios, firms and brands whose logo should lead."
+msgstr ""
+
+#: patterns/header-two-rows.php
+msgctxt "Pattern title"
+msgid "Header in two rows"
+msgstr ""
+
+#: patterns/header-two-rows.php
+msgctxt "Pattern description"
+msgid "Site logo and title on the left and a search field on the right on the page ground, below them the main navigation as a dark bar across the full width; only the bar stays at the top of the screen while the page scrolls. Use on portals and magazines with many sections, where the menu needs a row of its own."
 msgstr ""
 
 #: patterns/header-utility.php
@@ -2607,14 +2633,6 @@ msgctxt "post author"
 msgid "By"
 msgstr ""
 
-#: patterns/hidden-page-post-aside.php patterns/hidden-page-post-byline.php
-msgid "Published %s"
-msgstr ""
-
-#: patterns/hidden-page-post-aside.php patterns/hidden-page-post-byline.php
-msgid "Updated %s"
-msgstr ""
-
 #: patterns/hidden-page-post-aside.php
 msgid "Category:"
 msgstr ""
@@ -2732,17 +2750,13 @@ msgid "Link to the full post below its excerpt in the search results. Core adds 
 msgstr ""
 
 #: patterns/hidden-page-related-posts.php
-msgid "Related articles"
-msgstr ""
-
-#: patterns/hidden-page-related-posts.php
 msgctxt "Pattern title"
 msgid "Related posts"
 msgstr ""
 
 #: patterns/hidden-page-related-posts.php
 msgctxt "Pattern description"
-msgid "Up to three other posts from the categories of the current post below a single post, as cards with featured image, category, linked title, excerpt and date, in three columns from tablet width and one on phones. Renders nothing when there are none."
+msgid "Up to three other posts from the categories of the current post (or its primary category or its tags, by the setting of the site) below a single post, as cards with featured image, category, linked title, excerpt and date, in three columns from tablet width and one on phones. Renders nothing when there are none."
 msgstr ""
 
 #: patterns/hidden-page-shop-filters.php
@@ -3621,6 +3635,46 @@ msgctxt "Pattern description"
 msgid "Heading above the five latest posts as a ruled list with the date on the left and title and excerpt on the right. Use where text matters more than images, such as a journal or news section."
 msgstr ""
 
+#: patterns/teaser-posts-row.php
+msgid "From this section"
+msgstr ""
+
+#: patterns/teaser-posts-row.php
+msgid "View all posts"
+msgstr ""
+
+#: patterns/teaser-posts-row.php
+msgctxt "Pattern title"
+msgid "Posts row with link to all"
+msgstr ""
+
+#: patterns/teaser-posts-row.php
+msgctxt "Pattern description"
+msgid "Compact row of the four latest posts of one category or tag: heading and a link to the archive in one line above four small cards with image, linked title and date. Choose the category or tag in the filters of the query; without one it shows the latest posts and the link leads to the posts page. Use several in a row on a home page with many sections, places or topics."
+msgstr ""
+
+#: patterns/teaser-posts-trio.php
+msgid "New in this section"
+msgstr ""
+
+#: patterns/teaser-posts-trio.php
+msgid "The three latest posts on this topic. Everything older waits in the archive."
+msgstr ""
+
+#: patterns/teaser-posts-trio.php
+msgid "More from this category"
+msgstr ""
+
+#: patterns/teaser-posts-trio.php
+msgctxt "Pattern title"
+msgid "Posts as three teasers"
+msgstr ""
+
+#: patterns/teaser-posts-trio.php
+msgctxt "Pattern description"
+msgid "Heading and lead text in one row above the three latest posts as tall picture teasers, each with its date, a linked title and a short excerpt, then a button to the archive of the category or tag the query shows. Choose the category or tag in the filters of the query; without one it shows the latest posts and the button leads to the posts page. Use on topic, place or section pages that lead into their newest posts in the look of Hero with three teasers."
+msgstr ""
+
 #: patterns/teaser-related-news.php
 msgid "News on this topic"
 msgstr ""
@@ -3722,7 +3776,7 @@ msgid "https://leitvia.com"
 msgstr ""
 
 #: style.css
-msgid "Leitvia is an accessible block theme for full site editing, built on semantic design tokens. 84 patterns, 18 templates and 6 style variations cover blogs, magazines, company sites and WooCommerce shops. Built to meet WCAG 2.2 AA, and it loads nothing from other servers: fonts and images ship with the theme. Patterns use roles instead of fixed values, so editors and AI agents can change the whole design without breaking layout or contrast."
+msgid "Leitvia is an accessible block theme for full site editing, built on semantic design tokens. 91 patterns, 21 templates and 6 style variations cover blogs, magazines, company sites and WooCommerce shops. Built to meet WCAG 2.2 AA, and it loads nothing from other servers: fonts and images ship with the theme. Patterns use roles instead of fixed values, so editors and AI agents can change the whole design without breaking layout or contrast."
 msgstr ""
 
 #: style.css
@@ -4076,6 +4130,16 @@ msgstr ""
 #: theme.json
 msgctxt "Template part name"
 msgid "Post closing"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "After the post"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Post sidebar"
 msgstr ""
 
 #: theme.json

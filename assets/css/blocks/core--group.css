@@ -46,6 +46,10 @@ body {
 	& .leitvia-link-title a:is(:hover, :focus-visible) {
 		color: var(--wp--preset--color--band-accent, inherit);
 	}}
+/* The site title of a dark header is a name, not a link in running text: underlined on hover and focus only. */
+header .has-ink-background-color.has-background .wp-block-site-title a:not(:hover, :focus-visible) {
+	text-decoration: none;
+}
 
 /*
  * Buttons of blocks and forms (contact form, load more, search, file) are element buttons without core/button. Ink on
@@ -301,13 +305,22 @@ html {
 @media screen and (height >= 31.25rem) and (width >= 37.5rem) {
 	html:not([style*="font-size"], [data-leitvia-header-tall]) .wp-site-blocks > header:not(:has(> :is(.is-style-scrolling-header, .is-style-sticky-header-mobile))) {
 		position: sticky;
-		top: var(--wp-admin--admin-bar--height, 0px);
+		top: calc(var(--wp-admin--admin-bar--height, 0px) - var(--leitvia-sticky-hidden, 0px));
 		z-index: 60;
 	}
 	html:not([style*="font-size"], [data-leitvia-header-tall], :has(.wp-site-blocks > header > :is(.is-style-scrolling-header, .is-style-sticky-header-mobile))):has(.wp-site-blocks > header) {
-		--leitvia-sticky-offset: calc(var(--wp-admin--admin-bar--height, 0px) + var(--leitvia-sticky-header-height, max(25vh, 13rem)));
+		--leitvia-sticky-offset: calc(var(--wp-admin--admin-bar--height, 0px) + var(--leitvia-sticky-header-height, max(25vh, 13rem)) - var(--leitvia-sticky-hidden, 0px));
 		scroll-padding-top: calc(var(--leitvia-sticky-offset) + var(--wp--preset--spacing--xs));
 	}
+}
+
+/*
+ * Two rows (header-two-rows): the first row (leitvia-header-top, first child of the outermost group) scrolls away at
+ * every width and only the bar below it sticks, as the service bar on phones. Studio measures the row as
+ * --leitvia-header-top-height; without it the whole header sticks. Focus in the row (the search) brings it back.
+ */
+html:not(:has(.leitvia-header-top :focus)):has(.wp-site-blocks > header > * > .leitvia-header-top:first-child) {
+	--leitvia-sticky-hidden: var(--leitvia-header-top-height, 0px);
 }
 
 /*

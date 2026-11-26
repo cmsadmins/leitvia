@@ -1,6 +1,6 @@
 # Leitvia
 
-An accessible block theme for WordPress full site editing, built on semantic design tokens: 84 patterns, 18 templates and 6 style variations for blogs, magazines, company sites and WooCommerce shops. Every pattern uses roles instead of fixed values, so style variations, AI agents and editors can change the whole design without breaking layout or contrast. Built to meet WCAG 2.2 AA and BITV 2.0; fonts and images ship with the theme, nothing loads from other servers.
+An accessible block theme for WordPress full site editing, built on semantic design tokens: 91 patterns, 21 templates and 6 style variations for blogs, magazines, company sites and WooCommerce shops. Every pattern uses roles instead of fixed values, so style variations, AI agents and editors can change the whole design without breaking layout or contrast. Built to meet WCAG 2.2 AA and BITV 2.0; fonts and images ship with the theme, nothing loads from other servers.
 
 - On WordPress.org: https://wordpress.org/themes/leitvia/
 - Website and documentation: https://leitvia.com

@@ -462,6 +462,16 @@
 			"purpose": "Optional section between main and footer of the template single, empty by default: a closing call to action for every post, written with content from the markup of a pattern."
 		},
 		{
+			"name": "post-after-content",
+			"area": "uncategorized",
+			"purpose": "Optional blocks right after the text of every single post, before tags, author box and related posts, empty by default: a share block, a note or an ad slot, written with content."
+		},
+		{
+			"name": "post-aside",
+			"area": "uncategorized",
+			"purpose": "Optional blocks at the end of the sidebar of every single post, right of the text from 64rem and sticky, above the text on smaller screens, empty by default: a fact box or an ad slot, written with content."
+		},
+		{
 			"name": "header-shop",
 			"area": "header",
 			"purpose": "Header of the shop templates: the default header plus product search, customer account and mini cart; default pattern header-shop.",
@@ -2692,7 +2702,7 @@
 		{
 			"slug": "leitvia/header-search",
 			"title": "Header with search",
-			"description": "Site logo and title on the left, main navigation and a search field with a labelled button on the right and a fine line below; on small screens the search moves to its own row. Use on sites with many pages, so visitors can search as well as browse.",
+			"description": "Site logo and title on the left, main navigation and a search field with a labelled button on the right and a fine line below; below 1024 px the menu items collapse behind the menu button, and on phones the search moves to its own row. Use on sites with many pages, so visitors can search as well as browse.",
 			"area": "header",
 			"useWhen": "Sites with many pages or posts, where visitors look for content as often as they browse; gives a second way to every page (WCAG 2.4.5).",
 			"composition": {
@@ -2810,6 +2820,31 @@
 			"docs": {
 				"avoidWhen": "Online only businesses, or when the bar would repeat the same facts as the header; use header-cta.",
 				"a11y": "The bar is part of the banner landmark; its phone link uses tel: with the number in the link text. Labelled navigation with a menu button on small screens; the button stays reachable at every width, in the header or at the end of the menu, and so do the entries the bar drops below 600 px.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/header-two-rows",
+			"title": "Header in two rows",
+			"description": "Site logo and title on the left and a search field on the right on the page ground, below them the main navigation as a dark bar across the full width; only the bar stays at the top of the screen while the page scrolls. Use on portals and magazines with many sections, where the menu needs a row of its own.",
+			"area": "header",
+			"useWhen": "Portals, magazines and sites with many sections or long menu labels, where the menu needs the whole width and visitors search often.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "medium",
+				"role": "frame",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Small sites with a handful of pages; use header-default or header-search.",
+				"a11y": "The search has a label and a text button; the bar is a labelled core navigation with a menu button on small screens, its links in surface on ink with the current page and hover underlined in band-accent (both checked on ink by the contract). Focus in the first row brings it back while it has scrolled away.",
 				"contentLength": {
 					"heading": null,
 					"text": null
@@ -3721,7 +3756,7 @@
 		{
 			"slug": "leitvia/hidden-page-related-posts",
 			"title": "Related posts",
-			"description": "Up to three other posts from the categories of the current post below a single post, as cards with featured image, category, linked title, excerpt and date, in three columns from tablet width and one on phones. Renders nothing when there are none.",
+			"description": "Up to three other posts from the categories of the current post (or its primary category or its tags, by the setting of the site) below a single post, as cards with featured image, category, linked title, excerpt and date, in three columns from tablet width and one on phones. Renders nothing when there are none.",
 			"area": "page",
 			"useWhen": "Inserted by the single template below the post.",
 			"composition": {
@@ -4302,6 +4337,81 @@
 			"provides": [
 				"related"
 			]
+		},
+		{
+			"slug": "leitvia/teaser-posts-row",
+			"title": "Posts row with link to all",
+			"description": "Compact row of the four latest posts of one category or tag: heading and a link to the archive in one line above four small cards with image, linked title and date. Choose the category or tag in the filters of the query; without one it shows the latest posts and the link leads to the posts page. Use several in a row on a home page with many sections, places or topics.",
+			"area": "teaser",
+			"useWhen": "Home pages with many sections, places or topics: one row per category or tag, each with a link to its archive. Choose the category or tag in the filters of the query.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "light",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "4/3",
+					"displayWidth": "18rem",
+					"recommendedSize": "600x450",
+					"count": 4,
+					"source": "featured-image"
+				}
+			],
+			"docs": {
+				"avoidWhen": "Only one section with posts; use teaser-posts-grid or teaser-posts-trio instead.",
+				"a11y": "Titles are h3 links under the row h2; dates are time elements. Name the link after the archive, such as View all posts on printing; the row is left out while the query finds no post.",
+				"contentLength": {
+					"heading": [
+						10,
+						40
+					],
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/teaser-posts-trio",
+			"title": "Posts as three teasers",
+			"description": "Heading and lead text in one row above the three latest posts as tall picture teasers, each with its date, a linked title and a short excerpt, then a button to the archive of the category or tag the query shows. Choose the category or tag in the filters of the query; without one it shows the latest posts and the button leads to the posts page. Use on topic, place or section pages that lead into their newest posts in the look of Hero with three teasers.",
+			"area": "teaser",
+			"useWhen": "Topic, place or section pages that lead into the three newest posts of their category or tag, with a button to the archive. Choose the category or tag in the filters of the query.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "heavy",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [
+				{
+					"aspectRatio": "3/4",
+					"displayWidth": "25rem",
+					"recommendedSize": "900x1200",
+					"count": 3,
+					"source": "featured-image"
+				}
+			],
+			"docs": {
+				"avoidWhen": "Posts have no featured images, or Hero with three teasers stands on the same page.",
+				"a11y": "Titles are h3 links under the section h2; dates are time elements. The button names the archive it leads to; the section is left out while the query finds no post.",
+				"contentLength": {
+					"heading": [
+						10,
+						40
+					],
+					"text": [
+						60,
+						140
+					]
+				},
+				"replacedBy": null
+			}
 		},
 		{
 			"slug": "leitvia/teaser-icon-tiles",

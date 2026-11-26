@@ -10,12 +10,16 @@
  * @package Leitvia
  */
 
+// post_details(), also where the theme functions are not loaded.
+require_once get_template_directory() . '/inc/post-details.php';
+
 /*
  * Plugins hand in block markup through two filters: leitvia_post_aside before the details of the post and
- * leitvia_post_aside_end after them. The template puts this sidebar before the text, so a table of contents in it renders
+ * leitvia_post_aside_end after them; the template part post-aside holds the blocks of the site at the end (a fact box,
+ * an ad slot), empty by default. The template puts this sidebar before the text, so a table of contents in it renders
  * first; on large screens the stylesheet moves it to the right (core--group.css). The details repeat the byline under
  * the title, so they show on large screens only and the byline on small ones (leitvia-wide-only, leitvia-narrow-only).
- * The labels go into the date formats as in the byline pattern.
+ * The labels (post_details() of functions.php, filter leitvia_post_details) go into the date formats as in the byline.
  */
 $leitvia_aside_date_format = static function ( string $label ): string {
 	$parts = array_map(
@@ -39,11 +43,12 @@ $leitvia_aside_date_format = static function ( string $label ): string {
 			<!-- wp:post-author-name {"isLink":true} /-->
 		</div>
 		<!-- /wp:group -->
-		<!-- wp:post-date {"format":<?php /* translators: %s: publish date. */ echo $leitvia_aside_date_format( __( 'Published %s', 'leitvia' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON for the block comment. ?>,"metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"date"}}}}} /-->
-		<!-- wp:post-date {"format":<?php /* translators: %s: date of the last update. */ echo $leitvia_aside_date_format( __( 'Updated %s', 'leitvia' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON for the block comment. ?>,"metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"modified"}}}}} /-->
+		<!-- wp:post-date {"format":<?php echo $leitvia_aside_date_format( Leitvia\post_details()['published_label'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON for the block comment. ?>,"metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"date"}}}}} /-->
+		<!-- wp:post-date {"format":<?php echo $leitvia_aside_date_format( Leitvia\post_details()['updated_label'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON for the block comment. ?>,"metadata":{"bindings":{"datetime":{"source":"core/post-data","args":{"field":"modified"}}}}} /-->
 		<!-- wp:post-terms {"term":"category","prefix":"<?php echo esc_attr__( 'Category:', 'leitvia' ); ?> "} /-->
 	</div>
 	<!-- /wp:group -->
+	<!-- wp:template-part {"slug":"post-aside"} /-->
 	<?php echo apply_filters( 'leitvia_post_aside_end', '' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block markup of plugins, escaped by them. ?>
 </aside>
 <!-- /wp:group -->

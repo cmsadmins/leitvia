@@ -13,3 +13,43 @@
 body:has(main .wp-block-post-content .wp-block-search) header .wp-block-search {
 	display: none;
 }
+
+/*
+ * Search beside the menu in a header row (header-search, header-masthead). The search takes 16rem and shrinks to
+ * 11rem; logo group and menu share the rest from a basis of 0, a third and two thirds, so the row never breaks before
+ * the search: a long site title wraps inside its group (the logo keeps its size) and many menu items wrap inside the
+ * menu. Below 1024 px the items go behind the menu button, as in header-cta, and the logo group takes the room button
+ * and search leave. Below 600 px the search takes a line of its own at full width.
+ */
+header .is-layout-flex:has(> .wp-block-navigation) > .wp-block-search {
+	flex: 0 1 16rem;
+	min-width: 11rem;
+}
+header .is-layout-flex:has(> .wp-block-search) > .wp-block-navigation {
+	flex: 2 1 0;
+}
+header .is-layout-flex:has(> .wp-block-navigation):has(> .wp-block-search) > .wp-block-group:first-child {
+	flex: 1 1 0;
+
+	& > .wp-block-site-logo {
+		flex-shrink: 0;
+	}
+}
+@media (max-width: 63.9375rem) {
+	header .is-layout-flex:has(> .wp-block-search) > .wp-block-navigation {
+		flex: none;
+	}
+}
+@media (min-width: 600px) and (max-width: 63.9375rem) {
+	header :has(> .wp-block-search) > nav > .wp-block-navigation__responsive-container-open:not(.always-shown) {
+		display: flex;
+	}
+	header :has(> .wp-block-search) > nav > .wp-block-navigation__responsive-container:not(.is-menu-open) {
+		display: none;
+	}
+}
+@media (max-width: 599.98px) {
+	header .is-layout-flex:has(> .wp-block-navigation) > .wp-block-search {
+		flex-basis: 100%;
+	}
+}

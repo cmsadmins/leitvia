@@ -515,6 +515,8 @@
 		{ "name": "footer", "title": "Footer", "area": "footer" },
 		{ "name": "sidebar", "title": "Sidebar", "area": "uncategorized" },
 		{ "name": "post-closing", "title": "Post closing", "area": "uncategorized" },
+		{ "name": "post-after-content", "title": "After the post", "area": "uncategorized" },
+		{ "name": "post-aside", "title": "Post sidebar", "area": "uncategorized" },
 		{ "name": "header-shop", "title": "Shop header", "area": "header" },
 		{ "name": "checkout-header", "title": "Checkout header", "area": "header" },
 		{ "name": "checkout-footer", "title": "Checkout footer", "area": "footer" },

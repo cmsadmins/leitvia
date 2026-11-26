@@ -11,6 +11,8 @@ namespace Leitvia;
 
 defined( 'ABSPATH' ) || exit;
 
+require_once __DIR__ . '/inc/post-details.php';
+
 /**
  * Translations of the release zip in languages/, for sites without a language pack of WordPress.org. A pack in
  * WP_LANG_DIR wins. The zip holds de_DE only, so de_DE_formal, de_AT, de_CH and the other German variants read that
@@ -77,7 +79,30 @@ function one_h1( string $content, array $block ): string {
 		$title_printed = $title_printed || str_contains( $content, '<h1' );
 		return $content;
 	}
-	if ( ! $title_printed || ! str_contains( $content, '<h1' ) ) {
+	return $title_printed ? h1_to_h2( $content ) : $content;
+}
+add_filter( 'render_block_core/post-title', __NAMESPACE__ . '\one_h1', 10, 2 );
+add_filter( 'render_block_core/post-content', __NAMESPACE__ . '\one_h1', 10, 2 );
+add_filter( 'render_block_core/comment-content', __NAMESPACE__ . '\one_h1', 10, 2 );
+
+/**
+ * The description of a category, tag or other term stands below the title of its archive, which is the h1: an h1 in
+ * the description (an intro pasted from another site) becomes an h2 that keeps the h1 size.
+ *
+ * @param string $content Rendered block.
+ */
+function term_description_h1( string $content ): string {
+	return h1_to_h2( $content );
+}
+add_filter( 'render_block_core/term-description', __NAMESPACE__ . '\term_description_h1' );
+
+/**
+ * Every h1 of rendered HTML as an h2 with the h1 size.
+ *
+ * @param string $content Rendered HTML.
+ */
+function h1_to_h2( string $content ): string {
+	if ( ! str_contains( $content, '<h1' ) ) {
 		return $content;
 	}
 	$tags = new \WP_HTML_Tag_Processor( $content );
@@ -86,9 +111,6 @@ function one_h1( string $content, array $block ): string {
 	}
 	return str_ireplace( array( '<h1', '</h1>' ), array( '<h2', '</h2>' ), $tags->get_updated_html() );
 }
-add_filter( 'render_block_core/post-title', __NAMESPACE__ . '\one_h1', 10, 2 );
-add_filter( 'render_block_core/post-content', __NAMESPACE__ . '\one_h1', 10, 2 );
-add_filter( 'render_block_core/comment-content', __NAMESPACE__ . '\one_h1', 10, 2 );
 
 /**
  * Registers per-block stylesheets so CSS loads only when the block is on the page.
@@ -637,6 +659,53 @@ function term_image_size( string $html, array $block, \WP_Block $instance ): str
 add_filter( 'render_block_core/image', __NAMESPACE__ . '\term_image_size', 10, 3 );
 
 /**
+ * Block bindings source leitvia/query-archive: the url of a button inside a query becomes the archive of what the
+ * query lists, so "More from this category" follows the category or tag chosen in the filters of the query
+ * (patterns/teaser-posts-trio.php, teaser-posts-row.php). Presentation only: nothing is stored.
+ */
+function register_query_archive_binding(): void {
+	if ( ! function_exists( 'register_block_bindings_source' ) ) {
+		return;
+	}
+	register_block_bindings_source(
+		'leitvia/query-archive',
+		array(
+			'label'              => __( 'Archive of the query', 'leitvia' ),
+			'get_value_callback' => __NAMESPACE__ . '\query_archive_value',
+			'uses_context'       => array( 'query' ),
+		)
+	);
+}
+add_action( 'init', __NAMESPACE__ . '\register_query_archive_binding' );
+
+/**
+ * Address of the archive of the first term in the filters of the query (taxQuery), else of the archive of its post
+ * type, for posts the posts page or the home page. Null outside a query, so the block keeps its saved url.
+ *
+ * @param array     $args      Binding arguments, unused.
+ * @param \WP_Block $block     Button block inside a query.
+ * @param string    $attribute Bound attribute.
+ */
+function query_archive_value( array $args, \WP_Block $block, string $attribute ): ?string {
+	$query = $block->context['query'] ?? null;
+	if ( 'url' !== $attribute || ! is_array( $query ) ) {
+		return null;
+	}
+	$filters = (array) ( $query['taxQuery'] ?? array() );
+	// Newer editors keep the chosen terms under include (and the left out ones under exclude).
+	$filters = is_array( $filters['include'] ?? null ) ? $filters['include'] : $filters;
+	foreach ( $filters as $taxonomy => $terms ) {
+		$term = is_array( $terms ) && $terms ? get_term( (int) reset( $terms ), (string) $taxonomy ) : null;
+		$link = $term instanceof \WP_Term ? get_term_link( $term ) : '';
+		if ( is_string( $link ) && '' !== $link ) {
+			return $link;
+		}
+	}
+	$link = get_post_type_archive_link( (string) ( $query['postType'] ?? 'post' ) );
+	return $link ? $link : null;
+}
+
+/**
  * Makes the outer element of a block keyboard focusable, so wide content can be scrolled with the arrow keys
  * in every browser (WCAG 2.1.1). An existing tabindex is kept.
  *
@@ -839,10 +908,7 @@ function category_chips_all( string $html, array $block ): string {
 	}
 	$page = (int) get_option( 'page_for_posts' );
 	$url  = $page ? get_permalink( $page ) : ( 'posts' === get_option( 'show_on_front' ) ? home_url( '/' ) : '' );
-	if ( ! $url ) {
-		return $html;
-	}
-	$item = sprintf(
+	$item = ! $url ? '' : sprintf(
 		'<li class="cat-item"><a href="%1$s"%2$s>%3$s</a></li>',
 		esc_url( $url ),
 		is_home() ? ' aria-current="page"' : '',
@@ -867,6 +933,9 @@ function category_chips_all( string $html, array $block ): string {
 			$html
 		);
 	}
+	if ( '' === $item ) {
+		return $html;
+	}
 	return preg_replace_callback( '/<ul\b[^>]*>/', fn( array $ul ): string => $ul[0] . $item, $html, 1 );
 }
 add_filter( 'render_block_core/categories', __NAMESPACE__ . '\category_chips_all', 10, 2 );
@@ -874,7 +943,7 @@ add_filter( 'render_block_core/categories', __NAMESPACE__ . '\category_chips_all
 /**
  * The category line above the title of a post (post-terms with the class leitvia-primary-term) names one category, not
  * all of them: a post in twenty categories would print twenty links over its headline. It is the primary category that
- * Yoast SEO stores (_yoast_wpseo_primary_category) or, without one, the first. The tag list below the text stays complete.
+ * Yoast SEO or Rank Math stores (primary_category()) or, without one, the first. The tag list below the text stays complete.
  *
  * @param string         $html     Block HTML.
  * @param array          $block    Parsed block.
@@ -887,7 +956,7 @@ function primary_term_only( string $html, array $block, $instance = null ): stri
 	if ( ! is_array( $terms ) || count( $terms ) < 2 ) {
 		return $html;
 	}
-	$primary = (int) get_post_meta( $post_id, '_yoast_wpseo_primary_category', true );
+	$primary = primary_category( $post_id );
 	$term    = null;
 	foreach ( $terms as $candidate ) {
 		$term ??= $candidate;
@@ -903,6 +972,26 @@ function primary_term_only( string $html, array $block, $instance = null ): stri
 	return $wrap[1] . $anchor[0] . $wrap[2];
 }
 add_filter( 'render_block_core/post-terms', __NAMESPACE__ . '\primary_term_only', 10, 3 );
+
+/**
+ * The featured image above the text of a post (post-featured-image with the class leitvia-post-image, template single)
+ * takes the aspect ratio of post_details(); auto shows the image in its own ratio.
+ *
+ * @param array $parsed Parsed block.
+ */
+function post_image_ratio( array $parsed ): array {
+	if ( 'core/post-featured-image' !== $parsed['blockName'] || ! in_array( 'leitvia-post-image', explode( ' ', $parsed['attrs']['className'] ?? '' ), true ) ) {
+		return $parsed;
+	}
+	$ratio = post_details()['image_ratio'];
+	if ( 'auto' === $ratio ) {
+		unset( $parsed['attrs']['aspectRatio'] );
+	} else {
+		$parsed['attrs']['aspectRatio'] = $ratio;
+	}
+	return $parsed;
+}
+add_filter( 'render_block_data', __NAMESPACE__ . '\post_image_ratio' );
 
 /**
  * A sticky post on the first page of the posts index is told apart from the rest: the category line of its card
@@ -962,8 +1051,8 @@ const RELATED_POSTS = 'leitvia/related-posts';
 const RELATED_NEWS = 'leitvia/related-news';
 
 /**
- * The related posts query takes the categories of the current post; core leaves the post itself out (excludeCurrent).
- * Without categories it lists the latest other posts. The related news query is marked, so related_news_vars() finds
+ * The related posts query takes the categories of the current post, or its primary category or its tags by
+ * post_details(); core leaves the post itself out (excludeCurrent). Without such terms it lists the latest other posts. The related news query is marked, so related_news_vars() finds
  * it. Both changes go into the query context of the blocks inside the query, not into its attribute: core builds that
  * context from the attributes of a query inside another block (the group of patterns/teaser-related-news.php) before
  * render_block_data runs on it, so a changed attribute never reached the post template there.
@@ -980,9 +1069,16 @@ function related_query_context( array $context, array $parsed, $outer = null ): 
 	if ( RELATED_NEWS === $namespace ) {
 		$context['query']['leitviaRelatedNews'] = true;
 	} elseif ( RELATED_POSTS === $namespace ) {
-		$categories = array_map( 'intval', wp_get_post_categories( (int) get_the_ID() ) );
-		if ( $categories ) {
-			$context['query']['taxQuery'] = array( 'category' => $categories );
+		$post  = (int) get_the_ID();
+		$by    = post_details()['related_by'];
+		$first = wp_get_post_categories( $post );
+		$terms = match ( $by ) {
+			'tags'    => wp_get_post_tags( $post, array( 'fields' => 'ids' ) ),
+			'primary' => array_slice( array_filter( array( primary_category( $post ) ) ) + $first, 0, 1 ),
+			default   => $first,
+		};
+		if ( $terms ) {
+			$context['query']['taxQuery'] = array( ( 'tags' === $by ? 'post_tag' : 'category' ) => array_map( 'intval', (array) $terms ) );
 		}
 	}
 	return $context;
