@@ -3,7 +3,7 @@ Contributors: contexlabs
 Requires at least: 7.1
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.2.64
+Stable tag: 1.2.65
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, news, e-commerce, one-column, block-patterns, block-styles, custom-colors, custom-logo, custom-menu, editor-style, featured-images, full-site-editing, full-width-template, sticky-post, style-variations, template-editing, translation-ready, threaded-comments, wide-blocks
@@ -147,9 +147,18 @@ In the Site Editor under Styles. Pick one of the 6 style variations, one of the 
 
 = Can AI agents build pages with Leitvia? =
 
-Yes. The theme ships its design contract for agents, and Leitvia Studio gives agents abilities through the Abilities API and the MCP Adapter of WordPress. The section AI agents below lists the rules.
+Yes. The theme ships its design contract for agents, and Leitvia Studio gives agents abilities over its own MCP server, the REST API of the Abilities API and the default server of the MCP Adapter. The section AI agents below lists the rules.
 
 == Changelog ==
+
+= 1.2.65 =
+* New: Patterns header-grid and footer-grid, a header and a footer in cells with 1 px lines at full width, stacked on phones (the footer two by two), and the menu overlays navigation-overlay-panel and navigation-overlay-fill.
+* New: Templates page-dark and page-landing-dark: on a light palette the page swaps its roles to a dark ground with a light logo. Template page-legal for legal texts: a large h1, the contents in a column beside a reading column of 46rem.
+* New: Optional color role band-accent (checked against band and ink), the group style full-height, the heading style display-xl and the column style media-fill, where an image fills its cell over the section padding.
+* Change: Columns are size containers. Headings in display and display-xl take at most an eighth of their column and never break inside a word, long words hyphenate by the language of the page; on narrow windows display and heading-l stay below 12.5vw. Addresses in links break at @, / and the dot without a hyphen.
+* Change: Stylesheets the theme prints inline go out without comments and runs of white space, about 26 KB less per page. The theme CSS stays under 63 KB as shipped (54 KB before).
+* Fix: On dark pages a block on a surface-extra color takes the roles of the light page back (text, links, surfaces, logo), and the dimmed ground behind a menu panel takes the dark ground of the page.
+* The FAQ names the own MCP server of Leitvia Studio.
 
 = 1.2.64 =
 * New: header-utility puts the service bar right-aligned at the width of the header, its links underlined only on hover and focus; the paragraph style Highlight marks one link, such as an emergency line, bold and underlined in the accent. In the open menu on a phone the header button and the service bar stay at the bottom.

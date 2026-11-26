@@ -1,0 +1,22 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|xl","bottom":"var:preset|spacing|xxl"}}},"layout":{"type":"constrained","justifyContent":"left"},"anchor":"main"} -->
+<main id="main" class="wp-block-group" style="padding-top:var(--wp--preset--spacing--xl);padding-bottom:var(--wp--preset--spacing--xxl)">
+	<!-- wp:breadcrumbs /-->
+	<!-- wp:post-title {"level":1,"align":"wide","fontSize":"display"} /-->
+	<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|xxl"}}}} -->
+	<div class="wp-block-columns alignwide">
+		<!-- wp:column {"width":"30%","metadata":{"name":"Contents","description":"Takes the table of contents of the page (h2) when Leitvia Studio is active; empty otherwise."},"className":"leitvia-toc"} -->
+		<div class="wp-block-column leitvia-toc" style="flex-basis:30%"></div>
+		<!-- /wp:column -->
+		<!-- wp:column {"width":"70%"} -->
+		<div class="wp-block-column" style="flex-basis:70%">
+			<!-- wp:post-content {"layout":{"type":"constrained","contentSize":"46rem","justifyContent":"left"}} /-->
+		</div>
+		<!-- /wp:column -->
+	</div>
+	<!-- /wp:columns -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

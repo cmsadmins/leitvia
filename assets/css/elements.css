@@ -8,6 +8,26 @@
  * - Element buttons in the outline style: forms render a bare button.wp-element-button.is-style-outline without
  *   core/button around it, which the outline variation of theme.json does not reach. Same look and hover as the
  *   outline of core/button (core--button.css); bands keep their own hover (core--group.css, which skips outlines at rest).
+ * - Large type on narrow windows: display and heading-l of the token set grow no larger than an eighth of the window
+ *   (12.5vw; on a phone the column is the window less the gutters), so a long single word ("CONSULTING" in caps,
+ *   about 7em) fits the column at 390 and 320 px instead of breaking inside the word. Desktop and tablet keep the size
+ *   of the token set, the theme sizes stay as they are even at 320 px. The token set value is kept on :root and capped
+ *   from body down, so classes, heading elements and the first screen (core--buttons.css) all follow. A 1280 px window
+ *   at 200 % zoom is 640 px wide, the cap 80 px, above the theme maximum, so text still zooms (WCAG 1.4.4) and reflows
+ *   (1.4.10).
+ * - Block style Display extra large (display-xl) of headings and the post title: a third above display of the token set
+ *   (display 7.5rem gives 10rem) for page titles and claims, under the same cap of 12.5vw on narrow windows. It sets
+ *   the variable display reads, so a heading in display or without a size takes it; another size class wins. In the
+ *   first screen of a page with a button it stays at the capped display (core--buttons.css).
+ * - Display headings in columns: a heading in display or display-xl grows no larger than an eighth of its
+ *   column (12.5cqi of a column block, a size container that passes its display size on), so a word of
+ *   up to 11 letters ("Leistungen" in display-xl in half a row at 1440 px, "CONSULTING" in caps, about 7em) fits
+ *   without breaking inside. Longer words hyphenate by the language of the page (core--group.css). Display headings
+ *   never break anywhere for the minimum width of their box (break-word of core columns, anywhere of grids): only a
+ *   word that fits no line even hyphenated breaks. Paragraphs in display (numbers) and heading-l keep their size.
+ * - Addresses in links (an e-mail address or URL as link text, functions.php address_breaks()) break after @ and /
+ *   and before a dot, never with a hyphen that would change the address. A paragraph or list item that holds the
+ *   address link alone balances its lines, so "hello@" goes over the domain instead of ".de" under it.
  */
 option,
 optgroup {
@@ -22,4 +42,44 @@ optgroup {
 .wp-element-button.is-style-outline:hover {
 	background-color: var(--wp--preset--color--ink);
 	color: var(--wp--preset--color--surface);
+}
+
+:root {
+	--leitvia-display: var(--wp--preset--font-size--display);
+	--leitvia-heading-l: var(--wp--preset--font-size--heading-l);
+}
+body {
+	--wp--preset--font-size--display: min(var(--leitvia-display), 12.5vw);
+	--wp--preset--font-size--heading-l: min(var(--leitvia-heading-l), 12.5vw);
+	--wp--preset--font-size--xx-large: var(--wp--preset--font-size--display);
+	--leitvia-display-xl: min(calc(var(--leitvia-display) * 4 / 3), 12.5vw);
+}
+.is-style-display-xl {
+	--wp--preset--font-size--display: var(--leitvia-display-xl);
+	font-size: var(--wp--preset--font-size--display);
+	line-height: 1.04;
+	letter-spacing: -0.02em;
+}
+/* Only a column that holds a display heading is a container: containment makes a column its own layout, which would
+   break subgrids (mega menu panels) and the row heights of grids that size by content. Every column around such a
+   heading matches, so the size it passes on is always there. */
+.wp-block-column:has(:is(.wp-block-heading, .wp-block-post-title):is(.has-display-font-size, .is-style-display-xl)) {
+	container-type: inline-size;
+	--leitvia-display-column: var(--wp--preset--font-size--display);
+}
+:is(.wp-block-heading, .wp-block-post-title):is(.has-display-font-size, .is-style-display-xl) {
+	word-break: normal;
+	overflow-wrap: break-word;
+}
+.wp-block-column :is(.wp-block-heading, .wp-block-post-title):is(.has-display-font-size, .is-style-display-xl) {
+	--wp--preset--font-size--display: min(var(--leitvia-display-column), 12.5cqi);
+}
+.wp-block-column :is(.wp-block-heading, .wp-block-post-title).is-style-display-xl {
+	--wp--preset--font-size--display: min(var(--leitvia-display-xl), 12.5cqi);
+}
+:where(a:has(> wbr)) {
+	hyphens: manual;
+}
+:is(p, li):has(> a:only-child > wbr) {
+	text-wrap: balance;
 }

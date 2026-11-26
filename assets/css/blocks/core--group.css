@@ -31,16 +31,20 @@ body {
 
 /*
  * Ink, accent and inverse bands: accent links reach only 1.7 to 3.4:1 there, so links take the band text color
- * (passes in light and dark palettes), underlined in running text; navigation, divided lists and social links only
- * on hover and focus. Their focus ring is in assets/css/focus.css.
+ * (passes in light and dark palettes), underlined in running text; navigation, divided lists, social links and
+ * headings that are one link (leitvia-link-title, functions.php link_title(); no link inside running text, WCAG 1.4.1)
+ * only on hover and focus, where such a heading takes the band accent too. Their focus ring is in assets/css/focus.css.
  */
 :is(.has-background:is(.has-ink-background-color, .has-accent-background-color), .is-style-inverse) {
 	& :is(a, a:hover):where(:not(.wp-element-button)) {
 		color: inherit;
 		text-decoration: underline;
 	}
-	& :is(.wp-block-navigation, .is-style-divided, .wp-block-social-links) a:where(:not(.wp-element-button)):not(:hover, :focus-visible) {
+	& :is(.wp-block-navigation, .is-style-divided, .wp-block-social-links, .leitvia-link-title) a:where(:not(.wp-element-button)):not(:hover, :focus-visible) {
 		text-decoration: none;
+	}
+	& .leitvia-link-title a:is(:hover, :focus-visible) {
+		color: var(--wp--preset--color--band-accent, inherit);
 	}}
 
 /*
@@ -174,6 +178,18 @@ body {
 }
 .is-style-header-split > .wp-block-buttons {
 	justify-self: end;
+}
+
+/*
+ * Full height (hero groups): the group fills the first screen below the header, its content centred from top to bottom
+ * by align-content on the block container, so a constrained layout keeps its widths (no flex). svh is the small
+ * viewport, so the height does not jump with the address bar of a phone. The header height comes from Leitvia Studio
+ * (--leitvia-sticky-header-height), else 8rem; at least 24rem, so a short window still holds the content, and the
+ * content may always grow the group.
+ */
+.wp-block-group.is-style-full-height {
+	min-height: max(24rem, 100svh - var(--leitvia-sticky-header-height, 8rem));
+	align-content: center;
 }
 
 /*
@@ -511,4 +527,13 @@ html {
 	.leitvia-narrow-only {
 		display: none;
 	}
+}
+
+/*
+ * Wide inside a narrow section: a block set to align wide in a section with a content size of its own and no wide
+ * size (content-quote at 52rem) takes the wide size of the site, as align wide promises; core would keep it at the
+ * content size. No pattern of the theme puts a wide block there, so only such edits change.
+ */
+.wp-block-group.is-layout-constrained > .alignwide {
+	max-width: var(--wp--style--global--wide-size);
 }

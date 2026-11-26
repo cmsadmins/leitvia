@@ -1,0 +1,75 @@
+/*
+ * Dark page: the templates page-dark and page-landing-dark (functions.php adds the body class leitvia-dark-page while
+ * the palette is light, and appends this file to the inline global styles of that page only). The whole page, header,
+ * breadcrumbs, content and footer included, reads like an Inverse band: every block keeps its role classes, only the
+ * roles change meaning on the body, so header and footer with a surface ground, rules in ink and buttons follow
+ * without a class of their own.
+ *
+ * The original values are taken on :root first: a role defined on the body from another role redefined there would be
+ * a cycle and void both. Pairs on the dark page (WCAG 2.2 AA through pairs of the contract):
+ * - text (surface) on the ground (band, else ink): surface/band and ink/surface, 4.5:1;
+ * - accent text on the ground: band-accent/band and band-accent/ink (optionalPairs), else the text color itself;
+ * - muted text takes the text color, as on an Inverse band; stroke stays (stroke/ink and stroke/band 4.5:1);
+ * - buttons take band-button on-band-button, else accent on-accent (on-accent/accent), as on dark bands; hover is the
+ *   light surface with ink (ink/surface);
+ * - surface-alt, the ground of cards, is the page ground lifted by a tenth of the text color, so text keeps nearly the
+ *   ratio of the page; focus stays (focus/ink 3:1).
+ * An Inverse band or an ink group on this page turns light (ink is the light color here), so it shows no band accent.
+ * The site logo turns white like the block style On dark band (core--site-logo.css).
+ * An extra surface (surface-extra-<name>) keeps its light color on this page, so a block on it, such as the menu panel
+ * of navigation-overlay-panel, takes back the roles of the light page: ink on the extra surface, as the contract pairs
+ * them (4.5:1), with the links and the site logo of the light page; buttons keep their pair of the dark page.
+ */
+:root {
+	--lv-surface: var(--wp--preset--color--surface);
+	--lv-ink: var(--wp--preset--color--ink);
+	--lv-ground: var(--wp--preset--color--band, var(--wp--preset--color--ink));
+	--lv-accent: var(--wp--preset--color--accent);
+	--lv-on-accent: var(--wp--preset--color--on-accent);
+	--lv-surface-alt: var(--wp--preset--color--surface-alt);
+	--lv-ink-muted: var(--wp--preset--color--ink-muted);
+}
+body.leitvia-dark-page {
+	--wp--preset--color--surface: var(--lv-ground);
+	--wp--preset--color--surface-alt: color-mix(in srgb, var(--lv-surface) 10%, var(--lv-ground));
+	--wp--preset--color--ink: var(--lv-surface);
+	--wp--preset--color--ink-muted: var(--lv-surface);
+	--wp--preset--color--accent: var(--wp--preset--color--band-accent, var(--lv-surface));
+	--wp--preset--color--on-accent: var(--lv-ground);
+	--wp--preset--color--button: var(--wp--preset--color--band-button, var(--lv-accent));
+	--wp--preset--color--on-button: var(--wp--preset--color--on-band-button, var(--lv-on-accent));
+	--wp--preset--color--button-hover: var(--lv-surface);
+	--wp--preset--color--on-button-hover: var(--lv-ground);
+}
+.leitvia-dark-page [class*=has-surface-extra-][class*=-background-color] {
+	--wp--preset--color--surface: var(--lv-surface);
+	--wp--preset--color--surface-alt: var(--lv-surface-alt);
+	--wp--preset--color--ink: var(--lv-ink);
+	--wp--preset--color--ink-muted: var(--lv-ink-muted);
+	--wp--preset--color--accent: var(--lv-accent);
+	--wp--preset--color--on-accent: var(--lv-on-accent);
+	color: var(--lv-ink);
+}
+.leitvia-dark-page [class*=has-surface-extra-][class*=-background-color] .wp-block-site-logo:not(.is-style-on-dark) img {
+	filter: none;
+}
+/*
+ * Links on the dark page: a heading that is one link (leitvia-link-title, functions.php link_title(), a title in a row
+ * of services, a cross link) reads in the text color
+ * without underline, as on an Inverse band, and shows the accent with the underline on hover and focus; it is no link
+ * inside running text, so color alone need not mark it (WCAG 1.4.1), and its focus ring stays. A link in the paragraph
+ * style Highlight keeps the text color too, its underline in the accent marks it. Links in running text stay accent
+ * and underlined.
+ */
+.leitvia-dark-page :is(.leitvia-link-title, .is-style-highlight) a {
+	color: inherit;
+}
+.leitvia-dark-page .leitvia-link-title a:not(:hover, :focus-visible) {
+	text-decoration: none;
+}
+.leitvia-dark-page .leitvia-link-title a:is(:hover, :focus-visible) {
+	color: var(--wp--preset--color--accent);
+}
+.leitvia-dark-page :is(.is-style-inverse, .has-ink-background-color) {
+	--wp--preset--color--band-accent: initial;
+}

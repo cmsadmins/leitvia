@@ -239,3 +239,215 @@
 	letter-spacing: normal;
 	text-transform: none;
 }
+
+/*
+ * Header in grid cells (pattern header-grid): service row and main row share one grid, narrow cells at the sides, and
+ * every cell is framed by 1 px lines in the text color. Text keeps the inner space l from the lines (m below 600 px),
+ * as the cells of footer-grid. Below 600 px link and menu share a row, the logo takes its own.
+ */
+.wp-block-group.leitvia-grid-header > *,
+.leitvia-grid-header > .wp-block-group > * {
+	margin: 0;
+}
+.leitvia-grid-header > * {
+	display: grid;
+	grid-template-columns: minmax(max-content, 18%) 1fr minmax(max-content, 18%);
+	border-bottom: 1px solid;
+}
+.leitvia-grid-header > * > * {
+	display: flex;
+	align-items: center;
+	padding: var(--wp--preset--spacing--xs) var(--wp--preset--spacing--l);
+}
+/* Two classes: the size of core/navigation in theme.json (:root :where()) would win over one, and the menu button is as large as the link on the left. */
+.leitvia-grid-header > .leitvia-grid-header__main > * {
+	padding-block: var(--wp--preset--spacing--s);
+	font-size: var(--wp--preset--font-size--lead);
+}
+.leitvia-grid-header > * > :first-child {
+	border-inline-end: 1px solid;
+}
+.leitvia-grid-header > * > :last-child {
+	grid-column: 3;
+	justify-content: flex-end;
+	border-inline-start: 1px solid;
+}
+.leitvia-grid-header :is(p, .wp-block-navigation__responsive-container-open),
+.leitvia-grid-footer .wp-block-navigation-item__content {
+	font-family: var(--wp--preset--font-family--ui);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+/* Service row and footer cells in small capitals with wide spacing, as a line of labels. */
+.leitvia-grid-header__service,
+.leitvia-grid-footer .wp-block-navigation-item__content {
+	letter-spacing: 0.12em;
+}
+.leitvia-grid-header__main .wp-block-navigation__responsive-container-open {
+	font-size: inherit;
+}
+.leitvia-grid-header a {
+	color: inherit;
+}
+.leitvia-grid-header a:not(:hover, :focus-visible) {
+	text-decoration: none;
+}
+/* Links of a service cell in one line, "Message | Phone"; the bar is not read out. */
+.leitvia-grid-header__links > * + *::before {
+	content: "|";
+	content: "|" / "";
+	margin-inline-end: var(--wp--preset--spacing--xs);
+}
+@media (max-width: 599px) {
+	.leitvia-grid-header > * {
+		grid-template-columns: 1fr 1fr;
+	}
+	.leitvia-grid-header > * > *,
+	.leitvia-grid-footer .wp-block-navigation-item__content.wp-block-navigation-item__content,
+	.wp-block-group.leitvia-grid-footer > p {
+		padding-inline: var(--wp--preset--spacing--m);
+	}
+	.leitvia-grid-header > * > :last-child {
+		grid-column: 2;
+		border-inline-start: 0;
+	}
+	.leitvia-grid-header__main > :nth-child(2) {
+		grid-row: 2;
+		grid-column: 1 / -1;
+		border-top: 1px solid;
+	}
+}
+
+/* Footer in grid cells (pattern footer-grid): the links as one row of equal cells with 1 px lines, two columns below 600 px. */
+.wp-block-group.leitvia-grid-footer > * {
+	margin: 0;
+}
+/* The cells at the edges are as wide as those of header-grid, the others share the rest. */
+.leitvia-grid-footer .wp-block-navigation__container {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 0;
+	width: 100%;
+	border-block: 1px solid;
+}
+.leitvia-grid-footer .wp-block-navigation-item {
+	flex: 1 1 0;
+	min-width: 0;
+}
+.leitvia-grid-footer .wp-block-navigation-item:is(:first-child, :last-child) {
+	flex: 0 0 18%;
+}
+.leitvia-grid-footer .wp-block-navigation-item + .wp-block-navigation-item {
+	border-inline-start: 1px solid;
+}
+/* Side padding shrinks with the window, so five cells with a long word each still fit from 600 px. */
+.leitvia-grid-footer .wp-block-navigation-item__content {
+	flex: 1;
+}
+.leitvia-grid-footer .wp-block-navigation-item__content,
+.leitvia-grid-footer > p {
+	padding: var(--wp--preset--spacing--s) clamp(var(--wp--preset--spacing--s), 2vw, var(--wp--preset--spacing--l));
+}
+@media (max-width: 599px) {
+	.leitvia-grid-footer .wp-block-navigation__container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+	.leitvia-grid-footer .wp-block-navigation-item:nth-child(odd) {
+		border-inline-start: 0;
+	}
+	.leitvia-grid-footer .wp-block-navigation-item:nth-child(n+3) {
+		border-top: 1px solid;
+	}
+	.leitvia-grid-footer .wp-block-navigation-item:last-child:nth-child(odd) {
+		grid-column: 1 / -1;
+	}
+}
+
+/*
+ * Menu patterns of the part navigation-overlay (navigation-overlay-panel, -fill): a column over the full height, close
+ * button on top, the items left-aligned, large and in capitals in the font of the navigation, the menu footer at the
+ * bottom. The panel slides in from the end edge over the dimmed page.
+ */
+.leitvia-overlay {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wp--preset--spacing--l);
+	min-height: 100dvh;
+	text-align: start;
+}
+.wp-block-group.leitvia-overlay > * {
+	margin: 0;
+}
+.wp-block-group.leitvia-overlay > :last-child {
+	margin-top: auto;
+}
+/* A word inserted before the close button, such as Menu in mono, stands at the start of its row. */
+.leitvia-overlay > .wp-block-group:first-child > p:first-child {
+	margin-inline-end: auto;
+}
+.is-menu-open .leitvia-overlay :is(.wp-block-navigation__container, .wp-block-navigation-item) {
+	--navigation-layout-justify: flex-start;
+	--navigation-layout-align: flex-start;
+	align-items: flex-start;
+	font-family: inherit;
+	text-align: start;
+}
+.is-menu-open .leitvia-overlay .wp-block-navigation__container > .wp-block-navigation-item {
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+.wp-block-navigation__responsive-container.is-menu-open:has(.leitvia-overlay-panel) {
+	background-color: color-mix(in srgb, var(--lv-ground, var(--wp--preset--color--ink)) 60%, transparent);
+}
+.leitvia-overlay-panel {
+	width: min(36rem, 100%);
+	margin-inline-start: auto;
+}
+.leitvia-overlay-panel:dir(rtl) {
+	--leitvia-panel-from: -100%;
+}
+
+/*
+ * Opening of every overlay menu. Core fades and lifts the whole open menu in 0.1 s (opacity and transform); with the
+ * panel that lift ran on top of the slide, and the dimmed ground came at once. Here the menu only fades in, on a soft
+ * curve; with the panel the ground dims in while the panel slides in from the end edge, translate only, on the
+ * compositor; the menu clips it sideways, so no scroll bars flash up while it slides. The page keeps the room of its
+ * scroll bar while core hides it (has-modal-open), so nothing jumps sideways. Closing is instant, as core removes the
+ * menu at once. With reduced motion and Motion off nothing moves.
+ */
+html.has-modal-open {
+	scrollbar-gutter: stable;
+}
+.is-menu-open:has(.leitvia-overlay-panel) {
+	overflow-x: hidden;
+}
+@media (prefers-reduced-motion: no-preference) {
+	.wp-block-navigation__responsive-container.is-menu-open {
+		animation: leitvia-overlay-in 0.35s cubic-bezier(0.32, 0.72, 0, 1) both;
+	}
+	.is-menu-open:has(.leitvia-overlay-panel) {
+		animation-name: leitvia-overlay-dim;
+	}
+	.is-menu-open .leitvia-overlay-panel {
+		animation: leitvia-panel-in 0.35s cubic-bezier(0.32, 0.72, 0, 1) both;
+	}
+}
+.leitvia-motion-off :is(.is-menu-open, .leitvia-overlay-panel) {
+	animation: none;
+}
+@keyframes leitvia-overlay-in {
+	from {
+		opacity: 0;
+	}
+}
+@keyframes leitvia-overlay-dim {
+	from {
+		background-color: transparent;
+	}
+}
+@keyframes leitvia-panel-in {
+	from {
+		translate: var(--leitvia-panel-from, 100%);
+	}
+}

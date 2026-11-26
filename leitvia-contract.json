@@ -369,6 +369,11 @@
 				"slug": "on-band-button",
 				"fallback": "on-accent",
 				"purpose": "Label on band-button."
+			},
+			{
+				"slug": "band-accent",
+				"fallback": "surface",
+				"purpose": "Accent text on Inverse and ink bands of a light set, and on the dark page templates (page-dark, page-landing-dark): numbers, marks and eyebrows, any text with textColor accent. For a brand color that passes on dark grounds only (a bright green on black) while accent stays dark for light grounds. Write textColor accent as usual; inside a band the theme shows band-accent. Without it accent text on a band takes the band text color."
 			}
 		],
 		"fontWeight": [
@@ -423,6 +428,16 @@
 			"bg": "band",
 			"min": 3,
 			"ring": "surface"
+		},
+		{
+			"fg": "band-accent",
+			"bg": "band",
+			"min": 4.5
+		},
+		{
+			"fg": "band-accent",
+			"bg": "ink",
+			"min": 4.5
 		}
 	],
 	"templateParts": [
@@ -473,7 +488,7 @@
 		{
 			"name": "navigation-overlay",
 			"area": "navigation-overlay",
-			"purpose": "Mobile menu of every header pattern: close button and the navigation as a vertical list on the page background. Opens from the menu button on small screens, and on header-minimal at every width."
+			"purpose": "Menu of every header pattern: close button and the navigation as a vertical list on the page background. Opens from the menu button on small screens, and on header-minimal and header-grid at every width. Patterns for it: navigation-overlay-panel (a panel from the right) and navigation-overlay-fill (the whole screen on the accent), with update-template-part."
 		}
 	],
 	"templates": [
@@ -508,6 +523,18 @@
 		{
 			"slug": "page-article",
 			"purpose": "Custom template for a guide or long read under a page address, laid out like a post: breadcrumbs, the one h1, excerpt, byline (author, publish and update dates, reading time), 16:9 featured image, content, the author box and comments. compose-page gives it to a page with the frame article; Leitvia Studio prints an Article with author and dates for it."
+		},
+		{
+			"slug": "page-dark",
+			"purpose": "Custom template like page in the dark scheme: header, breadcrumbs, title, content and footer read like an Inverse band (ground band or ink, text surface, accent text band-accent, buttons band-button, the site logo in white). For the dark pages of a brand whose home page is light; a dark palette shows it like page. Sections keep their patterns and grounds; leave out Inverse bands, which turn light here."
+		},
+		{
+			"slug": "page-landing-dark",
+			"purpose": "Custom template like page-landing in the dark scheme of page-dark: no title, the hero provides the h1, header, breadcrumbs and footer dark with the content."
+		},
+		{
+			"slug": "page-legal",
+			"purpose": "Custom template for a legal text (imprint, privacy policy, terms): breadcrumbs, the title large in display across the wide width, then on the left a column with the table of contents of the h2 as links between thin lines (filled by Leitvia Studio, empty without it) and on the right the content in a reading width of 46rem. Stacked on phones, contents first. Switch an imported or written legal page to it with template page-legal; the text stays as it is."
 		},
 		{
 			"slug": "archive",
@@ -756,6 +783,24 @@
 			"context": "Two columns of one image and one text card, as in hero-overlap; never with more than two columns."
 		},
 		{
+			"block": "core/columns",
+			"name": "media-fill",
+			"purpose": "Full-width columns whose image covers its cell from the top to the bottom of the section and from the window edge to the text column, without gap, while the text column keeps the edge of the content and the padding of the section; the widths of the columns count exactly. Stacked on phones the image keeps its crop.",
+			"context": "content-text-media (or any section of one columns block) with align full on its core/columns and one image alone in a column, such as a photo beside a short text that should touch the sections above and below; combines with media-right."
+		},
+		{
+			"block": "core/heading",
+			"name": "display-xl",
+			"purpose": "A third larger than display (7.5rem becomes 10rem), no larger than 12.5vw on narrow windows and an eighth of its column in a column; in the first screen of a page with a button it stays at the capped display size.",
+			"context": "The h1 of a title section without a button or a short claim of one to three words on a band; a heading in display or without a size. Once per page."
+		},
+		{
+			"block": "core/post-title",
+			"name": "display-xl",
+			"purpose": "The title of a template a third larger than display, as display-xl of the heading.",
+			"context": "Post titles of templates that show the title alone in its section, such as page-legal."
+		},
+		{
 			"block": "core/group",
 			"name": "header-split",
 			"purpose": "Three columns of navigation, logo and action, with the logo exactly in the middle.",
@@ -790,6 +835,12 @@
 			"name": "overlay-header",
 			"purpose": "The header lies over a full-width cover at the top of the page, without its ground and line and in the text color of dark stages; after 4rem of scrolling it takes its ground, its line and the text color of the page again. Pure CSS, only where the browser has scroll-driven animations and Leitvia Studio measures the header; elsewhere the header keeps its ground.",
 			"context": "Only the outermost group of a header template part. It sticks as every header does without a style (no sticky-header needed); with sticky-header-desktop or sticky-header-mobile both classes go on the group. The pages that open with a full-width cover need a dark dimming of at least 60 %, so header text keeps 4.5:1 over the photo; a dark logo then needs on-dark. Pages without such a cover keep the header as it is. A service bar on top (header-utility) keeps its dark ground; only the row below it lies clear over the cover."
+		},
+		{
+			"block": "core/group",
+			"name": "full-height",
+			"purpose": "The group fills the first screen below the header, at least 24rem, with its content centred from top to bottom; the content may grow it. On phones it takes the small viewport height, so the address bar does not make it jump.",
+			"context": "The outermost group of a hero that should own the first screen, such as a large claim on a home page (hero-text, hero-centered); combine it with other block styles of the group (is-style-inverse is-style-full-height). Never for sections further down the page or a cover, which has its own minimum height."
 		},
 		{
 			"block": "core/buttons",
@@ -1523,7 +1574,7 @@
 			"title": "Feature grid",
 			"description": "Heading and lead text above six tiles, each with a short title and description. Use to list services, features or principles at a glance.",
 			"area": "content",
-			"useWhen": "Listing six services, features or principles at a glance after an introduction.",
+			"useWhen": "Listing six services, features or principles at a glance after an introduction. With an icon per item use the successor leitvia-studio/content-scope-grid; leitvia/replace-pattern switches an existing section to it.",
 			"composition": {
 				"tone": "surface",
 				"density": "regular",
@@ -1546,7 +1597,8 @@
 						120
 					]
 				},
-				"replacedBy": null
+				"replacedBy": null,
+				"successor": "leitvia-studio/content-scope-grid"
 			}
 		},
 		{
@@ -1905,7 +1957,7 @@
 			"title": "Process steps",
 			"description": "Heading above four numbered steps, each with a title and a short description, four across on wide screens and two by two on narrower ones, never three and one. Use to explain a process, an onboarding path or how a service works.",
 			"area": "content",
-			"useWhen": "Explaining a process, onboarding path or how a service works in four steps.",
+			"useWhen": "Explaining a process, onboarding path or how a service works in four steps. With an icon and a title per step use the successor leitvia-studio/content-process-icons, as a timeline with a key figure leitvia-studio/content-process-timeline; leitvia/replace-pattern switches an existing section to it.",
 			"composition": {
 				"tone": "surface",
 				"density": "regular",
@@ -1928,7 +1980,8 @@
 						130
 					]
 				},
-				"replacedBy": null
+				"replacedBy": null,
+				"successor": "leitvia-studio/content-process-icons"
 			},
 			"provides": [
 				"steps"
@@ -2437,6 +2490,31 @@
 			}
 		},
 		{
+			"slug": "leitvia/footer-grid",
+			"title": "Footer in grid cells",
+			"description": "One row of equal cells with 1 px lines in the text color, each a link in small capitals (contact, work, privacy policy, imprint and the cookie settings when a consent tool is active), and the copyright line below. Below 600 px the cells form two columns. Use with Header in grid cells for agencies, studios and portfolios with a graphic, grid based look.",
+			"area": "footer",
+			"useWhen": "Sites with Header in grid cells, or any site that wants its legal and contact links as a row of framed cells.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "light",
+				"role": "frame",
+				"width": "full"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Sites that need contact details, opening hours or many pages in the footer; use footer-columns.",
+				"a11y": "The links are a labelled navigation, each cell is the whole link target. The cookie settings link shows only while a consent tool provides it.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
 			"slug": "leitvia/footer-mega",
 			"title": "Footer mega",
 			"description": "Large dark footer with a brand block of short pitch, trust facts and contact details, four link columns (four across or two by two, never three and one), legal navigation, social links, an empty Language switcher group for the language switcher block of a translation plugin and a back to top link. Use on product and company sites with many pages.",
@@ -2682,6 +2760,31 @@
 			"docs": {
 				"avoidWhen": "More than six top level menu items, or no single main action; use header-default.",
 				"a11y": "Labelled navigation with a menu button on small screens; the button link names its target and stays reachable at every width, in the header or at the end of the menu.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/header-grid",
+			"title": "Header in grid cells",
+			"description": "The header as a table of cells with 1 px lines in the text color: a slim light service row with two groups of links on the left and right, then one link on the left, site logo and title in the wide middle cell and a menu button labelled Menu on the right that opens the navigation overlay at every width. Below 600 px the service row stays on top, link and menu button share the next row and the logo takes a row of its own. Use for agencies, studios and portfolios with a graphic, grid based look.",
+			"area": "header",
+			"useWhen": "Agencies, studios and portfolios with a graphic, grid based look; pair it with footer-grid and a menu pattern of the part navigation-overlay.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "light",
+				"role": "frame",
+				"width": "full"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Sites whose visitors need to scan the main navigation right away; the menu items always sit behind the menu button.",
+				"a11y": "Labelled navigation behind a menu button with the visible text Menu at every width; the lines are decoration. The service links are a row of links in the banner landmark, separated by a bar screen readers skip.",
 				"contentLength": {
 					"heading": null,
 					"text": null
@@ -4280,7 +4383,7 @@
 			"title": "Services",
 			"description": "Heading and lead text above four numbered services, each with a short description and a link to its page, four across on wide screens and two by two on narrower ones, never three and one. Use on a home or company page to show what you offer.",
 			"area": "teaser",
-			"useWhen": "Home or company pages that show four services with links to their pages.",
+			"useWhen": "Home or company pages that show four services with links to their pages. With an icon per service use the successor leitvia-studio/teaser-icon-areas, the recommended form once icons are set; leitvia/replace-pattern switches an existing section to it.",
 			"composition": {
 				"tone": "surface-alt",
 				"density": "regular",
@@ -4303,7 +4406,8 @@
 						140
 					]
 				},
-				"replacedBy": null
+				"replacedBy": null,
+				"successor": "leitvia-studio/teaser-icon-areas"
 			},
 			"provides": [
 				"tiles",
@@ -4579,6 +4683,56 @@
 				"woocommerce",
 				"woocommerce-germanized"
 			]
+		},
+		{
+			"slug": "leitvia/navigation-overlay-panel",
+			"title": "Menu panel from the right",
+			"description": "The open menu as a panel that slides in from the right edge over the dimmed page, up to 36rem wide and full width on phones, on surface-alt: a close button at the top right, the menu items large in capitals in the ui font, left-aligned, and at the bottom a small site logo with one contact link. The ground takes a surface-extra of the token set through backgroundColor. Use for the template part navigation-overlay of headers with a menu button, such as Header in grid cells or Header minimal.",
+			"area": "navigation",
+			"useWhen": "The menu of a header with a menu button, as a panel from the right over the dimmed page; the ground takes surface-alt or a surface-extra of the token set.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "reading"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Menus with many submenus or a mega menu; core keeps every submenu open in the overlay.",
+				"a11y": "Opens as a modal dialog of core/navigation: focus moves into it and stays there, Escape and the close button close it and return focus to the menu button. The slide in is left out with reduced motion.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia/navigation-overlay-fill",
+			"title": "Menu on the accent",
+			"description": "The open menu over the whole screen on the accent with on-accent text: a close button at the top right, the menu items large in capitals in the ui font, left-aligned, and at the bottom a small site logo with one contact link. Use for the template part navigation-overlay of headers with a menu button, such as Header in grid cells or Header minimal, on brands with a strong accent.",
+			"area": "navigation",
+			"useWhen": "The menu of a header with a menu button over the whole screen on the accent, for brands whose accent may fill a screen.",
+			"composition": {
+				"tone": "accent",
+				"density": "regular",
+				"layout": "list",
+				"weight": "light",
+				"role": "frame",
+				"width": "full"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Token sets whose accent is a light tint; the menu would lose its weight. Use navigation-overlay-panel there.",
+				"a11y": "Opens as a modal dialog of core/navigation: focus moves into it and stays there, Escape and the close button close it and return focus to the menu button. Text on-accent on accent passes AA by contract.",
+				"contentLength": {
+					"heading": null,
+					"text": null
+				},
+				"replacedBy": null
+			}
 		}
 	],
 	"studioPatterns": [
@@ -5021,6 +5175,174 @@
 					"text": [
 						40,
 						120
+					]
+				},
+				"replacedBy": null
+			}
+		},
+		{
+			"slug": "leitvia-studio/teaser-icon-areas",
+			"title": "Areas with icons",
+			"description": "Section mark, heading and intro above four areas, each with its own icon in a framed field, a title, a short text and a link to its page, up to four across. Use on a home or overview page to show the areas of an offer, with a symbol instead of a number.",
+			"area": "teaser",
+			"useWhen": "Areas or services of an offer with a page each, where every entry has a symbol of its own: the recommended form of leitvia/teaser-services once icons are set. Four entries, repeat one with edits repeat for eight. Set the icon of each entry with leitvia/update-block, attribute icon of its leitvia/icon (names from leitvia/list-blocks), each entry a different icon, none the same as the icon of the section mark.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "context",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Entries without a fitting symbol or a real order; use leitvia/teaser-services with numbers. More than eight entries. Needs Leitvia Studio for the icon block.",
+				"a11y": "Each area is an h3 with a link of its own text; the icons are decorative and hidden from assistive technology.",
+				"contentLength": {
+					"heading": [
+						20,
+						60
+					],
+					"text": [
+						60,
+						140
+					]
+				},
+				"replacedBy": null
+			},
+			"provides": [
+				"tiles",
+				"related"
+			]
+		},
+		{
+			"slug": "leitvia-studio/content-process-icons",
+			"title": "Steps with icons",
+			"description": "Section mark and heading above three steps, each with its own icon in a filled field, a line to the next step, a step label, a title and a short text, and a closing line with a link. Use to show what happens after an order or an inquiry.",
+			"area": "content",
+			"useWhen": "What happens after an order, an inquiry or a booking, in three to four steps, each with a title. The icon of each step is filled in the accent color; the group style is-style-steps-line draws the line to the next step. Set the icon of each entry with leitvia/update-block, attribute icon of its leitvia/icon (names from leitvia/list-blocks), each entry a different icon, none the same as the icon of the section mark.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "More than five steps, or steps that need a paragraph each; use leitvia/content-steps. A project with a fixed course and a key figure; use leitvia-studio/content-process-timeline. Needs Leitvia Studio for the icon block.",
+				"a11y": "Each step is an h3 after its step label; the line and the icons are decorative. The step label names the order, so the order does not depend on the line.",
+				"contentLength": {
+					"heading": [
+						15,
+						50
+					],
+					"text": [
+						40,
+						120
+					]
+				},
+				"replacedBy": null
+			},
+			"provides": [
+				"steps"
+			]
+		},
+		{
+			"slug": "leitvia-studio/content-process-timeline",
+			"title": "Timeline with key figure",
+			"description": "Section mark and heading with a key figure such as a price or a duration beside them, above four steps on a line, each with its own icon framed in the accent color, a step label, a title and a short text. Use for a project with a fixed course, such as a move, an onboarding or a launch.",
+			"area": "content",
+			"useWhen": "A project with a fixed course in four steps, such as a move, an onboarding or a launch, with one key figure beside the heading such as a price or a duration. Icons framed in accent on a line in the accent color. Set the icon of each entry with leitvia/update-block, attribute icon of its leitvia/icon (names from leitvia/list-blocks), each entry a different icon, none the same as the icon of the section mark. Without a key figure remove the group named Key figure.",
+			"composition": {
+				"tone": "surface-alt",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "medium",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Steps without a course in time, use leitvia-studio/content-process-icons. A price that is not real; leave the key figure out instead. Needs Leitvia Studio for the icon block.",
+				"a11y": "Each step is an h3 after its step label; the key figure is plain text next to the h2, the line and icons are decorative.",
+				"contentLength": {
+					"heading": [
+						15,
+						50
+					],
+					"text": [
+						40,
+						120
+					]
+				},
+				"replacedBy": null
+			},
+			"provides": [
+				"steps"
+			]
+		},
+		{
+			"slug": "leitvia-studio/teaser-link-cards",
+			"title": "Link cards with icons",
+			"description": "Section mark and heading above six framed cards, three across, each one link with its own icon, a title, a short text and an arrow. Use at the end of a page for related pages and guides, instead of a numbered list of links.",
+			"area": "teaser",
+			"useWhen": "Related pages and guides at the end of a page, three to nine cards, each with an icon, a title that links and a short text; the whole card is the link, the arrow comes from the style is-style-link-card. Set the url of each title link with edits. Set the icon of each entry with leitvia/update-block, attribute icon of its leitvia/icon (names from leitvia/list-blocks), each entry a different icon, none the same as the icon of the section mark.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "grid",
+				"weight": "light",
+				"role": "close",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "One or two links; put them in the text. Posts of the site; use leitvia/teaser-related-news. Numbered link lists. Needs Leitvia Studio for the icon block.",
+				"a11y": "The title link is the one link of each card and names its target; the card around it is only its click area, the arrow is decorative and has no text for screen readers.",
+				"contentLength": {
+					"heading": [
+						15,
+						50
+					],
+					"text": [
+						20,
+						70
+					]
+				},
+				"replacedBy": null
+			},
+			"provides": [
+				"related"
+			]
+		},
+		{
+			"slug": "leitvia-studio/content-scope-grid",
+			"title": "Scope grid with icons",
+			"description": "Section mark, heading and intro on the left, six items in a grid with fine lines on the right, each with its own icon, a title and a short text. Use for what a plan or a service includes, where a plain list would look lost.",
+			"area": "content",
+			"useWhen": "What a plan, a package or a service includes, six to twelve points with a short text each, in a grid with fine lines (is-style-grid-net) beside an intro. Without the intro remove the first column, the grid then takes the full width. Set the icon of each entry with leitvia/update-block, attribute icon of its leitvia/icon (names from leitvia/list-blocks), each entry a different icon, none the same as the icon of the section mark.",
+			"composition": {
+				"tone": "surface",
+				"density": "regular",
+				"layout": "split",
+				"weight": "medium",
+				"role": "detail",
+				"width": "wide"
+			},
+			"images": [],
+			"docs": {
+				"avoidWhen": "Points without a text of their own; use leitvia-studio/content-icon-benefits. Features that differ by plan; use leitvia/content-feature-catalog. Needs Leitvia Studio for the icon block.",
+				"a11y": "Each point is an h3 with its text; the icons are decorative, the lines are borders without meaning.",
+				"contentLength": {
+					"heading": [
+						20,
+						60
+					],
+					"text": [
+						30,
+						90
 					]
 				},
 				"replacedBy": null

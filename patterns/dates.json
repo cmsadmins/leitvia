@@ -151,6 +151,10 @@
 		"added": "2026-10-15",
 		"updated": "2026-11-24"
 	},
+	"leitvia/footer-grid": {
+		"added": "2026-11-25",
+		"updated": "2026-11-25"
+	},
 	"leitvia/footer-mega": {
 		"added": "2026-10-15",
 		"updated": "2026-11-24"
@@ -174,6 +178,10 @@
 	"leitvia/header-default": {
 		"added": "2026-10-15",
 		"updated": "2026-10-19"
+	},
+	"leitvia/header-grid": {
+		"added": "2026-11-25",
+		"updated": "2026-11-25"
 	},
 	"leitvia/header-masthead": {
 		"added": "2026-10-24",
@@ -314,6 +322,14 @@
 	"leitvia/hidden-page-sidebar": {
 		"added": "2026-10-15",
 		"updated": "2026-11-22"
+	},
+	"leitvia/navigation-overlay-fill": {
+		"added": "2026-11-25",
+		"updated": "2026-11-26"
+	},
+	"leitvia/navigation-overlay-panel": {
+		"added": "2026-11-25",
+		"updated": "2026-11-26"
 	},
 	"leitvia/offer-pricing-3": {
 		"added": "2026-10-15",

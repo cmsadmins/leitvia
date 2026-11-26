@@ -524,6 +524,9 @@
 		{ "name": "page-landing", "title": "Landing page (no title)", "postTypes": [ "page" ] },
 		{ "name": "page-docs", "title": "Documentation page", "postTypes": [ "page" ] },
 		{ "name": "page-easy-language", "title": "Page in easy language", "postTypes": [ "page" ] },
-		{ "name": "page-article", "title": "Article page (author and date)", "postTypes": [ "page" ] }
+		{ "name": "page-article", "title": "Article page (author and date)", "postTypes": [ "page" ] },
+		{ "name": "page-dark", "title": "Page, dark", "postTypes": [ "page" ] },
+		{ "name": "page-landing-dark", "title": "Landing page, dark (no title)", "postTypes": [ "page" ] },
+		{ "name": "page-legal", "title": "Legal text (contents beside the text)", "postTypes": [ "page" ] }
 	]
 }

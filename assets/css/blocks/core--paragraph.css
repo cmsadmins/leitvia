@@ -53,15 +53,22 @@
    3.2:1), so the eyebrow and text in either color take the section text color there; the preset color classes are
    important, so the variables they read become currentcolor. Blocks with a ground of their own keep their colors.
    A dark palette lays inverse on surface-alt, where both pass by contract: it names them in --wp--custom--inverse-accent
-   and -muted (dark style variations, dark token sets of Studio), so prices, marks and eyebrows keep their colors. */
+   and -muted (dark style variations, dark token sets of Studio), so prices, marks and eyebrows keep their colors.
+   A light token set with the optional role band-accent (contract optionalPairs: 4.5:1 on band and on ink) shows it
+   for accent text and eyebrows on inverse and ink bands, such as numbers in a bright brand color on black; the accent
+   band (on-accent text) keeps the band text color. */
 .is-style-inverse :is(.is-style-eyebrow, .has-ink-muted-color, .has-accent-color:not(.has-background)) {
 	--wp--preset--color--ink-muted: var(--wp--custom--inverse-muted, currentcolor);
-	--wp--preset--color--accent: var(--wp--custom--inverse-accent, currentcolor);
+	--wp--preset--color--accent: var(--wp--preset--color--band-accent, var(--wp--custom--inverse-accent, currentcolor));
 }
 .has-background:is(.has-ink-background-color, .has-accent-background-color) :is(.is-style-eyebrow, .has-ink-muted-color, .has-accent-color:not(.has-background)) {
 	--wp--preset--color--ink-muted: currentcolor;
 	--wp--preset--color--accent: currentcolor;
 	color: inherit;
+}
+.has-background.has-ink-background-color :is(.is-style-eyebrow, .has-accent-color:not(.has-background)) {
+	--wp--preset--color--accent: var(--wp--preset--color--band-accent, currentcolor);
+	color: var(--wp--preset--color--accent);
 }
 
 /* Highlight: bold, its link underlined in the accent (on dark bands the accent of the contract for them), so the text

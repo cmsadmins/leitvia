@@ -140,6 +140,37 @@ function inline_styles_limit(): int {
 add_filter( 'styles_inline_size_limit', __NAMESPACE__ . '\inline_styles_limit' );
 
 /**
+ * The stylesheets of the theme (and of a child theme) that core prints inside the document go out without comments and
+ * runs of white space; the files keep both for people who read them. That takes about 40 percent off the CSS of the
+ * theme in every page. Runs on wp_head and wp_footer right after wp_maybe_inline_styles (priority 1).
+ */
+function compact_inline_styles(): void {
+	$themes = array_unique( array( wp_normalize_path( get_template_directory() ), wp_normalize_path( get_stylesheet_directory() ) ) );
+	foreach ( wp_styles()->registered as $style ) {
+		$path = wp_normalize_path( (string) ( $style->extra['path'] ?? '' ) );
+		$ours = '' !== $path && array_filter( $themes, static fn( string $dir ): bool => str_starts_with( $path, $dir . '/' ) );
+		// Core sets src to false and puts the content of the file first in after once it prints a style inline.
+		if ( $ours && false === $style->src && isset( $style->extra['after'][0] ) && is_string( $style->extra['after'][0] ) ) {
+			$style->extra['after'][0] = compact_css( $style->extra['after'][0] );
+		}
+	}
+}
+add_action( 'wp_head', __NAMESPACE__ . '\compact_inline_styles', 2 );
+add_action( 'wp_footer', __NAMESPACE__ . '\compact_inline_styles', 2 );
+
+/**
+ * CSS without comments, white space collapsed to one space and none around braces and semicolons. Commas stay as they
+ * are, so a list inside a string keeps its spaces.
+ *
+ * @param string $css Stylesheet.
+ */
+function compact_css( string $css ): string {
+	$css = (string) preg_replace( '#/\*.*?\*/#s', '', $css );
+	$css = (string) preg_replace( '/\s+/', ' ', $css );
+	return trim( (string) preg_replace( '/\s*([{};])\s*/', '$1', $css ) );
+}
+
+/**
  * Core only prints a stylesheet inside the document when it knows the file. Plugins such as WooCommerce enqueue theirs
  * by URL, so the path comes from the URL here, for files of this site. Left out in right-to-left languages when a
  * stylesheet has its own right-to-left file, which only the link picks.
@@ -372,7 +403,9 @@ function register_block_style_variations(): void {
 
 	$styles = array(
 		'core/columns'    => array(
-			'overlap' => __( 'Overlap', 'leitvia' ),
+			'overlap'    => __( 'Overlap', 'leitvia' ),
+			// Full-width columns whose image covers its cell from edge to edge, see core--columns.css.
+			'media-fill' => __( 'Image fills the cell', 'leitvia' ),
 		),
 		'core/buttons'    => array(
 			'header-action' => __( 'Header action', 'leitvia' ),
@@ -385,6 +418,13 @@ function register_block_style_variations(): void {
 		),
 		'core/quote'      => array(
 			'compact' => __( 'Compact', 'leitvia' ),
+		),
+		// A third above display for page titles and claims, see elements.css.
+		'core/heading'    => array(
+			'display-xl' => __( 'Display extra large', 'leitvia' ),
+		),
+		'core/post-title' => array(
+			'display-xl' => __( 'Display extra large', 'leitvia' ),
 		),
 		'core/site-logo'  => array(
 			'on-dark'          => __( 'On dark band', 'leitvia' ),
@@ -406,6 +446,7 @@ function register_block_style_variations(): void {
 			'sticky-header-desktop' => __( 'Sticky header on large screens', 'leitvia' ),
 			'sticky-header-mobile'  => __( 'Sticky header on small screens', 'leitvia' ),
 			'overlay-header'        => __( 'Header over the stage', 'leitvia' ),
+			'full-height'           => __( 'Full height', 'leitvia' ),
 		),
 		'core/navigation' => array(
 			'uppercase' => __( 'Capitals', 'leitvia' ),
@@ -690,6 +731,55 @@ function code_scroll_region( string $html ): string {
 	return add_scroll_region( $html, 'pre', 'is-style-terminal' );
 }
 add_filter( 'render_block_core/code', __NAMESPACE__ . '\code_scroll_region' );
+
+/**
+ * A heading that is one link and nothing else, such as the title of a service in a row or a cross link, gets the
+ * class leitvia-link-title: on dark pages and bands it reads in the text color without underline and shows the accent
+ * and the underline on hover and focus (dark-page.css, core--group.css). It is a link of its own, not a link inside
+ * running text, so color alone need not mark it (WCAG 1.4.1); a heading with a link inside its words keeps the
+ * underline.
+ *
+ * @param string $html Block HTML.
+ */
+function link_title( string $html ): string {
+	if ( ! preg_match( '#^\s*<h[1-6]\b[^>]*>\s*<a\b[^>]*>(?:(?!</a>).)*</a>\s*</h[1-6]>\s*$#s', $html ) ) {
+		return $html;
+	}
+	$tags = new \WP_HTML_Tag_Processor( $html );
+	$tags->next_tag();
+	$tags->add_class( 'leitvia-link-title' );
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block_core/heading', __NAMESPACE__ . '\link_title' );
+
+/**
+ * A link whose text is an e-mail address or a URL breaks after @ and / and before a dot when it does not fit, not in
+ * the middle of a word: a <wbr> at each of these places, the text stays the same for reading, copying and screen
+ * readers. Large type on a phone ("hello@" over "example.com") needs it most. Hyphens stay off in these links
+ * (elements.css), a hyphen would change the address. Runs once per text block, a second run finds no plain address.
+ *
+ * @param string $html Block HTML.
+ */
+function address_breaks( string $html ): string {
+	if ( ! str_contains( $html, '</a>' ) ) {
+		return $html;
+	}
+	return (string) preg_replace_callback(
+		'#(<a\b[^>]*>)([^<\s]+)(</a>)#i',
+		static function ( array $link ): string {
+			if ( ! preg_match( '#^(?:[^@]+@[^@]+\.\w{2,}|(?:https?://|www\.)\S+\.\S+)$#i', $link[2] ) ) {
+				return $link[0];
+			}
+			$text = (string) preg_replace( '#(?<=[^.])\.(?=[^.])#', '<wbr>.', $link[2] );
+			return $link[1] . preg_replace( '#(@|/+)(?=.)#', '$1<wbr>', $text ) . $link[3];
+		},
+		$html
+	);
+}
+add_filter( 'render_block_core/paragraph', __NAMESPACE__ . '\address_breaks' );
+add_filter( 'render_block_core/heading', __NAMESPACE__ . '\address_breaks' );
+add_filter( 'render_block_core/list-item', __NAMESPACE__ . '\address_breaks' );
+add_filter( 'render_block_core/button', __NAMESPACE__ . '\address_breaks' );
 
 /**
  * Every search block is a search landmark. Several on one page (header, documentation sidebar, 404, shop) need
@@ -1071,6 +1161,62 @@ function grid_four_two_one( array $block ): array {
 	return $block;
 }
 add_filter( 'render_block_data', __NAMESPACE__ . '\grid_four_two_one' );
+
+/**
+ * Whether the page shows in the dark scheme: a page with the template page-dark or page-landing-dark while the palette
+ * (theme, style variation or token set) is light, its surface lighter than its ink. A dark palette is dark already, so
+ * the templates then look like their light twins.
+ */
+function is_dark_page(): bool {
+	if ( ! is_singular() || ! str_ends_with( (string) get_page_template_slug(), '-dark' ) ) {
+		return false;
+	}
+	$palette = (array) wp_get_global_settings( array( 'color', 'palette' ) );
+	$colors  = array_column( array_merge( (array) ( $palette['theme'] ?? array() ), (array) ( $palette['custom'] ?? array() ) ), 'color', 'slug' );
+	// Relative luminance of a hex color, 1 when it is no hex color (a light palette is the default).
+	$luminance = static function ( $hex ): float {
+		if ( ! is_string( $hex ) || ! preg_match( '/^#([0-9a-f]{3}|[0-9a-f]{6})$/i', $hex, $m ) ) {
+			return 1.0;
+		}
+		$hex = 3 === strlen( $m[1] ) ? preg_replace( '/(.)/', '$1$1', $m[1] ) : $m[1];
+		$sum = 0.0;
+		foreach ( array( 0.2126, 0.7152, 0.0722 ) as $i => $weight ) {
+			$c    = hexdec( substr( (string) $hex, 2 * $i, 2 ) ) / 255;
+			$sum += $weight * ( $c <= 0.04045 ? $c / 12.92 : ( ( $c + 0.055 ) / 1.055 ) ** 2.4 );
+		}
+		return $sum;
+	};
+	return $luminance( $colors['surface'] ?? null ) > $luminance( $colors['ink'] ?? '#000000' );
+}
+
+/**
+ * Marks a dark page with the body class leitvia-dark-page, and a dark twin also with the class of its light template
+ * (page-template-page-landing), so the rules of the landing page apply to page-landing-dark as well.
+ *
+ * @param string[] $classes Body classes.
+ * @return string[]
+ */
+function dark_page_class( array $classes ): array {
+	$slug = (string) get_page_template_slug();
+	if ( is_singular() && str_ends_with( $slug, '-dark' ) ) {
+		$classes[] = 'page-template-' . sanitize_html_class( substr( $slug, 0, -5 ) );
+	}
+	if ( is_dark_page() ) {
+		$classes[] = 'leitvia-dark-page';
+	}
+	return $classes;
+}
+add_filter( 'body_class', __NAMESPACE__ . '\dark_page_class' );
+
+/**
+ * The scheme of the dark page (assets/css/dark-page.css), appended to the inline global styles of that page only.
+ */
+function inline_dark_page(): void {
+	if ( is_dark_page() ) {
+		wp_add_inline_style( 'global-styles', (string) file_get_contents( get_theme_file_path( 'assets/css/dark-page.css' ) ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Local theme file.
+	}
+}
+add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\inline_dark_page', 20 );
 
 /**
  * Drops a list of posts with its heading while there is no post to show: the related posts query, and every post
